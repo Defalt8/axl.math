@@ -6,4 +6,5 @@ add_library( axl.math
 	float.cpp
 	angle.cpp
 	Vec2f.cpp
+	Vec2d.cpp
 )
