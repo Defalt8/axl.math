@@ -4,4 +4,5 @@ add_library( axl.math
 	lib.cpp
 	double.cpp
 	float.cpp
+	angle.cpp
 )

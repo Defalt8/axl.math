@@ -38,6 +38,7 @@ install( FILES
 	include/axl.math/constants.hpp
 	include/axl.math/double.hpp
 	include/axl.math/float.hpp
+	include/axl.math/angle.hpp
 	DESTINATION include/axl.math
 )
 
