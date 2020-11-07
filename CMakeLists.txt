@@ -35,6 +35,9 @@ include_directories( include )
 #install header files
 install( FILES
 	include/axl.math/lib.hpp
+	include/axl.math/constants.hpp
+	include/axl.math/double.hpp
+	include/axl.math/float.hpp
 	DESTINATION include/axl.math
 )
 
