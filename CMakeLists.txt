@@ -36,6 +36,7 @@ include_directories( include )
 install( FILES
 	include/axl.math/lib.hpp
 	include/axl.math/constants.hpp
+	include/axl.math/rules.hpp
 	include/axl.math/double.hpp
 	include/axl.math/float.hpp
 	include/axl.math/angle.hpp

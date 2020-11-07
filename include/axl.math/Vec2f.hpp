@@ -1,18 +1,11 @@
 #pragma once
+#include "rules.hpp"
 
 namespace axl {
 namespace math {
 
 class Vec2f
 {
-	public:
-		enum AxisRule
-		{
-			// left hand side rule
-			LHS,
-			// right hand side rule
-			RHS
-		};
 	public:
 		Vec2f(float x = Default.x, float y = Default.y);
 		Vec2f(const Vec2f& vec);
@@ -55,10 +48,10 @@ class Vec2f
 		Vec2f& normalize();
 		float dot(const Vec2f& vec) const;
 		float cross(const Vec2f& vec) const;
-		float angle(AxisRule axis_rule = DefaultAxisRule) const;
-		float angle(const Vec2f& ref_vec, AxisRule axis_rule = DefaultAxisRule) const;
-		float fullAngle(AxisRule axis_rule = DefaultAxisRule) const;
-		float fullAngle(const Vec2f& ref_vec, AxisRule axis_rule = DefaultAxisRule) const;
+		float angle(Rules::Axis axis_rule = DefaultAxisRule) const;
+		float angle(const Vec2f& ref_vec, Rules::Axis axis_rule = DefaultAxisRule) const;
+		float fullAngle(Rules::Axis axis_rule = DefaultAxisRule) const;
+		float fullAngle(const Vec2f& ref_vec, Rules::Axis axis_rule = DefaultAxisRule) const;
 	public:
 		Vec2f& scale(float scale_all);
 		Vec2f& scale(float scale_x, float scale_y);
@@ -68,13 +61,13 @@ class Vec2f
 		Vec2f& translate(const Vec2f& delta);
 		Vec2f translated(float delta_x, float delta_y) const;
 		Vec2f translated(const Vec2f& delta) const;
-		Vec2f& rotate(float theta_z, AxisRule axis_rule = DefaultAxisRule);
-		Vec2f rotated(float theta_z, AxisRule axis_rule = DefaultAxisRule) const;
+		Vec2f& rotate(float theta_z, Rules::Axis axis_rule = DefaultAxisRule);
+		Vec2f rotated(float theta_z, Rules::Axis axis_rule = DefaultAxisRule) const;
 	public:
 		const static Vec2f Zero;
 		const static Vec2f Identity;
 		static Vec2f Default;
-		static AxisRule DefaultAxisRule;
+		static Rules::Axis DefaultAxisRule;
 	public:
 		float x, y;
 };

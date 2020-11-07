@@ -1,18 +1,11 @@
 #pragma once
+#include "rules.hpp"
 
 namespace axl {
 namespace math {
 
 class Vec2d
 {
-	public:
-		enum AxisRule
-		{
-			// left hand side rule
-			LHS,
-			// right hand side rule
-			RHS
-		};
 	public:
 		Vec2d(double x = Default.x, double y = Default.y);
 		Vec2d(const Vec2d& vec);
@@ -55,10 +48,10 @@ class Vec2d
 		Vec2d& normalize();
 		double dot(const Vec2d& vec) const;
 		double cross(const Vec2d& vec) const;
-		double angle(AxisRule axis_rule = DefaultAxisRule) const;
-		double angle(const Vec2d& ref_vec, AxisRule axis_rule = DefaultAxisRule) const;
-		double fullAngle(AxisRule axis_rule = DefaultAxisRule) const;
-		double fullAngle(const Vec2d& ref_vec, AxisRule axis_rule = DefaultAxisRule) const;
+		double angle(Rules::Axis axis_rule = DefaultAxisRule) const;
+		double angle(const Vec2d& ref_vec, Rules::Axis axis_rule = DefaultAxisRule) const;
+		double fullAngle(Rules::Axis axis_rule = DefaultAxisRule) const;
+		double fullAngle(const Vec2d& ref_vec, Rules::Axis axis_rule = DefaultAxisRule) const;
 	public:
 		Vec2d& scale(double scale_all);
 		Vec2d& scale(double scale_x, double scale_y);
@@ -68,13 +61,13 @@ class Vec2d
 		Vec2d& translate(const Vec2d& delta);
 		Vec2d translated(double delta_x, double delta_y) const;
 		Vec2d translated(const Vec2d& delta) const;
-		Vec2d& rotate(double theta_z, AxisRule axis_rule = DefaultAxisRule);
-		Vec2d rotated(double theta_z, AxisRule axis_rule = DefaultAxisRule) const;
+		Vec2d& rotate(double theta_z, Rules::Axis axis_rule = DefaultAxisRule);
+		Vec2d rotated(double theta_z, Rules::Axis axis_rule = DefaultAxisRule) const;
 	public:
 		const static Vec2d Zero;
 		const static Vec2d Identity;
 		static Vec2d Default;
-		static AxisRule DefaultAxisRule;
+		static Rules::Axis DefaultAxisRule;
 	public:
 		double x, y;
 };

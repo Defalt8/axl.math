@@ -167,44 +167,44 @@ float Vec2f::cross(const Vec2f& vec) const
 {
 	return (x * vec.y - y * vec.x);
 }
-float Vec2f::angle(AxisRule axis_rule) const
+float Vec2f::angle(Rules::Axis axis_rule) const
 {
 	switch(axis_rule)
 	{
 		default:
-		case RHS: return std::atan2(y, x);
-		case LHS: return std::atan2(x, y);
+		case Rules::RHS: return std::atan2(y, x);
+		case Rules::LHS: return std::atan2(x, y);
 	}
 }
-float Vec2f::angle(const Vec2f& ref_vec, AxisRule axis_rule) const
+float Vec2f::angle(const Vec2f& ref_vec, Rules::Axis axis_rule) const
 {
 	switch(axis_rule)
 	{
 		default:
-		case RHS: return (std::atan2(y, x) - std::atan2(ref_vec.y, ref_vec.x));
-		case LHS: return (std::atan2(x, y) - std::atan2(ref_vec.x, ref_vec.y));
+		case Rules::RHS: return (std::atan2(y, x) - std::atan2(ref_vec.y, ref_vec.x));
+		case Rules::LHS: return (std::atan2(x, y) - std::atan2(ref_vec.x, ref_vec.y));
 	}
 }
-float Vec2f::fullAngle(AxisRule axis_rule) const
+float Vec2f::fullAngle(Rules::Axis axis_rule) const
 {
 	using namespace axl::math::Constants;
 	switch(axis_rule)
 	{
 		default:
-		case RHS:
+		case Rules::RHS:
 			return std::fmod((F_2_PI + std::atan2(y, x)), F_2_PI);
-		case LHS:
+		case Rules::LHS:
 			return std::fmod((F_2_PI + std::atan2(x, y)), F_2_PI);
 	}
 }
-float Vec2f::fullAngle(const Vec2f& ref_vec, AxisRule axis_rule) const
+float Vec2f::fullAngle(const Vec2f& ref_vec, Rules::Axis axis_rule) const
 {
 	using namespace axl::math::Constants;
 	switch(axis_rule)
 	{
 		default:
-		case RHS: return std::fmod((F_2_PI + std::atan2(y, x) - std::atan2(ref_vec.y, ref_vec.x)), F_2_PI);
-		case LHS: return std::fmod((F_2_PI + std::atan2(x, y) - std::atan2(ref_vec.x, ref_vec.y)), F_2_PI);
+		case Rules::RHS: return std::fmod((F_2_PI + std::atan2(y, x) - std::atan2(ref_vec.y, ref_vec.x)), F_2_PI);
+		case Rules::LHS: return std::fmod((F_2_PI + std::atan2(x, y) - std::atan2(ref_vec.x, ref_vec.y)), F_2_PI);
 	}
 }
 
@@ -249,13 +249,13 @@ Vec2f Vec2f::translated(const Vec2f& delta) const
 	return Vec2f(x + delta.x, y + delta.y);
 }
 
-Vec2f& Vec2f::rotate(float theta_z, AxisRule axis_rule)
+Vec2f& Vec2f::rotate(float theta_z, Rules::Axis axis_rule)
 {
 	
 	switch (axis_rule)
 	{
 		default:
-		case RHS:
+		case Rules::RHS:
 			{
 				const register float _x = (x * std::cos(theta_z) - y * std::sin(theta_z));
 				const register float _y = (x * std::sin(theta_z) + y * std::cos(theta_z));
@@ -263,7 +263,7 @@ Vec2f& Vec2f::rotate(float theta_z, AxisRule axis_rule)
 				this->y = _y;
 			}
 			return *this;
-		case LHS:
+		case Rules::LHS:
 			{
 				theta_z = -theta_z;
 				const register float _x = (x * std::cos(theta_z) - y * std::sin(theta_z));
@@ -275,13 +275,13 @@ Vec2f& Vec2f::rotate(float theta_z, AxisRule axis_rule)
 	}
 	
 }
-Vec2f Vec2f::rotated(float theta_z, AxisRule axis_rule) const
+Vec2f Vec2f::rotated(float theta_z, Rules::Axis axis_rule) const
 {
 	switch (axis_rule)
 	{
 		default:
-		case RHS: return Vec2f((x * std::cos(theta_z) - y * std::sin(theta_z)), (x * std::sin(theta_z) + y * std::cos(theta_z)));
-		case LHS:
+		case Rules::RHS: return Vec2f((x * std::cos(theta_z) - y * std::sin(theta_z)), (x * std::sin(theta_z) + y * std::cos(theta_z)));
+		case Rules::LHS:
 			theta_z = -theta_z;
 			return Vec2f((x * std::cos(theta_z) - y * std::sin(theta_z)), (x * std::sin(theta_z) + y * std::cos(theta_z)));
 	}
@@ -290,7 +290,7 @@ Vec2f Vec2f::rotated(float theta_z, AxisRule axis_rule) const
 const Vec2f Vec2f::Zero(0.0f, 0.0f);
 const Vec2f Vec2f::Identity(1.0f, 1.0f);
 Vec2f Vec2f::Default(0.0f, 0.0f);
-Vec2f::AxisRule Vec2f::DefaultAxisRule = Vec2f::RHS;
+Rules::Axis Vec2f::DefaultAxisRule = Rules::RHS;
 
 } // namespace math
 } // namespace axl
