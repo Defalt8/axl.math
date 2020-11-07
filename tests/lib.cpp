@@ -16,5 +16,5 @@ int main(int argc, char *argv[])
 		if(Assert::_num_failed_tests <= 0) printf("# All Good!\n", Assert::_num_failed_tests);
 		else printf("# %d Failed!\n", Assert::_num_failed_tests);
 	}
-	return Assert::_num_failed_tests ? 0 : 1;
+	return Assert::_num_failed_tests;
 }
