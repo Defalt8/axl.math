@@ -39,6 +39,7 @@ install( FILES
 	include/axl.math/double.hpp
 	include/axl.math/float.hpp
 	include/axl.math/angle.hpp
+	include/axl.math/Vec2f.hpp
 	DESTINATION include/axl.math
 )
 
