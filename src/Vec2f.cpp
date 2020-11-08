@@ -265,9 +265,8 @@ Vec2f& Vec2f::rotate(float theta_z, Rules::Axis axis_rule)
 			return *this;
 		case Rules::LHS:
 			{
-				theta_z = -theta_z;
-				const register float _x = (x * std::cos(theta_z) - y * std::sin(theta_z));
-				const register float _y = (x * std::sin(theta_z) + y * std::cos(theta_z));
+				const register float _x = (x * std::cos(theta_z) + y * std::sin(theta_z));
+				const register float _y = (y * std::cos(theta_z) - x * std::sin(theta_z));
 				this->x = _x;
 				this->y = _y;
 			}
@@ -283,7 +282,7 @@ Vec2f Vec2f::rotated(float theta_z, Rules::Axis axis_rule) const
 		case Rules::RHS: return Vec2f((x * std::cos(theta_z) - y * std::sin(theta_z)), (x * std::sin(theta_z) + y * std::cos(theta_z)));
 		case Rules::LHS:
 			theta_z = -theta_z;
-			return Vec2f((x * std::cos(theta_z) - y * std::sin(theta_z)), (x * std::sin(theta_z) + y * std::cos(theta_z)));
+			return Vec2f((x * std::cos(theta_z) + y * std::sin(theta_z)), (y * std::cos(theta_z) - x * std::sin(theta_z)));
 	}
 }
 

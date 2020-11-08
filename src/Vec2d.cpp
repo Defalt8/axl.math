@@ -248,7 +248,6 @@ Vec2d Vec2d::translated(const Vec2d& delta) const
 {
 	return Vec2d(x + delta.x, y + delta.y);
 }
-
 Vec2d& Vec2d::rotate(double theta_z, Rules::Axis axis_rule)
 {
 	
@@ -265,9 +264,8 @@ Vec2d& Vec2d::rotate(double theta_z, Rules::Axis axis_rule)
 			return *this;
 		case Rules::LHS:
 			{
-				theta_z = -theta_z;
-				const register double _x = (x * std::cos(theta_z) - y * std::sin(theta_z));
-				const register double _y = (x * std::sin(theta_z) + y * std::cos(theta_z));
+				const register double _x = (x * std::cos(theta_z) + y * std::sin(theta_z));
+				const register double _y = (y * std::cos(theta_z) - x * std::sin(theta_z));
 				this->x = _x;
 				this->y = _y;
 			}
@@ -283,9 +281,10 @@ Vec2d Vec2d::rotated(double theta_z, Rules::Axis axis_rule) const
 		case Rules::RHS: return Vec2d((x * std::cos(theta_z) - y * std::sin(theta_z)), (x * std::sin(theta_z) + y * std::cos(theta_z)));
 		case Rules::LHS:
 			theta_z = -theta_z;
-			return Vec2d((x * std::cos(theta_z) - y * std::sin(theta_z)), (x * std::sin(theta_z) + y * std::cos(theta_z)));
+			return Vec2d((x * std::cos(theta_z) + y * std::sin(theta_z)), (y * std::cos(theta_z) - x * std::sin(theta_z)));
 	}
 }
+
 
 const Vec2d Vec2d::Zero(0.0, 0.0);
 const Vec2d Vec2d::Identity(1.0, 1.0);
