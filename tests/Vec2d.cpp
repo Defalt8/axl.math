@@ -240,8 +240,8 @@ int main(int argc, char *argv[])
 			Assertv(Double::equals(crossprl, (rx * ly - ry * lx)), verbose);
 		}
 		{ // angle
-			Assertve(Vec2d::DefaultAxisRule == Rules::RHS, verbose);
-			{ // Rules::RHS
+			Assertve(Vec2d::DefaultAxisRule == Rules::AXIS_RHS, verbose);
+			{ // Rules::AXIS_RHS
 				Assertv(Double::equals(Vec2d(-0.0, 0.0).angle(), Angle::degToRad(180.0)), verbose);
 				Assertv(Double::equals(Vec2d(0.0, -0.0).angle(), Angle::degToRad(-0.0)), verbose);
 				Assertv(Double::equals(Vec2d(-0.0, -0.0).angle(), Angle::degToRad(-180.0)), verbose);
@@ -268,9 +268,9 @@ int main(int argc, char *argv[])
 				Assertv(Double::equals(Vec2d(-1.0, -1.0).fullAngle(), Angle::degToRad(225.0)), verbose);
 				Assertv(Double::equals(Vec2d(1.0, -1.0).fullAngle(), Angle::degToRad(315.0)), verbose);
 			}
-			{ // Rules::LHS
-				Vec2d::DefaultAxisRule = Rules::LHS;
-				Assertve(Vec2d::DefaultAxisRule == Rules::LHS, verbose);
+			{ // Rules::AXIS_LHS
+				Vec2d::DefaultAxisRule = Rules::AXIS_LHS;
+				Assertve(Vec2d::DefaultAxisRule == Rules::AXIS_LHS, verbose);
 				Assertv(Double::equals(Vec2d(-0.0, 0.0).angle(), Angle::degToRad(-0.0)), verbose);
 				Assertv(Double::equals(Vec2d(0.0, -0.0).angle(), Angle::degToRad(180.0)), verbose);
 				Assertv(Double::equals(Vec2d(-0.0, -0.0).angle(), Angle::degToRad(-180.0)), verbose);
@@ -297,9 +297,9 @@ int main(int argc, char *argv[])
 				Assertv(Double::equals(Vec2d(-1.0, -1.0).fullAngle(), Angle::degToRad(225.0)), verbose);
 				Assertv(Double::equals(Vec2d(1.0, -1.0).fullAngle(), Angle::degToRad(135.0)), verbose);
 			}
-			{ // Rules::RHS
-				Vec2d::DefaultAxisRule = Rules::RHS;
-				Assertve(Vec2d::DefaultAxisRule == Rules::RHS, verbose);
+			{ // Rules::AXIS_RHS
+				Vec2d::DefaultAxisRule = Rules::AXIS_RHS;
+				Assertve(Vec2d::DefaultAxisRule == Rules::AXIS_RHS, verbose);
 				const double lx = 3.0, ly = -1.0;
 				const double rx = 2.0, ry = 6.0;
 				const Vec2d lvec(lx, ly);
@@ -314,9 +314,9 @@ int main(int argc, char *argv[])
 				Assertv(Double::equals(lvec.fullAngle(-lvec), Angle::degToRad(180.0)), verbose);
 				Assertv(Double::equals(rvec.fullAngle(-rvec), Angle::degToRad(180.0)), verbose);
 			}
-			{ // Rules::LHS
-				Vec2d::DefaultAxisRule = Rules::LHS;
-				Assertve(Vec2d::DefaultAxisRule == Rules::LHS, verbose);
+			{ // Rules::AXIS_LHS
+				Vec2d::DefaultAxisRule = Rules::AXIS_LHS;
+				Assertve(Vec2d::DefaultAxisRule == Rules::AXIS_LHS, verbose);
 				const double lx = 3.0, ly = -1.0;
 				const double rx = 2.0, ry = 6.0;
 				const Vec2d lvec(lx, ly);
@@ -417,9 +417,9 @@ int main(int argc, char *argv[])
 			}
 		}
 		{ // rotate
-			{ // Rules::RHS
-				Vec2d::DefaultAxisRule = Rules::RHS;
-				Assertve(Vec2d::DefaultAxisRule == Rules::RHS, verbose);
+			{ // Rules::AXIS_RHS
+				Vec2d::DefaultAxisRule = Rules::AXIS_RHS;
+				Assertve(Vec2d::DefaultAxisRule == Rules::AXIS_RHS, verbose);
 				Assertv(Vec2d(5, 0).rotate(Angle::degToRad(90.0)).equals(0, 5), verbose);
 				Assertv(Vec2d(0, 5).rotate(Angle::degToRad(90.0)).equals(-5, 0), verbose);
 				Assertv(Vec2d(-5, 0).rotate(Angle::degToRad(90.0)).equals(0, -5), verbose);
@@ -429,9 +429,9 @@ int main(int argc, char *argv[])
 				Assertv(Vec2d(5, 3).rotate(Angle::degToRad(270.0)).equals(3, -5), verbose);
 				Assertv(Vec2d(5, 3).rotate(Angle::degToRad(360.0)).equals(5, 3), verbose);
 			}
-			{ // Rules::LHS
-				Vec2d::DefaultAxisRule = Rules::LHS;
-				Assertve(Vec2d::DefaultAxisRule == Rules::LHS, verbose);
+			{ // Rules::AXIS_LHS
+				Vec2d::DefaultAxisRule = Rules::AXIS_LHS;
+				Assertve(Vec2d::DefaultAxisRule == Rules::AXIS_LHS, verbose);
 				Assertv(Vec2d(5, 0).rotate(Angle::degToRad(90.0)).equals(0, -5), verbose);
 				Assertv(Vec2d(0, 5).rotate(Angle::degToRad(90.0)).equals(5, 0), verbose);
 				Assertv(Vec2d(-5, 0).rotate(Angle::degToRad(90.0)).equals(0, 5), verbose);
@@ -443,9 +443,9 @@ int main(int argc, char *argv[])
 			}
 		}
 		{ // rotated
-			{ // Rules::RHS
-				Vec2d::DefaultAxisRule = Rules::RHS;
-				Assertve(Vec2d::DefaultAxisRule == Rules::RHS, verbose);
+			{ // Rules::AXIS_RHS
+				Vec2d::DefaultAxisRule = Rules::AXIS_RHS;
+				Assertve(Vec2d::DefaultAxisRule == Rules::AXIS_RHS, verbose);
 				Assertv(Vec2d(5, 0).rotated(Angle::degToRad(90.0)).equals(0, 5), verbose);
 				Assertv(Vec2d(0, 5).rotated(Angle::degToRad(90.0)).equals(-5, 0), verbose);
 				Assertv(Vec2d(-5, 0).rotated(Angle::degToRad(90.0)).equals(0, -5), verbose);

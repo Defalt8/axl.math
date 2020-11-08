@@ -6,9 +6,9 @@ namespace Rules {
 enum Axis
 {
 	// left hand side rule
-	LHS,
+	AXIS_LHS,
 	// right hand side rule
-	RHS
+	AXIS_RHS
 };
 
 } // namespace axl.math.Rules
