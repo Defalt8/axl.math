@@ -8,7 +8,8 @@ class Vec2
 {
 	public:
 		Vec2(T x = Default.x, T y = Default.y);
-		Vec2(const Vec2<T>& vec);
+		template <typename U>
+		Vec2(const Vec2<U>& vec);
 	public:
 		Vec2<T> operator+() const;
 		Vec2<T> operator-() const;
@@ -33,15 +34,17 @@ class Vec2
 		bool operator==(const T& v) const;
 		bool operator!=(const T& v) const;
 	public:
+		template <typename U>
+		bool equals(const Vec2<U>& vec) const;
+		template <typename U>
+		bool notEquals(const Vec2<U>& vec) const;
+		template <typename U>
+		bool equals(U x, U y) const;
+		template <typename U>
+		bool notEquals(U x, U y) const;
+	public:
 		Vec2<T>& set(T value);
 		Vec2<T>& set(T x, T y);
-		bool isNan() const;
-		bool hasNan() const;
-		bool hasNoNan() const;
-		bool equals(const Vec2<T>& vec, T epsilon = 0.0000001) const;
-		bool notEquals(const Vec2<T>& vec, T epsilon = 0.0000001) const;
-		bool equals(T x, T y, T epsilon = 0.0000001) const;
-		bool notEquals(T x, T y, T epsilon = 0.0000001) const;
 	public:
 		const static Vec2<T> Zero;
 		const static Vec2<T> Identity;
