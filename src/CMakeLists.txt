@@ -7,4 +7,6 @@ add_library( axl.math
 	angle.cpp
 	Vec2f.cpp
 	Vec2d.cpp
+	Vec3f.cpp
+	Vec3d.cpp
 )

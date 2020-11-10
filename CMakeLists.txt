@@ -44,6 +44,8 @@ install( FILES
 	include/axl.math/Vec2d.hpp
 	include/axl.math/Vec2.hpp
 	include/axl.math/Vec2.inl
+	include/axl.math/Vec3f.hpp
+	include/axl.math/Vec3d.hpp
 	DESTINATION include/axl.math
 )
 
