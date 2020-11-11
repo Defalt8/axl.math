@@ -10,6 +10,8 @@ class Vec3
 	public:
 		Vec3(T x = Default.x, T y = Default.y, T z = Default.z);
 		template <typename U>
+		Vec3(U x, U y, U z);
+		template <typename U>
 		Vec3(const Vec3<U>& vec);
 		template <typename U>
 		Vec3(const Vec2<U>& vec, T z = Default.z);

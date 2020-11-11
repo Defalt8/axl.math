@@ -10,6 +10,11 @@ Vec3<T>::Vec3(T _x, T _y, T _z) :
 {}
 template <typename T>
 template <typename U>
+Vec3<T>::Vec3(U _x, U _y, U _z) :
+	x((T)_x), y((T)_y), z((T)_z)
+{}
+template <typename T>
+template <typename U>
 Vec3<T>::Vec3(const Vec3<U>& vec) :
 	x((T)vec.x), y((T)vec.y), z((T)vec.z)
 {}

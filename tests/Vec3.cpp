@@ -62,6 +62,10 @@ int main(int argc, char *argv[])
 				Assertv((3 == vec2.x), verbose);
 				Assertv((0 == vec2.y), verbose);
 				Assertv((456 == vec2.z), verbose);
+				Vec3<float> vec3 = vec;
+				Assertv((3 == vec3.x), verbose);
+				Assertv((0 == vec3.y), verbose);
+				Assertv((456 == vec3.z), verbose);
 			}
 			{
 				const Vec2<short> vec2(1, 3);

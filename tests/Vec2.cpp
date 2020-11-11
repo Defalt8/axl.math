@@ -53,6 +53,9 @@ int main(int argc, char *argv[])
 			Vec2<int> vec2 = vec;
 			Assertv((314 ==  vec2.x), verbose);
 			Assertv((672 ==  vec2.y), verbose);
+			Vec2<float> vec3 = vec;
+			Assertv((314.0f ==  vec3.x), verbose);
+			Assertv((672.0f ==  vec3.y), verbose);
 		}
 	}
 	{ // unary operators

@@ -5,8 +5,13 @@ namespace axl {
 namespace math {
 
 template <typename T>
-inline Vec2<T>::Vec2(T x, T y) :
-	x(x), y(y)
+inline Vec2<T>::Vec2(T _x, T _y) :
+	x(_x), y(_y)
+{}
+template <typename T>
+template <typename U>
+inline Vec2<T>::Vec2(U _x, U _y) :
+	x((T)_x), y((T)_y)
 {}
 template <typename T>
 template <typename U>

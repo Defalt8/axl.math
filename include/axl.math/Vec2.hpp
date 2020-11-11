@@ -9,6 +9,8 @@ class Vec2
 	public:
 		Vec2(T x = Default.x, T y = Default.y);
 		template <typename U>
+		Vec2(U x, U y);
+		template <typename U>
 		Vec2(const Vec2<U>& vec);
 	public:
 		Vec2<T> operator+() const;
