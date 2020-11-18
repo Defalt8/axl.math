@@ -5,8 +5,9 @@ namespace math {
 namespace Double
 {
 
-const static double _pos_inf = 1.0 / 0.0;
-const static double _neg_inf = -1.0 / 0.0;
+static double _zero = 0.0;
+const static double _pos_inf = 1.0 / _zero;
+const static double _neg_inf = -1.0 / _zero;
 
 bool equals(double a, double b, double epsilon)
 {

@@ -5,8 +5,9 @@ namespace math {
 namespace Float
 {
 
-const static float _pos_inf = 1.0f / 0.0f;
-const static float _neg_inf = -1.0f / 0.0f;
+static float _zero = 0.0f;
+const static float _pos_inf = 1.0f / _zero;
+const static float _neg_inf = -1.0f / _zero;
 
 bool equals(float a, float b, float epsilon)
 {
