@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 #include "Assert.hpp"
-#include <axl.math/lib.hpp>
+#include "lib.hpp"
 #include <axl.math/float.hpp>
 
 int main(int argc, char *argv[])
@@ -10,7 +10,8 @@ int main(int argc, char *argv[])
 	bool verbose = argc > 1 && (0 == strcmp(argv[1], "-v") || 0 == strcmp(argv[1], "--verbose"));
 	using namespace axl;
 	using namespace axl::math;
-	printf("library version: %u %u %u\n", lib::version.major, lib::version.minor, lib::version.patch);
+	printf("axl.math - version %hu.%hu.%hu  %s %s\n", lib::VERSION.major, lib::VERSION.minor, lib::VERSION.patch, cstrLibType(lib::LIBRARY_TYPE), cstrBuildType(lib::BUILD_TYPE));
+	puts("----------------------------------------");
 	// Float::Equals tests
 	Assertv(Float::equals(0.0f, 0.0f), verbose);
 	Assertv(Float::equals(19821412.5673453f, 19821412.5673453f), verbose);
@@ -52,10 +53,13 @@ int main(int argc, char *argv[])
 	Assertv(!Float::isNegInfinity(1.0f/0.0f), verbose);
 	Assertv(!Float::isNegInfinity(0.0f), verbose);
 	Assertv(!Float::isNegInfinity(2434.0543545f), verbose);
-	if(verbose) {
+
+	if(Assert::_num_failed_tests <= 0)
+		printf("# All Good!\n", Assert::_num_failed_tests);
+	else
+	{
 		puts("----------------------------------------");
-		if(Assert::_num_failed_tests <= 0) printf("# All Good!\n", Assert::_num_failed_tests);
-		else printf("# %d Failed!\n", Assert::_num_failed_tests);
+		printf("# %d Failed!\n", Assert::_num_failed_tests);
 	}
 	return Assert::_num_failed_tests;
 }

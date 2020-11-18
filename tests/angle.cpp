@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 #include "Assert.hpp"
-#include <axl.math/lib.hpp>
+#include "lib.hpp"
 #include <axl.math/constants.hpp>
 #include <axl.math/float.hpp>
 #include <axl.math/double.hpp>
@@ -14,7 +14,8 @@ int main(int argc, char *argv[])
 	using namespace axl;
 	using namespace axl::math;
 	using namespace axl::math::Constants;
-	printf("library version: %u %u %u\n", lib::version.major, lib::version.minor, lib::version.patch);
+	printf("axl.math - version %hu.%hu.%hu  %s %s\n", lib::VERSION.major, lib::VERSION.minor, lib::VERSION.patch, cstrLibType(lib::LIBRARY_TYPE), cstrBuildType(lib::BUILD_TYPE));
+	puts("----------------------------------------");
 	{ // double
 		{
 			const double deg = 238.56;
@@ -63,10 +64,13 @@ int main(int argc, char *argv[])
 			Assertv(Float::equals(Angle::degToNorm(deg), norm, 0.000001f), verbose);
 		}
 	}
-	if(verbose) {
+
+	if(Assert::_num_failed_tests <= 0)
+		printf("# All Good!\n", Assert::_num_failed_tests);
+	else
+	{
 		puts("----------------------------------------");
-		if(Assert::_num_failed_tests <= 0) printf("# All Good!\n", Assert::_num_failed_tests);
-		else printf("# %d Failed!\n", Assert::_num_failed_tests);
+		printf("# %d Failed!\n", Assert::_num_failed_tests);
 	}
 	return Assert::_num_failed_tests;
 }
