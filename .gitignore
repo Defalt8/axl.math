@@ -1,2 +1,9 @@
 .vscode
 build
+lib
+Debug
+Release
+.dll
+.a
+.o
+.obj
