@@ -32,7 +32,7 @@ if( "${CMAKE_BUILD_TYPE}" STREQUAL "Debug" )
 		add_compile_options( -g -Og )
 	endif()
 elseif( "${CMAKE_BUILD_TYPE}" STREQUAL "Release" )
-	add_compile_definitions( RELEASE )
+	add_compile_definitions( NDEBUG RELEASE )
 	if( ${MSVC} )
 		add_compile_options( /Ot )
 	else()
@@ -89,8 +89,7 @@ install( FILES
 	"include/axl.math/Vec3.inl"
 	DESTINATION "include/axl.math"
 )
-install( TARGETS
-	axl.math
+install( TARGETS axl.math
 	ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
 	LIBRARY DESTINATION "${CMAKE_INSTALL_BINDIR}"
 	RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
