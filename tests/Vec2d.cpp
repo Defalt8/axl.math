@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 	using namespace axl;
 	using namespace axl::math;
 	using namespace axl::math::Constants;
-	printf("axl.math - version %hu.%hu.%hu  %s %s\n", lib::VERSION.major, lib::VERSION.minor, lib::VERSION.patch, cstrLibType(lib::LIBRARY_TYPE), cstrBuildType(lib::BUILD_TYPE));
+	printf("axl.math - version %hu.%hu.%hu  %s %s\n", lib::VERSION.major, lib::VERSION.minor, lib::VERSION.patch, libType(lib::LIBRARY_TYPE), buildType(lib::BUILD_TYPE));
 	puts("----------------------------------------");
 	{ // static values
 		Assertv(Double::equals(0.0, Vec2d::Zero.x), verbose);

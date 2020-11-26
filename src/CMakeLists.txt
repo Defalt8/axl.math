@@ -1,7 +1,6 @@
-cmake_minimum_required( VERSION 3.17 )
-
-# Library
-add_library( axl.math ${LIB_TYPE}
+# library
+set( LIBAXLMATH_OUTPUT_NAME axl.math )
+add_library( axl.math ${LIBAXLMATH_TYPE}
 	"lib.cpp"
 	"double.cpp"
 	"float.cpp"
@@ -11,32 +10,49 @@ add_library( axl.math ${LIB_TYPE}
 	"Vec3f.cpp"
 	"Vec3d.cpp"
 )
-# Target link libraries
-if( ${MSVC} )
-	set( LIBM m.lib )
-elseif( ${WIN32} )
-	set( LIBM -lm )
+target_compile_definitions( axl.math
+	PRIVATE LIBAXLMATH_BUILD
+	PUBLIC LIBAXLMATH_VERSION_MAJOR=${axl.math_VERSION_MAJOR}
+	PUBLIC LIBAXLMATH_VERSION_MINOR=${axl.math_VERSION_MINOR}
+	PUBLIC LIBAXLMATH_VERSION_PATCH=${axl.math_VERSION_PATCH}
+)
+if( "${LIBAXLMATH_TYPE}" MATCHES "^[Ss][Tt][Aa][Tt][Ii][Cc]$" )
+	set( LIBAXLMATH_SUFFIX s )
+	target_compile_definitions( axl.math
+		PUBLIC LIBAXLMATH_STATIC
+	)
+	if( INSTALL_ARCHIVES )
+		install( TARGETS axl.math
+			ARCHIVE DESTINATION "${CMAKE_INSTALL_PREFIX}/${ARCHIVES_INSTALL_DIR}"
+		)
+	endif()
+elseif( "${LIBAXLMATH_TYPE}" MATCHES "^[Ss][Hh][Aa][Rr][Ee][Dd]$" )
+	target_compile_definitions( axl.math
+		PUBLIC LIBAXLMATH_SHARED
+	)
+	if( INSTALL_ARCHIVES )
+		install( TARGETS axl.math
+			ARCHIVE DESTINATION "${CMAKE_INSTALL_PREFIX}/${ARCHIVES_INSTALL_DIR}"
+		)
+	endif()
+	if( INSTALL_BINARIES )
+		install( TARGETS axl.math
+			RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}/${BINARY_INSTALL_DIR}"
+		)
+	endif()
 else()
-	set( LIBM -lm )
+	set( LIBAXLMATH_SUFFIX l )
 endif()
-target_link_libraries( axl.math ${LIBM} )
-# Target compile definitions
-target_compile_definitions( axl.math
-	PUBLIC AXLMATH_${LIB_TYPE}
-)
-target_compile_definitions( axl.math
-	PRIVATE AXLMATH_BUILD
-	PRIVATE AXLMATH_VERSION_MAJOR=${PROJECT_VERSION_MAJOR}
-	PRIVATE AXLMATH_VERSION_MINOR=${PROJECT_VERSION_MINOR}
-	PRIVATE AXLMATH_VERSION_PATCH=${PROJECT_VERSION_PATCH}
-)
-# Target properties
+
+if( "${CMAKE_BUILD_TYPE}" MATCHES "[Dd][Ee][Bb][Uu][Gg]" )
+	set( LIBAXLMATH_SUFFIX "${LIBAXLMATH_SUFFIX}d" )
+endif()
+
 set_target_properties( axl.math PROPERTIES
-	LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/tests"
-	RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/tests"
-)
-set_target_properties( axl.math PROPERTIES
-	ARCHIVE_OUTPUT_NAME axl.math${LIB_SUFFIX}
-	RUNTIME_OUTPUT_NAME axl.math${LIB_SUFFIX}
-	LIBRARY_OUTPUT_NAME axl.math${LIB_SUFFIX}
+	OUTPUT_NAME "${LIBAXLMATH_OUTPUT_NAME}${LIBAXLMATH_SUFFIX}"
+	ARCHIVE_OUTPUT_NAME "${LIBAXLMATH_OUTPUT_NAME}${LIBAXLMATH_SUFFIX}"
+	LIBRARY_OUTPUT_NAME "${LIBAXLMATH_OUTPUT_NAME}${LIBAXLMATH_SUFFIX}"
+	RUNTIME_OUTPUT_NAME "${LIBAXLMATH_OUTPUT_NAME}${LIBAXLMATH_SUFFIX}"
+	LIBRARY_OUTPUT_DIRECTORY "${LIBAXLMATH_EXPORT_DIR}"
+	RUNTIME_OUTPUT_DIRECTORY "${LIBAXLMATH_EXPORT_DIR}"
 )

@@ -1,14 +1,16 @@
 #pragma once
+#include "lib.hpp"
+
 namespace axl {
 namespace math {
 namespace Double {
 
-extern bool equals(double a, double b, double epsilon = 0.0000001);
-extern bool isNan(double n);
-extern bool isFinite(double n);
-extern bool isInfinite(double n);
-extern bool isPosInfinity(double n);
-extern bool isNegInfinity(double n);
+AXLMATHAPI bool equals(double a, double b, double epsilon = 0.0000001);
+AXLMATHAPI bool isNan(double n);
+AXLMATHAPI bool isFinite(double n);
+AXLMATHAPI bool isInfinite(double n);
+AXLMATHAPI bool isPosInfinity(double n);
+AXLMATHAPI bool isNegInfinity(double n);
 
 } // namespace axl.math.Double
 } // namespace axl.math

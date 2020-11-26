@@ -1,10 +1,11 @@
 #pragma once
+#include "lib.hpp"
 #include "rules.hpp"
 
 namespace axl {
 namespace math {
 
-class Vec2d
+class AXLMATHCXXAPI Vec2d
 {
 	public:
 		Vec2d(double x = Default.x, double y = Default.y);

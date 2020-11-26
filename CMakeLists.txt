@@ -1,97 +1,66 @@
-cmake_minimum_required( VERSION 3.17 )
+cmake_minimum_required( VERSION 3.10 )
 
-project( axl.math VERSION 0.5.1 )
+project( axl.math VERSION 0.5.4 DESCRIPTION "A simple C++ math library primarily designed for game engines." )
 
 # Configure
-option( BUILD_TESTS OFF )
-if( "${LIB_TYPE}" STREQUAL "" )
-	set( LIB_TYPE "STATIC" )
-endif()
-if( "${CMAKE_BUILD_TYPE}" STREQUAL "" )
-	set( CMAKE_BUILD_TYPE "Debug" )
+set( LIBAXLMATH_SUFFIX "" )
+set( CMAKE_CXX_STANDARD 11 CACHE STRING "C++ compiler standard.")
+set( LIBAXLMATH_TYPE STATIC CACHE STRING "Library type." )
+set( HEADERS_INSTALL_DIR "include" CACHE PATH "Relative path for header files to install." )
+set( ARCHIVES_INSTALL_DIR "lib" CACHE PATH "Relative path for library archives to install." )
+set( BINARY_INSTALL_DIR "bin" CACHE PATH "Relative path for runtime binaries to install." )
+set( LIBAXLMATH_EXPORT_DIR "${PROJECT_BINARY_DIR}/tests" CACHE PATH "Binary directory relative path for runtime binaries to build to." )
+set( INSTALL_HEADERS ON CACHE BOOL "" )
+set( INSTALL_ARCHIVES ON CACHE BOOL "" )
+set( INSTALL_BINARIES ON CACHE BOOL "" )
+set( BUILD_TESTS OFF CACHE BOOL "" )
+set( LIBAXLMATH_PRINT_CONFIGS OFF CACHE BOOL "" )
+
+if( LIBAXLMATH_PRINT_CONFIGS )
+	message( NOTICE "CMAKE_CXX_STANDARD:= ${CMAKE_CXX_STANDARD}" )
+	message( NOTICE "LIBAXLMATH_TYPE:= ${LIBAXLMATH_TYPE}" )
+	message( NOTICE "CMAKE_BUILD_TYPE:= ${CMAKE_BUILD_TYPE}" )
+	message( NOTICE "HEADERS_INSTALL_DIR:= ${HEADERS_INSTALL_DIR}" )
+	message( NOTICE "ARCHIVES_INSTALL_DIR:= ${ARCHIVES_INSTALL_DIR}" )
+	message( NOTICE "BINARY_INSTALL_DIR:= ${BINARY_INSTALL_DIR}" )
+	message( NOTICE "CMAKE_INSTALL_PREFIX:= ${CMAKE_INSTALL_PREFIX}" )
+	message( NOTICE "LIBAXLMATH_EXPORT_DIR:= ${LIBAXLMATH_EXPORT_DIR}" )
+	message( NOTICE "INSTALL_HEADERS:= ${INSTALL_HEADERS}" )
+	message( NOTICE "INSTALL_ARCHIVES:= ${INSTALL_ARCHIVES}" )
+	message( NOTICE "INSTALL_BINARIES:= ${INSTALL_BINARIES}" )
+	message( NOTICE "BUILD_TESTS:= ${BUILD_TESTS}" )
 endif()
 
-# Configure library type
-set( LIB_SUFFIX "" )
-if( "${LIB_TYPE}" STREQUAL "MODULE" )
-# ---
-elseif( "${LIB_TYPE}" STREQUAL "SHARED" )
-	set( LIB_SUFFIX ${LIB_SUFFIX}r )
-else()
-	set( LIB_TYPE STATIC )
-	set( LIB_SUFFIX ${LIB_SUFFIX}s )
-endif()
-
-# Configure build type
-if( "${CMAKE_BUILD_TYPE}" STREQUAL "Debug" )
+if( "${CMAKE_BUILD_TYPE}" MATCHES "[Dd][Ee][Bb][Uu][Gg]" )
 	add_compile_definitions( DEBUG )
-	set( LIB_SUFFIX ${LIB_SUFFIX}d )
-	if( ${MSVC} )
-		add_compile_options( /DEBUG /Od )
-	else()
-		add_compile_options( -g -Og )
-	endif()
-elseif( "${CMAKE_BUILD_TYPE}" STREQUAL "Release" )
-	add_compile_definitions( NDEBUG RELEASE )
-	if( ${MSVC} )
-		add_compile_options( /Ot )
-	else()
-		add_compile_options( -O3 )
-	endif()
+elseif( "${CMAKE_BUILD_TYPE}" MATCHES "[Rr][Ee][Ll]" )
+	add_compile_definitions( NDEBUG )
 endif()
-
-# Configure install dirs
-if( "${CMAKE_INSTALL_INCDIR}" STREQUAL "" )
-set( CMAKE_INSTALL_INCDIR include )
-endif()
-if( "${CMAKE_INSTALL_LIBDIR}" STREQUAL "" )
-	set( CMAKE_INSTALL_LIBDIR lib )
-endif()
-if( "${CMAKE_INSTALL_BINDIR}" STREQUAL "" )
-	set( CMAKE_INSTALL_BINDIR bin )
-endif()
-
-set( CMAKE_CXX_STANDARD 11 )
-
-# Print configurations
-message( "Project: ${PROJECT_NAME}" )
-message( "LIB_TYPE= ${LIB_TYPE}" )
-message( "CMAKE_BUILD_TYPE= ${CMAKE_BUILD_TYPE}" )
-message( "CMAKE_CXX_STANDARD= ${CMAKE_CXX_STANDARD}" )
-message( "CMAKE_INSTALL_PREFIX= ${CMAKE_INSTALL_PREFIX}" )
-message( "CMAKE_INSTALL_INCDIR= ${CMAKE_INSTALL_INCDIR}" )
-message( "CMAKE_INSTALL_LIBDIR= ${CMAKE_INSTALL_LIBDIR}" )
-message( "CMAKE_INSTALL_BINDIR= ${CMAKE_INSTALL_BINDIR}" )
-message( "BUILD_TESTS= ${BUILD_TESTS}" )
-message( "------------------------------------------" )
 
 include_directories( include )
-add_subdirectory( src )
-if( ${BUILD_TESTS} )
-	add_subdirectory( tests )
+
+add_subdirectory( src "axl.math" )
+if( BUILD_TESTS )
+	add_subdirectory( tests "tests" )
 endif()
 
-# Install
-install( FILES
-	"include/axl.math/lib.hpp"
-	"include/axl.math/constants.hpp"
-	"include/axl.math/rules.hpp"
-	"include/axl.math/double.hpp"
-	"include/axl.math/float.hpp"
-	"include/axl.math/angle.hpp"
-	"include/axl.math/Vec2f.hpp"
-	"include/axl.math/Vec2d.hpp"
-	"include/axl.math/Vec2.hpp"
-	"include/axl.math/Vec2.inl"
-	"include/axl.math/Vec3f.hpp"
-	"include/axl.math/Vec3d.hpp"
-	"include/axl.math/Vec3.hpp"
-	"include/axl.math/Vec3.inl"
-	DESTINATION "include/axl.math"
-)
-install( TARGETS axl.math
-	ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
-	LIBRARY DESTINATION "${CMAKE_INSTALL_BINDIR}"
-	RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
-	CONFIGURATIONS "" Debug Release
-)
+# install headers
+if( INSTALL_HEADERS )
+	install( FILES
+		"include/axl.math/lib.hpp"
+		"include/axl.math/constants.hpp"
+		"include/axl.math/rules.hpp"
+		"include/axl.math/double.hpp"
+		"include/axl.math/float.hpp"
+		"include/axl.math/angle.hpp"
+		"include/axl.math/Vec2f.hpp"
+		"include/axl.math/Vec2d.hpp"
+		"include/axl.math/Vec2.hpp"
+		"include/axl.math/Vec2.inl"
+		"include/axl.math/Vec3f.hpp"
+		"include/axl.math/Vec3d.hpp"
+		"include/axl.math/Vec3.hpp"
+		"include/axl.math/Vec3.inl"
+		DESTINATION "${HEADERS_INSTALL_DIR}/axl.math"
+	)
+endif()

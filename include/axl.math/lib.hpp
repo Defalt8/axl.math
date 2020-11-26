@@ -1,21 +1,8 @@
 #pragma once
 
-#if defined(AXLMATH_MODULE)
+#if defined(LIBAXLMATH_SHARED)
 #	ifdef WIN32
-#		ifdef AXLMATH_BUILD
-#			define AXLMATHAPI extern __declspec(dllexport)
-#			define AXLMATHCXXAPI __declspec(dllexport)
-#		else
-#			define AXLMATHAPI extern __declspec(dllimport)
-#			define AXLMATHCXXAPI __declspec(dllimport)
-#		endif
-#	else
-#		define AXLMATHAPI extern
-#		define AXLMATHCXXAPI
-#	endif
-#elif defined(AXLMATH_SHARED)
-#	ifdef WIN32
-#		ifdef AXLMATH_BUILD
+#		ifdef LIBAXLMATH_BUILD
 #			define AXLMATHAPI extern __declspec(dllexport)
 #			define AXLMATHCXXAPI __declspec(dllexport)
 #		else
@@ -27,9 +14,6 @@
 #		define AXLMATHCXXAPI
 #	endif
 #else
-#	ifndef AXLMATH_STATIC
-#		define AXLMATH_STATIC
-#	endif
 #	define AXLMATHAPI extern
 #	define AXLMATHCXXAPI
 #endif
@@ -38,27 +22,23 @@ namespace axl {
 namespace math {
 namespace lib {
 
-enum LibraryType {
+typedef enum LibraryType {
 	LT_STATIC,
-	LT_SHARED,
-	LT_MODULE
-};
-typedef enum LibraryType LibraryType;
+	LT_SHARED
+} LibraryType;
 
-enum BuildType {
+typedef enum BuildType {
 	BT_DEBUG,
 	BT_RELEASE,
 	BT_OTHER
-};
-typedef enum BuildType BuildType;
+} BuildType;
 
-struct Version
+typedef struct Version
 {
 	unsigned short major;
 	unsigned short minor;
 	unsigned short patch;
-};
-typedef struct Version Version;
+} Version;
 
 AXLMATHAPI const Version VERSION;
 AXLMATHAPI const LibraryType LIBRARY_TYPE;

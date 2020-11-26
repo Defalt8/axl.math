@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 	using namespace axl::math;
 	using namespace axl::math::Constants;
 	using namespace axl::math::Angle;
-	printf("axl.math - version %hu.%hu.%hu  %s %s\n", lib::VERSION.major, lib::VERSION.minor, lib::VERSION.patch, cstrLibType(lib::LIBRARY_TYPE), cstrBuildType(lib::BUILD_TYPE));
+	printf("axl.math - version %hu.%hu.%hu  %s %s\n", lib::VERSION.major, lib::VERSION.minor, lib::VERSION.patch, libType(lib::LIBRARY_TYPE), buildType(lib::BUILD_TYPE));
 	puts("----------------------------------------");
 	const float sq2 = std::sqrt(2.0f);
 	{ // static values

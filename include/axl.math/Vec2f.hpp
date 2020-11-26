@@ -1,10 +1,11 @@
 #pragma once
+#include "lib.hpp"
 #include "rules.hpp"
 
 namespace axl {
 namespace math {
 
-class Vec2f
+class AXLMATHCXXAPI Vec2f
 {
 	public:
 		Vec2f(float x = Default.x, float y = Default.y);
