@@ -9,6 +9,8 @@ add_library( axl.math ${LIBAXLMATH_TYPE}
 	"Vec2d.cpp"
 	"Vec3f.cpp"
 	"Vec3d.cpp"
+	"Vec4f.cpp"
+	"Vec4d.cpp"
 )
 target_compile_definitions( axl.math
 	PRIVATE LIBAXLMATH_BUILD
