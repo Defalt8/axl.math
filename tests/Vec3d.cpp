@@ -87,6 +87,14 @@ int main(int argc, char *argv[])
 			}
 		}
 	}
+	{ // array mode referencing
+		const Vec3d vec(1.4,2.5,5.6);
+		Assertv(vec.equals(1.4,2.5,5.6), verbose);
+		Assertv(&(&vec.x)[0] == &vec.x, verbose);
+		Assertv(&(&vec.x)[1] == &vec.y, verbose);
+		Assertv(&(&vec.x)[2] == &vec.z, verbose);
+		Assertv(vec.equals((&vec.x)[0],(&vec.x)[1],(&vec.x)[2]), verbose);
+	}
 	{ // unary operators
 		const Vec3d vec(3.4, 5.6, 1.2345);
 		const Vec3d pvec = +vec;

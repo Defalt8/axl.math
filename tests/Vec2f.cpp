@@ -63,6 +63,13 @@ int main(int argc, char *argv[])
 			Assertv(Float::equals(0.6721234f, vec2.y), verbose);
 		}
 	}
+	{ // array mode referencing
+		const Vec2f vec(1.4f,2.5f);
+		Assertv(vec.equals(1.4f,2.5f), verbose);
+		Assertv(&(&vec.x)[0] == &vec.x, verbose);
+		Assertv(&(&vec.x)[1] == &vec.y, verbose);
+		Assertv(vec.equals((&vec.x)[0],(&vec.x)[1]), verbose);
+	}
 	{ // unary operators
 		const Vec2f vec(3.4f, 5.6f);
 		const Vec2f pvec = +vec;

@@ -59,6 +59,13 @@ int main(int argc, char *argv[])
 			Assertv((672.0f ==  vec3.y), verbose);
 		}
 	}
+	{ // array mode referencing
+		const Vec2<int> vec(1,2);
+		Assertv(vec.equals(1,2), verbose);
+		Assertv(&(&vec.x)[0] == &vec.x, verbose);
+		Assertv(&(&vec.x)[1] == &vec.y, verbose);
+		Assertv(vec.equals((&vec.x)[0],(&vec.x)[1]), verbose);
+	}
 	{ // unary operators
 		const Vec2<int> vec(34, 56);
 		const Vec2<int> pvec = +vec;
