@@ -41,10 +41,10 @@ class AXLMATHCXXAPI Vec4d
 		bool isNan() const;
 		bool hasNan() const;
 		bool hasNoNan() const;
-		bool equals(const Vec4d& vec, double epsilon = 0.001f) const;
-		bool notEquals(const Vec4d& vec, double epsilon = 0.001f) const;
-		bool equals(double x, double y, double z, double w, double epsilon = 0.001f) const;
-		bool notEquals(double x, double y, double z, double w, double epsilon = 0.001f) const;
+		bool equals(const Vec4d& vec, double epsilon = 0.000001) const;
+		bool notEquals(const Vec4d& vec, double epsilon = 0.000001) const;
+		bool equals(double x, double y, double z, double w, double epsilon = 0.000001) const;
+		bool notEquals(double x, double y, double z, double w, double epsilon = 0.000001) const;
 	public:
 		Vec4d& set(double value);
 		Vec4d& set(double x, double y);
