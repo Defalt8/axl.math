@@ -8,9 +8,9 @@ namespace math {
 class AXLMATHCXXAPI Mat2d
 {
 	public:
-		Mat2d(double diag_v = 1.0);
+		Mat2d(double diag_v);
 		Mat2d(double c0, double c1, double c2, double c3);
-		Mat2d(const Mat2d& mat);
+		Mat2d(const Mat2d& mat = Default);
 	public:
 		double* operator[](int index);
 		const double* operator[](int index) const;
@@ -57,6 +57,7 @@ class AXLMATHCXXAPI Mat2d
 		const static Mat2d Identity;
 		const static Mat2d Zero;
 		const static Mat2d Nan;
+		static Mat2d Default;
 	public:
 		double values[4];
 };

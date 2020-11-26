@@ -334,6 +334,7 @@ Mat2d Mat2d::filled(double v)
 const Mat2d Mat2d::Identity(1.0, 0.0, 0.0, 1.0);
 const Mat2d Mat2d::Zero(0.0, 0.0, 0.0, 0.0);
 const Mat2d Mat2d::Nan(_dnan, _dnan, _dnan, _dnan);
+Mat2d Mat2d::Default(0.0, 0.0, 0.0, 0.0);
 
 } // namespace axl.math
 } // namespace axl

@@ -334,6 +334,7 @@ Mat2f Mat2f::filled(float v)
 const Mat2f Mat2f::Identity(1.0f, 0.0f, 0.0f, 1.0f);
 const Mat2f Mat2f::Zero(0.0f, 0.0f, 0.0f, 0.0f);
 const Mat2f Mat2f::Nan(_fnan, _fnan, _fnan, _fnan);
+Mat2f Mat2f::Default(0.0f, 0.0f, 0.0f, 0.0f);
 
 } // namespace axl.math
 } // namespace axl

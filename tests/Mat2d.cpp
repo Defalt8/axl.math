@@ -31,10 +31,10 @@ int main(int argc, char *argv[])
 	{ // constructors
 		{ // default constructor
 			const Mat2d mat;
-			Assertv(Double::equals(1.0, mat.values[0]), verbose);
+			Assertv(Double::equals(0.0, mat.values[0]), verbose);
 			Assertv(Double::equals(0.0, mat.values[1]), verbose);
 			Assertv(Double::equals(0.0, mat.values[2]), verbose);
-			Assertv(Double::equals(1.0, mat.values[3]), verbose);
+			Assertv(Double::equals(0.0, mat.values[3]), verbose);
 		}
 		{ // value constructor
 			const Mat2d mat(3.1415);
@@ -236,6 +236,7 @@ int main(int argc, char *argv[])
 				Assertv(Double::equals(mat.at(1, 1), 12220.5), verbose);
 			}
 			{
+				Mat2d::Default = Mat2d::Identity;
 				Mat2d mat;
 				Assertv(mat.equals(Mat2d::Identity), verbose);
 				Assertv(Double::equals((mat.at(0, 0) = 3.0), 3.0), verbose);
@@ -270,7 +271,7 @@ int main(int argc, char *argv[])
 			mat.setValue(0, 0, 3.0);
 			Assertv(Double::equals(mat.at(0, 0), 3.0), verbose);
 			mat.setValue(0, 1, 1.344);
-			Assertv(Double::equals(mat.at(0, 0), 3.0), verbose);
+			Assertv(Double::equals(mat.at(0, 1), 1.34), verbose);
 			mat.setValue(1, 0, 0.44);
 			Assertv(Double::equals(mat.at(1, 0), 0.44), verbose);
 			mat.setValue(1, 1, 12220.5);

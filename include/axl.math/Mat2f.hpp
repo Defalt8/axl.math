@@ -8,9 +8,9 @@ namespace math {
 class AXLMATHCXXAPI Mat2f
 {
 	public:
-		Mat2f(float diag_v = 1.0f);
+		Mat2f(float diag_v);
 		Mat2f(float c0, float c1, float c2, float c3);
-		Mat2f(const Mat2f& mat);
+		Mat2f(const Mat2f& mat = Default);
 	public:
 		float* operator[](int index);
 		const float* operator[](int index) const;
@@ -57,6 +57,7 @@ class AXLMATHCXXAPI Mat2f
 		const static Mat2f Identity;
 		const static Mat2f Zero;
 		const static Mat2f Nan;
+		static Mat2f Default;
 	public:
 		float values[4];
 };

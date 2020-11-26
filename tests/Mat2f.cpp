@@ -31,10 +31,10 @@ int main(int argc, char *argv[])
 	{ // constructors
 		{ // default constructor
 			const Mat2f mat;
-			Assertv(Float::equals(1.0f, mat.values[0]), verbose);
+			Assertv(Float::equals(0.0f, mat.values[0]), verbose);
 			Assertv(Float::equals(0.0f, mat.values[1]), verbose);
 			Assertv(Float::equals(0.0f, mat.values[2]), verbose);
-			Assertv(Float::equals(1.0f, mat.values[3]), verbose);
+			Assertv(Float::equals(0.0f, mat.values[3]), verbose);
 		}
 		{ // value constructor
 			const Mat2f mat(3.1415f);
@@ -236,6 +236,7 @@ int main(int argc, char *argv[])
 				Assertv(Float::equals(mat.at(1, 1), 12220.5f), verbose);
 			}
 			{
+				Mat2f::Default = Mat2f::Identity;
 				Mat2f mat;
 				Assertv(mat.equals(Mat2f::Identity), verbose);
 				Assertv(Float::equals((mat.at(0, 0) = 3.0f), 3.0f), verbose);
@@ -270,7 +271,7 @@ int main(int argc, char *argv[])
 			mat.setValue(0, 0, 3.0f);
 			Assertv(Float::equals(mat.at(0, 0), 3.0f), verbose);
 			mat.setValue(0, 1, 1.344f);
-			Assertv(Float::equals(mat.at(0, 0), 3.0f), verbose);
+			Assertv(Float::equals(mat.at(0, 1), 1.344f), verbose);
 			mat.setValue(1, 0, 0.44f);
 			Assertv(Float::equals(mat.at(1, 0), 0.44f), verbose);
 			mat.setValue(1, 1, 12220.5f);

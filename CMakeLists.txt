@@ -65,6 +65,8 @@ if( INSTALL_HEADERS )
 		"include/axl.math/Vec4d.hpp"
 		"include/axl.math/Vec4.hpp"
 		"include/axl.math/Vec4.inl"
+		"include/axl.math/Mat2f.hpp"
+		"include/axl.math/Mat2d.hpp"
 		DESTINATION "${HEADERS_INSTALL_DIR}/axl.math"
 	)
 endif()
