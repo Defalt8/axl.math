@@ -4,7 +4,7 @@ A simple C++ math library primarily designed for game engines.
 
 ## Versions
 
-- Latest: 0.5.1 alpha
+- Latest: 0.6.1 alpha
 
 ## library headers
 
@@ -20,3 +20,6 @@ A simple C++ math library primarily designed for game engines.
 - [`axl.math/Vec3f.hpp`](/include/axl.math/Vec3f.hpp) - *A 3D single precision floating point vector.*
 - [`axl.math/Vec3d.hpp`](/include/axl.math/Vec3d.hpp) - *A 3D double precision floating point vector.*
 - [`axl.math/Vec3.hpp`](/include/axl.math/Vec3.hpp) - *A 3D template vector.*
+- [`axl.math/Vec4f.hpp`](/include/axl.math/Vec4f.hpp) - *A 4D single precision floating point vector.*
+- [`axl.math/Vec4d.hpp`](/include/axl.math/Vec4d.hpp) - *A 4D double precision floating point vector.*
+- [`axl.math/Vec4.hpp`](/include/axl.math/Vec4.hpp) - *A 4D template vector.*
