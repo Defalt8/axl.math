@@ -55,6 +55,6 @@ class Vec2
 		T x, y;
 };
 
-} // namespace math
+} // namespace axl.math
 } // namespace axl
 #include "Vec2.inl"

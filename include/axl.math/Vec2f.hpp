@@ -73,5 +73,10 @@ class AXLMATHCXXAPI Vec2f
 		float x, y;
 };
 
-} // namespace math
+Vec2f AXLMATHAPI operator+(float v, const Vec2f& vec);
+Vec2f AXLMATHAPI operator-(float v, const Vec2f& vec);
+Vec2f AXLMATHAPI operator*(float v, const Vec2f& vec);
+Vec2f AXLMATHAPI operator/(float v, const Vec2f& vec);
+
+} // namespace axl.math
 } // namespace axl

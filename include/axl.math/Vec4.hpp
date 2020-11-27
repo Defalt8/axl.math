@@ -64,6 +64,6 @@ class Vec4
 		T x, y, z, w;
 };
 
-} // namespace math
+} // namespace axl.math
 } // namespace axl
 #include "Vec4.inl"

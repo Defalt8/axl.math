@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 	printf("axl.math - version %hu.%hu.%hu  %s %s\n", lib::VERSION.major, lib::VERSION.minor, lib::VERSION.patch, libType(lib::LIBRARY_TYPE), buildType(lib::BUILD_TYPE));
 	puts("----------------------------------------");
 	if(Assert::_num_failed_tests <= 0)
-		printf("# All Good!\n", Assert::_num_failed_tests);
+		printf("ALL GOOD!\n");
 	else
 	{
 		puts("----------------------------------------");

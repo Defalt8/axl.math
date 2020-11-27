@@ -285,11 +285,31 @@ Vec2d Vec2d::rotated(double theta_z, Rules::Axis axis_rule) const
 	}
 }
 
+Vec2d operator+(double v, const Vec2d& vec)
+{
+	return Vec2d(v + vec.x, v + vec.y);
+}
+
+Vec2d operator-(double v, const Vec2d& vec)
+{
+	return Vec2d(v - vec.x, v - vec.y);
+}
+
+Vec2d operator*(double v, const Vec2d& vec)
+{
+	return Vec2d(v * vec.x, v * vec.y);
+}
+
+Vec2d operator/(double v, const Vec2d& vec)
+{
+	return Vec2d(v / vec.x, v / vec.y);
+}
+
 
 const Vec2d Vec2d::Zero(0.0, 0.0);
 const Vec2d Vec2d::Identity(1.0, 1.0);
 Vec2d Vec2d::Default(0.0, 0.0);
 Rules::Axis Vec2d::DefaultAxisRule = Rules::AXIS_RHS;
 
-} // namespace math
+} // namespace axl.math
 } // namespace axl

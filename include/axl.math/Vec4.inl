@@ -187,11 +187,36 @@ Vec4<T>& Vec4<T>::set(T _x, T _y, T _z, T _w)
 }
 
 template <typename T>
+Vec4<T> operator+(T v, const Vec4<T>& vec)
+{
+	return Vec4<T>(v + vec.x, v + vec.y, v + vec.z, v + vec.w);
+}
+
+template <typename T>
+Vec4<T> operator-(T v, const Vec4<T>& vec)
+{
+	return Vec4<T>(v - vec.x, v - vec.y, v - vec.z, v - vec.w);
+}
+
+template <typename T>
+Vec4<T> operator*(T v, const Vec4<T>& vec)
+{
+	return Vec4<T>(v * vec.x, v * vec.y, v * vec.z, v * vec.w);
+}
+
+template <typename T>
+Vec4<T> operator/(T v, const Vec4<T>& vec)
+{
+	return Vec4<T>(v / vec.x, v / vec.y, v / vec.z, v / vec.w);
+}
+
+
+template <typename T>
 const Vec4<T> Vec4<T>::Zero((T)0, (T)0, (T)0, (T)0);
 template <typename T>
 const Vec4<T> Vec4<T>::Identity((T)1, (T)1, (T)1, (T)1);
 template <typename T>
 Vec4<T> Vec4<T>::Default((T)0, (T)0, (T)0, (T)0);
 
-} // namespace math
+} // namespace axl.math
 } // namespace axl

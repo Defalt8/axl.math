@@ -172,11 +172,36 @@ inline Vec2<T>& Vec2<T>::set(T _x, T _y)
 }
 
 template <typename T>
+Vec2<T> operator+(T v, const Vec2<T>& vec)
+{
+	return Vec2<T>(v + vec.x,v + vec.y);
+}
+
+template <typename T>
+Vec2<T> operator-(T v, const Vec2<T>& vec)
+{
+	return Vec2<T>(v - vec.x,v - vec.y);
+}
+
+template <typename T>
+Vec2<T> operator*(T v, const Vec2<T>& vec)
+{
+	return Vec2<T>(v * vec.x,v * vec.y);
+}
+
+template <typename T>
+Vec2<T> operator/(T v, const Vec2<T>& vec)
+{
+	return Vec2<T>(v / vec.x,v / vec.y);
+}
+
+
+template <typename T>
 const Vec2<T> Vec2<T>::Zero((T)0, (T)0);
 template <typename T>
 const Vec2<T> Vec2<T>::Identity((T)1, (T)1);
 template <typename T>
 Vec2<T> Vec2<T>::Default((T)0, (T)0);
 
-} // namespace math
+} // namespace axl.math
 } // namespace axl

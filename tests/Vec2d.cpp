@@ -121,6 +121,8 @@ int main(int argc, char *argv[])
 			
 			vec = lvec + rval_y;
 			Assertv(vec.equals(lval_x + rval_y, lval_y + rval_y), verbose);
+			vec = lval_x + rvec;
+			Assertv(vec.equals(lval_x + rval_x, lval_x + rval_y), verbose);
 
 			vec = lvec;
 			Assertv(vec.equals(lval_x, lval_y), verbose);
@@ -140,6 +142,8 @@ int main(int argc, char *argv[])
 			
 			vec = lvec - rval_y;
 			Assertv(vec.equals(lval_x - rval_y, lval_y - rval_y), verbose);
+			vec = lval_x - rvec;
+			Assertv(vec.equals(lval_x - rval_x, lval_x - rval_y), verbose);
 
 			vec = lvec;
 			Assertv(vec.equals(lval_x, lval_y), verbose);
@@ -159,6 +163,8 @@ int main(int argc, char *argv[])
 			
 			vec = lvec * rval_y;
 			Assertv(vec.equals(lval_x * rval_y, lval_y * rval_y), verbose);
+			vec = lval_x * rvec;
+			Assertv(vec.equals(lval_x * rval_x, lval_x * rval_y), verbose);
 
 			vec = lvec;
 			Assertv(vec.equals(lval_x, lval_y), verbose);
@@ -178,6 +184,8 @@ int main(int argc, char *argv[])
 			
 			vec = lvec / rval_y;
 			Assertv(vec.equals(lval_x / rval_y, lval_y / rval_y), verbose);
+			vec = lval_x / rvec;
+			Assertv(vec.equals(lval_x / rval_x, lval_x / rval_y), verbose);
 
 			vec = lvec;
 			Assertv(vec.equals(lval_x, lval_y), verbose);
@@ -467,7 +475,7 @@ int main(int argc, char *argv[])
 	}
 
 	if(Assert::_num_failed_tests <= 0)
-		printf("# All Good!\n", Assert::_num_failed_tests);
+		printf("ALL GOOD!\n");
 	else
 	{
 		puts("----------------------------------------");

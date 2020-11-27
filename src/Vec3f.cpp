@@ -413,10 +413,32 @@ Vec3f Vec3f::rotatedZ(float angle_z, Rules::Axis axis_rule)
 			return Vec3f((std::cos(angle_z) * x + std::sin(angle_z) * y), (-std::sin(angle_z) * x + std::cos(angle_z) * y), z);
 	}
 }
+
+Vec3f operator+(float v, const Vec3f& vec)
+{
+	return Vec3f(v + vec.x, v + vec.y, v + vec.z);
+}
+
+Vec3f operator-(float v, const Vec3f& vec)
+{
+	return Vec3f(v - vec.x, v - vec.y, v - vec.z);
+}
+
+Vec3f operator*(float v, const Vec3f& vec)
+{
+	return Vec3f(v * vec.x, v * vec.y, v * vec.z);
+}
+
+Vec3f operator/(float v, const Vec3f& vec)
+{
+	return Vec3f(v / vec.x, v / vec.y, v / vec.z);
+}
+
+
 const Vec3f Vec3f::Zero(0.0f, 0.0f, 0.0f);
 const Vec3f Vec3f::Identity(1.0f, 1.0f, 1.0f);
 Vec3f Vec3f::Default(0.0f, 0.0f, 0.0f);
 Rules::Axis Vec3f::DefaultAxisRule = Rules::AXIS_RHS;
 
-} // namespace math
+} // namespace axl.math
 } // namespace axl

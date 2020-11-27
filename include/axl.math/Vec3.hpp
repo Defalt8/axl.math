@@ -59,6 +59,6 @@ class Vec3
 		T x, y, z;
 };
 
-} // namespace math
+} // namespace axl.math
 } // namespace axl
 #include "Vec3.inl"

@@ -268,10 +268,31 @@ Vec4f Vec4f::translated(const Vec4f& delta) const
 	return Vec4f(x + delta.x, y + delta.y, z + delta.z, w + delta.w);
 }
 
+Vec4f operator+(float v, const Vec4f& vec)
+{
+	return Vec4f(v + vec.x, v + vec.y, v + vec.z, v + vec.w);
+}
+
+Vec4f operator-(float v, const Vec4f& vec)
+{
+	return Vec4f(v - vec.x, v - vec.y, v - vec.z, v - vec.w);
+}
+
+Vec4f operator*(float v, const Vec4f& vec)
+{
+	return Vec4f(v * vec.x, v * vec.y, v * vec.z, v * vec.w);
+}
+
+Vec4f operator/(float v, const Vec4f& vec)
+{
+	return Vec4f(v / vec.x, v / vec.y, v / vec.z, v / vec.w);
+}
+
+
 const Vec4f Vec4f::Zero(0.0f, 0.0f, 0.0f, 0.0f);
 const Vec4f Vec4f::Identity(1.0f, 1.0f, 1.0f, 1.0f);
 Vec4f Vec4f::Default(0.0f, 0.0f, 0.0f, 0.0f);
 Rules::Axis Vec4f::DefaultAxisRule = Rules::AXIS_RHS;
 
-} // namespace math
+} // namespace axl.math
 } // namespace axl

@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.10 )
 
-project( axl.math VERSION 0.8.14 DESCRIPTION "A simple C++ math library primarily designed for game engines." )
+project( axl.math VERSION 0.9.14 DESCRIPTION "A simple C++ math library primarily designed for game engines." )
 
 # Configure
 set( LIBAXLMATH_SUFFIX "" )
@@ -28,7 +28,7 @@ if( LIBAXLMATH_PRINT_CONFIGS )
 	message( NOTICE "INSTALL_HEADERS:= ${INSTALL_HEADERS}" )
 	message( NOTICE "INSTALL_ARCHIVES:= ${INSTALL_ARCHIVES}" )
 	message( NOTICE "INSTALL_BINARIES:= ${INSTALL_BINARIES}" )
-	message( NOTICE "BUILD_TESTS:= ${BUILD_TESTS}" )
+	message( NOTICE "LIBAXLMATH_BUILD_TESTS:= ${LIBAXLMATH_BUILD_TESTS}" )
 endif()
 
 if( "${CMAKE_BUILD_TYPE}" MATCHES "[Dd][Ee][Bb][Uu][Gg]" )
@@ -40,7 +40,7 @@ endif()
 include_directories( include )
 
 add_subdirectory( src "axl.math" )
-if( BUILD_TESTS )
+if( LIBAXLMATH_BUILD_TESTS )
 	add_subdirectory( tests "tests" )
 endif()
 
