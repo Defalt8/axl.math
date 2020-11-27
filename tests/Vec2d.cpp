@@ -9,9 +9,6 @@
 #include <axl.math/angle.hpp>
 #include <axl.math/Vec2d.hpp>
 
-float _zero = 0.0;
-const static float _nan = _zero / _zero;
-
 int main(int argc, char *argv[])
 {
 	bool verbose = argc > 1 && (0 == strcmp(argv[1], "-v") || 0 == strcmp(argv[1], "--verbose"));
@@ -80,13 +77,13 @@ int main(int argc, char *argv[])
 	}
 	{ // Nan
 		{
-			const Vec2d vec(_nan, _nan);
+			const Vec2d vec(Double::Nan, Double::Nan);
 			Assertv(vec.isNan(), verbose);
 			Assertv(vec.hasNan(), verbose);
 			Assertv(!vec.hasNoNan(), verbose);
 		}
 		{
-			const Vec2d vec(0.6, _nan);
+			const Vec2d vec(0.6, Double::Nan);
 			Assertv(!vec.isNan(), verbose);
 			Assertv(vec.hasNan(), verbose);
 			Assertv(!vec.hasNoNan(), verbose);

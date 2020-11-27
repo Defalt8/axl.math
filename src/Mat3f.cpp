@@ -6,9 +6,6 @@
 namespace axl {
 namespace math {
 
-float _fzero = 0.0f;
-const static float _fnan = 0.0f/_fzero;
-
 Mat3f::Mat3f(float v) 
 {
 	values[0] = v;
@@ -541,7 +538,7 @@ Mat3f Mat3f::filled(float v)
 
 const Mat3f Mat3f::Identity(1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f);
 const Mat3f Mat3f::Zero(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
-const Mat3f Mat3f::Nan(_fnan, _fnan, _fnan, _fnan, _fnan, _fnan, _fnan, _fnan, _fnan);
+const Mat3f Mat3f::Nan(Float::Nan, Float::Nan, Float::Nan, Float::Nan, Float::Nan, Float::Nan, Float::Nan, Float::Nan, Float::Nan);
 Mat3f Mat3f::Default(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
 
 } // namespace axl.math

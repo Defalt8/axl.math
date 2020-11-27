@@ -12,6 +12,10 @@ AXLMATHAPI bool isInfinite(float n);
 AXLMATHAPI bool isPosInfinity(float n);
 AXLMATHAPI bool isNegInfinity(float n);
 
+AXLMATHAPI const float Nan;
+AXLMATHAPI const float PosInf;
+AXLMATHAPI const float NegInf;
+
 } // namespace axl.math.Float
 } // namespace axl.math
 } // namespace axl

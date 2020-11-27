@@ -8,9 +8,6 @@
 #include <axl.math/Mat2d.hpp>
 #include <axl.math/Mat2f.hpp>
 
-double _fzero = 0.0;
-const static double _fnan = _fzero / _fzero;
-
 int main(int argc, char *argv[])
 {
 	bool verbose = argc > 1 && (0 == strcmp(argv[1], "-v") || 0 == strcmp(argv[1], "--verbose"));

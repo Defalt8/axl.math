@@ -9,9 +9,6 @@
 #include <axl.math/double.hpp>
 #include <axl.math/Vec3d.hpp>
 
-float _zero = 0.0;
-const static float _nan = _zero / _zero;
-
 int main(int argc, char *argv[])
 {
 	bool verbose = argc > 1 && (0 == strcmp(argv[1], "-v") || 0 == strcmp(argv[1], "--verbose"));
@@ -105,19 +102,19 @@ int main(int argc, char *argv[])
 	}
 	{ // Nan
 		{
-			const Vec3d vec(_nan, _nan, _nan);
+			const Vec3d vec(Double::Nan, Double::Nan, Double::Nan);
 			Assertv(vec.isNan(), verbose);
 			Assertv(vec.hasNan(), verbose);
 			Assertv(!vec.hasNoNan(), verbose);
 		}
 		{
-			const Vec3d vec(0.6, _nan, _nan);
+			const Vec3d vec(0.6, Double::Nan, Double::Nan);
 			Assertv(!vec.isNan(), verbose);
 			Assertv(vec.hasNan(), verbose);
 			Assertv(!vec.hasNoNan(), verbose);
 		}
 		{
-			const Vec3d vec(0.6, _nan, 5.5);
+			const Vec3d vec(0.6, Double::Nan, 5.5);
 			Assertv(!vec.isNan(), verbose);
 			Assertv(vec.hasNan(), verbose);
 			Assertv(!vec.hasNoNan(), verbose);

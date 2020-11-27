@@ -6,9 +6,6 @@
 namespace axl {
 namespace math {
 
-float _fzero = 0.0f;
-const static float _fnan = 0.0f/_fzero;
-
 Mat2f::Mat2f(float v) 
 {
 	values[0] = v;
@@ -345,7 +342,7 @@ Mat2f Mat2f::transpose() const
 Mat2f Mat2f::inverse() const
 {
 	float ad_bc = (values[0] * values[3] - values[1] * values[2]);
-	if(ad_bc == 0.0f) return Mat2f::filled(_fnan);
+	if(ad_bc == 0.0f) return Mat2f::filled(Float::Nan);
 	return Mat2f( values[3]/ad_bc, -values[1]/ad_bc, -values[2]/ad_bc, values[0]/ad_bc );
 }
 
@@ -356,7 +353,7 @@ Mat2f Mat2f::filled(float v)
 
 const Mat2f Mat2f::Identity(1.0f, 0.0f, 0.0f, 1.0f);
 const Mat2f Mat2f::Zero(0.0f, 0.0f, 0.0f, 0.0f);
-const Mat2f Mat2f::Nan(_fnan, _fnan, _fnan, _fnan);
+const Mat2f Mat2f::Nan(Float::Nan, Float::Nan, Float::Nan, Float::Nan);
 Mat2f Mat2f::Default(0.0f, 0.0f, 0.0f, 0.0f);
 
 } // namespace axl.math

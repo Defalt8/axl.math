@@ -6,9 +6,6 @@
 namespace axl {
 namespace math {
 
-double _dzero = 0.0;
-const static double _dnan = 0.0/_dzero;
-
 Mat2d::Mat2d(double v) 
 {
 	values[0] = v;
@@ -345,7 +342,7 @@ Mat2d Mat2d::transpose() const
 Mat2d Mat2d::inverse() const
 {
 	double ad_bc = (values[0] * values[3] - values[1] * values[2]);
-	if(ad_bc == 0.0) return Mat2d::filled(_dnan);
+	if(ad_bc == 0.0) return Mat2d::filled(Double::Nan);
 	return Mat2d( values[3]/ad_bc, -values[1]/ad_bc, -values[2]/ad_bc, values[0]/ad_bc );
 }
 
@@ -356,7 +353,7 @@ Mat2d Mat2d::filled(double v)
 
 const Mat2d Mat2d::Identity(1.0, 0.0, 0.0, 1.0);
 const Mat2d Mat2d::Zero(0.0, 0.0, 0.0, 0.0);
-const Mat2d Mat2d::Nan(_dnan, _dnan, _dnan, _dnan);
+const Mat2d Mat2d::Nan(Double::Nan, Double::Nan, Double::Nan, Double::Nan);
 Mat2d Mat2d::Default(0.0, 0.0, 0.0, 0.0);
 
 } // namespace axl.math

@@ -5,9 +5,10 @@ namespace math {
 namespace Double
 {
 
-static double _zero = 0.0;
-const static double _pos_inf = 1.0 / _zero;
-const static double _neg_inf = -1.0 / _zero;
+double _zero = 0.0;
+const double Nan = 0.0 / _zero;
+const double PosInf = 1.0 / _zero;
+const double NegInf = -1.0 / _zero;
 
 bool equals(double a, double b, double epsilon)
 {
@@ -51,11 +52,11 @@ bool isInfinite(double n)
 }
 bool isPosInfinity(double n)
 {
-	return n == _pos_inf;
+	return n == PosInf;
 }
 bool isNegInfinity(double n)
 {
-	return n == _neg_inf;
+	return n == NegInf;
 }
 
 } // namespace Double

@@ -5,9 +5,10 @@ namespace math {
 namespace Float
 {
 
-static float _zero = 0.0f;
-const static float _pos_inf = 1.0f / _zero;
-const static float _neg_inf = -1.0f / _zero;
+float _zero = 0.0f;
+const float Nan = 0.0f / _zero;
+const float PosInf = 1.0f / _zero;
+const float NegInf = -1.0f / _zero;
 
 bool equals(float a, float b, float epsilon)
 {
@@ -51,11 +52,11 @@ bool isInfinite(float n)
 }
 bool isPosInfinity(float n)
 {
-	return n == _pos_inf;
+	return n == PosInf;
 }
 bool isNegInfinity(float n)
 {
-	return n == _neg_inf;
+	return n == NegInf;
 }
 
 } // namespace Float

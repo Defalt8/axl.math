@@ -8,9 +8,6 @@
 #include <axl.math/Mat3d.hpp>
 #include <axl.math/Mat3f.hpp>
 
-double _dzero = 0.0;
-const static double _dnan = 0.0 / _dzero, _dpinf = 1.0 / _dzero;
-
 int main(int argc, char *argv[])
 {
 	bool verbose = argc > 1 && (0 == strcmp(argv[1], "-v") || 0 == strcmp(argv[1], "--verbose"));
@@ -341,23 +338,23 @@ int main(int argc, char *argv[])
 			Assertv(mat.hasNoNan(), verbose);
 		}
 		{
-			const Mat3d mat(0.0, _dnan, 1.0, 34.4, 45.67, 0.5, 1.2, 3.333, 1.09);
-			Assertv(mat.equals(0.0, _dnan, 1.0, 34.4, 45.67, 0.5, 1.2, 3.333, 1.09), verbose);
+			const Mat3d mat(0.0, Double::Nan, 1.0, 34.4, 45.67, 0.5, 1.2, 3.333, 1.09);
+			Assertv(mat.equals(0.0, Double::Nan, 1.0, 34.4, 45.67, 0.5, 1.2, 3.333, 1.09), verbose);
 			Assertv(!mat.isNan(), verbose);
 			Assertv(mat.isNotNan(), verbose);
 			Assertv(mat.hasNan(), verbose);
 			Assertv(!mat.hasNoNan(), verbose);
 		}
 		{
-			const Mat3d mat(_dnan, _dnan, _dnan, _dpinf, _dnan, _dnan, _dnan, _dpinf, _dpinf);
-			Assertv(mat.equals(_dnan, _dnan, _dnan, _dpinf, _dnan, _dnan, _dnan, _dpinf, _dpinf), verbose);
+			const Mat3d mat(Double::Nan, Double::Nan, Double::Nan, Double::PosInf, Double::Nan, Double::Nan, Double::Nan, Double::PosInf, Double::PosInf);
+			Assertv(mat.equals(Double::Nan, Double::Nan, Double::Nan, Double::PosInf, Double::Nan, Double::Nan, Double::Nan, Double::PosInf, Double::PosInf), verbose);
 			Assertv(!mat.isNan(), verbose);
 			Assertv(mat.isNotNan(), verbose);
 			Assertv(mat.hasNan(), verbose);
 			Assertv(!mat.hasNoNan(), verbose);
 		}
 		{
-			const Mat3d mat(_dnan, _dnan, _dnan, _dnan, _dnan, _dnan, _dnan, _dnan, _dnan);
+			const Mat3d mat(Double::Nan, Double::Nan, Double::Nan, Double::Nan, Double::Nan, Double::Nan, Double::Nan, Double::Nan, Double::Nan);
 			Assertv(mat.isNan(), verbose);
 			Assertv(!mat.isNotNan(), verbose);
 			Assertv(mat.hasNan(), verbose);
@@ -409,7 +406,7 @@ int main(int argc, char *argv[])
 			}
 		}
 		{ // non-invertible matrix values
-			const Mat3d mat(4.0, _dnan, 4.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0);
+			const Mat3d mat(4.0, Double::Nan, 4.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0);
 			const Mat3d imat = mat.inverse();
 			Assertv(!mat.isInvertible(), verbose);
 			Assertv(!imat.isInvertible(), verbose);

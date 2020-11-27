@@ -7,9 +7,6 @@
 #include <axl.math/float.hpp>
 #include <axl.math/Vec4f.hpp>
 
-float _fzero = 0.0f;
-const static float _fnan = _fzero / _fzero;
-
 int main(int argc, char *argv[])
 {
 	bool verbose = argc > 1 && (0 == strcmp(argv[1], "-v") || 0 == strcmp(argv[1], "--verbose"));
@@ -119,19 +116,19 @@ int main(int argc, char *argv[])
 	}
 	{ // Nan
 		{
-			const Vec4f vec(_fnan, _fnan, _fnan, _fnan);
+			const Vec4f vec(Float::Nan, Float::Nan, Float::Nan, Float::Nan);
 			Assertv(vec.isNan(), verbose);
 			Assertv(vec.hasNan(), verbose);
 			Assertv(!vec.hasNoNan(), verbose);
 		}
 		{
-			const Vec4f vec(0.6f, _fnan, _fnan, _fnan);
+			const Vec4f vec(0.6f, Float::Nan, Float::Nan, Float::Nan);
 			Assertv(!vec.isNan(), verbose);
 			Assertv(vec.hasNan(), verbose);
 			Assertv(!vec.hasNoNan(), verbose);
 		}
 		{
-			const Vec4f vec(0.6f, _fnan, 5.5f, _fnan);
+			const Vec4f vec(0.6f, Float::Nan, 5.5f, Float::Nan);
 			Assertv(!vec.isNan(), verbose);
 			Assertv(vec.hasNan(), verbose);
 			Assertv(!vec.hasNoNan(), verbose);

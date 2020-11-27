@@ -6,9 +6,6 @@
 namespace axl {
 namespace math {
 
-double _dzero = 0.0;
-const static double _dnan = 0.0/_dzero;
-
 Mat3d::Mat3d(double v) 
 {
 	values[0] = v;
@@ -541,7 +538,7 @@ Mat3d Mat3d::filled(double v)
 
 const Mat3d Mat3d::Identity(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0);
 const Mat3d Mat3d::Zero(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-const Mat3d Mat3d::Nan(_dnan, _dnan, _dnan, _dnan, _dnan, _dnan, _dnan, _dnan, _dnan);
+const Mat3d Mat3d::Nan(Double::Nan, Double::Nan, Double::Nan, Double::Nan, Double::Nan, Double::Nan, Double::Nan, Double::Nan, Double::Nan);
 Mat3d Mat3d::Default(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
 
 } // namespace axl.math
