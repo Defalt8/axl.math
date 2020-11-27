@@ -1,6 +1,7 @@
 #include <cmath>
 #include <axl.math/double.hpp>
 #include <axl.math/Mat2d.hpp>
+#include <axl.math/Mat2f.hpp>
 
 namespace axl {
 namespace math {
@@ -32,6 +33,13 @@ Mat2d::Mat2d(const Mat2d& mat)
 	values[3] = mat.values[3];
 }
 
+Mat2d::Mat2d(const Mat2f& mat)
+{
+	values[0] = mat.values[0];
+	values[1] = mat.values[1];
+	values[2] = mat.values[2];
+	values[3] = mat.values[3];
+}
 
 double* Mat2d::operator[](int index)
 {
@@ -207,6 +215,11 @@ Vec2d Mat2d::operator*(const Vec2d& vec) const
 	return Vec2d((values[0]*vec.x + values[2]*vec.y), (values[1]*vec.x + values[3]*vec.y));
 }
 
+Vec2f Mat2d::operator*(const Vec2f& vec) const
+{
+	return Vec2f((values[0]*vec.x + values[2]*vec.y), (values[1]*vec.x + values[3]*vec.y));
+}
+
 bool Mat2d::operator==(const Mat2d& mat) const
 {
 	return (values[0] == mat.values[0] && values[1] == mat.values[1] && values[2] == mat.values[2] && values[3] == mat.values[3]);
@@ -317,6 +330,16 @@ void Mat2d::setValue(int column_index, int row_index, double v)
 bool Mat2d::isInvertible() const
 {
 	return !this->hasNan() && (values[0] * values[3] - values[1] * values[2]) != 0.0;
+}
+
+double Mat2d::determinant() const
+{
+	return (values[0] * values[3] - values[2] * values[1]);
+}
+
+Mat2d Mat2d::transpose() const
+{
+	return Mat2d(values[0], values[2], values[1], values[3]);
 }
 
 Mat2d Mat2d::inverse() const

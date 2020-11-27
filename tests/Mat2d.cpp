@@ -6,6 +6,7 @@
 #include "lib.hpp"
 #include <axl.math/double.hpp>
 #include <axl.math/Mat2d.hpp>
+#include <axl.math/Mat2f.hpp>
 
 double _fzero = 0.0;
 const static double _fnan = _fzero / _fzero;
@@ -71,6 +72,8 @@ int main(int argc, char *argv[])
 			Assertv(Double::equals(0.6734, mat2.values[1]), verbose);
 			Assertv(Double::equals(3.45, mat2.values[2]), verbose);
 			Assertv(Double::equals(0.44, mat2.values[3]), verbose);
+			const Mat2d mat3(Mat2f(1.3f, 3.45f, 1.2222f, 0.33333f));
+			Assertv(mat3.equals(1.3, 3.45, 1.2222, 0.33333, 0.000001), verbose);
 		}
 	}
 	{ // square bracket operators
@@ -224,129 +227,138 @@ int main(int argc, char *argv[])
 		{ // matrix - vector multiplication
 			const Mat2d mat(3.0, 1.344, 0.44, 12220.5);
 			const Vec2d vec(3.4, 0.455);
-			const Vec2d pvec = mat * vec;
-			Assertv(pvec.equals(mat.at(0,0) * vec.x + mat.at(1,0) * vec.y, mat.at(0,1) * vec.x + mat.at(1,1) * vec.y, 0.000001), verbose);
+			Assertv((mat * vec).equals(3.0 * vec.x + 0.44 * vec.y, 1.344 * vec.x + 12220.5 * vec.y, 0.000001), verbose);
+			const Vec2f vecf(4.5, 99.9);
+			Assertv((mat * vecf).equals(3.0 * vecf.x + 0.44 * vecf.y, 1.344 * vecf.x + 12220.5 * vecf.y, 0.0001f), verbose);
 		}
-		{ // at
-			{
-				const Mat2d mat(3.0, 1.344, 0.44, 12220.5);
-				Assertv(Double::equals(mat.at(0, 0), 3.0), verbose);
-				Assertv(Double::equals(mat.at(0, 1), 1.344), verbose);
-				Assertv(Double::equals(mat.at(1, 0), 0.44), verbose);
-				Assertv(Double::equals(mat.at(1, 1), 12220.5), verbose);
-			}
-			{
-				Mat2d::Default = Mat2d::Identity;
-				Mat2d mat;
-				Assertv(mat.equals(Mat2d::Identity), verbose);
-				Assertv(Double::equals((mat.at(0, 0) = 3.0), 3.0), verbose);
-				Assertv(Double::equals((mat.at(0, 1) = 1.344), 1.344), verbose);
-				Assertv(Double::equals((mat.at(1, 0) = 0.44), 0.44), verbose);
-				Assertv(Double::equals((mat.at(1, 1) = 12220.5), 12220.5), verbose);
-				Assertv(mat.equals(3.0, 1.344, 0.44, 12220.5), verbose);
-			}
-		}
-		{ // set values
-			Mat2d mat(0);
-			Assertv(mat.equals(Mat2d::Zero), verbose);
-			Assertv(&mat == &(mat.set(3.0, 1.344, 0.44, 12220.5)), verbose);
+	}
+	{ // at
+		{
+			const Mat2d mat(3.0, 1.344, 0.44, 12220.5);
 			Assertv(Double::equals(mat.at(0, 0), 3.0), verbose);
 			Assertv(Double::equals(mat.at(0, 1), 1.344), verbose);
 			Assertv(Double::equals(mat.at(1, 0), 0.44), verbose);
 			Assertv(Double::equals(mat.at(1, 1), 12220.5), verbose);
 		}
-		{ // set from array
-			Mat2d mat(0);
-			Assertv(mat.equals(Mat2d::Zero), verbose);
-			const double pv[] = {3.0, 1.344, 0.44, 12220.5};
-			Assertv(&mat == &(mat.set(pv)), verbose);
-			Assertv(Double::equals(mat.at(0, 0), 3.0), verbose);
-			Assertv(Double::equals(mat.at(0, 1), 1.344), verbose);
-			Assertv(Double::equals(mat.at(1, 0), 0.44), verbose);
-			Assertv(Double::equals(mat.at(1, 1), 12220.5), verbose);
+		{
+			Mat2d::Default = Mat2d::Identity;
+			Mat2d mat;
+			Assertv(mat.equals(Mat2d::Identity), verbose);
+			Assertv(Double::equals((mat.at(0, 0) = 3.0), 3.0), verbose);
+			Assertv(Double::equals((mat.at(0, 1) = 1.344), 1.344), verbose);
+			Assertv(Double::equals((mat.at(1, 0) = 0.44), 0.44), verbose);
+			Assertv(Double::equals((mat.at(1, 1) = 12220.5), 12220.5), verbose);
+			Assertv(mat.equals(3.0, 1.344, 0.44, 12220.5), verbose);
 		}
-		{ // setValue
-			Mat2d mat(0);
-			Assertv(mat.equals(Mat2d::Zero), verbose);
-			mat.setValue(0, 0, 3.0);
-			Assertv(Double::equals(mat.at(0, 0), 3.0), verbose);
-			mat.setValue(0, 1, 1.344);
-			Assertv(Double::equals(mat.at(0, 1), 1.34), verbose);
-			mat.setValue(1, 0, 0.44);
-			Assertv(Double::equals(mat.at(1, 0), 0.44), verbose);
-			mat.setValue(1, 1, 12220.5);
-			Assertv(Double::equals(mat.at(0, 0), 3.0), verbose);
-			Assertv(Double::equals(mat.at(0, 1), 1.344), verbose);
-			Assertv(Double::equals(mat.at(1, 0), 0.44), verbose);
-			Assertv(Double::equals(mat.at(1, 1), 12220.5), verbose);
+	}
+	{ // set values
+		Mat2d mat(0);
+		Assertv(mat.equals(Mat2d::Zero), verbose);
+		Assertv(&mat == &(mat.set(3.0, 1.344, 0.44, 12220.5)), verbose);
+		Assertv(Double::equals(mat.at(0, 0), 3.0), verbose);
+		Assertv(Double::equals(mat.at(0, 1), 1.344), verbose);
+		Assertv(Double::equals(mat.at(1, 0), 0.44), verbose);
+		Assertv(Double::equals(mat.at(1, 1), 12220.5), verbose);
+	}
+	{ // set from array
+		Mat2d mat(0);
+		Assertv(mat.equals(Mat2d::Zero), verbose);
+		const double pv[] = {3.0, 1.344, 0.44, 12220.5};
+		Assertv(&mat == &(mat.set(pv)), verbose);
+		Assertv(Double::equals(mat.at(0, 0), 3.0), verbose);
+		Assertv(Double::equals(mat.at(0, 1), 1.344), verbose);
+		Assertv(Double::equals(mat.at(1, 0), 0.44), verbose);
+		Assertv(Double::equals(mat.at(1, 1), 12220.5), verbose);
+	}
+	{ // setValue
+		Mat2d mat(0);
+		Assertv(mat.equals(Mat2d::Zero), verbose);
+		mat.setValue(0, 0, 3.0);
+		Assertv(Double::equals(mat.at(0, 0), 3.0), verbose);
+		mat.setValue(0, 1, 1.344);
+		Assertv(Double::equals(mat.at(0, 1), 1.344), verbose);
+		mat.setValue(1, 0, 0.44);
+		Assertv(Double::equals(mat.at(1, 0), 0.44), verbose);
+		mat.setValue(1, 1, 12220.5);
+		Assertv(Double::equals(mat.at(0, 0), 3.0), verbose);
+		Assertv(Double::equals(mat.at(0, 1), 1.344), verbose);
+		Assertv(Double::equals(mat.at(1, 0), 0.44), verbose);
+		Assertv(Double::equals(mat.at(1, 1), 12220.5), verbose);
+	}
+	{ // Nan
+		{
+			const Mat2d mat(0.0, 0.0/0.0, 1.0, 34.4);
+			Assertv(mat.equals(0.0, 0.0/0.0, 1.0, 34.4), verbose);
+			Assertv(mat.hasNan(), verbose);
+			Assertv(!mat.isNan(), verbose);
 		}
-		{ // Nan
-			{
-				const Mat2d mat(0.0, 0.0/0.0, 1.0, 34.4);
-				Assertv(mat.equals(0.0, 0.0/0.0, 1.0, 34.4), verbose);
-				Assertv(mat.hasNan(), verbose);
-				Assertv(!mat.isNan(), verbose);
-			}
-			{
-				const Mat2d mat(0.0/0.0, 0.0/0.0, 0.0/0.0, 1.0/0.0);
-				Assertv(mat.equals(0.0/0.0, 0.0/0.0, 0.0/0.0, 1.0/0.0), verbose);
-				Assertv(mat.hasNan(), verbose);
-				Assertv(!mat.isNan(), verbose);
-			}
-			{
-				const Mat2d mat(0.0/0.0, 0.0/0.0, 0.0/0.0, 0.0/0.0);
-				Assertv(mat.equals(0.0/0.0, 0.0/0.0, 0.0/0.0, 0.0/0.0), verbose);
-				Assertv(mat.hasNan(), verbose);
-				Assertv(mat.isNan(), verbose);
-			}
+		{
+			const Mat2d mat(0.0/0.0, 0.0/0.0, 0.0/0.0, 1.0/0.0);
+			Assertv(mat.equals(0.0/0.0, 0.0/0.0, 0.0/0.0, 1.0/0.0), verbose);
+			Assertv(mat.hasNan(), verbose);
+			Assertv(!mat.isNan(), verbose);
 		}
-		{ // inverse
-			{ // identity
-				const Mat2d mat(1);
-				const Mat2d imat = mat.inverse();
-				Assertv(mat.isInvertible(), verbose);
-				Assertv(imat.isInvertible(), verbose);
-				Assertv(!imat.hasNan(), verbose);
-				Assertv(!imat.isNan(), verbose);
-				Assertv(mat.equals(Mat2d::Identity), verbose);
-				Assertv(imat.equals(Mat2d::Identity), verbose);
-				Assertv(mat.equals(imat), verbose);
+		{
+			const Mat2d mat(0.0/0.0, 0.0/0.0, 0.0/0.0, 0.0/0.0);
+			Assertv(mat.equals(0.0/0.0, 0.0/0.0, 0.0/0.0, 0.0/0.0), verbose);
+			Assertv(mat.hasNan(), verbose);
+			Assertv(mat.isNan(), verbose);
+		}
+	}
+	{ // determinant
+		Assertv(Mat2d(2,3,1,0).determinant() == -3.0, verbose);
+		Assertv(Mat2d(1,2,3,6).determinant() == 0.0, verbose);
+	}
+	{ // transpose
+		Assertv(Mat2d(1,2,3,4).transpose().equals(1,3,2,4), verbose);
+		Assertv(Mat2d(1,0,-2,0).transpose().equals(1,-2,0,0), verbose);
+	}
+	{ // inverse
+		{ // identity
+			const Mat2d mat(1);
+			const Mat2d imat = mat.inverse();
+			Assertv(mat.isInvertible(), verbose);
+			Assertv(imat.isInvertible(), verbose);
+			Assertv(!imat.hasNan(), verbose);
+			Assertv(!imat.isNan(), verbose);
+			Assertv(mat.equals(Mat2d::Identity), verbose);
+			Assertv(imat.equals(Mat2d::Identity), verbose);
+			Assertv(mat.equals(imat), verbose);
+			Assertv((mat*imat).equals(Mat2d::Identity), verbose);
+		}
+		{ // other values
+			const Mat2d mat(12.344, 131.04, 0.4555, 23000.45);
+			const Mat2d imat = mat.inverse();
+			Assertv(mat.isInvertible(), verbose);
+			Assertv(imat.isInvertible(), verbose);
+			Assertv(!imat.hasNan(), verbose);
+			Assertv(!imat.isNan(), verbose);
+			Assertv((mat*imat).equals(Mat2d::Identity), verbose);
+		}
+		{ // non-invertible matrix values
+			const Mat2d mat(4.0, 0.0, 4.0, 0.0);
+			const Mat2d imat = mat.inverse();
+			Assertv(!mat.isInvertible(), verbose);
+			Assertv(!imat.isInvertible(), verbose);
+			Assertv(imat.hasNan(), verbose);
+			Assertv(imat.isNan(), verbose);
+			if(!imat.hasNan())
+			{
 				Assertv((mat*imat).equals(Mat2d::Identity), verbose);
 			}
-			{ // other values
-				const Mat2d mat(12.344, 131.04, 0.4555, 23000.45);
-				const Mat2d imat = mat.inverse();
-				Assertv(mat.isInvertible(), verbose);
-				Assertv(imat.isInvertible(), verbose);
-				Assertv(!imat.hasNan(), verbose);
-				Assertv(!imat.isNan(), verbose);
+		}
+		{ // non-invertible matrix values
+			const Mat2d mat(4.0, 0.0/0.0, 4.0, 0.0);
+			const Mat2d imat = mat.inverse();
+			Assertv(!mat.isInvertible(), verbose);
+			Assertv(!imat.isInvertible(), verbose);
+			Assertv(mat.hasNan(), verbose);
+			Assertv(!mat.isNan(), verbose);
+			Assertv(imat.hasNan(), verbose);
+			Assertv(imat.isNan(), verbose);
+			if(!imat.hasNan())
+			{
 				Assertv((mat*imat).equals(Mat2d::Identity), verbose);
-			}
-			{ // non-invertible matrix values
-				const Mat2d mat(4.0, 0.0, 4.0, 0.0);
-				const Mat2d imat = mat.inverse();
-				Assertv(!mat.isInvertible(), verbose);
-				Assertv(!imat.isInvertible(), verbose);
-				Assertv(imat.hasNan(), verbose);
-				Assertv(imat.isNan(), verbose);
-				if(!imat.hasNan())
-				{
-					Assertv((mat*imat).equals(Mat2d::Identity), verbose);
-				}
-			}
-			{ // non-invertible matrix values
-				const Mat2d mat(4.0, 0.0/0.0, 4.0, 0.0);
-				const Mat2d imat = mat.inverse();
-				Assertv(!mat.isInvertible(), verbose);
-				Assertv(!imat.isInvertible(), verbose);
-				Assertv(mat.hasNan(), verbose);
-				Assertv(!mat.isNan(), verbose);
-				Assertv(imat.hasNan(), verbose);
-				Assertv(imat.isNan(), verbose);
-				if(!imat.hasNan())
-				{
-					Assertv((mat*imat).equals(Mat2d::Identity), verbose);
-				}
 			}
 		}
 	}

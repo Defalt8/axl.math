@@ -1,16 +1,21 @@
 #pragma once
 #include "lib.hpp"
 #include "Vec2d.hpp"
+#include "Vec2f.hpp"
 
 namespace axl {
 namespace math {
 
+class Mat2f;
+
+// Column-major 2x2 matrix
 class AXLMATHCXXAPI Mat2d
 {
 	public:
 		Mat2d(double diag_v);
 		Mat2d(double c0, double c1, double c2, double c3);
 		Mat2d(const Mat2d& mat = Default);
+		Mat2d(const Mat2f& mat);
 	public:
 		double* operator[](int index);
 		const double* operator[](int index) const;
@@ -33,6 +38,7 @@ class AXLMATHCXXAPI Mat2d
 		Mat2d& operator*=(double v);
 		Mat2d& operator/=(double v);
 		Vec2d operator*(const Vec2d& vec) const;
+		Vec2f operator*(const Vec2f& vec) const;
 		bool operator==(const Mat2d& mat) const;
 		bool operator!=(const Mat2d& mat) const;
 		bool operator==(double v) const;
@@ -51,6 +57,8 @@ class AXLMATHCXXAPI Mat2d
 		Mat2d& set(const double pv[4]);
 		void setValue(int column_index, int row_index, double v);
 		bool isInvertible() const;
+		double determinant() const;
+		Mat2d transpose() const;
 		Mat2d inverse() const;
 	public:
 		static Mat2d filled(double v);
