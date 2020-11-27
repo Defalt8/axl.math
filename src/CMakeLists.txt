@@ -13,6 +13,8 @@ add_library( axl.math ${LIBAXLMATH_TYPE}
 	"Vec4d.cpp"
 	"Mat2f.cpp"
 	"Mat2d.cpp"
+	"Mat3f.cpp"
+	"Mat3d.cpp"
 )
 target_compile_definitions( axl.math
 	PRIVATE LIBAXLMATH_BUILD
