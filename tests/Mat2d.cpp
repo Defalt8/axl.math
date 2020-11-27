@@ -225,8 +225,8 @@ int main(int argc, char *argv[])
 			const Mat2d mat(3.0, 1.344, 0.44, 12220.5);
 			const Vec2d vec(3.4, 0.455);
 			Assertv((mat * vec).equals(3.0 * vec.x + 0.44 * vec.y, 1.344 * vec.x + 12220.5 * vec.y, 0.000001), verbose);
-			const Vec2f vecf(4.5, 99.9);
-			Assertv((mat * vecf).equals(3.0 * vecf.x + 0.44 * vecf.y, 1.344 * vecf.x + 12220.5 * vecf.y, 0.0001f), verbose);
+			const Vec2f vecf(4.5f, 99.9f);
+			Assertv((mat * vecf).equals((float)(3.0 * vecf.x + 0.44 * vecf.y), (float)(1.344 * vecf.x + 12220.5 * vecf.y), 0.0001f), verbose);
 		}
 	}
 	{ // at
@@ -284,20 +284,20 @@ int main(int argc, char *argv[])
 	}
 	{ // Nan
 		{
-			const Mat2d mat(0.0, 0.0/0.0, 1.0, 34.4);
-			Assertv(mat.equals(0.0, 0.0/0.0, 1.0, 34.4), verbose);
+			const Mat2d mat(0.0, Double::Nan, 1.0, 34.4);
+			Assertv(mat.equals(0.0, Double::Nan, 1.0, 34.4), verbose);
 			Assertv(mat.hasNan(), verbose);
 			Assertv(!mat.isNan(), verbose);
 		}
 		{
-			const Mat2d mat(0.0/0.0, 0.0/0.0, 0.0/0.0, 1.0/0.0);
-			Assertv(mat.equals(0.0/0.0, 0.0/0.0, 0.0/0.0, 1.0/0.0), verbose);
+			const Mat2d mat(Double::Nan, Double::Nan, Double::Nan, Double::PosInf);
+			Assertv(mat.equals(Double::Nan, Double::Nan, Double::Nan, Double::PosInf), verbose);
 			Assertv(mat.hasNan(), verbose);
 			Assertv(!mat.isNan(), verbose);
 		}
 		{
-			const Mat2d mat(0.0/0.0, 0.0/0.0, 0.0/0.0, 0.0/0.0);
-			Assertv(mat.equals(0.0/0.0, 0.0/0.0, 0.0/0.0, 0.0/0.0), verbose);
+			const Mat2d mat(Double::Nan, Double::Nan, Double::Nan, Double::Nan);
+			Assertv(mat.equals(Double::Nan, Double::Nan, Double::Nan, Double::Nan), verbose);
 			Assertv(mat.hasNan(), verbose);
 			Assertv(mat.isNan(), verbose);
 		}
@@ -345,7 +345,7 @@ int main(int argc, char *argv[])
 			}
 		}
 		{ // non-invertible matrix values
-			const Mat2d mat(4.0, 0.0/0.0, 4.0, 0.0);
+			const Mat2d mat(4.0, Double::Nan, 4.0, 0.0);
 			const Mat2d imat = mat.inverse();
 			Assertv(!mat.isInvertible(), verbose);
 			Assertv(!imat.isInvertible(), verbose);
@@ -360,7 +360,7 @@ int main(int argc, char *argv[])
 		}
 	}
 	if(Assert::_num_failed_tests <= 0)
-		printf("# All Good!\n", Assert::_num_failed_tests);
+		printf("ALL GOOD!\n");
 	else
 	{
 		puts("----------------------------------------");

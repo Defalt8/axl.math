@@ -297,9 +297,9 @@ Mat3d& Mat3d::operator/=(double v)
 Vec3f Mat3d::operator*(const Vec3f& vec) const
 {
 	return Vec3f(
-		(values[0]*vec.x + values[3]*vec.y + values[6]*vec.z),
-		(values[1]*vec.x + values[4]*vec.y + values[7]*vec.z),
-		(values[2]*vec.x + values[5]*vec.y + values[8]*vec.z)
+		(float)(values[0]*vec.x + values[3]*vec.y + values[6]*vec.z),
+		(float)(values[1]*vec.x + values[4]*vec.y + values[7]*vec.z),
+		(float)(values[2]*vec.x + values[5]*vec.y + values[8]*vec.z)
 	);
 }
 

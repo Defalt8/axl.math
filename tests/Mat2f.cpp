@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
 			Assertv(Float::equals(3.45f, mat2.values[2]), verbose);
 			Assertv(Float::equals(0.44f, mat2.values[3]), verbose);
 			const Mat2f mat3(Mat2d(1.3, 3.45, 1.2222, 0.33333));
-			Assertv(mat3.equals(1.3f, 3.45f, 1.2222f, 0.33333f, 0.000001), verbose);
+			Assertv(mat3.equals(1.3f, 3.45f, 1.2222f, 0.33333f, 0.0001f), verbose);
 		}
 	}
 	{ // square bracket operators
@@ -284,20 +284,20 @@ int main(int argc, char *argv[])
 	}
 	{ // Nan
 		{
-			const Mat2f mat(0.0f, 0.0f/0.0f, 1.0f, 34.4f);
-			Assertv(mat.equals(0.0f, 0.0f/0.0f, 1.0f, 34.4f), verbose);
+			const Mat2f mat(0.0f, Float::Nan, 1.0f, 34.4f);
+			Assertv(mat.equals(0.0f, Float::Nan, 1.0f, 34.4f), verbose);
 			Assertv(mat.hasNan(), verbose);
 			Assertv(!mat.isNan(), verbose);
 		}
 		{
-			const Mat2f mat(0.0f/0.0f, 0.0f/0.0f, 0.0f/0.0f, 1.0f/0.0f);
-			Assertv(mat.equals(0.0f/0.0f, 0.0f/0.0f, 0.0f/0.0f, 1.0f/0.0f), verbose);
+			const Mat2f mat(Float::Nan, Float::Nan, Float::Nan, Float::PosInf);
+			Assertv(mat.equals(Float::Nan, Float::Nan, Float::Nan, Float::PosInf), verbose);
 			Assertv(mat.hasNan(), verbose);
 			Assertv(!mat.isNan(), verbose);
 		}
 		{
-			const Mat2f mat(0.0f/0.0f, 0.0f/0.0f, 0.0f/0.0f, 0.0f/0.0f);
-			Assertv(mat.equals(0.0f/0.0f, 0.0f/0.0f, 0.0f/0.0f, 0.0f/0.0f), verbose);
+			const Mat2f mat(Float::Nan, Float::Nan, Float::Nan, Float::Nan);
+			Assertv(mat.equals(Float::Nan, Float::Nan, Float::Nan, Float::Nan), verbose);
 			Assertv(mat.hasNan(), verbose);
 			Assertv(mat.isNan(), verbose);
 		}
@@ -345,7 +345,7 @@ int main(int argc, char *argv[])
 			}
 		}
 		{ // non-invertible matrix values
-			const Mat2f mat(4.0f, 0.0f/0.0f, 4.0f, 0.0f);
+			const Mat2f mat(4.0f, Float::Nan, 4.0f, 0.0f);
 			const Mat2f imat = mat.inverse();
 			Assertv(!mat.isInvertible(), verbose);
 			Assertv(!imat.isInvertible(), verbose);
@@ -360,7 +360,7 @@ int main(int argc, char *argv[])
 		}
 	}
 	if(Assert::_num_failed_tests <= 0)
-		printf("# All Good!\n", Assert::_num_failed_tests);
+		printf("ALL GOOD!\n");
 	else
 	{
 		puts("----------------------------------------");

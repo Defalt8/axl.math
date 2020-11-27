@@ -214,7 +214,7 @@ Vec2d Mat2d::operator*(const Vec2d& vec) const
 
 Vec2f Mat2d::operator*(const Vec2f& vec) const
 {
-	return Vec2f((values[0]*vec.x + values[2]*vec.y), (values[1]*vec.x + values[3]*vec.y));
+	return Vec2f((float)(values[0]*vec.x + values[2]*vec.y), (float)(values[1]*vec.x + values[3]*vec.y));
 }
 
 bool Mat2d::operator==(const Mat2d& mat) const

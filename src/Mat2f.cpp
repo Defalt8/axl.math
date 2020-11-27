@@ -32,10 +32,10 @@ Mat2f::Mat2f(const Mat2f& mat)
 
 Mat2f::Mat2f(const Mat2d& mat)
 {
-	values[0] = mat.values[0];
-	values[1] = mat.values[1];
-	values[2] = mat.values[2];
-	values[3] = mat.values[3];
+	values[0] = (float)mat.values[0];
+	values[1] = (float)mat.values[1];
+	values[2] = (float)mat.values[2];
+	values[3] = (float)mat.values[3];
 }
 
 float* Mat2f::operator[](int index)

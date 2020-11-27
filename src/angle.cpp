@@ -50,11 +50,11 @@ float radToNorm(float rad)
 }
 float normToDeg(float norm)
 {
-	return norm * 360.0;
+	return norm * 360.0f;
 }
 float degToNorm(float deg)
 {
-	return deg / 360.0;
+	return deg / 360.0f;
 }
 
 } // namespace Angle
