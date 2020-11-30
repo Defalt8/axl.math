@@ -231,12 +231,12 @@ int main(int argc, char *argv[])
 		}
 		{ // matrix - vector multiplication
 			const Mat3d mat(3.0, 1.344, 0.44, 12220.5, 45.67, 0.5, 1.2, 3.333, 1.09);
-			const Vec3f vec(3.4, 0.455, 9.55);
+			const Vec3f vec(3.4f, 0.455f, 9.55f);
 			const Vec3f pvec = mat * vec;
 			Assertv(pvec.equals(
-				mat.at(0,0) * vec.x + mat.at(1,0) * vec.y + mat.at(2,0) * vec.z,
-				mat.at(0,1) * vec.x + mat.at(1,1) * vec.y + mat.at(2,1) * vec.z,
-				mat.at(0,2) * vec.x + mat.at(1,2) * vec.y + mat.at(2,2) * vec.z
+				(float)(mat.at(0,0) * vec.x + mat.at(1,0) * vec.y + mat.at(2,0) * vec.z),
+				(float)(mat.at(0,1) * vec.x + mat.at(1,1) * vec.y + mat.at(2,1) * vec.z),
+				(float)(mat.at(0,2) * vec.x + mat.at(1,2) * vec.y + mat.at(2,2) * vec.z)
 			), verbose);
 		}
 	}
