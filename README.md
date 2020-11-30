@@ -4,7 +4,7 @@ A simple C++ math library primarily designed for game engines.
 
 ## Versions
 
-- Latest: 0.8.0 alpha
+- Latest: 0.9.16 alpha
 
 ## library headers
 
