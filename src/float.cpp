@@ -6,7 +6,7 @@ namespace Float
 {
 
 float _zero = 0.0f;
-const float Nan = 0.0f / _zero;
+const float Nan = nanf("");
 const float PosInf = 1.0f / _zero;
 const float NegInf = -1.0f / _zero;
 

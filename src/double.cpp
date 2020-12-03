@@ -6,7 +6,7 @@ namespace Double
 {
 
 double _zero = 0.0;
-const double Nan = 0.0 / _zero;
+const double Nan = nan("");
 const double PosInf = 1.0 / _zero;
 const double NegInf = -1.0 / _zero;
 
