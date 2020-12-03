@@ -1,14 +1,15 @@
 #include <axl.math/double.hpp>
+#include <cstdint>
 #include <cmath>
 namespace axl {
 namespace math {
 namespace Double
 {
 
-double _zero = 0.0;
+volatile double _zero = 0.0;
 const double Nan = nan("");
 const double PosInf = 1.0 / _zero;
-const double NegInf = -1.0 / _zero;
+const double NegInf = -PosInf;
 
 bool equals(double a, double b, double epsilon)
 {
@@ -40,23 +41,23 @@ bool equals(double a, double b, double epsilon)
 }
 bool isNan(double n)
 {
-	return std::isnan(n);
+	return *((int64_t*)&n) == *((int64_t*)&Nan);
 }
 bool isFinite(double n)
 {
-	return std::isfinite(n);
+	return !isNan(n) && n != PosInf && n != NegInf;
 }
 bool isInfinite(double n)
 {
-	return std::isinf(n);
+	return !isNan(n) && (n == PosInf || n == NegInf);
 }
 bool isPosInfinity(double n)
 {
-	return n == PosInf;
+	return !isNan(n) && n == PosInf;
 }
 bool isNegInfinity(double n)
 {
-	return n == NegInf;
+	return !isNan(n) && n == NegInf;
 }
 
 } // namespace Double

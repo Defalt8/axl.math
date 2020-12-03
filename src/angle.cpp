@@ -9,19 +9,19 @@ using namespace axl::math::Constants;
 
 double degToRad(double deg)
 {
-	return deg * _1_180TH_PI;
+	return deg * D_1_180TH_PI;
 }
 double radToDeg(double rad)
 {
-	return rad * _180_OVER_PI;
+	return rad * D_180_OVER_PI;
 }
 double normToRad(double norm)
 {
-	return norm * _2_PI;
+	return norm * D_2_PI;
 }
 double radToNorm(double rad)
 {
-	return rad / _2_PI;
+	return rad / D_2_PI;
 }
 double normToDeg(double norm)
 {

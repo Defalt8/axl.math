@@ -1,14 +1,15 @@
 #include <axl.math/float.hpp>
+#include <cstdint>
 #include <cmath>
 namespace axl {
 namespace math {
 namespace Float
 {
 
-float _zero = 0.0f;
+volatile float _zero = 0.0f;
 const float Nan = nanf("");
 const float PosInf = 1.0f / _zero;
-const float NegInf = -1.0f / _zero;
+const float NegInf = -PosInf;
 
 bool equals(float a, float b, float epsilon)
 {
@@ -40,23 +41,23 @@ bool equals(float a, float b, float epsilon)
 }
 bool isNan(float n)
 {
-	return std::isnan(n);
+	return *((int32_t*)&n) == *((int32_t*)&Nan);
 }
 bool isFinite(float n)
 {
-	return std::isfinite(n);
+	return !isNan(n) && n != PosInf && n != NegInf;
 }
 bool isInfinite(float n)
 {
-	return std::isinf(n);
+	return !isNan(n) && (n == PosInf || n == NegInf);
 }
 bool isPosInfinity(float n)
 {
-	return n == PosInf;
+	return !isNan(n) && n == PosInf;
 }
 bool isNegInfinity(float n)
 {
-	return n == NegInf;
+	return !isNan(n) && n == NegInf;
 }
 
 } // namespace Float

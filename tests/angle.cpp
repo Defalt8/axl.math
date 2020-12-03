@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 		}
 		{
 			const double deg = 146.7343188645281021312;
-			const double rad = deg * _1_180TH_PI;
+			const double rad = deg * D_1_180TH_PI;
 			const double norm = deg / 360.0;
 			Assertv(Double::equals(Angle::degToRad(deg), rad, 0.00000001), verbose);
 			Assertv(Double::equals(Angle::radToDeg(rad), deg, 0.00000001), verbose);

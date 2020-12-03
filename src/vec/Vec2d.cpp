@@ -192,9 +192,9 @@ double Vec2d::fullAngle(Rules::Axis axis_rule) const
 	{
 		default:
 		case Rules::AXIS_RHS:
-			return std::fmod((_2_PI + std::atan2(y, x)), _2_PI);
+			return std::fmod((D_2_PI + std::atan2(y, x)), D_2_PI);
 		case Rules::AXIS_LHS:
-			return std::fmod((_2_PI + std::atan2(x, y)), _2_PI);
+			return std::fmod((D_2_PI + std::atan2(x, y)), D_2_PI);
 	}
 }
 double Vec2d::fullAngle(const Vec2d& ref_vec, Rules::Axis axis_rule) const
@@ -203,8 +203,8 @@ double Vec2d::fullAngle(const Vec2d& ref_vec, Rules::Axis axis_rule) const
 	switch(axis_rule)
 	{
 		default:
-		case Rules::AXIS_RHS: return std::fmod((_2_PI + std::atan2(y, x) - std::atan2(ref_vec.y, ref_vec.x)), _2_PI);
-		case Rules::AXIS_LHS: return std::fmod((_2_PI + std::atan2(x, y) - std::atan2(ref_vec.x, ref_vec.y)), _2_PI);
+		case Rules::AXIS_RHS: return std::fmod((D_2_PI + std::atan2(y, x) - std::atan2(ref_vec.y, ref_vec.x)), D_2_PI);
+		case Rules::AXIS_LHS: return std::fmod((D_2_PI + std::atan2(x, y) - std::atan2(ref_vec.x, ref_vec.y)), D_2_PI);
 	}
 }
 
