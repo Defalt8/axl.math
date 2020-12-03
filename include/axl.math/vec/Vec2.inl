@@ -133,25 +133,25 @@ inline bool Vec2<T>::operator!=(const T& v) const
 
 template <typename T>
 template <typename U>
-bool Vec2<T>::equals(const Vec2<U>& vec) const
+inline bool Vec2<T>::equals(const Vec2<U>& vec) const
 {
 	return (x == vec.x && y == vec.y);
 }
 template <typename T>
 template <typename U>
-bool Vec2<T>::notEquals(const Vec2<U>& vec) const
+inline bool Vec2<T>::notEquals(const Vec2<U>& vec) const
 {
 	return (x != vec.x || y != vec.y);
 }
 template <typename T>
 template <typename U>
-bool Vec2<T>::equals(U _x, U _y) const
+inline bool Vec2<T>::equals(U _x, U _y) const
 {
 	return (x == _x && y == _y);
 }
 template <typename T>
 template <typename U>
-bool Vec2<T>::notEquals(U _x, U _y) const
+inline bool Vec2<T>::notEquals(U _x, U _y) const
 {
 	return (x != _x || y != _y);
 }
@@ -172,25 +172,25 @@ inline Vec2<T>& Vec2<T>::set(T _x, T _y)
 }
 
 template <typename T>
-Vec2<T> operator+(T v, const Vec2<T>& vec)
+inline Vec2<T> operator+(T v, const Vec2<T>& vec)
 {
 	return Vec2<T>(v + vec.x,v + vec.y);
 }
 
 template <typename T>
-Vec2<T> operator-(T v, const Vec2<T>& vec)
+inline Vec2<T> operator-(T v, const Vec2<T>& vec)
 {
 	return Vec2<T>(v - vec.x,v - vec.y);
 }
 
 template <typename T>
-Vec2<T> operator*(T v, const Vec2<T>& vec)
+inline Vec2<T> operator*(T v, const Vec2<T>& vec)
 {
 	return Vec2<T>(v * vec.x,v * vec.y);
 }
 
 template <typename T>
-Vec2<T> operator/(T v, const Vec2<T>& vec)
+inline Vec2<T> operator/(T v, const Vec2<T>& vec)
 {
 	return Vec2<T>(v / vec.x,v / vec.y);
 }
