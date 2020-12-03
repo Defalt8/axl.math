@@ -5,6 +5,7 @@ add_library( axl.math ${LIBAXLMATH_TYPE}
 	"double.cpp"
 	"float.cpp"
 	"angle.cpp"
+	"vec/Vec2i.cpp"
 	"vec/Vec2f.cpp"
 	"vec/Vec2d.cpp"
 	"vec/Vec3f.cpp"
