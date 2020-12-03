@@ -516,8 +516,10 @@ Mat3d Mat3d::transpose() const
 
 Mat3d Mat3d::inverse() const
 {
+	if(this->hasNan())
+		return Mat3d::Nan;
 	const double det = this->determinant();
-	if (det == 0.0 || this->hasNan())
+	if(det == 0.0)
 		return Mat3d::Nan;
 	double r0 =  (values[4]*values[8]-values[7]*values[5]) / det;
 	double r1 = -(values[3]*values[8]-values[6]*values[5]) / det;

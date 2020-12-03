@@ -242,9 +242,19 @@ bool Mat2d::isNan() const
 	return Double::isNan(values[0]) && Double::isNan(values[1]) && Double::isNan(values[2]) && Double::isNan(values[3]);
 }
 
+bool Mat2d::isNotNan() const
+{
+	return !Double::isNan(values[0]) || !Double::isNan(values[1]) || !Double::isNan(values[2]) || !Double::isNan(values[3]);
+}
+
 bool Mat2d::hasNan() const
 {
 	return Double::isNan(values[0]) || Double::isNan(values[1]) || Double::isNan(values[2]) || Double::isNan(values[3]);
+}
+
+bool Mat2d::hasNoNan() const
+{
+	return !Double::isNan(values[0]) && !Double::isNan(values[1]) && !Double::isNan(values[2]) && !Double::isNan(values[3]);
 }
 
 bool Mat2d::equals(const Mat2d& mat, double epsilon) const
@@ -342,7 +352,8 @@ Mat2d Mat2d::transpose() const
 Mat2d Mat2d::inverse() const
 {
 	double ad_bc = (values[0] * values[3] - values[1] * values[2]);
-	if(ad_bc == 0.0) return Mat2d::filled(Double::Nan);
+	if(ad_bc == 0.0 || Double::isNan(ad_bc))
+		return Mat2d::Nan;
 	return Mat2d( values[3]/ad_bc, -values[1]/ad_bc, -values[2]/ad_bc, values[0]/ad_bc );
 }
 

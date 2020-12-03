@@ -242,9 +242,19 @@ bool Mat2f::isNan() const
 	return Float::isNan(values[0]) && Float::isNan(values[1]) && Float::isNan(values[2]) && Float::isNan(values[3]);
 }
 
+bool Mat2f::isNotNan() const
+{
+	return !Float::isNan(values[0]) || !Float::isNan(values[1]) || !Float::isNan(values[2]) || !Float::isNan(values[3]);
+}
+
 bool Mat2f::hasNan() const
 {
 	return Float::isNan(values[0]) || Float::isNan(values[1]) || Float::isNan(values[2]) || Float::isNan(values[3]);
+}
+
+bool Mat2f::hasNoNan() const
+{
+	return !Float::isNan(values[0]) && !Float::isNan(values[1]) && !Float::isNan(values[2]) && !Float::isNan(values[3]);
 }
 
 bool Mat2f::equals(const Mat2f& mat, float epsilon) const
@@ -342,7 +352,8 @@ Mat2f Mat2f::transpose() const
 Mat2f Mat2f::inverse() const
 {
 	float ad_bc = (values[0] * values[3] - values[1] * values[2]);
-	if(ad_bc == 0.0f) return Mat2f::filled(Float::Nan);
+	if(ad_bc == 0.0f || Float::isNan(ad_bc))
+		return Mat2f::Nan;
 	return Mat2f( values[3]/ad_bc, -values[1]/ad_bc, -values[2]/ad_bc, values[0]/ad_bc );
 }
 

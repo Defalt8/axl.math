@@ -45,7 +45,9 @@ class AXLMATHCXXAPI Mat2f
 		bool operator!=(float v) const;
 	public:
 		bool isNan() const;
+		bool isNotNan() const;
 		bool hasNan() const;
+		bool hasNoNan() const;
 		bool equals(const Mat2f& mat, float epsilon = 0.001f) const;
 		bool notEquals(const Mat2f& mat, float epsilon = 0.001f) const;
 		bool equals(float c0, float c1, float c2, float c3, float epsilon = 0.001f) const;

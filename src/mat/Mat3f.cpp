@@ -516,8 +516,10 @@ Mat3f Mat3f::transpose() const
 
 Mat3f Mat3f::inverse() const
 {
+	if(this->hasNan())
+		return Mat3f::Nan;
 	const float det = this->determinant();
-	if (det == 0.0f || this->hasNan())
+	if (det == 0.0f)
 		return Mat3f::Nan;
 	float r0 =  (values[4]*values[8]-values[7]*values[5]) / det;
 	float r1 = -(values[3]*values[8]-values[6]*values[5]) / det;

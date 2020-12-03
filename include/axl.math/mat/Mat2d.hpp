@@ -45,7 +45,9 @@ class AXLMATHCXXAPI Mat2d
 		bool operator!=(double v) const;
 	public:
 		bool isNan() const;
+		bool isNotNan() const;
 		bool hasNan() const;
+		bool hasNoNan() const;
 		bool equals(const Mat2d& mat, double epsilon = 0.000001) const;
 		bool notEquals(const Mat2d& mat, double epsilon = 0.000001) const;
 		bool equals(double c0, double c1, double c2, double c3, double epsilon = 0.000001) const;
