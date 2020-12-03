@@ -4,7 +4,7 @@ A simple C++ math library primarily designed for game engines.
 
 ## Versions
 
-- Latest: 0.9.16 alpha
+- Latest: 0.10.16 alpha
 
 ## library headers
 
@@ -14,16 +14,16 @@ A simple C++ math library primarily designed for game engines.
 - [`axl.math/double.hpp`](/include/axl.math/double.hpp) - *Double floating point number comparison and checking functions.*
 - [`axl.math/float.hpp`](/include/axl.math/float.hpp) - *Single floating point number comparison and checking functions.*
 - [`axl.math/lib.hpp`](/include/axl.math/lib.hpp) - *Library main header. Contains ***version***, ***library type*** and ***build type***.*
-- [`axl.math/Vec2f.hpp`](/include/axl.math/Vec2f.hpp) - *A 2D single precision floating point vector.*
-- [`axl.math/Vec2d.hpp`](/include/axl.math/Vec2d.hpp) - *A 2D double precision floating point vector.*
-- [`axl.math/Vec2.hpp`](/include/axl.math/Vec2.hpp) - *A 2D template vector.*
-- [`axl.math/Vec3f.hpp`](/include/axl.math/Vec3f.hpp) - *A 3D single precision floating point vector.*
-- [`axl.math/Vec3d.hpp`](/include/axl.math/Vec3d.hpp) - *A 3D double precision floating point vector.*
-- [`axl.math/Vec3.hpp`](/include/axl.math/Vec3.hpp) - *A 3D template vector.*
-- [`axl.math/Vec4f.hpp`](/include/axl.math/Vec4f.hpp) - *A 4D single precision floating point vector.*
-- [`axl.math/Vec4d.hpp`](/include/axl.math/Vec4d.hpp) - *A 4D double precision floating point vector.*
-- [`axl.math/Vec4.hpp`](/include/axl.math/Vec4.hpp) - *A 4D template vector.*
-- [`axl.math/Mat2f.hpp`](/include/axl.math/Mat2f.hpp) - *A 2x2 single precision floating point matrix.*
-- [`axl.math/Mat2d.hpp`](/include/axl.math/Mat2d.hpp) - *A 2x2 double precision floating point matrix.*
-- [`axl.math/Mat3f.hpp`](/include/axl.math/Mat3f.hpp) - *A 3x3 single precision floating point matrix.*
-- [`axl.math/Mat3d.hpp`](/include/axl.math/Mat3d.hpp) - *A 3x3 double precision floating point matrix.*
+- [`axl.math/vec/Vec2f.hpp`](/include/axl.math/vec/Vec2f.hpp) - *A 2D single precision floating point vector.*
+- [`axl.math/vec/Vec2d.hpp`](/include/axl.math/vec/Vec2d.hpp) - *A 2D double precision floating point vector.*
+- [`axl.math/vec/Vec2.hpp`](/include/axl.math/vec/Vec2.hpp) - *A 2D template vector.*
+- [`axl.math/vec/Vec3f.hpp`](/include/axl.math/vec/Vec3f.hpp) - *A 3D single precision floating point vector.*
+- [`axl.math/vec/Vec3d.hpp`](/include/axl.math/vec/Vec3d.hpp) - *A 3D double precision floating point vector.*
+- [`axl.math/vec/Vec3.hpp`](/include/axl.math/vec/Vec3.hpp) - *A 3D template vector.*
+- [`axl.math/vec/Vec4f.hpp`](/include/axl.math/vec/Vec4f.hpp) - *A 4D single precision floating point vector.*
+- [`axl.math/vec/Vec4d.hpp`](/include/axl.math/vec/Vec4d.hpp) - *A 4D double precision floating point vector.*
+- [`axl.math/vec/Vec4.hpp`](/include/axl.math/vec/Vec4.hpp) - *A 4D template vector.*
+- [`axl.math/mat/Mat2f.hpp`](/include/axl.math/mat/Mat2f.hpp) - *A 2x2 single precision floating point matrix.*
+- [`axl.math/mat/Mat2d.hpp`](/include/axl.math/mat/Mat2d.hpp) - *A 2x2 double precision floating point matrix.*
+- [`axl.math/mat/Mat3f.hpp`](/include/axl.math/mat/Mat3f.hpp) - *A 3x3 single precision floating point matrix.*
+- [`axl.math/mat/Mat3d.hpp`](/include/axl.math/mat/Mat3d.hpp) - *A 3x3 double precision floating point matrix.*

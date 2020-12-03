@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.10 )
 
-project( axl.math VERSION 0.9.16 DESCRIPTION "A simple C++ math library primarily designed for game engines." )
+project( axl.math VERSION 0.10.16 DESCRIPTION "A simple C++ math library primarily designed for game engines." )
 
 # Configure
 set( LIBAXLMATH_SUFFIX "" )
@@ -61,22 +61,28 @@ if( INSTALL_HEADERS AND LIBAXLMATH_INSTALL_HEADERS )
 		"include/axl.math/double.hpp"
 		"include/axl.math/float.hpp"
 		"include/axl.math/angle.hpp"
-		"include/axl.math/Vec2f.hpp"
-		"include/axl.math/Vec2d.hpp"
-		"include/axl.math/Vec2.hpp"
-		"include/axl.math/Vec2.inl"
-		"include/axl.math/Vec3f.hpp"
-		"include/axl.math/Vec3d.hpp"
-		"include/axl.math/Vec3.hpp"
-		"include/axl.math/Vec3.inl"
-		"include/axl.math/Vec4f.hpp"
-		"include/axl.math/Vec4d.hpp"
-		"include/axl.math/Vec4.hpp"
-		"include/axl.math/Vec4.inl"
-		"include/axl.math/Mat2f.hpp"
-		"include/axl.math/Mat2d.hpp"
-		"include/axl.math/Mat3f.hpp"
-		"include/axl.math/Mat3d.hpp"
 		DESTINATION "${HEADERS_INSTALL_DIR}/axl.math"
+	)
+	install( FILES
+		"include/axl.math/vec/Vec2f.hpp"
+		"include/axl.math/vec/Vec2d.hpp"
+		"include/axl.math/vec/Vec2.hpp"
+		"include/axl.math/vec/Vec2.inl"
+		"include/axl.math/vec/Vec3f.hpp"
+		"include/axl.math/vec/Vec3d.hpp"
+		"include/axl.math/vec/Vec3.hpp"
+		"include/axl.math/vec/Vec3.inl"
+		"include/axl.math/vec/Vec4f.hpp"
+		"include/axl.math/vec/Vec4d.hpp"
+		"include/axl.math/vec/Vec4.hpp"
+		"include/axl.math/vec/Vec4.inl"
+		DESTINATION "${HEADERS_INSTALL_DIR}/axl.math/vec"
+	)
+	install( FILES
+		"include/axl.math/mat/Mat2f.hpp"
+		"include/axl.math/mat/Mat2d.hpp"
+		"include/axl.math/mat/Mat3f.hpp"
+		"include/axl.math/mat/Mat3d.hpp"
+		DESTINATION "${HEADERS_INSTALL_DIR}/axl.math/mat"
 	)
 endif()
