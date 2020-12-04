@@ -6,7 +6,7 @@
 namespace axl {
 namespace math {
 
-// class Mat3d;
+class Mat4d;
 
 class AXLMATHCXXAPI Mat4f
 {
@@ -14,7 +14,7 @@ class AXLMATHCXXAPI Mat4f
 		Mat4f(float diag_v);
 		Mat4f(float c0, float c1, float c2, float c3, float c4, float c5, float c6, float c7, float c8, float c9, float c10, float c11, float c12, float c13, float c14, float c15);
 		Mat4f(const Mat4f& mat = Default);
-		// Mat4f(const Mat3d& mat);
+		Mat4f(const Mat4d& mat);
 	public:
 		float* operator[](int index);
 		const float* operator[](int index) const;

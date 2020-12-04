@@ -5,8 +5,8 @@
 #include "../Assert.hpp"
 #include "../lib.hpp"
 #include <axl.math/float.hpp>
+#include <axl.math/mat/Mat4d.hpp>
 #include <axl.math/mat/Mat4f.hpp>
-// #include <axl.math/mat/Mat4d.hpp>
 
 int main(int argc, char *argv[])
 {
@@ -107,7 +107,7 @@ int main(int argc, char *argv[])
 			Assertv(mat1.equals(3.1415f, 0.6734f, 3.45f, 0.44f, 45.67f, 0.5f, 1.2f, 3.333f, 1.09f, 12.9f, 45.6f, 76.77f, 90.0f, 55.5f, 22.2f, 33.3f, 0.0001f), verbose);
 			const Mat4f mat2 = mat;
 			Assertv(mat2.equals(3.1415f, 0.6734f, 3.45f, 0.44f, 45.67f, 0.5f, 1.2f, 3.333f, 1.09f, 12.9f, 45.6f, 76.77f, 90.0f, 55.5f, 22.2f, 33.3f, 0.0001f), verbose);
-			// Assertv(Mat4f(Mat4d(3.1415, 0.6734, 3.45, 0.44, 45.67, 0.5, 1.2, 3.333, 1.09, 12.9, 45.6, 76.77, 90.0, 55.5, 22.2, 33.3)).equals(3.1415f, 0.6734f, 3.45f, 0.44f, 45.67f, 0.5f, 1.2f, 3.333f, 1.09f, 12.9f, 45.6f, 76.77f, 90.0f, 55.5f, 22.2f, 33.3f), verbose);
+			Assertv(Mat4f(Mat4d(3.1415, 0.6734, 3.45, 0.44, 45.67, 0.5, 1.2, 3.333, 1.09, 12.9, 45.6, 76.77, 90.0, 55.5, 22.2, 33.3)).equals(3.1415f, 0.6734f, 3.45f, 0.44f, 45.67f, 0.5f, 1.2f, 3.333f, 1.09f, 12.9f, 45.6f, 76.77f, 90.0f, 55.5f, 22.2f, 33.3f), verbose);
 		}
 	}
 	{ // square bracket operators

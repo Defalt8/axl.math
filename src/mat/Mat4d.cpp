@@ -1,89 +1,89 @@
 #include <cmath>
-#include <axl.math/float.hpp>
+#include <axl.math/double.hpp>
 #include <axl.math/vec/Vec4d.hpp>
 #include <axl.math/vec/Vec4f.hpp>
-#include <axl.math/mat/Mat4d.hpp>
 #include <axl.math/mat/Mat4f.hpp>
+#include <axl.math/mat/Mat4d.hpp>
 
 namespace axl {
 namespace math {
 
-Mat4f::Mat4f(float diag_v)
+Mat4d::Mat4d(double diag_v)
 {
-	values[0] = diag_v; values[1] = 0.0f; values[2] = 0.0f; values[3] = 0.0f;
-	values[4] = 0.0f; values[5] = diag_v; values[6] = 0.0f; values[7] = 0.0f;
-	values[8] = 0.0f; values[9] = 0.0f; values[10] = diag_v; values[11] = 0.0f;
-	values[12] = 0.0f; values[13] = 0.0f; values[14] = 0.0f; values[15] = diag_v;
+	values[0] = diag_v; values[1] = 0.0; values[2] = 0.0; values[3] = 0.0;
+	values[4] = 0.0; values[5] = diag_v; values[6] = 0.0; values[7] = 0.0;
+	values[8] = 0.0; values[9] = 0.0; values[10] = diag_v; values[11] = 0.0;
+	values[12] = 0.0; values[13] = 0.0; values[14] = 0.0; values[15] = diag_v;
 }
-Mat4f::Mat4f(float c0, float c1, float c2, float c3, float c4, float c5, float c6, float c7, float c8, float c9, float c10, float c11, float c12, float c13, float c14, float c15)
+Mat4d::Mat4d(double c0, double c1, double c2, double c3, double c4, double c5, double c6, double c7, double c8, double c9, double c10, double c11, double c12, double c13, double c14, double c15)
 {
 	values[0] = c0; values[1] = c1; values[2] = c2; values[3] = c3;
 	values[4] = c4; values[5] = c5; values[6] = c6; values[7] = c7;
 	values[8] = c8; values[9] = c9; values[10] = c10; values[11] = c11;
 	values[12] = c12; values[13] = c13; values[14] = c14; values[15] = c15;
 }
-Mat4f::Mat4f(const Mat4f& mat)
+Mat4d::Mat4d(const Mat4d& mat)
 {
 	values[0] = mat.values[0]; values[1] = mat.values[1]; values[2] = mat.values[2]; values[3] = mat.values[3];
 	values[4] = mat.values[4]; values[5] = mat.values[5]; values[6] = mat.values[6]; values[7] = mat.values[7];
 	values[8] = mat.values[8]; values[9] = mat.values[9]; values[10] = mat.values[10]; values[11] = mat.values[11];
 	values[12] = mat.values[12]; values[13] = mat.values[13]; values[14] = mat.values[14]; values[15] = mat.values[15];
 }
-Mat4f::Mat4f(const Mat4d& mat)
+Mat4d::Mat4d(const Mat4f& mat)
 {
-	values[0] = (float)mat.values[0]; values[1] = (float)mat.values[1]; values[2] = (float)mat.values[2]; values[3] = (float)mat.values[3];
-	values[4] = (float)mat.values[4]; values[5] = (float)mat.values[5]; values[6] = (float)mat.values[6]; values[7] = (float)mat.values[7];
-	values[8] = (float)mat.values[8]; values[9] = (float)mat.values[9]; values[10] = (float)mat.values[10]; values[11] = (float)mat.values[11];
-	values[12] = (float)mat.values[12]; values[13] = (float)mat.values[13]; values[14] = (float)mat.values[14]; values[15] = (float)mat.values[15];
+	values[0] = (double)mat.values[0]; values[1] = (double)mat.values[1]; values[2] = (double)mat.values[2]; values[3] = (double)mat.values[3];
+	values[4] = (double)mat.values[4]; values[5] = (double)mat.values[5]; values[6] = (double)mat.values[6]; values[7] = (double)mat.values[7];
+	values[8] = (double)mat.values[8]; values[9] = (double)mat.values[9]; values[10] = (double)mat.values[10]; values[11] = (double)mat.values[11];
+	values[12] = (double)mat.values[12]; values[13] = (double)mat.values[13]; values[14] = (double)mat.values[14]; values[15] = (double)mat.values[15];
 }
 
-float* Mat4f::operator[](int index)
+double* Mat4d::operator[](int index)
 {
 	return &values[index * 4];
 }
-const float* Mat4f::operator[](int index) const
+const double* Mat4d::operator[](int index) const
 {
 	return &values[index * 4];
 }
-Mat4f Mat4f::operator+(const Mat4f& mat) const
+Mat4d Mat4d::operator+(const Mat4d& mat) const
 {
-	return Mat4f(
+	return Mat4d(
 		values[0] + mat.values[0], values[1] + mat.values[1], values[2] + mat.values[2], values[3] + mat.values[3],
 		values[4] + mat.values[4], values[5] + mat.values[5], values[6] + mat.values[6], values[7] + mat.values[7],
 		values[8] + mat.values[8], values[9] + mat.values[9], values[10] + mat.values[10], values[11] + mat.values[11],
 		values[12] + mat.values[12], values[13] + mat.values[13], values[14] + mat.values[14], values[15] + mat.values[15]
 	);
 }
-Mat4f Mat4f::operator-(const Mat4f& mat) const
+Mat4d Mat4d::operator-(const Mat4d& mat) const
 {
-	return Mat4f(
+	return Mat4d(
 		values[0] - mat.values[0], values[1] - mat.values[1], values[2] - mat.values[2], values[3] - mat.values[3],
 		values[4] - mat.values[4], values[5] - mat.values[5], values[6] - mat.values[6], values[7] - mat.values[7],
 		values[8] - mat.values[8], values[9] - mat.values[9], values[10] - mat.values[10], values[11] - mat.values[11],
 		values[12] - mat.values[12], values[13] - mat.values[13], values[14] - mat.values[14], values[15] - mat.values[15]
 	);
 }
-Mat4f Mat4f::scMul(const Mat4f& mat) const
+Mat4d Mat4d::scMul(const Mat4d& mat) const
 {
-	return Mat4f(
+	return Mat4d(
 		values[0] * mat.values[0], values[1] * mat.values[1], values[2] * mat.values[2], values[3] * mat.values[3],
 		values[4] * mat.values[4], values[5] * mat.values[5], values[6] * mat.values[6], values[7] * mat.values[7],
 		values[8] * mat.values[8], values[9] * mat.values[9], values[10] * mat.values[10], values[11] * mat.values[11],
 		values[12] * mat.values[12], values[13] * mat.values[13], values[14] * mat.values[14], values[15] * mat.values[15]
 	);
 }
-Mat4f Mat4f::scDiv(const Mat4f& mat) const
+Mat4d Mat4d::scDiv(const Mat4d& mat) const
 {
-	return Mat4f(
+	return Mat4d(
 		values[0] / mat.values[0], values[1] / mat.values[1], values[2] / mat.values[2], values[3] / mat.values[3],
 		values[4] / mat.values[4], values[5] / mat.values[5], values[6] / mat.values[6], values[7] / mat.values[7],
 		values[8] / mat.values[8], values[9] / mat.values[9], values[10] / mat.values[10], values[11] / mat.values[11],
 		values[12] / mat.values[12], values[13] / mat.values[13], values[14] / mat.values[14], values[15] / mat.values[15]
 	);
 }
-Mat4f Mat4f::operator*(const Mat4f& mat) const
+Mat4d Mat4d::operator*(const Mat4d& mat) const
 {
-	return Mat4f(
+	return Mat4d(
 		values[0] * mat.values[0] + values[4] * mat.values[1] + values[8] * mat.values[2] + values[12] * mat.values[3],
 		values[1] * mat.values[0] + values[5] * mat.values[1] + values[9] * mat.values[2] + values[13] * mat.values[3],
 		values[2] * mat.values[0] + values[6] * mat.values[1] + values[10] * mat.values[2] + values[14] * mat.values[3],
@@ -102,43 +102,43 @@ Mat4f Mat4f::operator*(const Mat4f& mat) const
 		values[3] * mat.values[12] + values[7] * mat.values[13] + values[11] * mat.values[14] + values[15] * mat.values[15]
 	);
 }
-Mat4f Mat4f::operator+(float v) const
+Mat4d Mat4d::operator+(double v) const
 {
-	return Mat4f(
+	return Mat4d(
 		values[0] + v, values[1] + v, values[2] + v, values[3] + v,
 		values[4] + v, values[5] + v, values[6] + v, values[7] + v,
 		values[8] + v, values[9] + v, values[10] + v, values[11] + v,
 		values[12] + v, values[13] + v, values[14] + v, values[15] + v
 	);
 }
-Mat4f Mat4f::operator-(float v) const
+Mat4d Mat4d::operator-(double v) const
 {
-	return Mat4f(
+	return Mat4d(
 		values[0] - v, values[1] - v, values[2] - v, values[3] - v,
 		values[4] - v, values[5] - v, values[6] - v, values[7] - v,
 		values[8] - v, values[9] - v, values[10] - v, values[11] - v,
 		values[12] - v, values[13] - v, values[14] - v, values[15] - v
 	);
 }
-Mat4f Mat4f::operator*(float v) const
+Mat4d Mat4d::operator*(double v) const
 {
-	return Mat4f(
+	return Mat4d(
 		values[0] * v, values[1] * v, values[2] * v, values[3] * v,
 		values[4] * v, values[5] * v, values[6] * v, values[7] * v,
 		values[8] * v, values[9] * v, values[10] * v, values[11] * v,
 		values[12] * v, values[13] * v, values[14] * v, values[15] * v
 	);
 }
-Mat4f Mat4f::operator/(float v) const
+Mat4d Mat4d::operator/(double v) const
 {
-	return Mat4f(
+	return Mat4d(
 		values[0] / v, values[1] / v, values[2] / v, values[3] / v,
 		values[4] / v, values[5] / v, values[6] / v, values[7] / v,
 		values[8] / v, values[9] / v, values[10] / v, values[11] / v,
 		values[12] / v, values[13] / v, values[14] / v, values[15] / v
 	);
 }
-Mat4f& Mat4f::operator+=(const Mat4f& mat)
+Mat4d& Mat4d::operator+=(const Mat4d& mat)
 {
 	values[0] += mat.values[0]; values[1] += mat.values[1]; values[2] += mat.values[2]; values[3] += mat.values[3];
 	values[4] += mat.values[4]; values[5] += mat.values[5]; values[6] += mat.values[6]; values[7] += mat.values[7];
@@ -146,7 +146,7 @@ Mat4f& Mat4f::operator+=(const Mat4f& mat)
 	values[12] += mat.values[12]; values[13] += mat.values[13]; values[14] += mat.values[14]; values[15] += mat.values[15];
 	return *this;
 }
-Mat4f& Mat4f::operator-=(const Mat4f& mat)
+Mat4d& Mat4d::operator-=(const Mat4d& mat)
 {
 	values[0] -= mat.values[0]; values[1] -= mat.values[1]; values[2] -= mat.values[2]; values[3] -= mat.values[3];
 	values[4] -= mat.values[4]; values[5] -= mat.values[5]; values[6] -= mat.values[6]; values[7] -= mat.values[7];
@@ -154,7 +154,7 @@ Mat4f& Mat4f::operator-=(const Mat4f& mat)
 	values[12] -= mat.values[12]; values[13] -= mat.values[13]; values[14] -= mat.values[14]; values[15] -= mat.values[15];
 	return *this;
 }
-Mat4f& Mat4f::operator*=(const Mat4f& mat)
+Mat4d& Mat4d::operator*=(const Mat4d& mat)
 {
 	this->set(
 		values[0] * mat.values[0] + values[4] * mat.values[1] + values[8] * mat.values[2] + values[12] * mat.values[3],
@@ -176,7 +176,7 @@ Mat4f& Mat4f::operator*=(const Mat4f& mat)
 	);
 	return *this;
 }
-Mat4f& Mat4f::operator+=(float v)
+Mat4d& Mat4d::operator+=(double v)
 {
 	values[0] += v; values[1] += v; values[2] += v; values[3] += v;
 	values[4] += v; values[5] += v; values[6] += v; values[7] += v;
@@ -184,7 +184,7 @@ Mat4f& Mat4f::operator+=(float v)
 	values[12] += v; values[13] += v; values[14] += v; values[15] += v;
 	return *this;
 }
-Mat4f& Mat4f::operator-=(float v)
+Mat4d& Mat4d::operator-=(double v)
 {
 	values[0] -= v; values[1] -= v; values[2] -= v; values[3] -= v;
 	values[4] -= v; values[5] -= v; values[6] -= v; values[7] -= v;
@@ -192,7 +192,7 @@ Mat4f& Mat4f::operator-=(float v)
 	values[12] -= v; values[13] -= v; values[14] -= v; values[15] -= v;
 	return *this;
 }
-Mat4f& Mat4f::operator*=(float v)
+Mat4d& Mat4d::operator*=(double v)
 {
 	values[0] *= v; values[1] *= v; values[2] *= v; values[3] *= v;
 	values[4] *= v; values[5] *= v; values[6] *= v; values[7] *= v;
@@ -200,7 +200,7 @@ Mat4f& Mat4f::operator*=(float v)
 	values[12] *= v; values[13] *= v; values[14] *= v; values[15] *= v;
 	return *this;
 }
-Mat4f& Mat4f::operator/=(float v)
+Mat4d& Mat4d::operator/=(double v)
 {
 	values[0] /= v; values[1] /= v; values[2] /= v; values[3] /= v;
 	values[4] /= v; values[5] /= v; values[6] /= v; values[7] /= v;
@@ -208,7 +208,7 @@ Mat4f& Mat4f::operator/=(float v)
 	values[12] /= v; values[13] /= v; values[14] /= v; values[15] /= v;
 	return *this;
 }
-Vec4d Mat4f::operator*(const Vec4d& vec) const
+Vec4d Mat4d::operator*(const Vec4d& vec) const
 {
 	return Vec4d(
 		(double)(values[0] * vec.x + values[4] * vec.y + values[8] * vec.z + values[12] * vec.w),
@@ -217,7 +217,7 @@ Vec4d Mat4f::operator*(const Vec4d& vec) const
 		(double)(values[3] * vec.x + values[7] * vec.y + values[11] * vec.z + values[15] * vec.w)
 	);
 }
-Vec4f Mat4f::operator*(const Vec4f& vec) const
+Vec4f Mat4d::operator*(const Vec4f& vec) const
 {
 	return Vec4f(
 		values[0] * vec.x + values[4] * vec.y + values[8] * vec.z + values[12] * vec.w,
@@ -226,28 +226,28 @@ Vec4f Mat4f::operator*(const Vec4f& vec) const
 		values[3] * vec.x + values[7] * vec.y + values[11] * vec.z + values[15] * vec.w
 	);
 }
-bool Mat4f::operator==(const Mat4f& mat) const
+bool Mat4d::operator==(const Mat4d& mat) const
 {
 	return values[0] == mat.values[0] && values[1] == mat.values[1] && values[2] == mat.values[2] && values[3] == mat.values[3] &&
 		values[4] == mat.values[4] && values[5] == mat.values[5] && values[6] == mat.values[6] && values[7] == mat.values[7] &&
 		values[8] == mat.values[8] && values[9] == mat.values[9] && values[10] == mat.values[10] && values[11] == mat.values[11] &&
 		values[12] == mat.values[12] && values[13] == mat.values[13] && values[14] == mat.values[14] && values[15] == mat.values[15];
 }
-bool Mat4f::operator!=(const Mat4f& mat) const
+bool Mat4d::operator!=(const Mat4d& mat) const
 {
 	return values[0] != mat.values[0] || values[1] != mat.values[1] || values[2] != mat.values[2] || values[3] != mat.values[3] ||
 		values[4] != mat.values[4] || values[5] != mat.values[5] || values[6] != mat.values[6] || values[7] != mat.values[7] ||
 		values[8] != mat.values[8] || values[9] != mat.values[9] || values[10] != mat.values[10] || values[11] != mat.values[11] ||
 		values[12] != mat.values[12] || values[13] != mat.values[13] || values[14] != mat.values[14] || values[15] != mat.values[15];
 }
-bool Mat4f::operator==(float v) const
+bool Mat4d::operator==(double v) const
 {
 	return values[0] == v && values[1] == v && values[2] == v && values[3] == v &&
 		values[4] == v && values[5] == v && values[6] == v && values[7] == v &&
 		values[8] == v && values[9] == v && values[10] == v && values[11] == v &&
 		values[12] == v && values[13] == v && values[14] == v && values[15] == v;
 }
-bool Mat4f::operator!=(float v) const
+bool Mat4d::operator!=(double v) const
 {
 	return values[0] != v || values[1] != v || values[2] != v || values[3] != v ||
 		values[4] != v || values[5] != v || values[6] != v || values[7] != v ||
@@ -255,72 +255,72 @@ bool Mat4f::operator!=(float v) const
 		values[12] != v || values[13] != v || values[14] != v || values[15] != v;
 }
 
-bool Mat4f::isNan() const
+bool Mat4d::isNan() const
 {
-	return Float::isNan(values[0]) && Float::isNan(values[1]) && Float::isNan(values[2]) && Float::isNan(values[3]) &&
-		Float::isNan(values[4]) && Float::isNan(values[5]) && Float::isNan(values[6]) && Float::isNan(values[7]) &&
-		Float::isNan(values[8]) && Float::isNan(values[9]) && Float::isNan(values[10]) && Float::isNan(values[11]) &&
-		Float::isNan(values[12]) && Float::isNan(values[13]) && Float::isNan(values[14]) && Float::isNan(values[15]);
+	return Double::isNan(values[0]) && Double::isNan(values[1]) && Double::isNan(values[2]) && Double::isNan(values[3]) &&
+		Double::isNan(values[4]) && Double::isNan(values[5]) && Double::isNan(values[6]) && Double::isNan(values[7]) &&
+		Double::isNan(values[8]) && Double::isNan(values[9]) && Double::isNan(values[10]) && Double::isNan(values[11]) &&
+		Double::isNan(values[12]) && Double::isNan(values[13]) && Double::isNan(values[14]) && Double::isNan(values[15]);
 }
-bool Mat4f::isNotNan() const
+bool Mat4d::isNotNan() const
 {
-	return !Float::isNan(values[0]) || !Float::isNan(values[1]) || !Float::isNan(values[2]) || !Float::isNan(values[3]) ||
-		!Float::isNan(values[4]) || !Float::isNan(values[5]) || !Float::isNan(values[6]) || !Float::isNan(values[7]) ||
-		!Float::isNan(values[8]) || !Float::isNan(values[9]) || !Float::isNan(values[10]) || !Float::isNan(values[11]) ||
-		!Float::isNan(values[12]) || !Float::isNan(values[13]) || !Float::isNan(values[14]) || !Float::isNan(values[15]);
+	return !Double::isNan(values[0]) || !Double::isNan(values[1]) || !Double::isNan(values[2]) || !Double::isNan(values[3]) ||
+		!Double::isNan(values[4]) || !Double::isNan(values[5]) || !Double::isNan(values[6]) || !Double::isNan(values[7]) ||
+		!Double::isNan(values[8]) || !Double::isNan(values[9]) || !Double::isNan(values[10]) || !Double::isNan(values[11]) ||
+		!Double::isNan(values[12]) || !Double::isNan(values[13]) || !Double::isNan(values[14]) || !Double::isNan(values[15]);
 }
-bool Mat4f::hasNan() const
+bool Mat4d::hasNan() const
 {
-	return Float::isNan(values[0]) || Float::isNan(values[1]) || Float::isNan(values[2]) || Float::isNan(values[3]) ||
-		Float::isNan(values[4]) || Float::isNan(values[5]) || Float::isNan(values[6]) || Float::isNan(values[7]) ||
-		Float::isNan(values[8]) || Float::isNan(values[9]) || Float::isNan(values[10]) || Float::isNan(values[11]) ||
-		Float::isNan(values[12]) || Float::isNan(values[13]) || Float::isNan(values[14]) || Float::isNan(values[15]);
+	return Double::isNan(values[0]) || Double::isNan(values[1]) || Double::isNan(values[2]) || Double::isNan(values[3]) ||
+		Double::isNan(values[4]) || Double::isNan(values[5]) || Double::isNan(values[6]) || Double::isNan(values[7]) ||
+		Double::isNan(values[8]) || Double::isNan(values[9]) || Double::isNan(values[10]) || Double::isNan(values[11]) ||
+		Double::isNan(values[12]) || Double::isNan(values[13]) || Double::isNan(values[14]) || Double::isNan(values[15]);
 }
-bool Mat4f::hasNoNan() const
+bool Mat4d::hasNoNan() const
 {
-	return !Float::isNan(values[0]) && !Float::isNan(values[1]) && !Float::isNan(values[2]) && !Float::isNan(values[3]) &&
-		!Float::isNan(values[4]) && !Float::isNan(values[5]) && !Float::isNan(values[6]) && !Float::isNan(values[7]) &&
-		!Float::isNan(values[8]) && !Float::isNan(values[9]) && !Float::isNan(values[10]) && !Float::isNan(values[11]) &&
-		!Float::isNan(values[12]) && !Float::isNan(values[13]) && !Float::isNan(values[14]) && !Float::isNan(values[15]);
+	return !Double::isNan(values[0]) && !Double::isNan(values[1]) && !Double::isNan(values[2]) && !Double::isNan(values[3]) &&
+		!Double::isNan(values[4]) && !Double::isNan(values[5]) && !Double::isNan(values[6]) && !Double::isNan(values[7]) &&
+		!Double::isNan(values[8]) && !Double::isNan(values[9]) && !Double::isNan(values[10]) && !Double::isNan(values[11]) &&
+		!Double::isNan(values[12]) && !Double::isNan(values[13]) && !Double::isNan(values[14]) && !Double::isNan(values[15]);
 }
-bool Mat4f::equals(const Mat4f& mat, float epsilon) const
+bool Mat4d::equals(const Mat4d& mat, double epsilon) const
 {
-	return Float::equals(values[0], mat.values[0], epsilon) && Float::equals(values[1], mat.values[1], epsilon) && Float::equals(values[2], mat.values[2], epsilon) && Float::equals(values[3], mat.values[3], epsilon) &&
-		Float::equals(values[4], mat.values[4], epsilon) && Float::equals(values[5], mat.values[5], epsilon) && Float::equals(values[6], mat.values[6], epsilon) && Float::equals(values[7], mat.values[7], epsilon) &&
-		Float::equals(values[8], mat.values[8], epsilon) && Float::equals(values[9], mat.values[9], epsilon) && Float::equals(values[10], mat.values[10], epsilon) && Float::equals(values[11], mat.values[11], epsilon) &&
-		Float::equals(values[12], mat.values[12], epsilon) && Float::equals(values[13], mat.values[13], epsilon) && Float::equals(values[14], mat.values[14], epsilon) && Float::equals(values[15], mat.values[15], epsilon);
+	return Double::equals(values[0], mat.values[0], epsilon) && Double::equals(values[1], mat.values[1], epsilon) && Double::equals(values[2], mat.values[2], epsilon) && Double::equals(values[3], mat.values[3], epsilon) &&
+		Double::equals(values[4], mat.values[4], epsilon) && Double::equals(values[5], mat.values[5], epsilon) && Double::equals(values[6], mat.values[6], epsilon) && Double::equals(values[7], mat.values[7], epsilon) &&
+		Double::equals(values[8], mat.values[8], epsilon) && Double::equals(values[9], mat.values[9], epsilon) && Double::equals(values[10], mat.values[10], epsilon) && Double::equals(values[11], mat.values[11], epsilon) &&
+		Double::equals(values[12], mat.values[12], epsilon) && Double::equals(values[13], mat.values[13], epsilon) && Double::equals(values[14], mat.values[14], epsilon) && Double::equals(values[15], mat.values[15], epsilon);
 }
-bool Mat4f::notEquals(const Mat4f& mat, float epsilon) const
+bool Mat4d::notEquals(const Mat4d& mat, double epsilon) const
 {
-	return !Float::equals(values[0], mat.values[0], epsilon) || !Float::equals(values[1], mat.values[1], epsilon) || !Float::equals(values[2], mat.values[2], epsilon) || !Float::equals(values[3], mat.values[3], epsilon) ||
-		!Float::equals(values[4], mat.values[4], epsilon) || !Float::equals(values[5], mat.values[5], epsilon) || !Float::equals(values[6], mat.values[6], epsilon) || !Float::equals(values[7], mat.values[7], epsilon) ||
-		!Float::equals(values[8], mat.values[8], epsilon) || !Float::equals(values[9], mat.values[9], epsilon) || !Float::equals(values[10], mat.values[10], epsilon) || !Float::equals(values[11], mat.values[11], epsilon) ||
-		!Float::equals(values[12], mat.values[12], epsilon) || !Float::equals(values[13], mat.values[13], epsilon) || !Float::equals(values[14], mat.values[14], epsilon) || !Float::equals(values[15], mat.values[15], epsilon);
+	return !Double::equals(values[0], mat.values[0], epsilon) || !Double::equals(values[1], mat.values[1], epsilon) || !Double::equals(values[2], mat.values[2], epsilon) || !Double::equals(values[3], mat.values[3], epsilon) ||
+		!Double::equals(values[4], mat.values[4], epsilon) || !Double::equals(values[5], mat.values[5], epsilon) || !Double::equals(values[6], mat.values[6], epsilon) || !Double::equals(values[7], mat.values[7], epsilon) ||
+		!Double::equals(values[8], mat.values[8], epsilon) || !Double::equals(values[9], mat.values[9], epsilon) || !Double::equals(values[10], mat.values[10], epsilon) || !Double::equals(values[11], mat.values[11], epsilon) ||
+		!Double::equals(values[12], mat.values[12], epsilon) || !Double::equals(values[13], mat.values[13], epsilon) || !Double::equals(values[14], mat.values[14], epsilon) || !Double::equals(values[15], mat.values[15], epsilon);
 }
-bool Mat4f::equals(float c0, float c1, float c2, float c3, float c4, float c5, float c6, float c7, float c8, float c9, float c10, float c11, float c12, float c13, float c14, float c15, float epsilon) const
+bool Mat4d::equals(double c0, double c1, double c2, double c3, double c4, double c5, double c6, double c7, double c8, double c9, double c10, double c11, double c12, double c13, double c14, double c15, double epsilon) const
 {
-	return Float::equals(values[0], c0, epsilon) && Float::equals(values[1], c1, epsilon) && Float::equals(values[2], c2, epsilon) && Float::equals(values[3], c3, epsilon) &&
-		Float::equals(values[4], c4, epsilon) && Float::equals(values[5], c5, epsilon) && Float::equals(values[6], c6, epsilon) && Float::equals(values[7], c7, epsilon) &&
-		Float::equals(values[8], c8, epsilon) && Float::equals(values[9], c9, epsilon) && Float::equals(values[10], c10, epsilon) && Float::equals(values[11], c11, epsilon) &&
-		Float::equals(values[12], c12, epsilon) && Float::equals(values[13], c13, epsilon) && Float::equals(values[14], c14, epsilon) && Float::equals(values[15], c15, epsilon);
+	return Double::equals(values[0], c0, epsilon) && Double::equals(values[1], c1, epsilon) && Double::equals(values[2], c2, epsilon) && Double::equals(values[3], c3, epsilon) &&
+		Double::equals(values[4], c4, epsilon) && Double::equals(values[5], c5, epsilon) && Double::equals(values[6], c6, epsilon) && Double::equals(values[7], c7, epsilon) &&
+		Double::equals(values[8], c8, epsilon) && Double::equals(values[9], c9, epsilon) && Double::equals(values[10], c10, epsilon) && Double::equals(values[11], c11, epsilon) &&
+		Double::equals(values[12], c12, epsilon) && Double::equals(values[13], c13, epsilon) && Double::equals(values[14], c14, epsilon) && Double::equals(values[15], c15, epsilon);
 }
-bool Mat4f::notEquals(float c0, float c1, float c2, float c3, float c4, float c5, float c6, float c7, float c8, float c9, float c10, float c11, float c12, float c13, float c14, float c15, float epsilon) const
+bool Mat4d::notEquals(double c0, double c1, double c2, double c3, double c4, double c5, double c6, double c7, double c8, double c9, double c10, double c11, double c12, double c13, double c14, double c15, double epsilon) const
 {
-	return !Float::equals(values[0], c0, epsilon) || !Float::equals(values[1], c1, epsilon) || !Float::equals(values[2], c2, epsilon) || !Float::equals(values[3], c3, epsilon) ||
-		!Float::equals(values[4], c4, epsilon) || !Float::equals(values[5], c5, epsilon) || !Float::equals(values[6], c6, epsilon) || !Float::equals(values[7], c7, epsilon) ||
-		!Float::equals(values[8], c8, epsilon) || !Float::equals(values[9], c9, epsilon) || !Float::equals(values[10], c10, epsilon) || !Float::equals(values[11], c11, epsilon) ||
-		!Float::equals(values[12], c12, epsilon) || !Float::equals(values[13], c13, epsilon) || !Float::equals(values[14], c14, epsilon) || !Float::equals(values[15], c15, epsilon);
+	return !Double::equals(values[0], c0, epsilon) || !Double::equals(values[1], c1, epsilon) || !Double::equals(values[2], c2, epsilon) || !Double::equals(values[3], c3, epsilon) ||
+		!Double::equals(values[4], c4, epsilon) || !Double::equals(values[5], c5, epsilon) || !Double::equals(values[6], c6, epsilon) || !Double::equals(values[7], c7, epsilon) ||
+		!Double::equals(values[8], c8, epsilon) || !Double::equals(values[9], c9, epsilon) || !Double::equals(values[10], c10, epsilon) || !Double::equals(values[11], c11, epsilon) ||
+		!Double::equals(values[12], c12, epsilon) || !Double::equals(values[13], c13, epsilon) || !Double::equals(values[14], c14, epsilon) || !Double::equals(values[15], c15, epsilon);
 }
 
-const float& Mat4f::at(int column_index, int row_index) const
+const double& Mat4d::at(int column_index, int row_index) const
 {
 	return values[column_index * 4 + row_index];
 }
-float& Mat4f::at(int column_index, int row_index)
+double& Mat4d::at(int column_index, int row_index)
 {
 	return values[column_index * 4 + row_index];
 }
-Mat4f& Mat4f::set(float c0, float c1, float c2, float c3, float c4, float c5, float c6, float c7, float c8, float c9, float c10, float c11, float c12, float c13, float c14, float c15)
+Mat4d& Mat4d::set(double c0, double c1, double c2, double c3, double c4, double c5, double c6, double c7, double c8, double c9, double c10, double c11, double c12, double c13, double c14, double c15)
 {
 	values[0] = c0; values[1] = c1; values[2] = c2; values[3] = c3;
 	values[4] = c4; values[5] = c5; values[6] = c6; values[7] = c7;
@@ -328,7 +328,7 @@ Mat4f& Mat4f::set(float c0, float c1, float c2, float c3, float c4, float c5, fl
 	values[12] = c12; values[13] = c13; values[14] = c14; values[15] = c15;
 	return *this;
 }
-Mat4f& Mat4f::set(const float pv[16])
+Mat4d& Mat4d::set(const double pv[16])
 {
 	values[0] = pv[0]; values[1] = pv[1]; values[2] = pv[2]; values[3] = pv[3];
 	values[4] = pv[4]; values[5] = pv[5]; values[6] = pv[6]; values[7] = pv[7];
@@ -336,13 +336,13 @@ Mat4f& Mat4f::set(const float pv[16])
 	values[12] = pv[12]; values[13] = pv[13]; values[14] = pv[14]; values[15] = pv[15];
 	return *this;
 }
-void Mat4f::setValue(int column_index, int row_index, float v)
+void Mat4d::setValue(int column_index, int row_index, double v)
 {
 	values[column_index * 4 + row_index] = v;
 }
-Mat4f Mat4f::transpose() const
+Mat4d Mat4d::transpose() const
 {
-	return Mat4f(
+	return Mat4d(
 		values[0], values[4], values[8], values[12],
 		values[1], values[5], values[9], values[13],
 		values[2], values[6], values[10], values[14],
@@ -350,38 +350,38 @@ Mat4f Mat4f::transpose() const
 	);
 }
 
-Mat4f Mat4f::filled(float v)
+Mat4d Mat4d::filled(double v)
 {
-	return Mat4f(
+	return Mat4d(
 		v, v, v, v,
 		v, v, v, v,
 		v, v, v, v,
 		v, v, v, v
 	);
 }
-const Mat4f Mat4f::Identity(
-	1.0f, 0.0f, 0.0f, 0.0f, 
-	0.0f, 1.0f, 0.0f, 0.0f,
-	0.0f, 0.0f, 1.0f, 0.0f,
-	0.0f, 0.0f, 0.0f, 1.0f
+const Mat4d Mat4d::Identity(
+	1.0, 0.0, 0.0, 0.0, 
+	0.0, 1.0, 0.0, 0.0,
+	0.0, 0.0, 1.0, 0.0,
+	0.0, 0.0, 0.0, 1.0
 );
-const Mat4f Mat4f::Zero(
-	0.0f, 0.0f, 0.0f, 0.0f, 
-	0.0f, 0.0f, 0.0f, 0.0f,
-	0.0f, 0.0f, 0.0f, 0.0f,
-	0.0f, 0.0f, 0.0f, 0.0f
+const Mat4d Mat4d::Zero(
+	0.0, 0.0, 0.0, 0.0, 
+	0.0, 0.0, 0.0, 0.0,
+	0.0, 0.0, 0.0, 0.0,
+	0.0, 0.0, 0.0, 0.0
 );
-const Mat4f Mat4f::Nan(
-	Float::Nan, Float::Nan, Float::Nan, Float::Nan, 
-	Float::Nan, Float::Nan, Float::Nan, Float::Nan,
-	Float::Nan, Float::Nan, Float::Nan, Float::Nan,
-	Float::Nan, Float::Nan, Float::Nan, Float::Nan
+const Mat4d Mat4d::Nan(
+	Double::Nan, Double::Nan, Double::Nan, Double::Nan, 
+	Double::Nan, Double::Nan, Double::Nan, Double::Nan,
+	Double::Nan, Double::Nan, Double::Nan, Double::Nan,
+	Double::Nan, Double::Nan, Double::Nan, Double::Nan
 );
-Mat4f Mat4f::Default(
-	0.0f, 0.0f, 0.0f, 0.0f, 
-	0.0f, 0.0f, 0.0f, 0.0f,
-	0.0f, 0.0f, 0.0f, 0.0f,
-	0.0f, 0.0f, 0.0f, 0.0f
+Mat4d Mat4d::Default(
+	0.0, 0.0, 0.0, 0.0, 
+	0.0, 0.0, 0.0, 0.0,
+	0.0, 0.0, 0.0, 0.0,
+	0.0, 0.0, 0.0, 0.0
 );
 
 } // namespace axl.math
