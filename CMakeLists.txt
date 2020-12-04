@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.10 )
 
-project( axl.math VERSION 0.12.18 DESCRIPTION "A simple C++ math library primarily designed for game engines." )
+project( axl.math VERSION 0.13.19 DESCRIPTION "A simple C++ math library primarily designed for game engines." )
 
 # Configure
 set( LIBAXLMATH_SUFFIX "" )
@@ -85,6 +85,7 @@ if( INSTALL_HEADERS AND LIBAXLMATH_INSTALL_HEADERS )
 		"include/axl.math/mat/Mat2d.hpp"
 		"include/axl.math/mat/Mat3f.hpp"
 		"include/axl.math/mat/Mat3d.hpp"
+		"include/axl.math/mat/Mat4f.hpp"
 		DESTINATION "${HEADERS_INSTALL_DIR}/axl.math/mat"
 	)
 endif()

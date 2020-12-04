@@ -4,7 +4,7 @@ A simple C++ math library primarily designed for game engines.
 
 ## Versions
 
-- Latest: 0.12.19 alpha
+- Latest: 0.13.19 alpha
 
 ## library headers
 
@@ -31,3 +31,4 @@ A simple C++ math library primarily designed for game engines.
   - [`axl.math/mat/Mat2d.hpp`](/include/axl.math/mat/Mat2d.hpp) - *A 2x2 double precision floating point matrix.*
   - [`axl.math/mat/Mat3f.hpp`](/include/axl.math/mat/Mat3f.hpp) - *A 3x3 single precision floating point matrix.*
   - [`axl.math/mat/Mat3d.hpp`](/include/axl.math/mat/Mat3d.hpp) - *A 3x3 double precision floating point matrix.*
+  - [`axl.math/mat/Mat4f.hpp`](/include/axl.math/mat/Mat4f.hpp) - *A 4x4 single precision floating point matrix.*
