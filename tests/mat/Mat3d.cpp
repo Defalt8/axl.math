@@ -69,7 +69,15 @@ int main(int argc, char *argv[])
 	}
 	{ // square bracket operators
 		const Mat3d mat(3.1415, 0.6734, 3.45, 0.44, 45.67, 0.5, 1.2, 3.333, 1.09);
-		Assertv(mat.equals(3.1415, 0.6734, 3.45, 0.44, 45.67, 0.5, 1.2, 3.333, 1.09), verbose);
+		Assertv(Double::equals(mat[0][0], 3.1415, 0.000001), verbose);
+		Assertv(Double::equals(mat[0][1], 0.6734, 0.000001), verbose);
+		Assertv(Double::equals(mat[0][2], 3.45, 0.000001), verbose);
+		Assertv(Double::equals(mat[1][0], 0.44, 0.000001), verbose);
+		Assertv(Double::equals(mat[1][1], 45.67, 0.000001), verbose);
+		Assertv(Double::equals(mat[1][2], 0.5, 0.000001), verbose);
+		Assertv(Double::equals(mat[2][0], 1.2, 0.000001), verbose);
+		Assertv(Double::equals(mat[2][1], 3.333, 0.000001), verbose);
+		Assertv(Double::equals(mat[2][2], 1.09, 0.000001), verbose);
 	}
 	{ // equality operators
 		Assertv(Mat3d::Zero == 0.0, verbose);
@@ -231,12 +239,19 @@ int main(int argc, char *argv[])
 		}
 		{ // matrix - vector multiplication
 			const Mat3d mat(3.0, 1.344, 0.44, 12220.5, 45.67, 0.5, 1.2, 3.333, 1.09);
-			const Vec3f vec(3.4f, 0.455f, 9.55f);
-			const Vec3f pvec = mat * vec;
+			const Vec3d vec(3.4, 0.455, 9.55);
+			const Vec3f fvec(3.4f, 0.455f, 9.55f);
+			const Vec3d pvec = mat * vec;
+			const Vec3f pfvec = mat * fvec;
 			Assertv(pvec.equals(
-				(float)(mat.at(0,0) * vec.x + mat.at(1,0) * vec.y + mat.at(2,0) * vec.z),
-				(float)(mat.at(0,1) * vec.x + mat.at(1,1) * vec.y + mat.at(2,1) * vec.z),
-				(float)(mat.at(0,2) * vec.x + mat.at(1,2) * vec.y + mat.at(2,2) * vec.z)
+				(double)(mat.at(0,0) * vec.x + mat.at(1,0) * vec.y + mat.at(2,0) * vec.z),
+				(double)(mat.at(0,1) * vec.x + mat.at(1,1) * vec.y + mat.at(2,1) * vec.z),
+				(double)(mat.at(0,2) * vec.x + mat.at(1,2) * vec.y + mat.at(2,2) * vec.z)
+			), verbose);
+			Assertv(pfvec.equals(
+				(float)(mat.at(0,0) * fvec.x + mat.at(1,0) * fvec.y + mat.at(2,0) * fvec.z),
+				(float)(mat.at(0,1) * fvec.x + mat.at(1,1) * fvec.y + mat.at(2,1) * fvec.z),
+				(float)(mat.at(0,2) * fvec.x + mat.at(1,2) * fvec.y + mat.at(2,2) * fvec.z)
 			), verbose);
 		}
 	}

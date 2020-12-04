@@ -69,7 +69,15 @@ int main(int argc, char *argv[])
 	}
 	{ // square bracket operators
 		const Mat3f mat(3.1415f, 0.6734f, 3.45f, 0.44f, 45.67f, 0.5f, 1.2f, 3.333f, 1.09f);
-		Assertv(mat.equals(3.1415f, 0.6734f, 3.45f, 0.44f, 45.67f, 0.5f, 1.2f, 3.333f, 1.09f), verbose);
+		Assertv(Float::equals(mat[0][0], 3.1415f, 0.0001f), verbose);
+		Assertv(Float::equals(mat[0][1], 0.6734f, 0.0001f), verbose);
+		Assertv(Float::equals(mat[0][2], 3.45f, 0.0001f), verbose);
+		Assertv(Float::equals(mat[1][0], 0.44f, 0.0001f), verbose);
+		Assertv(Float::equals(mat[1][1], 45.67f, 0.0001f), verbose);
+		Assertv(Float::equals(mat[1][2], 0.5f, 0.0001f), verbose);
+		Assertv(Float::equals(mat[2][0], 1.2f, 0.0001f), verbose);
+		Assertv(Float::equals(mat[2][1], 3.333f, 0.0001f), verbose);
+		Assertv(Float::equals(mat[2][2], 1.09f, 0.0001f), verbose);
 	}
 	{ // equality operators
 		Assertv(Mat3f::Zero == 0.0f, verbose);
@@ -232,11 +240,18 @@ int main(int argc, char *argv[])
 		{ // matrix - vector multiplication
 			const Mat3f mat(3.0f, 1.344f, 0.44f, 12220.5f, 45.67f, 0.5f, 1.2f, 3.333f, 1.09f);
 			const Vec3f vec(3.4f, 0.455f, 9.55f);
+			const Vec3d dvec(3.4, 0.455, 9.55);
 			const Vec3f pvec = mat * vec;
+			const Vec3d pdvec = mat * dvec;
 			Assertv(pvec.equals(
-				mat.at(0,0) * vec.x + mat.at(1,0) * vec.y + mat.at(2,0) * vec.z,
-				mat.at(0,1) * vec.x + mat.at(1,1) * vec.y + mat.at(2,1) * vec.z,
-				mat.at(0,2) * vec.x + mat.at(1,2) * vec.y + mat.at(2,2) * vec.z
+				(float)mat.at(0,0) * vec.x + mat.at(1,0) * vec.y + mat.at(2,0) * vec.z,
+				(float)mat.at(0,1) * vec.x + mat.at(1,1) * vec.y + mat.at(2,1) * vec.z,
+				(float)mat.at(0,2) * vec.x + mat.at(1,2) * vec.y + mat.at(2,2) * vec.z
+			), verbose);
+			Assertv(pdvec.equals(
+				(double)mat.at(0,0) * dvec.x + mat.at(1,0) * dvec.y + mat.at(2,0) * dvec.z,
+				(double)mat.at(0,1) * dvec.x + mat.at(1,1) * dvec.y + mat.at(2,1) * dvec.z,
+				(double)mat.at(0,2) * dvec.x + mat.at(1,2) * dvec.y + mat.at(2,2) * dvec.z
 			), verbose);
 		}
 	}

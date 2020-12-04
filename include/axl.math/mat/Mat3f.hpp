@@ -37,6 +37,7 @@ class AXLMATHCXXAPI Mat3f
 		Mat3f& operator*=(float v);
 		Mat3f& operator/=(float v);
 		Vec3f operator*(const Vec3f& vec) const;
+		Vec3d operator*(const Vec3d& vec) const;
 		bool operator==(const Mat3f& mat) const;
 		bool operator!=(const Mat3f& mat) const;
 		bool operator==(float v) const;

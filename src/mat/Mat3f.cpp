@@ -303,6 +303,15 @@ Vec3f Mat3f::operator*(const Vec3f& vec) const
 	);
 }
 
+Vec3d Mat3f::operator*(const Vec3d& vec) const
+{
+	return Vec3d(
+		(double)(values[0]*vec.x + values[3]*vec.y + values[6]*vec.z),
+		(double)(values[1]*vec.x + values[4]*vec.y + values[7]*vec.z),
+		(double)(values[2]*vec.x + values[5]*vec.y + values[8]*vec.z)
+	);
+}
+
 bool Mat3f::operator==(const Mat3f& mat) const
 {
 	return (
