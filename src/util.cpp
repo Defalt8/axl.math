@@ -28,7 +28,7 @@ double map(double value, double from_min, double from_max, double to_min, double
 
 float round(float value)
 {
-	return std::roundf(value);
+	return std::round(value);
 }
 
 double round(double value)
@@ -38,7 +38,7 @@ double round(double value)
 
 float floor(float value)
 {
-	return std::floorf(value);
+	return std::floor(value);
 }
 
 double floor(double value)
@@ -48,7 +48,7 @@ double floor(double value)
 
 float ceil(float value)
 {
-	return std::ceilf(value);
+	return std::ceil(value);
 }
 
 double ceil(double value)

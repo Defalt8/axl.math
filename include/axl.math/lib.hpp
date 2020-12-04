@@ -22,7 +22,7 @@
 #	if _MSC_VER && _MSC_VER < 1900 // less than MSVC++ 2015
 #		define AXLMATHCONSTMODIFIER const static
 #	else
-#		define AXLMATHCONSTMODIFIER AXLGLWCONSTMODIFIER
+#		define AXLMATHCONSTMODIFIER constexpr
 #	endif
 #else
 #	define AXLMATHCONSTMODIFIER const static
