@@ -18,6 +18,16 @@
 #	define AXLMATHCXXAPI
 #endif
 
+#if __cplusplus >= 201103L
+#	if _MSC_VER && _MSC_VER < 1900 // less than MSVC++ 2015
+#		define AXLMATHCONSTMODIFIER const static
+#	else
+#		define AXLMATHCONSTMODIFIER AXLGLWCONSTMODIFIER
+#	endif
+#else
+#	define AXLMATHCONSTMODIFIER const static
+#endif
+
 namespace axl {
 namespace math {
 namespace lib {

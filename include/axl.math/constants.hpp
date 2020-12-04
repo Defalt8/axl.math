@@ -1,11 +1,5 @@
 #pragma once
-#if _MSC_VER < 1900 // less than MSVC++ 2015
-#define AXLMATHCONSTMODIFIER const static
-#elif __cplusplus >= 201103L
-#define AXLMATHCONSTMODIFIER constexpr
-#else
-#define AXLMATHCONSTMODIFIER const static
-#endif
+#include "lib.hpp"
 
 namespace axl {
 namespace math {
