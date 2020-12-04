@@ -6,8 +6,8 @@ namespace math {
 namespace Float
 {
 
-volatile float _zero = 0.0f;
-const float Nan = nanf("");
+volatile float _zero = 0.0f, __zero = 0.0f;
+const float Nan =  _zero / __zero;
 const float PosInf = 1.0f / _zero;
 const float NegInf = -PosInf;
 

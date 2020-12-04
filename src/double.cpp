@@ -6,8 +6,8 @@ namespace math {
 namespace Double
 {
 
-volatile double _zero = 0.0;
-const double Nan = nan("");
+volatile double _zero = 0.0, __zero = 0.0;
+const double Nan = _zero / __zero;
 const double PosInf = 1.0 / _zero;
 const double NegInf = -PosInf;
 
