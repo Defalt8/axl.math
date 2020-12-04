@@ -4,7 +4,7 @@ A simple C++ math library primarily designed for game engines.
 
 ## Versions
 
-- Latest: 0.11.18 alpha
+- Latest: 0.12.18 alpha
 
 ## library headers
 
@@ -14,6 +14,7 @@ A simple C++ math library primarily designed for game engines.
 - [`axl.math/rules.hpp`](/include/axl.math/rules.hpp) - *Mathematical rules such as axis orientation, ...*
 - [`axl.math/double.hpp`](/include/axl.math/double.hpp) - *Double floating point number comparison and checking functions.*
 - [`axl.math/float.hpp`](/include/axl.math/float.hpp) - *Single floating point number comparison and checking functions.*
+- [`axl.math/util.hpp`](/include/axl.math/util.hpp) - *Utility functions.*
 - **Vectors**
   - [`axl.math/vec/Vec2i.hpp`](/include/axl.math/vec/Vec2i.hpp) - *A 2D integer vector.*
   - [`axl.math/vec/Vec2f.hpp`](/include/axl.math/vec/Vec2f.hpp) - *A 2D single precision floating point vector.*
