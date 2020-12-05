@@ -434,7 +434,7 @@ Vec3d operator/(double v, const Vec3d& vec)
 	return Vec3d(v / vec.x, v / vec.y, v / vec.z);
 }
 
-
+Vec3d Vec3d::filled(double v) { return Vec3d(v, v, v); }
 const Vec3d Vec3d::Zero(0.0, 0.0, 0.0);
 const Vec3d Vec3d::Identity(1.0, 1.0, 1.0);
 Vec3d Vec3d::Default(0.0, 0.0, 0.0);

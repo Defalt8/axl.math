@@ -212,6 +212,8 @@ inline Vec4<T> operator/(T v, const Vec4<T>& vec)
 
 
 template <typename T>
+Vec4<T> Vec4<T>::filled(T v) { return Vec4<T>(v, v, v, v); }
+template <typename T>
 const Vec4<T> Vec4<T>::Zero((T)0, (T)0, (T)0, (T)0);
 template <typename T>
 const Vec4<T> Vec4<T>::Identity((T)1, (T)1, (T)1, (T)1);

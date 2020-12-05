@@ -48,6 +48,7 @@ class Vec2
 		Vec2<T>& set(T value);
 		Vec2<T>& set(T x, T y);
 	public:
+		static Vec2<T> filled(T v);
 		const static Vec2<T> Zero;
 		const static Vec2<T> Identity;
 		static Vec2<T> Default;

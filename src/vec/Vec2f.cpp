@@ -306,7 +306,7 @@ Vec2f operator/(float v, const Vec2f& vec)
 	return Vec2f(v / vec.x, v / vec.y);
 }
 
-
+Vec2f Vec2f::filled(float v) { return Vec2f(v, v); }
 const Vec2f Vec2f::Zero(0.0f, 0.0f);
 const Vec2f Vec2f::Identity(1.0f, 1.0f);
 Vec2f Vec2f::Default(0.0f, 0.0f);

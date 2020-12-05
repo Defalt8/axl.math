@@ -41,6 +41,7 @@ class AXLMATHCXXAPI Vec2i
 		Vec2i& set(int value);
 		Vec2i& set(int x, int y);
 	public:
+		static Vec2i filled(int v);
 		const static Vec2i Zero;
 		const static Vec2i Identity;
 		static Vec2i Default;

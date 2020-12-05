@@ -53,6 +53,7 @@ class Vec3
 		Vec3<T>& set(T x, T y);
 		Vec3<T>& set(T x, T y, T z);
 	public:
+		static Vec3<T> filled(T v);
 		const static Vec3<T> Zero;
 		const static Vec3<T> Identity;
 		static Vec3<T> Default;

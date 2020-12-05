@@ -65,6 +65,7 @@ class AXLMATHCXXAPI Vec2f
 		Vec2f& rotate(float theta_z, Rules::Axis axis_rule = DefaultAxisRule);
 		Vec2f rotated(float theta_z, Rules::Axis axis_rule = DefaultAxisRule) const;
 	public:
+		static Vec2f filled(float v);
 		const static Vec2f Zero;
 		const static Vec2f Identity;
 		static Vec2f Default;

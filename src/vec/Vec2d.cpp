@@ -305,7 +305,7 @@ Vec2d operator/(double v, const Vec2d& vec)
 	return Vec2d(v / vec.x, v / vec.y);
 }
 
-
+Vec2d Vec2d::filled(double v) { return Vec2d(v, v); }
 const Vec2d Vec2d::Zero(0.0, 0.0);
 const Vec2d Vec2d::Identity(1.0, 1.0);
 Vec2d Vec2d::Default(0.0, 0.0);

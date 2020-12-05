@@ -74,6 +74,7 @@ class AXLMATHCXXAPI Vec3f
 		Vec3f rotatedY(float angle_y, Rules::Axis axis_rule = DefaultAxisRule);
 		Vec3f rotatedZ(float angle_z, Rules::Axis axis_rule = DefaultAxisRule);
 	public:
+		static Vec3f filled(float v);
 		const static Vec3f Zero;
 		const static Vec3f Identity;
 		static Vec3f Default;

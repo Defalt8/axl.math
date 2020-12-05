@@ -65,6 +65,7 @@ class AXLMATHCXXAPI Vec4f
 		Vec4f translated(float delta_x, float delta_y, float delta_z, float delta_w) const;
 		Vec4f translated(const Vec4f& delta) const;
 	public:
+		static Vec4f filled(float v);
 		const static Vec4f Zero;
 		const static Vec4f Identity;
 		static Vec4f Default;

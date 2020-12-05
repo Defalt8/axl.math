@@ -65,6 +65,7 @@ class AXLMATHCXXAPI Vec4d
 		Vec4d translated(double delta_x, double delta_y, double delta_z, double delta_w) const;
 		Vec4d translated(const Vec4d& delta) const;
 	public:
+		static Vec4d filled(double v);
 		const static Vec4d Zero;
 		const static Vec4d Identity;
 		static Vec4d Default;

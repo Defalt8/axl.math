@@ -57,6 +57,7 @@ class Vec4
 		Vec4<T>& set(T x, T y, T z);
 		Vec4<T>& set(T x, T y, T z, T w);
 	public:
+		static Vec4<T> filled(T v);
 		const static Vec4<T> Zero;
 		const static Vec4<T> Identity;
 		static Vec4<T> Default;

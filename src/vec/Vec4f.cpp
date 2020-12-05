@@ -288,7 +288,7 @@ Vec4f operator/(float v, const Vec4f& vec)
 	return Vec4f(v / vec.x, v / vec.y, v / vec.z, v / vec.w);
 }
 
-
+Vec4f Vec4f::filled(float v) { return Vec4f(v, v, v, v); }
 const Vec4f Vec4f::Zero(0.0f, 0.0f, 0.0f, 0.0f);
 const Vec4f Vec4f::Identity(1.0f, 1.0f, 1.0f, 1.0f);
 Vec4f Vec4f::Default(0.0f, 0.0f, 0.0f, 0.0f);

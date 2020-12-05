@@ -201,6 +201,8 @@ inline Vec3<T> operator/(T v, const Vec3<T>& vec)
 }
 
 template <typename T>
+Vec3<T> Vec3<T>::filled(T v) { return Vec3<T>(v, v, v); }
+template <typename T>
 const Vec3<T> Vec3<T>::Zero((T)0, (T)0, (T)0);
 template <typename T>
 const Vec3<T> Vec3<T>::Identity((T)1, (T)1, (T)1);

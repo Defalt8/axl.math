@@ -434,7 +434,7 @@ Vec3f operator/(float v, const Vec3f& vec)
 	return Vec3f(v / vec.x, v / vec.y, v / vec.z);
 }
 
-
+Vec3f Vec3f::filled(float v) { return Vec3f(v, v, v); }
 const Vec3f Vec3f::Zero(0.0f, 0.0f, 0.0f);
 const Vec3f Vec3f::Identity(1.0f, 1.0f, 1.0f);
 Vec3f Vec3f::Default(0.0f, 0.0f, 0.0f);

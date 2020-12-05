@@ -181,7 +181,7 @@ Vec2i operator/(int v, const Vec2i& vec)
 	return Vec2i(v / vec.x,v / vec.y);
 }
 
-
+Vec2i Vec2i::filled(int v) { return Vec2i(v, v); }
 const Vec2i Vec2i::Zero(0, 0);
 const Vec2i Vec2i::Identity(1, 1);
 Vec2i Vec2i::Default(0, 0);
