@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
 		Assertv((1 == Vec3<int>::Identity.x), verbose);
 		Assertv((1 == Vec3<int>::Identity.y), verbose);
 		Assertv((1 == Vec3<int>::Identity.z), verbose);
+		Assertv(Vec3<int>::filled(69).equals(69, 69, 69), verbose);
 		Assertv(Vec3<int>::Default.equals(0, 0, 0), verbose);
 	}
 	{ // constructors

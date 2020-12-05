@@ -220,10 +220,10 @@ Vec4d Mat4d::operator*(const Vec4d& vec) const
 Vec4f Mat4d::operator*(const Vec4f& vec) const
 {
 	return Vec4f(
-		values[0] * vec.x + values[4] * vec.y + values[8] * vec.z + values[12] * vec.w,
-		values[1] * vec.x + values[5] * vec.y + values[9] * vec.z + values[13] * vec.w,
-		values[2] * vec.x + values[6] * vec.y + values[10] * vec.z + values[14] * vec.w,
-		values[3] * vec.x + values[7] * vec.y + values[11] * vec.z + values[15] * vec.w
+		(float)values[0] * vec.x + values[4] * vec.y + values[8] * vec.z + values[12] * vec.w,
+		(float)values[1] * vec.x + values[5] * vec.y + values[9] * vec.z + values[13] * vec.w,
+		(float)values[2] * vec.x + values[6] * vec.y + values[10] * vec.z + values[14] * vec.w,
+		(float)values[3] * vec.x + values[7] * vec.y + values[11] * vec.z + values[15] * vec.w
 	);
 }
 bool Mat4d::operator==(const Mat4d& mat) const

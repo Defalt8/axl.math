@@ -18,6 +18,7 @@ int main(int argc, char *argv[])
 		Assertv((0 ==  Vec2i::Zero.y), verbose);
 		Assertv((1 ==  Vec2i::Identity.x), verbose);
 		Assertv((1 ==  Vec2i::Identity.y), verbose);
+		Assertv(Vec2i::filled(69).equals(69, 69), verbose);
 		Assertv(Vec2i::Default.equals(0, 0), verbose);
 	}
 	{ // constructors

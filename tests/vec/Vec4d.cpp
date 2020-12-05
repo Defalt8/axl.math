@@ -21,6 +21,7 @@ int main(int argc, char *argv[])
 		Assertv(Double::equals(1.0, Vec4d::Identity.x, 0.000001), verbose);
 		Assertv(Double::equals(1.0, Vec4d::Identity.y, 0.000001), verbose);
 		Assertv(Double::equals(1.0, Vec4d::Identity.z, 0.000001), verbose);
+		Assertv(Vec4d::filled(69.96).equals(69.96, 69.96, 69.96, 69.96), verbose);
 		Assertv(Vec4d::Default.equals(0.0, 0.0, 0.0, 0.0), verbose);
 	}
 	{ // constructors

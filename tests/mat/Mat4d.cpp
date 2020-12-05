@@ -249,7 +249,7 @@ int main(int argc, char *argv[])
 		}
 		{ // matrix - vector multiplication
 			const Mat4d mat(3.0, 1.344, 0.44, 12220.5, 45.67, 0.5, 1.2, 3.333, 1.09, 12.9, 45.6, 76.77, 90.0, 55.5, 22.2, 33.3);
-			const Vec4f fvec(3.4, 0.455, 9.55, 6.5);
+			const Vec4f fvec(3.4f, 0.455f, 9.55f, 6.5f);
 			const Vec4d dvec(3.4, 0.455, 9.55, 6.5);
 			const Vec4f pfvec = mat * fvec;
 			const Vec4d pdvec = mat * dvec;

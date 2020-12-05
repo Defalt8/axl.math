@@ -26,6 +26,7 @@ int main(int argc, char *argv[])
 		Assertv(Double::equals(1.0, Vec3d::Identity.x), verbose);
 		Assertv(Double::equals(1.0, Vec3d::Identity.y), verbose);
 		Assertv(Double::equals(1.0, Vec3d::Identity.z), verbose);
+		Assertv(Vec3d::filled(69.96).equals(69.96, 69.96, 69.96), verbose);
 		Assertv(Vec3d::Default.equals(0.0, 0.0, 0.0), verbose);
 	}
 	{ // constructors

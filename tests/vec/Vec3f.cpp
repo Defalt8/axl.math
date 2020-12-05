@@ -26,6 +26,7 @@ int main(int argc, char *argv[])
 		Assertv(Float::equals(1.0f, Vec3f::Identity.x), verbose);
 		Assertv(Float::equals(1.0f, Vec3f::Identity.y), verbose);
 		Assertv(Float::equals(1.0f, Vec3f::Identity.z), verbose);
+		Assertv(Vec3f::filled(69.96f).equals(69.96f, 69.96f, 69.96f), verbose);
 		Assertv(Vec3f::Default.equals(0.0f, 0.0f, 0.0f, 0.0001f), verbose);
 	}
 	{ // constructors
