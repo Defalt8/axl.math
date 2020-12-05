@@ -38,3 +38,36 @@ A simple C++ math library primarily designed for game engines.
   - [`axl.math/mat/transform2.hpp`](/include/axl.math/mat/transform2.hpp) - *Transforming functions that return a 2x2 transform matrix.*
   - [`axl.math/mat/transform3.hpp`](/include/axl.math/mat/transform3.hpp) - *Transforming functions that return a 3x3 transform matrix.*
   - [`axl.math/mat/transform4.hpp`](/include/axl.math/mat/transform4.hpp) - *Transforming functions that return a 4x4 transform matrix.*
+
+## Requirements
+
+- CMake 3.10 or above.
+- Any C and C++ SDK that can be accessed through a command line. (MSVC, MinGW) If you have Visual Studio or CodeBlocks then you are set.
+
+## How to get started
+
+- Clone this repo into a directory and execute these commands to build the library.
+  - git clone https://github.com/defalt8/axl.math.git
+  - cd axl.math
+  - mkdir out\\build
+  - cd out\\build
+  - cmake -B . -S ../../ (or with a generator of your choosing.) cmake -G \<generator\> -B . -S ../../
+  - cmake --build .
+
+## CMake Options
+
+Default values are marked **bold**.
+
+- Library specific options
+  - LIBAXLMATH_TYPE=[**STATIC**|SHARED]
+  - LIBAXLMATH_BUILD_TESTS=[**ON**|OFF]
+  - LIBAXLMATH_BUILD_TOOLS=[**ON**|OFF]
+  - LIBAXLMATH_INSTALL_HEADERS=[**ON**|OFF]
+  - LIBAXLMATH_INSTALL_ARCHIVES=[**ON**|OFF]
+  - LIBAXLMATH_INSTALL_BINARIES=[**ON**|OFF]
+- General options
+  - BUILD_TESTS=[ON|**OFF**]
+  - BUILD_TOOLS=[ON|**OFF**]
+  - INSTALL_HEADERS=[**ON**|OFF]
+  - INSTALL_ARCHIVES=[**ON**|OFF]
+  - INSTALL_BINARIES=[**ON**|OFF]
