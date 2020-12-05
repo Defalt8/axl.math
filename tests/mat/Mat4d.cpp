@@ -107,7 +107,7 @@ int main(int argc, char *argv[])
 			Assertv(mat1.equals(3.1415, 0.6734, 3.45, 0.44, 45.67, 0.5, 1.2, 3.333, 1.09, 12.9, 45.6, 76.77, 90.0, 55.5, 22.2, 33.3, 0.000001), verbose);
 			const Mat4d mat2 = mat;
 			Assertv(mat2.equals(3.1415, 0.6734, 3.45, 0.44, 45.67, 0.5, 1.2, 3.333, 1.09, 12.9, 45.6, 76.77, 90.0, 55.5, 22.2, 33.3, 0.000001), verbose);
-			Assertv(Mat4d(Mat4f(3.1415, 0.6734, 3.45, 0.44, 45.67, 0.5, 1.2, 3.333, 1.09, 12.9, 45.6, 76.77, 90.0, 55.5, 22.2, 33.3)).equals(3.1415, 0.6734, 3.45, 0.44, 45.67, 0.5, 1.2, 3.333, 1.09, 12.9, 45.6, 76.77, 90.0, 55.5, 22.2, 33.3, 0.0001), verbose);
+			Assertv(Mat4d(Mat4f(3.1415f, 0.6734f, 3.45f, 0.44f, 45.67f, 0.5f, 1.2f, 3.333f, 1.09f, 12.9f, 45.6f, 76.77f, 90.0f, 55.5f, 22.2f, 33.3f)).equals(3.1415, 0.6734, 3.45, 0.44, 45.67, 0.5, 1.2, 3.333, 1.09, 12.9, 45.6, 76.77, 90.0, 55.5, 22.2, 33.3, 0.0001), verbose);
 		}
 	}
 	{ // square bracket operators
@@ -254,11 +254,11 @@ int main(int argc, char *argv[])
 			const Vec4f pfvec = mat * fvec;
 			const Vec4d pdvec = mat * dvec;
 			Assertv(pfvec.equals(
-				mat[0][0] * fvec.x + mat[1][0] * fvec.y + mat[2][0] * fvec.z + mat[3][0] * fvec.w,
-				mat[0][1] * fvec.x + mat[1][1] * fvec.y + mat[2][1] * fvec.z + mat[3][1] * fvec.w,
-				mat[0][2] * fvec.x + mat[1][2] * fvec.y + mat[2][2] * fvec.z + mat[3][2] * fvec.w,
-				mat[0][3] * fvec.x + mat[1][3] * fvec.y + mat[2][3] * fvec.z + mat[3][3] * fvec.w,
-				0.000001
+				(float)(mat[0][0] * fvec.x + mat[1][0] * fvec.y + mat[2][0] * fvec.z + mat[3][0] * fvec.w),
+				(float)(mat[0][1] * fvec.x + mat[1][1] * fvec.y + mat[2][1] * fvec.z + mat[3][1] * fvec.w),
+				(float)(mat[0][2] * fvec.x + mat[1][2] * fvec.y + mat[2][2] * fvec.z + mat[3][2] * fvec.w),
+				(float)(mat[0][3] * fvec.x + mat[1][3] * fvec.y + mat[2][3] * fvec.z + mat[3][3] * fvec.w),
+				0.0001f
 			), verbose);
 			Assertv(pdvec.equals(
 				mat[0][0] * dvec.x + mat[1][0] * dvec.y + mat[2][0] * dvec.z + mat[3][0] * dvec.w,
