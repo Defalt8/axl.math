@@ -19,6 +19,9 @@ add_library( axl.math ${LIBAXLMATH_TYPE}
 	"mat/Mat3d.cpp"
 	"mat/Mat4f.cpp"
 	"mat/Mat4d.cpp"
+	"mat/transform2.cpp"
+	"mat/transform3.cpp"
+	"mat/transform4.cpp"
 )
 target_compile_definitions( axl.math
 	PRIVATE LIBAXLMATH_BUILD
