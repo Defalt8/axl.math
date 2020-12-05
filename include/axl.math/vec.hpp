@@ -1,0 +1,12 @@
+#pragma once
+#include "lib.hpp"
+#include "vec/Vec2.hpp"
+#include "vec/Vec2d.hpp"
+#include "vec/Vec2f.hpp"
+#include "vec/Vec2i.hpp"
+#include "vec/Vec3.hpp"
+#include "vec/Vec3d.hpp"
+#include "vec/Vec3f.hpp"
+#include "vec/Vec4.hpp"
+#include "vec/Vec4d.hpp"
+#include "vec/Vec4f.hpp"
