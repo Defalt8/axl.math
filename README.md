@@ -60,12 +60,12 @@ A simple C++ math library primarily designed for game engines.
 Default values are marked **bold**.
 
 - Library specific options
-  - LIBAXLMATH_TYPE=[**STATIC**|SHARED]
-  - LIBAXLMATH_BUILD_TESTS=[**ON**|OFF]
-  - LIBAXLMATH_BUILD_TOOLS=[**ON**|OFF]
-  - LIBAXLMATH_INSTALL_HEADERS=[**ON**|OFF]
-  - LIBAXLMATH_INSTALL_ARCHIVES=[**ON**|OFF]
-  - LIBAXLMATH_INSTALL_BINARIES=[**ON**|OFF]
+  - AXLMATH_TYPE=[**STATIC**|SHARED]
+  - AXLMATH_BUILD_TESTS=[**ON**|OFF]
+  - AXLMATH_BUILD_TOOLS=[**ON**|OFF]
+  - AXLMATH_INSTALL_HEADERS=[**ON**|OFF]
+  - AXLMATH_INSTALL_ARCHIVES=[**ON**|OFF]
+  - AXLMATH_INSTALL_BINARIES=[**ON**|OFF]
 - General options
   - BUILD_TESTS=[ON|**OFF**]
   - BUILD_TOOLS=[ON|**OFF**]

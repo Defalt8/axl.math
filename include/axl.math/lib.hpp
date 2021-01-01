@@ -1,8 +1,8 @@
 #pragma once
 
-#if defined(LIBAXLMATH_SHARED)
+#if defined(AXLMATH_SHARED)
 #	ifdef WIN32
-#		ifdef LIBAXLMATH_BUILD
+#		ifdef AXLMATH_BUILD
 #			define AXLMATHAPI extern __declspec(dllexport)
 #			define AXLMATHCXXAPI __declspec(dllexport)
 #		else

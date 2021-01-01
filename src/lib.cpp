@@ -4,9 +4,9 @@ namespace axl {
 namespace math {
 namespace lib {
 
-const Version VERSION = { LIBAXLMATH_VERSION_MAJOR, LIBAXLMATH_VERSION_MINOR, LIBAXLMATH_VERSION_PATCH };
+const Version VERSION = { AXLMATH_VERSION_MAJOR, AXLMATH_VERSION_MINOR, AXLMATH_VERSION_PATCH };
 
-#if defined(LIBAXLMATH_SHARED)
+#if defined(AXLMATH_SHARED)
 const LibraryType LIBRARY_TYPE = LibraryType::LT_SHARED;
 #else
 const LibraryType LIBRARY_TYPE = LibraryType::LT_STATIC;
