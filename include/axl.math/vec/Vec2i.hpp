@@ -49,10 +49,10 @@ class AXLMATHCXXAPI Vec2i
 		int x, y;
 };
 
-Vec2i operator+(int v, const Vec2i& vec);
-Vec2i operator-(int v, const Vec2i& vec);
-Vec2i operator*(int v, const Vec2i& vec);
-Vec2i operator/(int v, const Vec2i& vec);
+AXLMATHAPI Vec2i operator+(int v, const Vec2i& vec);
+AXLMATHAPI Vec2i operator-(int v, const Vec2i& vec);
+AXLMATHAPI Vec2i operator*(int v, const Vec2i& vec);
+AXLMATHAPI Vec2i operator/(int v, const Vec2i& vec);
 
 } // namespace axl.math
 } // namespace axl

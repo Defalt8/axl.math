@@ -74,10 +74,10 @@ class AXLMATHCXXAPI Vec2d
 		double x, y;
 };
 
-Vec2d AXLMATHAPI operator+(double v, const Vec2d& vec);
-Vec2d AXLMATHAPI operator-(double v, const Vec2d& vec);
-Vec2d AXLMATHAPI operator*(double v, const Vec2d& vec);
-Vec2d AXLMATHAPI operator/(double v, const Vec2d& vec);
+AXLMATHAPI Vec2d operator+(double v, const Vec2d& vec);
+AXLMATHAPI Vec2d operator-(double v, const Vec2d& vec);
+AXLMATHAPI Vec2d operator*(double v, const Vec2d& vec);
+AXLMATHAPI Vec2d operator/(double v, const Vec2d& vec);
 
 } // namespace axl.math
 } // namespace axl
