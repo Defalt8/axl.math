@@ -176,44 +176,6 @@ Mat4f scaleTranslate(const axl::math::Vec3f& scale, const axl::math::Vec3f& tran
 		translate.x, translate.y, translate.z, 1
 	);
 }
-Mat4f scaleRotate(const axl::math::Vec3f& scale, const axl::math::Vec3f& rotation, Rules::Axis axis_rule)
-{
-	switch(axis_rule)
-	{
-		default:
-		case Rules::Axis::AXIS_RHS: return axl::math::Mat4f(
-			(scale.x * std::cos(rotation.y) * std::cos(rotation.z)), (scale.x * std::sin(rotation.z)), (scale.x * -std::sin(rotation.y)), 0,
-			(scale.y * -std::sin(rotation.z)), (scale.y * std::cos(rotation.x) * std::cos(rotation.z)), (scale.y * std::sin(rotation.x)), 0,
-			(scale.z * std::sin(rotation.y)), (scale.z * -std::sin(rotation.x)), (scale.z * std::cos(rotation.x) * std::cos(rotation.y)), 0,
-			0, 0, 0, 1
-		);
-		case Rules::Axis::AXIS_LHS: return axl::math::Mat4f(
-			(scale.x * std::cos(rotation.y) * std::cos(rotation.z)), (scale.x * -std::sin(rotation.z)), (scale.x * std::sin(rotation.y)), 0,
-			(scale.y * std::sin(rotation.z)), (scale.y * std::cos(rotation.x) * std::cos(rotation.z)), (scale.y * -std::sin(rotation.x)), 0,
-			(scale.z * -std::sin(rotation.y)), (scale.z * std::sin(rotation.x)), (scale.z * std::cos(rotation.x) * std::cos(rotation.y)), 0,
-			0, 0, 0, 1
-		);
-	}
-}
-Mat4f rotateTranslate(const axl::math::Vec3f& rotation, const axl::math::Vec3f& translate, Rules::Axis axis_rule)
-{
-	switch(axis_rule)
-	{
-		default:
-		case Rules::Axis::AXIS_RHS: return axl::math::Mat4f(
-			(std::cos(rotation.y) * std::cos(rotation.z)), (std::sin(rotation.z)), (-std::sin(rotation.y)), 0,
-			(-std::sin(rotation.z)), (std::cos(rotation.x) * std::cos(rotation.z)), (std::sin(rotation.x)), 0,
-			(std::sin(rotation.y)), (-std::sin(rotation.x)), (std::cos(rotation.x) * std::cos(rotation.y)), 0,
-			translate.x, translate.y, translate.z, 1
-		);
-		case Rules::Axis::AXIS_LHS: return axl::math::Mat4f(
-			(std::cos(rotation.y) * std::cos(rotation.z)), (-std::sin(rotation.z)), (std::sin(rotation.y)), 0,
-			(std::sin(rotation.z)), (std::cos(rotation.x) * std::cos(rotation.z)), (-std::sin(rotation.x)), 0,
-			(-std::sin(rotation.y)), (std::sin(rotation.x)), (std::cos(rotation.x) * std::cos(rotation.y)), 0,
-			translate.x, translate.y, translate.z, 1
-		);
-	}
-}
 
 
 Mat4d scale(const axl::math::Vec3d& scale)
@@ -380,44 +342,6 @@ Mat4d scaleTranslate(const axl::math::Vec3d& scale, const axl::math::Vec3d& tran
 		0, 0, scale.z, 0,
 		translate.x, translate.y, translate.z, 1
 	);
-}
-Mat4d scaleRotate(const axl::math::Vec3d& scale, const axl::math::Vec3d& rotation, Rules::Axis axis_rule)
-{
-	switch (axis_rule)
-	{
-		default:
-		case Rules::Axis::AXIS_RHS: return axl::math::Mat4d(
-			(scale.x * std::cos(rotation.y) * std::cos(rotation.z)), (scale.x * std::sin(rotation.z)), (scale.x * -std::sin(rotation.y)), 0,
-			(scale.y * -std::sin(rotation.z)), (scale.y * std::cos(rotation.x) * std::cos(rotation.z)), (scale.y * std::sin(rotation.x)), 0,
-			(scale.z * std::sin(rotation.y)), (scale.z * -std::sin(rotation.x)), (scale.z * std::cos(rotation.x) * std::cos(rotation.y)), 0,
-			0, 0, 0, 1
-		);
-		case Rules::Axis::AXIS_LHS: return axl::math::Mat4d(
-			(scale.x * std::cos(rotation.y) * std::cos(rotation.z)), (scale.x * -std::sin(rotation.z)), (scale.x * std::sin(rotation.y)), 0,
-			(scale.y * std::sin(rotation.z)), (scale.y * std::cos(rotation.x) * std::cos(rotation.z)), (scale.y * -std::sin(rotation.x)), 0,
-			(scale.z * -std::sin(rotation.y)), (scale.z * std::sin(rotation.x)), (scale.z * std::cos(rotation.x) * std::cos(rotation.y)), 0,
-			0, 0, 0, 1
-		);
-	}
-}
-Mat4d rotateTranslate(const axl::math::Vec3d& rotation, const axl::math::Vec3d& translate, Rules::Axis axis_rule)
-{
-	switch (axis_rule)
-	{
-		default:
-		case Rules::Axis::AXIS_RHS: return axl::math::Mat4d(
-			(std::cos(rotation.y) * std::cos(rotation.z)), (std::sin(rotation.z)), (-std::sin(rotation.y)), 0,
-			(-std::sin(rotation.z)), (std::cos(rotation.x) * std::cos(rotation.z)), (std::sin(rotation.x)), 0,
-			(std::sin(rotation.y)), (-std::sin(rotation.x)), (std::cos(rotation.x) * std::cos(rotation.y)), 0,
-			translate.x, translate.y, translate.z, 1
-		);
-		case Rules::Axis::AXIS_LHS: return axl::math::Mat4d(
-			(std::cos(rotation.y) * std::cos(rotation.z)), (-std::sin(rotation.z)), (std::sin(rotation.y)), 0,
-			(std::sin(rotation.z)), (std::cos(rotation.x) * std::cos(rotation.z)), (-std::sin(rotation.x)), 0,
-			(-std::sin(rotation.y)), (std::sin(rotation.x)), (std::cos(rotation.x) * std::cos(rotation.y)), 0,
-			translate.x, translate.y, translate.z, 1
-		);
-	}
 }
 
 } // namespace axl.math.Transform4
