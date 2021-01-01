@@ -13,12 +13,12 @@ Mat3f transform(const axl::math::Vec2f& scale, float rotate, const axl::math::Ve
 	switch(axis_rule)
 	{
 		default:
-		case Rules::AXIS_RHS: return axl::math::Mat3f(
+		case Rules::Axis::AXIS_RHS: return axl::math::Mat3f(
 			(scale.x * std::cos(rotate)), 0, 0,
 			0, (scale.y * std::sin(rotate)), 0,
 			translate.x, translate.y, 1
 		);
-		case Rules::AXIS_LHS: return axl::math::Mat3f(
+		case Rules::Axis::AXIS_LHS: return axl::math::Mat3f(
 			(scale.x * std::cos(rotate)), 0, 0,
 			0, (scale.y * -std::sin(rotate)), 0,
 			translate.x, translate.y, 1
@@ -46,12 +46,12 @@ Mat3f rotate(float rotate, Rules::Axis axis_rule)
 	switch(axis_rule)
 	{
 		default:
-		case Rules::AXIS_RHS: return axl::math::Mat3f(
+		case Rules::Axis::AXIS_RHS: return axl::math::Mat3f(
 			(std::cos(rotate)), 0, 0,
 			0, (std::sin(rotate)), 0,
 			0, 0, 1
 		);
-		case Rules::AXIS_LHS: return axl::math::Mat3f(
+		case Rules::Axis::AXIS_LHS: return axl::math::Mat3f(
 			(std::cos(rotate)), 0, 0,
 			0, (-std::sin(rotate)), 0,
 			0, 0, 1
@@ -71,12 +71,12 @@ Mat3f scaleRotate(const axl::math::Vec2f& scale, float rotate, Rules::Axis axis_
 	switch(axis_rule)
 	{
 		default:
-		case Rules::AXIS_RHS: return axl::math::Mat3f(
+		case Rules::Axis::AXIS_RHS: return axl::math::Mat3f(
 			(scale.x * std::cos(rotate)), 0, 0,
 			0, (scale.y * std::sin(rotate)), 0,
 			0, 0, 1
 		);
-		case Rules::AXIS_LHS: return axl::math::Mat3f(
+		case Rules::Axis::AXIS_LHS: return axl::math::Mat3f(
 			(scale.x * std::cos(rotate)), 0, 0,
 			0, (scale.y * -std::sin(rotate)), 0,
 			0, 0, 1
@@ -88,12 +88,12 @@ Mat3f rotateTranslate(float rotate, const axl::math::Vec2f& translate, Rules::Ax
 	switch(axis_rule)
 	{
 		default:
-		case Rules::AXIS_RHS: return axl::math::Mat3f(
+		case Rules::Axis::AXIS_RHS: return axl::math::Mat3f(
 			(std::cos(rotate)), 0, 0,
 			0, (std::sin(rotate)), 0,
 			translate.x, translate.y, 1
 		);
-		case Rules::AXIS_LHS: return axl::math::Mat3f(
+		case Rules::Axis::AXIS_LHS: return axl::math::Mat3f(
 			(std::cos(rotate)), 0, 0,
 			0, (-std::sin(rotate)), 0,
 			translate.x, translate.y, 1
@@ -106,12 +106,12 @@ Mat3d transform(const axl::math::Vec2d& scale, double rotate, const axl::math::V
 	switch(axis_rule)
 	{
 		default:
-		case Rules::AXIS_RHS: return axl::math::Mat3d(
+		case Rules::Axis::AXIS_RHS: return axl::math::Mat3d(
 			(scale.x * std::cos(rotate)), 0, 0,
 			0, (scale.y * std::sin(rotate)), 0,
 			translate.x, translate.y, 1
 		);
-		case Rules::AXIS_LHS: return axl::math::Mat3d(
+		case Rules::Axis::AXIS_LHS: return axl::math::Mat3d(
 			(scale.x * std::cos(rotate)), 0, 0,
 			0, (scale.y * -std::sin(rotate)), 0,
 			translate.x, translate.y, 1
@@ -139,12 +139,12 @@ Mat3d rotate(double rotate, Rules::Axis axis_rule)
 	switch(axis_rule)
 	{
 		default:
-		case Rules::AXIS_RHS: return axl::math::Mat3d(
+		case Rules::Axis::AXIS_RHS: return axl::math::Mat3d(
 			(std::cos(rotate)), 0, 0,
 			0, (std::sin(rotate)), 0,
 			0, 0, 1
 		);
-		case Rules::AXIS_LHS: return axl::math::Mat3d(
+		case Rules::Axis::AXIS_LHS: return axl::math::Mat3d(
 			(std::cos(rotate)), 0, 0,
 			0, (-std::sin(rotate)), 0,
 			0, 0, 1
@@ -164,12 +164,12 @@ Mat3d scaleRotate(const axl::math::Vec2d& scale, double rotate, Rules::Axis axis
 	switch(axis_rule)
 	{
 		default:
-		case Rules::AXIS_RHS: return axl::math::Mat3d(
+		case Rules::Axis::AXIS_RHS: return axl::math::Mat3d(
 			(scale.x * std::cos(rotate)), 0, 0,
 			0, (scale.y * std::sin(rotate)), 0,
 			0, 0, 1
 		);
-		case Rules::AXIS_LHS: return axl::math::Mat3d(
+		case Rules::Axis::AXIS_LHS: return axl::math::Mat3d(
 			(scale.x * std::cos(rotate)), 0, 0,
 			0, (scale.y * -std::sin(rotate)), 0,
 			0, 0, 1
@@ -181,12 +181,12 @@ Mat3d rotateTranslate(double rotate, const axl::math::Vec2d& translate, Rules::A
 	switch(axis_rule)
 	{
 		default:
-		case Rules::AXIS_RHS: return axl::math::Mat3d(
+		case Rules::Axis::AXIS_RHS: return axl::math::Mat3d(
 			(std::cos(rotate)), 0, 0,
 			0, (std::sin(rotate)), 0,
 			translate.x, translate.y, 1
 		);
-		case Rules::AXIS_LHS: return axl::math::Mat3d(
+		case Rules::Axis::AXIS_LHS: return axl::math::Mat3d(
 			(std::cos(rotate)), 0, 0,
 			0, (-std::sin(rotate)), 0,
 			translate.x, translate.y, 1

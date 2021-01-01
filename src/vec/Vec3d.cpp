@@ -173,8 +173,8 @@ Vec3d Vec3d::cross(const Vec3d& vec, Rules::Axis axis_rule) const
 	switch (axis_rule)
 	{
 		default:
-		case Rules::AXIS_RHS: return Vec3d((y * vec.z - z * vec.y), (z * vec.x - x * vec.z), (x * vec.y - y * vec.x));
-		case Rules::AXIS_LHS: return Vec3d((z * vec.y - y * vec.z), (x * vec.z - z * vec.x), (y * vec.x - x * vec.y));
+		case Rules::Axis::AXIS_RHS: return Vec3d((y * vec.z - z * vec.y), (z * vec.x - x * vec.z), (x * vec.y - y * vec.x));
+		case Rules::Axis::AXIS_LHS: return Vec3d((z * vec.y - y * vec.z), (x * vec.z - z * vec.x), (y * vec.x - x * vec.y));
 	}
 }
 Vec3d Vec3d::euler(Rules::Axis axis_rule) const
@@ -182,8 +182,8 @@ Vec3d Vec3d::euler(Rules::Axis axis_rule) const
 	switch (axis_rule)
 	{
 		default:
-		case Rules::AXIS_RHS: return Vec3d(std::atan2(z, y), std::atan2(x, z), std::atan2(y, x));
-		case Rules::AXIS_LHS: return Vec3d(std::atan2(y, z), std::atan2(z, x), std::atan2(x, y));
+		case Rules::Axis::AXIS_RHS: return Vec3d(std::atan2(z, y), std::atan2(x, z), std::atan2(y, x));
+		case Rules::Axis::AXIS_LHS: return Vec3d(std::atan2(y, z), std::atan2(z, x), std::atan2(x, y));
 	}
 }
 Vec3d Vec3d::euler(const Vec3d& ref_vec, Rules::Axis axis_rule) const
@@ -191,8 +191,8 @@ Vec3d Vec3d::euler(const Vec3d& ref_vec, Rules::Axis axis_rule) const
 	switch (axis_rule)
 	{
 		default:
-		case Rules::AXIS_RHS: return Vec3d(std::atan2(z, y) - std::atan2(ref_vec.z, ref_vec.y), std::atan2(x, z) - std::atan2(ref_vec.x, ref_vec.z), std::atan2(y, x) - std::atan2(ref_vec.y, ref_vec.x));
-		case Rules::AXIS_LHS: return Vec3d(std::atan2(y, z) - std::atan2(ref_vec.y, ref_vec.z), std::atan2(z, x) - std::atan2(ref_vec.z, ref_vec.x), std::atan2(x, y) - std::atan2(ref_vec.x, ref_vec.y));
+		case Rules::Axis::AXIS_RHS: return Vec3d(std::atan2(z, y) - std::atan2(ref_vec.z, ref_vec.y), std::atan2(x, z) - std::atan2(ref_vec.x, ref_vec.z), std::atan2(y, x) - std::atan2(ref_vec.y, ref_vec.x));
+		case Rules::Axis::AXIS_LHS: return Vec3d(std::atan2(y, z) - std::atan2(ref_vec.y, ref_vec.z), std::atan2(z, x) - std::atan2(ref_vec.z, ref_vec.x), std::atan2(x, y) - std::atan2(ref_vec.x, ref_vec.y));
 	}
 }
 
@@ -246,12 +246,12 @@ Vec3d& Vec3d::rotate(double angle_x, double angle_y, double angle_z, Rules::Axis
 	switch(axis_rule)
 	{
 		default:
-		case Rules::AXIS_RHS:
+		case Rules::Axis::AXIS_RHS:
 			_x = (std::cos(angle_y) * std::cos(angle_z) * x - std::sin(angle_z) * y + std::sin(angle_y) * z);
 			_y = (std::sin(angle_z) * x + std::cos(angle_x) * std::cos(angle_z) * y - std::sin(angle_x) * z);
 			_z = (-std::sin(angle_y) * x + std::sin(angle_x) * y + std::cos(angle_x) * std::cos(angle_y) * z);
 			break;
-		case Rules::AXIS_LHS:
+		case Rules::Axis::AXIS_LHS:
 			_x = (std::cos(angle_y) * std::cos(angle_z) * x + std::sin(angle_z) * y - std::sin(angle_y) * z);
 			_y = (-std::sin(angle_z) * x + std::cos(angle_x) * std::cos(angle_z) * y + std::sin(angle_x) * z);
 			_z = (std::sin(angle_y) * x - std::sin(angle_x) * y + std::cos(angle_x) * std::cos(angle_y) * z);
@@ -268,12 +268,12 @@ Vec3d& Vec3d::rotate(const Vec3d& angle_vec, Rules::Axis axis_rule)
 	switch(axis_rule)
 	{
 		default:
-		case Rules::AXIS_RHS:
+		case Rules::Axis::AXIS_RHS:
 			_x = (std::cos(angle_vec.y) * std::cos(angle_vec.z) * x - std::sin(angle_vec.z) * y + std::sin(angle_vec.y) * z);
 			_y = (std::sin(angle_vec.z) * x + std::cos(angle_vec.x) * std::cos(angle_vec.z) * y - std::sin(angle_vec.x) * z);
 			_z = (-std::sin(angle_vec.y) * x + std::sin(angle_vec.x) * y + std::cos(angle_vec.x) * std::cos(angle_vec.y) * z);
 			break;
-		case Rules::AXIS_LHS:
+		case Rules::Axis::AXIS_LHS:
 			_x = (std::cos(angle_vec.y) * std::cos(angle_vec.z) * x + std::sin(angle_vec.z) * y - std::sin(angle_vec.y) * z);
 			_y = (-std::sin(angle_vec.z) * x + std::cos(angle_vec.x) * std::cos(angle_vec.z) * y + std::sin(angle_vec.x) * z);
 			_z = (std::sin(angle_vec.y) * x - std::sin(angle_vec.x) * y + std::cos(angle_vec.x) * std::cos(angle_vec.y) * z);
@@ -290,11 +290,11 @@ Vec3d& Vec3d::rotateX(double angle_x, Rules::Axis axis_rule)
 	switch(axis_rule)
 	{
 		default:
-		case Rules::AXIS_RHS:
+		case Rules::Axis::AXIS_RHS:
 			_y = (std::cos(angle_x) * y - std::sin(angle_x) * z);
 			_z = (std::sin(angle_x) * y + std::cos(angle_x) * z);
 			break;
-		case Rules::AXIS_LHS:
+		case Rules::Axis::AXIS_LHS:
 			_y = (std::cos(angle_x) * y + std::sin(angle_x) * z);
 			_z = (-std::sin(angle_x) * y + std::cos(angle_x) * z);
 			break;
@@ -309,11 +309,11 @@ Vec3d& Vec3d::rotateY(double angle_y, Rules::Axis axis_rule)
 	switch(axis_rule)
 	{
 		default:
-		case Rules::AXIS_RHS:
+		case Rules::Axis::AXIS_RHS:
 			_x = (std::cos(angle_y) * x + std::sin(angle_y) * z);
 			_z = (-std::sin(angle_y) * x + std::cos(angle_y) * z);
 			break;
-		case Rules::AXIS_LHS:
+		case Rules::Axis::AXIS_LHS:
 			_x = (std::cos(angle_y) * x - std::sin(angle_y) * z);
 			_z = (std::sin(angle_y) * x + std::cos(angle_y) * z);
 			break;
@@ -328,11 +328,11 @@ Vec3d& Vec3d::rotateZ(double angle_z, Rules::Axis axis_rule)
 	switch(axis_rule)
 	{
 		default:
-		case Rules::AXIS_RHS:
+		case Rules::Axis::AXIS_RHS:
 			_x = (std::cos(angle_z) * x - std::sin(angle_z) * y);
 			_y = (std::sin(angle_z) * x + std::cos(angle_z) * y);
 			break;
-		case Rules::AXIS_LHS:
+		case Rules::Axis::AXIS_LHS:
 			_x = (std::cos(angle_z) * x + std::sin(angle_z) * y);
 			_y = (-std::sin(angle_z) * x + std::cos(angle_z) * y);
 			break;
@@ -346,13 +346,13 @@ Vec3d Vec3d::rotated(double angle_x, double angle_y, double angle_z, Rules::Axis
 	switch(axis_rule)
 	{
 		default:
-		case Rules::AXIS_RHS:
+		case Rules::Axis::AXIS_RHS:
 			return Vec3d(
 				(std::cos(angle_y) * std::cos(angle_z) * x - std::sin(angle_z) * y + std::sin(angle_y) * z),
 				(std::sin(angle_z) * x + std::cos(angle_x) * std::cos(angle_z) * y - std::sin(angle_x) * z),
 				(-std::sin(angle_y) * x + std::sin(angle_x) * y + std::cos(angle_x) * std::cos(angle_y) * z)
 				);
-		case Rules::AXIS_LHS:
+		case Rules::Axis::AXIS_LHS:
 			return Vec3d(
 				(std::cos(angle_y) * std::cos(angle_z) * x + std::sin(angle_z) * y - std::sin(angle_y) * z),
 				(-std::sin(angle_z) * x + std::cos(angle_x) * std::cos(angle_z) * y + std::sin(angle_x) * z),
@@ -365,13 +365,13 @@ Vec3d Vec3d::rotated(const Vec3d& angle_vec, Rules::Axis axis_rule) const
 	switch(axis_rule)
 	{
 		default:
-		case Rules::AXIS_RHS:
+		case Rules::Axis::AXIS_RHS:
 			return Vec3d(
 				(std::cos(angle_vec.y) * std::cos(angle_vec.z) * x - std::sin(angle_vec.z) * y + std::sin(angle_vec.y) * z),
 				(std::sin(angle_vec.z) * x + std::cos(angle_vec.x) * std::cos(angle_vec.z) * y - std::sin(angle_vec.x) * z),
 				(-std::sin(angle_vec.y) * x + std::sin(angle_vec.x) * y + std::cos(angle_vec.x) * std::cos(angle_vec.y) * z)
 				);
-		case Rules::AXIS_LHS:
+		case Rules::Axis::AXIS_LHS:
 			return Vec3d(
 				(std::cos(angle_vec.y) * std::cos(angle_vec.z) * x + std::sin(angle_vec.z) * y - std::sin(angle_vec.y) * z),
 				(-std::sin(angle_vec.z) * x + std::cos(angle_vec.x) * std::cos(angle_vec.z) * y + std::sin(angle_vec.x) * z),
@@ -385,9 +385,9 @@ Vec3d Vec3d::rotatedX(double angle_x, Rules::Axis axis_rule)
 	switch(axis_rule)
 	{
 		default:
-		case Rules::AXIS_RHS:
+		case Rules::Axis::AXIS_RHS:
 			return Vec3d(x, (std::cos(angle_x) * y - std::sin(angle_x) * z), (std::sin(angle_x) * y + std::cos(angle_x) * z));
-		case Rules::AXIS_LHS:
+		case Rules::Axis::AXIS_LHS:
 			return Vec3d(x, (std::cos(angle_x) * y + std::sin(angle_x) * z), (-std::sin(angle_x) * y + std::cos(angle_x) * z));
 	}
 }
@@ -396,9 +396,9 @@ Vec3d Vec3d::rotatedY(double angle_y, Rules::Axis axis_rule)
 	switch(axis_rule)
 	{
 		default:
-		case Rules::AXIS_RHS:
+		case Rules::Axis::AXIS_RHS:
 			return Vec3d((std::cos(angle_y) * x + std::sin(angle_y) * z), y, (-std::sin(angle_y) * x + std::cos(angle_y) * z));
-		case Rules::AXIS_LHS:
+		case Rules::Axis::AXIS_LHS:
 			return Vec3d((std::cos(angle_y) * x - std::sin(angle_y) * z), y, (std::sin(angle_y) * x + std::cos(angle_y) * z));
 	}
 }
@@ -407,9 +407,9 @@ Vec3d Vec3d::rotatedZ(double angle_z, Rules::Axis axis_rule)
 	switch(axis_rule)
 	{
 		default:
-		case Rules::AXIS_RHS:
+		case Rules::Axis::AXIS_RHS:
 			return Vec3d((std::cos(angle_z) * x - std::sin(angle_z) * y), (std::sin(angle_z) * x + std::cos(angle_z) * y), z);
-		case Rules::AXIS_LHS:
+		case Rules::Axis::AXIS_LHS:
 			return Vec3d((std::cos(angle_z) * x + std::sin(angle_z) * y), (-std::sin(angle_z) * x + std::cos(angle_z) * y), z);
 	}
 }
@@ -438,7 +438,7 @@ Vec3d Vec3d::filled(double v) { return Vec3d(v, v, v); }
 const Vec3d Vec3d::Zero(0.0, 0.0, 0.0);
 const Vec3d Vec3d::Identity(1.0, 1.0, 1.0);
 Vec3d Vec3d::Default(0.0, 0.0, 0.0);
-Rules::Axis Vec3d::DefaultAxisRule = Rules::AXIS_RHS;
+Rules::Axis Vec3d::DefaultAxisRule = Rules::Axis::AXIS_RHS;
 
 } // namespace axl.math
 } // namespace axl

@@ -292,7 +292,7 @@ Vec4f Vec4f::filled(float v) { return Vec4f(v, v, v, v); }
 const Vec4f Vec4f::Zero(0.0f, 0.0f, 0.0f, 0.0f);
 const Vec4f Vec4f::Identity(1.0f, 1.0f, 1.0f, 1.0f);
 Vec4f Vec4f::Default(0.0f, 0.0f, 0.0f, 0.0f);
-Rules::Axis Vec4f::DefaultAxisRule = Rules::AXIS_RHS;
+Rules::Axis Vec4f::DefaultAxisRule = Rules::Axis::AXIS_RHS;
 
 } // namespace axl.math
 } // namespace axl

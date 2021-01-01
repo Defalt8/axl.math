@@ -292,8 +292,8 @@ int main(int argc, char *argv[])
 
 		}
 		{ // euler angle
-			Vec3f::DefaultAxisRule = Rules::AXIS_RHS;
-			Assertve(Vec3f::DefaultAxisRule == Rules::AXIS_RHS, verbose);
+			Vec3f::DefaultAxisRule = Rules::Axis::AXIS_RHS;
+			Assertve(Vec3f::DefaultAxisRule == Rules::Axis::AXIS_RHS, verbose);
 			{ // RHS
 				Assertv(Vec3f(0, 0, 0).euler().equals(0.0f, 0.0f, 0.0f, 0.0001f), verbose);
 				Assertv(Vec3f(5, 0, 0).euler().equals(0.0f, degToRad(90.0f), 0.0f, 0.0001f), verbose);
@@ -320,8 +320,8 @@ int main(int argc, char *argv[])
 				Assertv((Vec3f(0, -5, 0)).euler(ref_vec).equals(degToRad(135.0f), degToRad(-45.0f), degToRad(-135.0f), 0.0001f), verbose);
 				Assertv((Vec3f(0, 0, -5)).euler(ref_vec).equals(degToRad(-135.0f), degToRad(135.0f), degToRad(-45.0f), 0.0001f), verbose);
 			}
-			Vec3f::DefaultAxisRule = Rules::AXIS_LHS;
-			Assertve(Vec3f::DefaultAxisRule == Rules::AXIS_LHS, verbose);
+			Vec3f::DefaultAxisRule = Rules::Axis::AXIS_LHS;
+			Assertve(Vec3f::DefaultAxisRule == Rules::Axis::AXIS_LHS, verbose);
 			{ // LHS
 				Assertv(Vec3f(0, 0, 0).euler().equals(0.0f, 0.0f, 0.0f, 0.0001f), verbose);
 				Assertv(Vec3f(5, 0, 0).euler().equals(0.0f, 0.0f, degToRad(90.0f), 0.0001f), verbose);
@@ -436,8 +436,8 @@ int main(int argc, char *argv[])
 		}
 		{ // rotate
 			{ // RHS
-				Vec3f::DefaultAxisRule = Rules::AXIS_RHS;
-				Assertve(Vec3f::DefaultAxisRule == Rules::AXIS_RHS, verbose);
+				Vec3f::DefaultAxisRule = Rules::Axis::AXIS_RHS;
+				Assertve(Vec3f::DefaultAxisRule == Rules::Axis::AXIS_RHS, verbose);
 				Assertv(Vec3f(5, 5, 5).rotate(degToRad(0.0f), degToRad(0.0f), degToRad(0.0f)).equals(5, 5, 5, 0.0001f), verbose);
 				Assertv(Vec3f(5, 0, 0).rotate(degToRad(90.0f), degToRad(0.0f), degToRad(0.0f)).equals(5, 0, 0, 0.0001f), verbose);
 				Assertv(Vec3f(5, 0, 0).rotate(degToRad(0.0f), degToRad(90.0f), degToRad(0.0f)).equals(0, 0, -5, 0.0001f), verbose);
@@ -483,8 +483,8 @@ int main(int argc, char *argv[])
 				Assertv(Vec3f(sq2, sq2, sq2).rotate(degToRad(0.0f), degToRad(0.0f), degToRad(-45.0f)).equals(2, 0, sq2, 0.0001f), verbose);
 			}
 			{ // LHS
-				Vec3f::DefaultAxisRule = Rules::AXIS_LHS;
-				Assertve(Vec3f::DefaultAxisRule == Rules::AXIS_LHS, verbose);
+				Vec3f::DefaultAxisRule = Rules::Axis::AXIS_LHS;
+				Assertve(Vec3f::DefaultAxisRule == Rules::Axis::AXIS_LHS, verbose);
 				Assertv(Vec3f(5, 5, 5).rotate(degToRad(0.0f), degToRad(0.0f), degToRad(0.0f)).equals(5, 5, 5, 0.0001f), verbose);
 				Assertv(Vec3f(5, 0, 0).rotate(degToRad(90.0f), degToRad(0.0f), degToRad(0.0f)).equals(5, 0, 0, 0.0001f), verbose);
 				Assertv(Vec3f(5, 0, 0).rotate(degToRad(0.0f), degToRad(90.0f), degToRad(0.0f)).equals(0, 0, 5, 0.0001f), verbose);
@@ -532,8 +532,8 @@ int main(int argc, char *argv[])
 		}
 		{ // rotate - angle_vec
 			{ // RHS
-				Vec3f::DefaultAxisRule = Rules::AXIS_RHS;
-				Assertve(Vec3f::DefaultAxisRule == Rules::AXIS_RHS, verbose);
+				Vec3f::DefaultAxisRule = Rules::Axis::AXIS_RHS;
+				Assertve(Vec3f::DefaultAxisRule == Rules::Axis::AXIS_RHS, verbose);
 				Assertv(Vec3f(5, 5, 5).rotate(Vec3f(degToRad(0.0f), degToRad(0.0f), degToRad(0.0f))).equals(5, 5, 5, 0.0001f), verbose);
 				Assertv(Vec3f(5, 0, 0).rotate(Vec3f(degToRad(90.0f), degToRad(0.0f), degToRad(0.0f))).equals(5, 0, 0, 0.0001f), verbose);
 				Assertv(Vec3f(5, 0, 0).rotate(Vec3f(degToRad(0.0f), degToRad(90.0f), degToRad(0.0f))).equals(0, 0, -5, 0.0001f), verbose);
@@ -579,8 +579,8 @@ int main(int argc, char *argv[])
 				Assertv(Vec3f(sq2, sq2, sq2).rotate(Vec3f(degToRad(0.0f), degToRad(0.0f), degToRad(-45.0f))).equals(2, 0, sq2, 0.0001f), verbose);
 			}
 			{ // LHS
-				Vec3f::DefaultAxisRule = Rules::AXIS_LHS;
-				Assertve(Vec3f::DefaultAxisRule == Rules::AXIS_LHS, verbose);
+				Vec3f::DefaultAxisRule = Rules::Axis::AXIS_LHS;
+				Assertve(Vec3f::DefaultAxisRule == Rules::Axis::AXIS_LHS, verbose);
 				Assertv(Vec3f(5, 5, 5).rotate(Vec3f(degToRad(0.0f), degToRad(0.0f), degToRad(0.0f))).equals(5, 5, 5, 0.0001f), verbose);
 				Assertv(Vec3f(5, 0, 0).rotate(Vec3f(degToRad(90.0f), degToRad(0.0f), degToRad(0.0f))).equals(5, 0, 0, 0.0001f), verbose);
 				Assertv(Vec3f(5, 0, 0).rotate(Vec3f(degToRad(0.0f), degToRad(90.0f), degToRad(0.0f))).equals(0, 0, 5, 0.0001f), verbose);
@@ -628,8 +628,8 @@ int main(int argc, char *argv[])
 		}
 		{ // rotateX
 			{ // RHS
-				Vec3f::DefaultAxisRule = Rules::AXIS_RHS;
-				Assertve(Vec3f::DefaultAxisRule == Rules::AXIS_RHS, verbose);
+				Vec3f::DefaultAxisRule = Rules::Axis::AXIS_RHS;
+				Assertve(Vec3f::DefaultAxisRule == Rules::Axis::AXIS_RHS, verbose);
 				Assertv(Vec3f(5, 5, 5).rotateX(degToRad(0.0f)).equals(5, 5, 5, 0.0001f), verbose);
 				Assertv(Vec3f(5, 0, 0).rotateX(degToRad(90.0f)).equals(5, 0, 0, 0.0001f), verbose);
 				Assertv(Vec3f(0, 5, 0).rotateX(degToRad(90.0f)).equals(0, 0, 5, 0.0001f), verbose);
@@ -647,8 +647,8 @@ int main(int argc, char *argv[])
 				Assertv(Vec3f(sq2, sq2, sq2).rotateX(degToRad(-45.0f)).equals(sq2, 2, 0, 0.0001f), verbose);
 			}
 			{ // LHS
-				Vec3f::DefaultAxisRule = Rules::AXIS_LHS;
-				Assertve(Vec3f::DefaultAxisRule == Rules::AXIS_LHS, verbose);
+				Vec3f::DefaultAxisRule = Rules::Axis::AXIS_LHS;
+				Assertve(Vec3f::DefaultAxisRule == Rules::Axis::AXIS_LHS, verbose);
 				Assertv(Vec3f(5, 5, 5).rotateX(degToRad(0.0f)).equals(5, 5, 5, 0.0001f), verbose);
 				Assertv(Vec3f(5, 0, 0).rotateX(degToRad(90.0f)).equals(5, 0, 0, 0.0001f), verbose);
 				Assertv(Vec3f(0, 5, 0).rotateX(degToRad(90.0f)).equals(0, 0, -5, 0.0001f), verbose);
@@ -668,8 +668,8 @@ int main(int argc, char *argv[])
 		}
 		{ // rotateY
 			{ // RHS
-				Vec3f::DefaultAxisRule = Rules::AXIS_RHS;
-				Assertve(Vec3f::DefaultAxisRule == Rules::AXIS_RHS, verbose);
+				Vec3f::DefaultAxisRule = Rules::Axis::AXIS_RHS;
+				Assertve(Vec3f::DefaultAxisRule == Rules::Axis::AXIS_RHS, verbose);
 				Assertv(Vec3f(5, 5, 5).rotateY(degToRad(0.0f)).equals(5, 5, 5, 0.0001f), verbose);
 				Assertv(Vec3f(5, 0, 0).rotateY(degToRad(90.0f)).equals(0, 0, -5, 0.0001f), verbose);
 				Assertv(Vec3f(0, 5, 0).rotateY(degToRad(90.0f)).equals(0, 5, 0, 0.0001f), verbose);
@@ -687,8 +687,8 @@ int main(int argc, char *argv[])
 				Assertv(Vec3f(sq2, sq2, sq2).rotateY(degToRad(-45.0f)).equals(0, sq2, 2, 0.0001f), verbose);
 			}
 			{ // LHS
-				Vec3f::DefaultAxisRule = Rules::AXIS_LHS;
-				Assertve(Vec3f::DefaultAxisRule == Rules::AXIS_LHS, verbose);
+				Vec3f::DefaultAxisRule = Rules::Axis::AXIS_LHS;
+				Assertve(Vec3f::DefaultAxisRule == Rules::Axis::AXIS_LHS, verbose);
 				Assertv(Vec3f(5, 5, 5).rotateY(degToRad(0.0f)).equals(5, 5, 5, 0.0001f), verbose);
 				Assertv(Vec3f(5, 0, 0).rotateY(degToRad(90.0f)).equals(0, 0, 5, 0.0001f), verbose);
 				Assertv(Vec3f(0, 5, 0).rotateY(degToRad(90.0f)).equals(0, 5, 0, 0.0001f), verbose);
@@ -708,8 +708,8 @@ int main(int argc, char *argv[])
 		}
 		{ // rotateZ
 			{ // RHS
-				Vec3f::DefaultAxisRule = Rules::AXIS_RHS;
-				Assertve(Vec3f::DefaultAxisRule == Rules::AXIS_RHS, verbose);
+				Vec3f::DefaultAxisRule = Rules::Axis::AXIS_RHS;
+				Assertve(Vec3f::DefaultAxisRule == Rules::Axis::AXIS_RHS, verbose);
 				Assertv(Vec3f(5, 5, 5).rotateZ(degToRad(0.0f)).equals(5, 5, 5, 0.0001f), verbose);
 				Assertv(Vec3f(5, 0, 0).rotateZ(degToRad(90.0f)).equals(0, 5, 0, 0.0001f), verbose);
 				Assertv(Vec3f(0, 5, 0).rotateZ(degToRad(90.0f)).equals(-5, 0, 0, 0.0001f), verbose);
@@ -727,8 +727,8 @@ int main(int argc, char *argv[])
 				Assertv(Vec3f(sq2, sq2, sq2).rotateZ(degToRad(-45.0f)).equals(2, 0, sq2, 0.0001f), verbose);
 			}
 			{ // LHS
-				Vec3f::DefaultAxisRule = Rules::AXIS_LHS;
-				Assertve(Vec3f::DefaultAxisRule == Rules::AXIS_LHS, verbose);
+				Vec3f::DefaultAxisRule = Rules::Axis::AXIS_LHS;
+				Assertve(Vec3f::DefaultAxisRule == Rules::Axis::AXIS_LHS, verbose);
 				Assertv(Vec3f(5, 5, 5).rotateZ(degToRad(0.0f)).equals(5, 5, 5, 0.0001f), verbose);
 				Assertv(Vec3f(5, 0, 0).rotateZ(degToRad(90.0f)).equals(0, -5, 0, 0.0001f), verbose);
 				Assertv(Vec3f(0, 5, 0).rotateZ(degToRad(90.0f)).equals(5, 0, 0, 0.0001f), verbose);
@@ -748,8 +748,8 @@ int main(int argc, char *argv[])
 		}
 		{ // rotated
 			{ // RHS
-				Vec3f::DefaultAxisRule = Rules::AXIS_RHS;
-				Assertve(Vec3f::DefaultAxisRule == Rules::AXIS_RHS, verbose);
+				Vec3f::DefaultAxisRule = Rules::Axis::AXIS_RHS;
+				Assertve(Vec3f::DefaultAxisRule == Rules::Axis::AXIS_RHS, verbose);
 				Assertv(Vec3f(5, 5, 5).rotated(degToRad(0.0f), degToRad(0.0f), degToRad(0.0f)).equals(5, 5, 5, 0.0001f), verbose);
 				Assertv(Vec3f(5, 0, 0).rotated(degToRad(90.0f), degToRad(0.0f), degToRad(0.0f)).equals(5, 0, 0, 0.0001f), verbose);
 				Assertv(Vec3f(5, 0, 0).rotated(degToRad(0.0f), degToRad(90.0f), degToRad(0.0f)).equals(0, 0, -5, 0.0001f), verbose);
@@ -795,8 +795,8 @@ int main(int argc, char *argv[])
 				Assertv(Vec3f(sq2, sq2, sq2).rotated(degToRad(0.0f), degToRad(0.0f), degToRad(-45.0f)).equals(2, 0, sq2, 0.0001f), verbose);
 			}
 			{ // LHS
-				Vec3f::DefaultAxisRule = Rules::AXIS_LHS;
-				Assertve(Vec3f::DefaultAxisRule == Rules::AXIS_LHS, verbose);
+				Vec3f::DefaultAxisRule = Rules::Axis::AXIS_LHS;
+				Assertve(Vec3f::DefaultAxisRule == Rules::Axis::AXIS_LHS, verbose);
 				Assertv(Vec3f(5, 5, 5).rotated(degToRad(0.0f), degToRad(0.0f), degToRad(0.0f)).equals(5, 5, 5, 0.0001f), verbose);
 				Assertv(Vec3f(5, 0, 0).rotated(degToRad(90.0f), degToRad(0.0f), degToRad(0.0f)).equals(5, 0, 0, 0.0001f), verbose);
 				Assertv(Vec3f(5, 0, 0).rotated(degToRad(0.0f), degToRad(90.0f), degToRad(0.0f)).equals(0, 0, 5, 0.0001f), verbose);
@@ -844,8 +844,8 @@ int main(int argc, char *argv[])
 		}
 		{ // rotated - angle_vec
 			{ // RHS
-				Vec3f::DefaultAxisRule = Rules::AXIS_RHS;
-				Assertve(Vec3f::DefaultAxisRule == Rules::AXIS_RHS, verbose);
+				Vec3f::DefaultAxisRule = Rules::Axis::AXIS_RHS;
+				Assertve(Vec3f::DefaultAxisRule == Rules::Axis::AXIS_RHS, verbose);
 				Assertv(Vec3f(5, 5, 5).rotated(Vec3f(degToRad(0.0f), degToRad(0.0f), degToRad(0.0f))).equals(5, 5, 5, 0.0001f), verbose);
 				Assertv(Vec3f(5, 0, 0).rotated(Vec3f(degToRad(90.0f), degToRad(0.0f), degToRad(0.0f))).equals(5, 0, 0, 0.0001f), verbose);
 				Assertv(Vec3f(5, 0, 0).rotated(Vec3f(degToRad(0.0f), degToRad(90.0f), degToRad(0.0f))).equals(0, 0, -5, 0.0001f), verbose);
@@ -891,8 +891,8 @@ int main(int argc, char *argv[])
 				Assertv(Vec3f(sq2, sq2, sq2).rotated(Vec3f(degToRad(0.0f), degToRad(0.0f), degToRad(-45.0f))).equals(2, 0, sq2, 0.0001f), verbose);
 			}
 			{ // LHS
-				Vec3f::DefaultAxisRule = Rules::AXIS_LHS;
-				Assertve(Vec3f::DefaultAxisRule == Rules::AXIS_LHS, verbose);
+				Vec3f::DefaultAxisRule = Rules::Axis::AXIS_LHS;
+				Assertve(Vec3f::DefaultAxisRule == Rules::Axis::AXIS_LHS, verbose);
 				Assertv(Vec3f(5, 5, 5).rotated(Vec3f(degToRad(0.0f), degToRad(0.0f), degToRad(0.0f))).equals(5, 5, 5, 0.0001f), verbose);
 				Assertv(Vec3f(5, 0, 0).rotated(Vec3f(degToRad(90.0f), degToRad(0.0f), degToRad(0.0f))).equals(5, 0, 0, 0.0001f), verbose);
 				Assertv(Vec3f(5, 0, 0).rotated(Vec3f(degToRad(0.0f), degToRad(90.0f), degToRad(0.0f))).equals(0, 0, 5, 0.0001f), verbose);
@@ -940,8 +940,8 @@ int main(int argc, char *argv[])
 		}
 		{ // rotatedX
 			{ // RHS
-				Vec3f::DefaultAxisRule = Rules::AXIS_RHS;
-				Assertve(Vec3f::DefaultAxisRule == Rules::AXIS_RHS, verbose);
+				Vec3f::DefaultAxisRule = Rules::Axis::AXIS_RHS;
+				Assertve(Vec3f::DefaultAxisRule == Rules::Axis::AXIS_RHS, verbose);
 				Assertv(Vec3f(5, 5, 5).rotatedX(degToRad(0.0f)).equals(5, 5, 5, 0.0001f), verbose);
 				Assertv(Vec3f(5, 0, 0).rotatedX(degToRad(90.0f)).equals(5, 0, 0, 0.0001f), verbose);
 				Assertv(Vec3f(0, 5, 0).rotatedX(degToRad(90.0f)).equals(0, 0, 5, 0.0001f), verbose);
@@ -959,8 +959,8 @@ int main(int argc, char *argv[])
 				Assertv(Vec3f(sq2, sq2, sq2).rotatedX(degToRad(-45.0f)).equals(sq2, 2, 0, 0.0001f), verbose);
 			}
 			{ // LHS
-				Vec3f::DefaultAxisRule = Rules::AXIS_LHS;
-				Assertve(Vec3f::DefaultAxisRule == Rules::AXIS_LHS, verbose);
+				Vec3f::DefaultAxisRule = Rules::Axis::AXIS_LHS;
+				Assertve(Vec3f::DefaultAxisRule == Rules::Axis::AXIS_LHS, verbose);
 				Assertv(Vec3f(5, 5, 5).rotatedX(degToRad(0.0f)).equals(5, 5, 5, 0.0001f), verbose);
 				Assertv(Vec3f(5, 0, 0).rotatedX(degToRad(90.0f)).equals(5, 0, 0, 0.0001f), verbose);
 				Assertv(Vec3f(0, 5, 0).rotatedX(degToRad(90.0f)).equals(0, 0, -5, 0.0001f), verbose);
@@ -980,8 +980,8 @@ int main(int argc, char *argv[])
 		}
 		{ // rotatedY
 			{ // RHS
-				Vec3f::DefaultAxisRule = Rules::AXIS_RHS;
-				Assertve(Vec3f::DefaultAxisRule == Rules::AXIS_RHS, verbose);
+				Vec3f::DefaultAxisRule = Rules::Axis::AXIS_RHS;
+				Assertve(Vec3f::DefaultAxisRule == Rules::Axis::AXIS_RHS, verbose);
 				Assertv(Vec3f(5, 5, 5).rotatedY(degToRad(0.0f)).equals(5, 5, 5, 0.0001f), verbose);
 				Assertv(Vec3f(5, 0, 0).rotatedY(degToRad(90.0f)).equals(0, 0, -5, 0.0001f), verbose);
 				Assertv(Vec3f(0, 5, 0).rotatedY(degToRad(90.0f)).equals(0, 5, 0, 0.0001f), verbose);
@@ -999,8 +999,8 @@ int main(int argc, char *argv[])
 				Assertv(Vec3f(sq2, sq2, sq2).rotatedY(degToRad(-45.0f)).equals(0, sq2, 2, 0.0001f), verbose);
 			}
 			{ // LHS
-				Vec3f::DefaultAxisRule = Rules::AXIS_LHS;
-				Assertve(Vec3f::DefaultAxisRule == Rules::AXIS_LHS, verbose);
+				Vec3f::DefaultAxisRule = Rules::Axis::AXIS_LHS;
+				Assertve(Vec3f::DefaultAxisRule == Rules::Axis::AXIS_LHS, verbose);
 				Assertv(Vec3f(5, 5, 5).rotatedY(degToRad(0.0f)).equals(5, 5, 5, 0.0001f), verbose);
 				Assertv(Vec3f(5, 0, 0).rotatedY(degToRad(90.0f)).equals(0, 0, 5, 0.0001f), verbose);
 				Assertv(Vec3f(0, 5, 0).rotatedY(degToRad(90.0f)).equals(0, 5, 0, 0.0001f), verbose);
@@ -1020,8 +1020,8 @@ int main(int argc, char *argv[])
 		}
 		{ // rotatedZ
 			{ // RHS
-				Vec3f::DefaultAxisRule = Rules::AXIS_RHS;
-				Assertve(Vec3f::DefaultAxisRule == Rules::AXIS_RHS, verbose);
+				Vec3f::DefaultAxisRule = Rules::Axis::AXIS_RHS;
+				Assertve(Vec3f::DefaultAxisRule == Rules::Axis::AXIS_RHS, verbose);
 				Assertv(Vec3f(5, 5, 5).rotatedZ(degToRad(0.0f)).equals(5, 5, 5, 0.0001f), verbose);
 				Assertv(Vec3f(5, 0, 0).rotatedZ(degToRad(90.0f)).equals(0, 5, 0, 0.0001f), verbose);
 				Assertv(Vec3f(0, 5, 0).rotatedZ(degToRad(90.0f)).equals(-5, 0, 0, 0.0001f), verbose);
@@ -1039,8 +1039,8 @@ int main(int argc, char *argv[])
 				Assertv(Vec3f(sq2, sq2, sq2).rotatedZ(degToRad(-45.0f)).equals(2, 0, sq2, 0.0001f), verbose);
 			}
 			{ // LHS
-				Vec3f::DefaultAxisRule = Rules::AXIS_LHS;
-				Assertve(Vec3f::DefaultAxisRule == Rules::AXIS_LHS, verbose);
+				Vec3f::DefaultAxisRule = Rules::Axis::AXIS_LHS;
+				Assertve(Vec3f::DefaultAxisRule == Rules::Axis::AXIS_LHS, verbose);
 				Assertv(Vec3f(5, 5, 5).rotatedZ(degToRad(0.0f)).equals(5, 5, 5, 0.0001f), verbose);
 				Assertv(Vec3f(5, 0, 0).rotatedZ(degToRad(90.0f)).equals(0, -5, 0, 0.0001f), verbose);
 				Assertv(Vec3f(0, 5, 0).rotatedZ(degToRad(90.0f)).equals(5, 0, 0, 0.0001f), verbose);

@@ -24,8 +24,10 @@
 #	else
 #		define AXLMATHCONSTMODIFIER constexpr
 #	endif
+#	define ENUM_CLASS enum class
 #else
 #	define AXLMATHCONSTMODIFIER const static
+#	define ENUM_CLASS enum
 #endif
 
 namespace axl {

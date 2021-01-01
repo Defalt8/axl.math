@@ -292,7 +292,7 @@ Vec4d Vec4d::filled(double v) { return Vec4d(v, v, v, v); }
 const Vec4d Vec4d::Zero(0.0, 0.0, 0.0, 0.0);
 const Vec4d Vec4d::Identity(1.0, 1.0, 1.0, 1.0);
 Vec4d Vec4d::Default(0.0, 0.0, 0.0, 0.0);
-Rules::Axis Vec4d::DefaultAxisRule = Rules::AXIS_RHS;
+Rules::Axis Vec4d::DefaultAxisRule = Rules::Axis::AXIS_RHS;
 
 } // namespace axl.math
 } // namespace axl
