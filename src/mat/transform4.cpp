@@ -1,4 +1,4 @@
-	#include <cmath>
+#include <cmath>
 #include <axl.math/lib.hpp>
 #include <axl.math/mat/Mat4f.hpp>
 #include <axl.math/mat/Mat4d.hpp>
@@ -24,6 +24,24 @@ Mat4f translate(const axl::math::Vec3f& translate)
 		0, 1, 0, 0,
 		0, 0, 1, 0,
 		translate.x, translate.y, translate.z, 1
+	);
+}
+Mat4f scaleTranslate(const axl::math::Vec3f& scale, const axl::math::Vec3f& translate)
+{
+	return axl::math::Mat4f(
+		scale.x, 0, 0, 0,
+		0, scale.y, 0, 0,
+		0, 0, scale.z, 0,
+		translate.x, translate.y, translate.z, 1
+	);
+}
+Mat4f translateScale(const axl::math::Vec3f& translate, const axl::math::Vec3f& scale)
+{
+	return axl::math::Mat4f(
+		scale.x, 0, 0, 0,
+		0, scale.y, 0, 0,
+		0, 0, scale.z, 0,
+		scale.x * translate.x, scale.y * translate.y, scale.z * translate.z, 1
 	);
 }
 Mat4f rotateX(float rotation_x, Rules::Axis axis_rule)
@@ -167,15 +185,6 @@ Mat4f rotateZY(const axl::math::Vec3f& rotation, Rules::Axis axis_rule)
 		0, 0, 0, 1
 	);
 }
-Mat4f scaleTranslate(const axl::math::Vec3f& scale, const axl::math::Vec3f& translate)
-{
-	return axl::math::Mat4f(
-		scale.x, 0, 0, 0,
-		0, scale.y, 0, 0,
-		0, 0, scale.z, 0,
-		translate.x, translate.y, translate.z, 1
-	);
-}
 
 
 Mat4d scale(const axl::math::Vec3d& scale)
@@ -194,6 +203,24 @@ Mat4d translate(const axl::math::Vec3d& translate)
 		0, 1, 0, 0,
 		0, 0, 1, 0,
 		translate.x, translate.y, translate.z, 1
+	);
+}
+Mat4d scaleTranslate(const axl::math::Vec3d& scale, const axl::math::Vec3d& translate)
+{
+	return axl::math::Mat4d(
+		scale.x, 0, 0, 0,
+		0, scale.y, 0, 0,
+		0, 0, scale.z, 0,
+		translate.x, translate.y, translate.z, 1
+	);
+}
+Mat4d translateScale(const axl::math::Vec3d& translate, const axl::math::Vec3d& scale)
+{
+	return axl::math::Mat4d(
+		scale.x, 0, 0, 0,
+		0, scale.y, 0, 0,
+		0, 0, scale.z, 0,
+		scale.x * translate.x, scale.y * translate.y, scale.z * translate.z, 1
 	);
 }
 Mat4d rotateX(double rotation_x, Rules::Axis axis_rule)
@@ -332,15 +359,6 @@ Mat4d rotateZY(const axl::math::Vec3d& rotation, Rules::Axis axis_rule)
 		-std::sin(gamma), std::cos(gamma), 0, 0,
 		std::cos(gamma) * std::sin(beta), std::sin(gamma) * std::sin(beta), std::cos(beta), 0,
 		0, 0, 0, 1
-	);
-}
-Mat4d scaleTranslate(const axl::math::Vec3d& scale, const axl::math::Vec3d& translate)
-{
-	return axl::math::Mat4d(
-		scale.x, 0, 0, 0,
-		0, scale.y, 0, 0,
-		0, 0, scale.z, 0,
-		translate.x, translate.y, translate.z, 1
 	);
 }
 
