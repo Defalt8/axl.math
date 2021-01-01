@@ -5,7 +5,7 @@ namespace axl {
 namespace math {
 namespace Rules {
 
-typedef enum class _Axis
+typedef ENUM_CLASS _Axis
 {
 	// left hand side rule
 	AXIS_LHS,

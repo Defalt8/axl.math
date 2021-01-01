@@ -34,18 +34,18 @@ namespace axl {
 namespace math {
 namespace lib {
 
-typedef enum LibraryType {
+typedef ENUM_CLASS _LibraryType {
 	LT_STATIC,
 	LT_SHARED
 } LibraryType;
 
-typedef enum BuildType {
+typedef ENUM_CLASS _BuildType {
 	BT_DEBUG,
 	BT_RELEASE,
 	BT_OTHER
 } BuildType;
 
-typedef struct Version
+typedef struct _Version
 {
 	unsigned short major;
 	unsigned short minor;
