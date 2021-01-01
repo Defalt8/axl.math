@@ -4,12 +4,13 @@ A simple C++ math library primarily designed for game engines.
 
 ## Versions
 
-- Latest: 0.19.22 alpha
+- Latest: 0.20.23 alpha
 
 ## library headers
 
 - [`axl.math/lib.hpp`](/include/axl.math/lib.hpp) - *Library main header. Contains ***version***, ***library type*** and ***build type***.*
 - [`axl.math/angle.hpp`](/include/axl.math/angle.hpp) - *Angle conversion functions.*
+- [`axl.math/basic.hpp`](/include/axl.math/basic.hpp) - *Basic mathematical functions.*
 - [`axl.math/constants.hpp`](/include/axl.math/constants.hpp) - *Mathematical constants like Pi, e, ...*
 - [`axl.math/rules.hpp`](/include/axl.math/rules.hpp) - *Mathematical rules such as axis orientation, ...*
 - [`axl.math/double.hpp`](/include/axl.math/double.hpp) - *Double floating point number comparison and checking functions.*

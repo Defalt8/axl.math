@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.10 )
 
-project( axl.math VERSION 0.19.22 DESCRIPTION "A simple C++ math library primarily designed for game engines." LANGUAGES CXX )
+project( axl.math VERSION 0.20.23 DESCRIPTION "A simple C++ math library primarily designed for game engines." LANGUAGES CXX )
 
 # Configure
 set( LIBAXLMATH_SUFFIX "" )
@@ -19,6 +19,10 @@ set( LIBAXLMATH_INSTALL_ARCHIVES ON CACHE BOOL "" )
 set( LIBAXLMATH_INSTALL_BINARIES ON CACHE BOOL "" )
 set( LIBAXLMATH_BUILD_TESTS ON CACHE BOOL "" )
 set( LIBAXLMATH_PRINT_CONFIGS OFF CACHE BOOL "" )
+
+if( BUILD_SHARED_LIBS )
+	set( LIBAXLMATH_TYPE SHARED )
+endif()
 
 if( "${CMAKE_BUILD_TYPE}" MATCHES "[Dd][Ee][Bb][Uu][Gg]" )
 	add_compile_definitions( DEBUG )
@@ -39,6 +43,7 @@ if( INSTALL_HEADERS AND LIBAXLMATH_INSTALL_HEADERS )
 		"include/axl.math/lib.hpp"
 		"include/axl.math/constants.hpp"
 		"include/axl.math/rules.hpp"
+		"include/axl.math/basic.hpp"
 		"include/axl.math/double.hpp"
 		"include/axl.math/float.hpp"
 		"include/axl.math/angle.hpp"

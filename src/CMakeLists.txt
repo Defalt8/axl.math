@@ -3,6 +3,7 @@ set( LIBAXLMATH_OUTPUT_NAME axl.math )
 add_library( axl.math ${LIBAXLMATH_TYPE}
 	"lib.cpp"
 	"rules.cpp"
+	"basic.cpp"
 	"double.cpp"
 	"float.cpp"
 	"angle.cpp"
@@ -26,6 +27,7 @@ add_library( axl.math ${LIBAXLMATH_TYPE}
 
 	"../include/axl.math/lib.hpp"
 	"../include/axl.math/rules.hpp"
+	"../include/axl.math/basic.hpp"
 	"../include/axl.math/double.hpp"
 	"../include/axl.math/float.hpp"
 	"../include/axl.math/angle.hpp"
