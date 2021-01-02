@@ -185,6 +185,102 @@ Mat4f rotateZY(const axl::math::Vec3f& rotation, Rules::Axis axis_rule)
 		0, 0, 0, 1
 	);
 }
+Mat4f rotateXYZ(const axl::math::Vec3f& rotation, Rules::Axis axis_rule)
+{
+	float alpha, beta, gamma;
+	switch (axis_rule)
+	{
+		default:
+		case Rules::Axis::AXIS_RHS: alpha = rotation.x; beta = rotation.y; gamma = rotation.z; break;
+		case Rules::Axis::AXIS_LHS: alpha = -rotation.x; beta = -rotation.y; gamma = -rotation.z; break;
+	}
+	return Mat4f(
+		cos(beta)*cos(gamma), sin(alpha)*sin(beta)*cos(gamma)+cos(alpha)*sin(gamma), sin(alpha)*sin(gamma)-cos(alpha)*sin(beta)*cos(gamma), 0,
+		-cos(beta)*sin(gamma), cos(alpha)*cos(gamma)-sin(alpha)*sin(beta)*sin(gamma), cos(alpha)*sin(beta)*sin(gamma)+sin(alpha)*cos(gamma), 0,
+		sin(beta), -sin(alpha)*cos(beta), cos(alpha)*cos(beta), 0,
+		0, 0, 0, 1
+	);
+}
+Mat4f rotateXZY(const axl::math::Vec3f& rotation, Rules::Axis axis_rule)
+{
+	float alpha, beta, gamma;
+	switch (axis_rule)
+	{
+		default:
+		case Rules::Axis::AXIS_RHS: alpha = rotation.x; beta = rotation.y; gamma = rotation.z; break;
+		case Rules::Axis::AXIS_LHS: alpha = -rotation.x; beta = -rotation.y; gamma = -rotation.z; break;
+	}
+	return Mat4f(
+		std::cos(gamma)*std::cos(beta), std::cos(alpha)*std::sin(gamma)*std::cos(beta)+std::sin(alpha)*std::sin(beta), std::sin(alpha)*std::sin(gamma)*std::cos(beta)-std::cos(alpha)*std::sin(beta), 0,
+		-std::sin(gamma), std::cos(alpha)*std::cos(gamma), std::sin(alpha)*std::cos(gamma), 0,
+		std::cos(gamma)*std::sin(beta), std::cos(alpha)*std::sin(gamma)*std::sin(beta)-std::sin(alpha)*std::cos(beta), std::sin(alpha)*std::sin(gamma)*std::sin(beta)+std::cos(alpha)*std::cos(beta), 0,
+		0, 0, 0, 1
+	);
+}
+Mat4f rotateYXZ(const axl::math::Vec3f& rotation, Rules::Axis axis_rule)
+{
+	float alpha, beta, gamma;
+	switch (axis_rule)
+	{
+		default:
+		case Rules::Axis::AXIS_RHS: alpha = rotation.x; beta = rotation.y; gamma = rotation.z; break;
+		case Rules::Axis::AXIS_LHS: alpha = -rotation.x; beta = -rotation.y; gamma = -rotation.z; break;
+	}
+	return Mat4f(
+		std::cos(beta)*std::cos(gamma)+std::sin(beta)*std::sin(alpha)*std::sin(gamma), std::cos(alpha)*std::sin(gamma), std::cos(beta)*std::sin(alpha)*std::sin(gamma)-std::sin(beta)*std::cos(gamma), 0,
+		std::sin(beta)*std::sin(alpha)*std::cos(gamma)-std::cos(beta)*std::sin(gamma), std::cos(alpha)*std::cos(gamma), std::sin(beta)*std::sin(gamma)+std::cos(beta)*std::sin(alpha)*std::cos(gamma), 0,
+		std::sin(beta)*std::cos(alpha), -std::sin(alpha), std::cos(beta)*std::cos(alpha), 0,
+		0, 0, 0, 1
+	);
+}
+Mat4f rotateYZX(const axl::math::Vec3f& rotation, Rules::Axis axis_rule)
+{
+	float alpha, beta, gamma;
+	switch (axis_rule)
+	{
+		default:
+		case Rules::Axis::AXIS_RHS: alpha = rotation.x; beta = rotation.y; gamma = rotation.z; break;
+		case Rules::Axis::AXIS_LHS: alpha = -rotation.x; beta = -rotation.y; gamma = -rotation.z; break;
+	}
+	return Mat4f(
+		std::cos(beta)*std::cos(gamma), std::sin(gamma), -std::sin(beta)*std::cos(gamma), 0,
+		std::sin(beta)*std::sin(alpha)-std::cos(beta)*std::sin(gamma)*std::cos(alpha), std::cos(gamma)*std::cos(alpha), std::sin(beta)*std::sin(gamma)*std::cos(alpha)+std::cos(beta)*std::sin(alpha), 0,
+		std::cos(beta)*std::sin(gamma)*std::sin(alpha)+std::sin(beta)*std::cos(alpha), -std::cos(gamma)*std::sin(alpha), std::cos(beta)*std::cos(alpha)-std::sin(beta)*std::sin(gamma)*std::sin(alpha), 0,
+		0, 0, 0, 1
+	);
+}
+Mat4f rotateZXY(const axl::math::Vec3f& rotation, Rules::Axis axis_rule)
+{
+	float alpha, beta, gamma;
+	switch (axis_rule)
+	{
+		default:
+		case Rules::Axis::AXIS_RHS: alpha = rotation.x; beta = rotation.y; gamma = rotation.z; break;
+		case Rules::Axis::AXIS_LHS: alpha = -rotation.x; beta = -rotation.y; gamma = -rotation.z; break;
+	}
+	return Mat4f(
+		cos(gamma)*cos(beta)-sin(gamma)*sin(alpha)*sin(beta), sin(gamma)*cos(beta)+cos(gamma)*sin(alpha)*sin(beta), -cos(alpha)*sin(beta), 0,
+		-sin(gamma)*cos(alpha), cos(gamma)*cos(alpha), sin(alpha), 0,
+		cos(gamma)*sin(beta)+sin(gamma)*sin(alpha)*cos(beta), sin(gamma)*sin(beta)-cos(gamma)*sin(alpha)*cos(beta), cos(alpha)*cos(beta), 0,
+		0, 0, 0, 1
+	);
+}
+Mat4f rotateZYX(const axl::math::Vec3f& rotation, Rules::Axis axis_rule)
+{
+	float alpha, beta, gamma;
+	switch (axis_rule)
+	{
+		default:
+		case Rules::Axis::AXIS_RHS: alpha = rotation.x; beta = rotation.y; gamma = rotation.z; break;
+		case Rules::Axis::AXIS_LHS: alpha = -rotation.x; beta = -rotation.y; gamma = -rotation.z; break;
+	}
+	return Mat4f(
+		cos(gamma)*cos(beta), sin(gamma)*cos(beta), -sin(beta), 0,
+		cos(gamma)*sin(beta)*sin(alpha)-sin(gamma)*cos(alpha), cos(gamma)*cos(alpha)+sin(gamma)*sin(beta)*sin(alpha), cos(beta)*sin(alpha), 0,
+		sin(gamma)*sin(alpha)+cos(gamma)*sin(beta)*cos(alpha), sin(gamma)*sin(beta)*cos(alpha)-cos(gamma)*sin(alpha), cos(beta)*cos(alpha), 0,
+		0, 0, 0, 1
+	);
+}
 
 
 Mat4d scale(const axl::math::Vec3d& scale)
@@ -273,6 +369,7 @@ Mat4d rotateXY(const axl::math::Vec3d& rotation, Rules::Axis axis_rule)
 	double alpha, beta;
 	switch (axis_rule)
 	{
+		default:
 		case Rules::Axis::AXIS_RHS: alpha = rotation.x; beta = rotation.y; break;
 		case Rules::Axis::AXIS_LHS: alpha = -rotation.x; beta = -rotation.y; break;
 	}
@@ -288,6 +385,7 @@ Mat4d rotateXZ(const axl::math::Vec3d& rotation, Rules::Axis axis_rule)
 	double alpha, gamma;
 	switch (axis_rule)
 	{
+		default:
 		case Rules::Axis::AXIS_RHS: alpha = rotation.x; gamma = rotation.z; break;
 		case Rules::Axis::AXIS_LHS: alpha = -rotation.x; gamma = -rotation.z; break;
 	}
@@ -303,6 +401,7 @@ Mat4d rotateYX(const axl::math::Vec3d& rotation, Rules::Axis axis_rule)
 	double alpha, beta;
 	switch (axis_rule)
 	{
+		default:
 		case Rules::Axis::AXIS_RHS: alpha = rotation.x; beta = rotation.y; break;
 		case Rules::Axis::AXIS_LHS: alpha = -rotation.x; beta = -rotation.y; break;
 	}
@@ -358,6 +457,102 @@ Mat4d rotateZY(const axl::math::Vec3d& rotation, Rules::Axis axis_rule)
 		std::cos(gamma) * std::cos(beta), std::sin(gamma) * std::cos(beta), -std::sin(beta), 0,
 		-std::sin(gamma), std::cos(gamma), 0, 0,
 		std::cos(gamma) * std::sin(beta), std::sin(gamma) * std::sin(beta), std::cos(beta), 0,
+		0, 0, 0, 1
+	);
+}
+Mat4d rotateXYZ(const axl::math::Vec3d& rotation, Rules::Axis axis_rule)
+{
+	double alpha, beta, gamma;
+	switch (axis_rule)
+	{
+		default:
+		case Rules::Axis::AXIS_RHS: alpha = rotation.x; beta = rotation.y; gamma = rotation.z; break;
+		case Rules::Axis::AXIS_LHS: alpha = -rotation.x; beta = -rotation.y; gamma = -rotation.z; break;
+	}
+	return Mat4d(
+		std::cos(beta) * std::cos(gamma), std::sin(alpha) * std::sin(beta) * std::cos(gamma) + std::cos(alpha) * std::sin(gamma), std::sin(alpha) * std::sin(gamma) - std::cos(alpha) * std::sin(beta) * std::cos(gamma), 0,
+		-std::cos(beta) * std::sin(gamma), std::cos(alpha) * std::cos(gamma) - std::sin(alpha) * std::sin(beta) * std::sin(gamma), std::cos(alpha) * std::sin(beta) * std::sin(gamma) + std::sin(alpha) * std::cos(gamma), 0,
+		std::sin(beta), -std::sin(alpha) * std::cos(beta), std::cos(alpha) * std::cos(beta), 0,
+		0, 0, 0, 1
+	);
+}
+Mat4d rotateXZY(const axl::math::Vec3d& rotation, Rules::Axis axis_rule)
+{
+	double alpha, beta, gamma;
+	switch (axis_rule)
+	{
+		default:
+		case Rules::Axis::AXIS_RHS: alpha = rotation.x; beta = rotation.y; gamma = rotation.z; break;
+		case Rules::Axis::AXIS_LHS: alpha = -rotation.x; beta = -rotation.y; gamma = -rotation.z; break;
+	}
+	return Mat4d(
+		std::cos(gamma) * std::cos(beta), std::cos(alpha) * std::sin(gamma) * std::cos(beta) + std::sin(alpha) * std::sin(beta), std::sin(alpha) * std::sin(gamma) * std::cos(beta) - std::cos(alpha) * std::sin(beta), 0,
+		-std::sin(gamma), std::cos(alpha) * std::cos(gamma), std::sin(alpha) * std::cos(gamma), 0,
+		std::cos(gamma) * std::sin(beta), std::cos(alpha) * std::sin(gamma) * std::sin(beta) - std::sin(alpha) * std::cos(beta), std::sin(alpha) * std::sin(gamma) * std::sin(beta) + std::cos(alpha) * std::cos(beta), 0,
+		0, 0, 0, 1
+	);
+}
+Mat4d rotateYXZ(const axl::math::Vec3d& rotation, Rules::Axis axis_rule)
+{
+	double alpha, beta, gamma;
+	switch (axis_rule)
+	{
+		default:
+		case Rules::Axis::AXIS_RHS: alpha = rotation.x; beta = rotation.y; gamma = rotation.z; break;
+		case Rules::Axis::AXIS_LHS: alpha = -rotation.x; beta = -rotation.y; gamma = -rotation.z; break;
+	}
+	return Mat4d(
+		std::cos(beta) * std::cos(gamma) + std::sin(beta) * std::sin(alpha) * std::sin(gamma), std::cos(alpha) * std::sin(gamma), std::cos(beta) * std::sin(alpha) * std::sin(gamma) - std::sin(beta) * std::cos(gamma), 0,
+		std::sin(beta) * std::sin(alpha) * std::cos(gamma) - std::cos(beta) * std::sin(gamma), std::cos(alpha) * std::cos(gamma), std::sin(beta) * std::sin(gamma) + std::cos(beta) * std::sin(alpha) * std::cos(gamma), 0,
+		std::sin(beta) * std::cos(alpha), -std::sin(alpha), std::cos(beta) * std::cos(alpha), 0,
+		0, 0, 0, 1
+	);
+}
+Mat4d rotateYZX(const axl::math::Vec3d& rotation, Rules::Axis axis_rule)
+{
+	double alpha, beta, gamma;
+	switch (axis_rule)
+	{
+		default:
+		case Rules::Axis::AXIS_RHS: alpha = rotation.x; beta = rotation.y; gamma = rotation.z; break;
+		case Rules::Axis::AXIS_LHS: alpha = -rotation.x; beta = -rotation.y; gamma = -rotation.z; break;
+	}
+	return Mat4d(
+		std::cos(beta) * std::cos(gamma), std::sin(gamma), -std::sin(beta) * std::cos(gamma), 0,
+		std::sin(beta) * std::sin(alpha) - std::cos(beta) * std::sin(gamma) * std::cos(alpha), std::cos(gamma) * std::cos(alpha), std::sin(beta) * std::sin(gamma) * std::cos(alpha) + std::cos(beta) * std::sin(alpha), 0,
+		std::cos(beta) * std::sin(gamma) * std::sin(alpha) + std::sin(beta) * std::cos(alpha), -std::cos(gamma) * std::sin(alpha), std::cos(beta) * std::cos(alpha) - std::sin(beta) * std::sin(gamma) * std::sin(alpha), 0,
+		0, 0, 0, 1
+	);
+}
+Mat4d rotateZXY(const axl::math::Vec3d& rotation, Rules::Axis axis_rule)
+{
+	double alpha, beta, gamma;
+	switch (axis_rule)
+	{
+		default:
+		case Rules::Axis::AXIS_RHS: alpha = rotation.x; beta = rotation.y; gamma = rotation.z; break;
+		case Rules::Axis::AXIS_LHS: alpha = -rotation.x; beta = -rotation.y; gamma = -rotation.z; break;
+	}
+	return Mat4d(
+		std::cos(gamma) * std::cos(beta) - std::sin(gamma) * std::sin(alpha) * std::sin(beta), std::sin(gamma) * std::cos(beta) + std::cos(gamma) * std::sin(alpha) * std::sin(beta), -std::cos(alpha) * std::sin(beta), 0,
+		-std::sin(gamma) * std::cos(alpha), std::cos(gamma) * std::cos(alpha), std::sin(alpha), 0,
+		std::cos(gamma) * std::sin(beta) + std::sin(gamma) * std::sin(alpha) * std::cos(beta), std::sin(gamma) * std::sin(beta) - std::cos(gamma) * std::sin(alpha) * std::cos(beta), std::cos(alpha) * std::cos(beta), 0,
+		0, 0, 0, 1
+	);
+}
+Mat4d rotateZYX(const axl::math::Vec3d& rotation, Rules::Axis axis_rule)
+{
+	double alpha, beta, gamma;
+	switch (axis_rule)
+	{
+		default:
+		case Rules::Axis::AXIS_RHS: alpha = rotation.x; beta = rotation.y; gamma = rotation.z; break;
+		case Rules::Axis::AXIS_LHS: alpha = -rotation.x; beta = -rotation.y; gamma = -rotation.z; break;
+	}
+	return Mat4d(
+		std::cos(gamma) * std::cos(beta), std::sin(gamma) * std::cos(beta), -std::sin(beta), 0,
+		std::cos(gamma) * std::sin(beta) * std::sin(alpha) - std::sin(gamma) * std::cos(alpha), std::cos(gamma) * std::cos(alpha) + std::sin(gamma) * std::sin(beta) * std::sin(alpha), std::cos(beta) * std::sin(alpha), 0,
+		std::sin(gamma) * std::sin(alpha) + std::cos(gamma) * std::sin(beta) * std::cos(alpha), std::sin(gamma) * std::sin(beta) * std::cos(alpha) - std::cos(gamma) * std::sin(alpha), std::cos(beta) * std::cos(alpha), 0,
 		0, 0, 0, 1
 	);
 }

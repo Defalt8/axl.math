@@ -21,6 +21,12 @@ Mat4f AXLMATHAPI rotateYX(const axl::math::Vec3f& rotation, Rules::Axis axis_rul
 Mat4f AXLMATHAPI rotateYZ(const axl::math::Vec3f& rotation, Rules::Axis axis_rule = Rules::DefaultAxisRule);
 Mat4f AXLMATHAPI rotateZX(const axl::math::Vec3f& rotation, Rules::Axis axis_rule = Rules::DefaultAxisRule);
 Mat4f AXLMATHAPI rotateZY(const axl::math::Vec3f& rotation, Rules::Axis axis_rule = Rules::DefaultAxisRule);
+Mat4f AXLMATHAPI rotateXYZ(const axl::math::Vec3f& rotation, Rules::Axis axis_rule = Rules::DefaultAxisRule);
+Mat4f AXLMATHAPI rotateXZY(const axl::math::Vec3f& rotation, Rules::Axis axis_rule = Rules::DefaultAxisRule);
+Mat4f AXLMATHAPI rotateYXZ(const axl::math::Vec3f& rotation, Rules::Axis axis_rule = Rules::DefaultAxisRule);
+Mat4f AXLMATHAPI rotateYZX(const axl::math::Vec3f& rotation, Rules::Axis axis_rule = Rules::DefaultAxisRule);
+Mat4f AXLMATHAPI rotateZXY(const axl::math::Vec3f& rotation, Rules::Axis axis_rule = Rules::DefaultAxisRule);
+Mat4f AXLMATHAPI rotateZYX(const axl::math::Vec3f& rotation, Rules::Axis axis_rule = Rules::DefaultAxisRule);
 
 
 Mat4d AXLMATHAPI scale(const axl::math::Vec3d& scale);
@@ -36,6 +42,12 @@ Mat4d AXLMATHAPI rotateYX(const axl::math::Vec3d& rotation, Rules::Axis axis_rul
 Mat4d AXLMATHAPI rotateYZ(const axl::math::Vec3d& rotation, Rules::Axis axis_rule = Rules::DefaultAxisRule);
 Mat4d AXLMATHAPI rotateZX(const axl::math::Vec3d& rotation, Rules::Axis axis_rule = Rules::DefaultAxisRule);
 Mat4d AXLMATHAPI rotateZY(const axl::math::Vec3d& rotation, Rules::Axis axis_rule = Rules::DefaultAxisRule);
+Mat4d AXLMATHAPI rotateXYZ(const axl::math::Vec3d& rotation, Rules::Axis axis_rule = Rules::DefaultAxisRule);
+Mat4d AXLMATHAPI rotateXZY(const axl::math::Vec3d& rotation, Rules::Axis axis_rule = Rules::DefaultAxisRule);
+Mat4d AXLMATHAPI rotateYXZ(const axl::math::Vec3d& rotation, Rules::Axis axis_rule = Rules::DefaultAxisRule);
+Mat4d AXLMATHAPI rotateYZX(const axl::math::Vec3d& rotation, Rules::Axis axis_rule = Rules::DefaultAxisRule);
+Mat4d AXLMATHAPI rotateZXY(const axl::math::Vec3d& rotation, Rules::Axis axis_rule = Rules::DefaultAxisRule);
+Mat4d AXLMATHAPI rotateZYX(const axl::math::Vec3d& rotation, Rules::Axis axis_rule = Rules::DefaultAxisRule);
 
 } // namespace axl.math.Transform4
 } // namespace axl.math
