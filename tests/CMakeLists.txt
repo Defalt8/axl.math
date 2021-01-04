@@ -1,7 +1,6 @@
 
 link_libraries( axl.math )
 
-add_executable( "axl.math.transform4" "mat/transform4.cpp" )
 add_executable( "axl.math.lib" "lib.cpp" )
 add_executable( "axl.math.double" "double.cpp" )
 add_executable( "axl.math.float" "float.cpp" )
@@ -23,3 +22,5 @@ add_executable( "axl.math.Mat3f" "mat/Mat3f.cpp" )
 add_executable( "axl.math.Mat3d" "mat/Mat3d.cpp" )
 add_executable( "axl.math.Mat4f" "mat/Mat4f.cpp" )
 add_executable( "axl.math.Mat4d" "mat/Mat4d.cpp" )
+add_executable( "axl.math.transform3" "mat/transform3.cpp" )
+add_executable( "axl.math.transform4" "mat/transform4.cpp" )

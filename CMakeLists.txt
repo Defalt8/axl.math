@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.10 )
 
-project( axl.math VERSION 0.21.25 DESCRIPTION "A simple C++ math library primarily designed for game engines." LANGUAGES CXX )
+project( axl.math VERSION 0.22.25 DESCRIPTION "A simple C++ math library primarily designed for game engines." LANGUAGES CXX )
 
 # Configure
 set( AXLMATH_SUFFIX "" )
