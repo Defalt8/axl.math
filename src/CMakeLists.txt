@@ -1,5 +1,15 @@
 # library
-set( AXLMATH_OUTPUT_NAME axl.math )
+set( CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE )
+set( MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>" )
+
+if( "${AXLMATH_TYPE}" MATCHES "^[Ss][Hh][Aa][Rr][Ee][Dd]$" )
+	set( AXLMATH_TYPE SHARED )
+	set( TYPE_SUFFIX "" )
+else()
+	set( AXLMATH_TYPE STATIC )
+	set( TYPE_SUFFIX s )
+endif()
+
 add_library( axl.math ${AXLMATH_TYPE}
 	"lib.cpp"
 	"rules.cpp"
@@ -25,73 +35,112 @@ add_library( axl.math ${AXLMATH_TYPE}
 	"mat/transform3.cpp"
 	"mat/transform4.cpp"
 
-	"../include/axl.math/lib.hpp"
-	"../include/axl.math/rules.hpp"
-	"../include/axl.math/basic.hpp"
-	"../include/axl.math/double.hpp"
-	"../include/axl.math/float.hpp"
-	"../include/axl.math/angle.hpp"
-	"../include/axl.math/util.hpp"
-	"../include/axl.math/vec/Vec2i.hpp"
-	"../include/axl.math/vec/Vec2f.hpp"
-	"../include/axl.math/vec/Vec2d.hpp"
-	"../include/axl.math/vec/Vec3f.hpp"
-	"../include/axl.math/vec/Vec3d.hpp"
-	"../include/axl.math/vec/Vec4f.hpp"
-	"../include/axl.math/vec/Vec4d.hpp"
-	"../include/axl.math/mat/Mat2f.hpp"
-	"../include/axl.math/mat/Mat2d.hpp"
-	"../include/axl.math/mat/Mat3f.hpp"
-	"../include/axl.math/mat/Mat3d.hpp"
-	"../include/axl.math/mat/Mat4f.hpp"
-	"../include/axl.math/mat/Mat4d.hpp"
-	"../include/axl.math/mat/transform2.hpp"
-	"../include/axl.math/mat/transform3.hpp"
-	"../include/axl.math/mat/transform4.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/lib.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/rules.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/basic.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/double.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/float.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/angle.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/util.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/vec/Vec2i.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/vec/Vec2f.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/vec/Vec2d.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/vec/Vec3f.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/vec/Vec3d.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/vec/Vec4f.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/vec/Vec4d.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/mat/Mat2f.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/mat/Mat2d.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/mat/Mat3f.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/mat/Mat3d.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/mat/Mat4f.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/mat/Mat4d.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/mat/transform2.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/mat/transform3.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/mat/transform4.hpp"
 )
+target_include_directories( axl.math PUBLIC "${AXLMATH_INCLUDE_DIR}" )
 target_compile_definitions( axl.math
 	PRIVATE AXLMATH_BUILD
-	PUBLIC AXLMATH_VERSION_MAJOR=${axl.math_VERSION_MAJOR}
-	PUBLIC AXLMATH_VERSION_MINOR=${axl.math_VERSION_MINOR}
-	PUBLIC AXLMATH_VERSION_PATCH=${axl.math_VERSION_PATCH}
+	PUBLIC AXLMATH_VERSION_MAJOR=${PROJECT_VERSION_MAJOR}
+	PUBLIC AXLMATH_VERSION_MINOR=${PROJECT_VERSION_MINOR}
+	PUBLIC AXLMATH_VERSION_PATCH=${PROJECT_VERSION_PATCH}
 )
-if( "${AXLMATH_TYPE}" MATCHES "^[Ss][Tt][Aa][Tt][Ii][Cc]$" )
-	set( AXLMATH_SUFFIX s )
-	target_compile_definitions( axl.math
-		PUBLIC AXLMATH_STATIC
-	)
-	if( INSTALL_ARCHIVES AND AXLMATH_INSTALL_ARCHIVES )
-		install( TARGETS axl.math
-			ARCHIVE DESTINATION "${CMAKE_INSTALL_PREFIX}/${ARCHIVES_INSTALL_DIR}"
-		)
-	endif()
-elseif( "${AXLMATH_TYPE}" MATCHES "^[Ss][Hh][Aa][Rr][Ee][Dd]$" )
-	target_compile_definitions( axl.math
-		PUBLIC AXLMATH_SHARED
-	)
-	if( INSTALL_ARCHIVES AND AXLMATH_INSTALL_ARCHIVES )
-		install( TARGETS axl.math
-			ARCHIVE DESTINATION "${CMAKE_INSTALL_PREFIX}/${ARCHIVES_INSTALL_DIR}"
-		)
-	endif()
-	if( INSTALL_BINARIES AND AXLMATH_INSTALL_BINARIES )
-		install( TARGETS axl.math
-			RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}/${BINARY_INSTALL_DIR}"
-		)
-	endif()
+set_target_properties( axl.math PROPERTIES
+	OUTPUT_NAME "axl.math${TYPE_SUFFIX}${DEBUG_SUFFIX}"
+	ARCHIVE_OUTPUT_NAME "axl.math${TYPE_SUFFIX}${DEBUG_SUFFIX}"
+	RUNTIME_OUTPUT_NAME "axl.math${TYPE_SUFFIX}${DEBUG_SUFFIX}"
+	ARCHIVE_OUTPUT_DIRECTORY "${AXLMATH_ARCHIVE_DIR}"
+	RUNTIME_OUTPUT_DIRECTORY "${AXLMATH_RUNTIME_DIR}"
+)
+if( "${AXLMATH_TYPE}" STREQUAL "SHARED" )
+	target_compile_definitions( axl.math PUBLIC AXLMATH_SHARED )
 else()
-	set( AXLMATH_SUFFIX l )
+	target_compile_definitions( axl.math PUBLIC AXLMATH_STATIC )
 endif()
 
 if( "${CMAKE_BUILD_TYPE}" MATCHES "[Dd][Ee][Bb][Uu][Gg]" )
-	set( AXLMATH_SUFFIX "${AXLMATH_SUFFIX}d" )
+	target_compile_definitions( axl.math PRIVATE DEBUG )
+elseif( "${CMAKE_BUILD_TYPE}" MATCHES "[Rr][Ee][Ll]" )
+	target_compile_definitions( axl.math PRIVATE NDEBUG )
 endif()
 
-set_target_properties( axl.math PROPERTIES
-	OUTPUT_NAME "${AXLMATH_OUTPUT_NAME}${AXLMATH_SUFFIX}"
-	ARCHIVE_OUTPUT_NAME "${AXLMATH_OUTPUT_NAME}${AXLMATH_SUFFIX}"
-	LIBRARY_OUTPUT_NAME "${AXLMATH_OUTPUT_NAME}${AXLMATH_SUFFIX}"
-	RUNTIME_OUTPUT_NAME "${AXLMATH_OUTPUT_NAME}${AXLMATH_SUFFIX}"
-	LIBRARY_OUTPUT_DIRECTORY "${AXLMATH_EXPORT_DIR}"
-	RUNTIME_OUTPUT_DIRECTORY "${AXLMATH_EXPORT_DIR}"
-)
+if( AXLMATH_INSTALL_ARCHIVES AND AXLMATH_INSTALL_RUNTIME )
+	install( TARGETS axl.math
+		ARCHIVE DESTINATION "lib"
+		RUNTIME DESTINATION "bin"
+	)
+elseif( AXLMATH_INSTALL_ARCHIVES )
+	install( TARGETS axl.math
+		ARCHIVE DESTINATION "lib"
+	)
+elseif( AXLMATH_INSTALL_RUNTIME )
+	install( TARGETS axl.math
+		RUNTIME DESTINATION "bin"
+	)
+endif()
+# install headers
+if( AXLMATH_INSTALL_HEADERS )
+	install( FILES
+		"${AXLMATH_INCLUDE_DIR}/axl.math/lib.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/constants.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/rules.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/basic.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/double.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/float.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/angle.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/util.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/vec.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/mat.hpp"
+		DESTINATION "${HEADERS_INSTALL_DIR}/axl.math"
+	)
+	install( FILES
+		"${AXLMATH_INCLUDE_DIR}/axl.math/vec/Vec2i.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/vec/Vec2f.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/vec/Vec2d.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/vec/Vec2.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/vec/Vec2.inl"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/vec/Vec3f.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/vec/Vec3d.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/vec/Vec3.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/vec/Vec3.inl"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/vec/Vec4f.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/vec/Vec4d.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/vec/Vec4.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/vec/Vec4.inl"
+		DESTINATION "${HEADERS_INSTALL_DIR}/axl.math/vec"
+	)
+	install( FILES
+		"${AXLMATH_INCLUDE_DIR}/axl.math/mat/Mat2f.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/mat/Mat2d.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/mat/Mat3f.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/mat/Mat3d.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/mat/Mat4f.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/mat/Mat4d.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/mat/transform2.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/mat/transform3.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/mat/transform4.hpp"
+		DESTINATION "${HEADERS_INSTALL_DIR}/axl.math/mat"
+	)
+endif()
+

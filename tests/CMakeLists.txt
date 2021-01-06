@@ -24,3 +24,31 @@ add_executable( "axl.math.Mat4f" "mat/Mat4f.cpp" )
 add_executable( "axl.math.Mat4d" "mat/Mat4d.cpp" )
 add_executable( "axl.math.transform3" "mat/transform3.cpp" )
 add_executable( "axl.math.transform4" "mat/transform4.cpp" )
+
+set_target_properties( 
+	"axl.math.lib"
+	"axl.math.double"
+	"axl.math.float"
+	"axl.math.angle"
+	"axl.math.util"
+	"axl.math.Vec2i"
+	"axl.math.Vec2f"
+	"axl.math.Vec2d"
+	"axl.math.Vec2"
+	"axl.math.Vec3f"
+	"axl.math.Vec3d"
+	"axl.math.Vec3"
+	"axl.math.Vec4f"
+	"axl.math.Vec4d"
+	"axl.math.Vec4"
+	"axl.math.Mat2f"
+	"axl.math.Mat2d"
+	"axl.math.Mat3f"
+	"axl.math.Mat3d"
+	"axl.math.Mat4f"
+	"axl.math.Mat4d"
+	"axl.math.transform3"
+	"axl.math.transform4"
+	PROPERTIES
+	RUNTIME_OUTPUT_DIRECTORY "${AXLMATH_RUNTIME_DIR}"
+)
