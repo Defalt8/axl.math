@@ -66,6 +66,11 @@ target_compile_definitions( axl.math
 	PUBLIC AXLMATH_VERSION_MINOR=${PROJECT_VERSION_MINOR}
 	PUBLIC AXLMATH_VERSION_PATCH=${PROJECT_VERSION_PATCH}
 )
+if( "${CMAKE_BUILD_TYPE}" MATCHES "[Dd][Ee][Bb][Uu][Gg]" )
+	set( DEBUG_SUFFIX d )
+else()
+	set( DEBUG_SUFFIX "" )
+endif()
 set_target_properties( axl.math PROPERTIES
 	OUTPUT_NAME "axl.math${TYPE_SUFFIX}${DEBUG_SUFFIX}"
 	ARCHIVE_OUTPUT_NAME "axl.math${TYPE_SUFFIX}${DEBUG_SUFFIX}"
