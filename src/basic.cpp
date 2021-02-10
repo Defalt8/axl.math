@@ -57,6 +57,10 @@ float atanh(float angle)
 {
 	return std::atanh(angle);
 }
+float mod(float dividend, float divisor)
+{
+	return std::fmodf(dividend, divisor);
+}
 
 // double
 double sin(double angle)
@@ -110,6 +114,10 @@ double acosh(double angle)
 double atanh(double angle)
 {
 	return std::atanh(angle);
+}
+double mod(double dividend, double divisor)
+{
+	return std::fmod(dividend, divisor);
 }
 
 } // namespace axl.math
