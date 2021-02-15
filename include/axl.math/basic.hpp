@@ -18,6 +18,10 @@ AXLMATHAPI float asinh(float angle);
 AXLMATHAPI float acosh(float angle);
 AXLMATHAPI float atanh(float angle);
 AXLMATHAPI float mod(float dividend, float divisor);
+AXLMATHAPI float sqrt(float value);
+AXLMATHAPI float log(float value);
+AXLMATHAPI float log2(float value);
+AXLMATHAPI float log10(float value);
 
 AXLMATHAPI double sin(double angle);
 AXLMATHAPI double cos(double angle);
@@ -33,6 +37,10 @@ AXLMATHAPI double asinh(double angle);
 AXLMATHAPI double acosh(double angle);
 AXLMATHAPI double atanh(double angle);
 AXLMATHAPI double mod(double dividend, double divisor);
+AXLMATHAPI double sqrt(double value);
+AXLMATHAPI double log(double value);
+AXLMATHAPI double log2(double value);
+AXLMATHAPI double log10(double value);
 
 } // namespace axl.math
 } // namespace axl

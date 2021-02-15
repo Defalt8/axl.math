@@ -61,6 +61,23 @@ float mod(float dividend, float divisor)
 {
 	return std::fmodf(dividend, divisor);
 }
+float sqrt(float value)
+{
+	return std::sqrt(value);
+}
+
+float log(float value)
+{
+	return std::log(value);
+}
+float log2(float value)
+{
+	return std::log2(value);
+}
+float log10(float value)
+{
+	return std::log10(value);
+}
 
 // double
 double sin(double angle)
@@ -118,6 +135,23 @@ double atanh(double angle)
 double mod(double dividend, double divisor)
 {
 	return std::fmod(dividend, divisor);
+}
+double sqrt(double value)
+{
+	return std::sqrt(value);
+}
+
+double log(double value)
+{
+	return std::log(value);
+}
+double log2(double value)
+{
+	return std::log2(value);
+}
+double log10(double value)
+{
+	return std::log10(value);
 }
 
 } // namespace axl.math
