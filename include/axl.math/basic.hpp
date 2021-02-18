@@ -22,6 +22,7 @@ AXLMATHAPI float sqrt(float value);
 AXLMATHAPI float log(float value);
 AXLMATHAPI float log2(float value);
 AXLMATHAPI float log10(float value);
+AXLMATHAPI float pow(float base, float power);
 
 AXLMATHAPI double sin(double angle);
 AXLMATHAPI double cos(double angle);
@@ -41,6 +42,7 @@ AXLMATHAPI double sqrt(double value);
 AXLMATHAPI double log(double value);
 AXLMATHAPI double log2(double value);
 AXLMATHAPI double log10(double value);
+AXLMATHAPI double pow(double base, double power);
 
 } // namespace axl.math
 } // namespace axl

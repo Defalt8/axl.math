@@ -78,6 +78,10 @@ float log10(float value)
 {
 	return std::log10(value);
 }
+float pow(float base, float power)
+{
+	return std::powf(base, power);
+}
 
 // double
 double sin(double angle)
@@ -140,7 +144,6 @@ double sqrt(double value)
 {
 	return std::sqrt(value);
 }
-
 double log(double value)
 {
 	return std::log(value);
@@ -152,6 +155,10 @@ double log2(double value)
 double log10(double value)
 {
 	return std::log10(value);
+}
+double pow(double base, double power)
+{
+	return std::pow(base, power);
 }
 
 } // namespace axl.math
