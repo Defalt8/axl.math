@@ -3,7 +3,6 @@
 
 namespace axl {
 namespace math {
-namespace Util {
 
 AXLMATHAPI float clamp(float value, float min, float max);
 AXLMATHAPI double clamp(double value, double min, double max);
@@ -16,6 +15,5 @@ AXLMATHAPI double floor(double value);
 AXLMATHAPI float ceil(float value);
 AXLMATHAPI double ceil(double value);
 
-} // namespace axl.math.Util
 } // namespace axl.math
 } // namespace axl

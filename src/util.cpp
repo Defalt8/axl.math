@@ -4,7 +4,6 @@
 
 namespace axl {
 namespace math {
-namespace Util {
 
 float clamp(float value, float min, float max)
 {
@@ -56,7 +55,5 @@ double ceil(double value)
 	return std::ceil(value);
 }
 
-
-} // namespace axl.math.Util
 } // namespace axl.math
 } // namespace axl
