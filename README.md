@@ -8,6 +8,7 @@ A simple C++ math library primarily designed for game engines.
 
 ## library headers
 
+- [`axl.math/everything.hpp`](/include/axl.math/everything.hpp) - Includes every header in the library.
 - [`axl.math/lib.hpp`](/include/axl.math/lib.hpp) - *Library main header. Contains ***version***, ***library type*** and ***build type***.*
 - [`axl.math/angle.hpp`](/include/axl.math/angle.hpp) - *Angle conversion functions.*
 - [`axl.math/basic.hpp`](/include/axl.math/basic.hpp) - *Basic mathematical functions.*

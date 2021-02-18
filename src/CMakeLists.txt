@@ -35,6 +35,7 @@ add_library( axl.math ${AXLMATH_TYPE}
 	"mat/transform3.cpp"
 	"mat/transform4.cpp"
 
+	"${AXLMATH_INCLUDE_DIR}/axl.math/everything.hpp"
 	"${AXLMATH_INCLUDE_DIR}/axl.math/lib.hpp"
 	"${AXLMATH_INCLUDE_DIR}/axl.math/rules.hpp"
 	"${AXLMATH_INCLUDE_DIR}/axl.math/basic.hpp"
@@ -107,6 +108,7 @@ endif()
 # install headers
 if( AXLMATH_INSTALL_HEADERS )
 	install( FILES
+		"${AXLMATH_INCLUDE_DIR}/axl.math/everything.hpp"
 		"${AXLMATH_INCLUDE_DIR}/axl.math/lib.hpp"
 		"${AXLMATH_INCLUDE_DIR}/axl.math/constants.hpp"
 		"${AXLMATH_INCLUDE_DIR}/axl.math/rules.hpp"
