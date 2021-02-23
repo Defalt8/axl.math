@@ -10,3 +10,4 @@
 #include "util.hpp"
 #include "vec.hpp"
 #include "mat.hpp"
+#include "rectangle.hpp"

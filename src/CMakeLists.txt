@@ -34,6 +34,9 @@ add_library( axl.math ${AXLMATH_TYPE}
 	"mat/transform2.cpp"
 	"mat/transform3.cpp"
 	"mat/transform4.cpp"
+	"rectangle/Rectanglei.cpp"
+	"rectangle/Rectanglef.cpp"
+	"rectangle/Rectangled.cpp"
 
 	"${AXLMATH_INCLUDE_DIR}/axl.math/everything.hpp"
 	"${AXLMATH_INCLUDE_DIR}/axl.math/lib.hpp"
@@ -43,6 +46,7 @@ add_library( axl.math ${AXLMATH_TYPE}
 	"${AXLMATH_INCLUDE_DIR}/axl.math/float.hpp"
 	"${AXLMATH_INCLUDE_DIR}/axl.math/angle.hpp"
 	"${AXLMATH_INCLUDE_DIR}/axl.math/util.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/vec.hpp"
 	"${AXLMATH_INCLUDE_DIR}/axl.math/vec/Vec2i.hpp"
 	"${AXLMATH_INCLUDE_DIR}/axl.math/vec/Vec2f.hpp"
 	"${AXLMATH_INCLUDE_DIR}/axl.math/vec/Vec2d.hpp"
@@ -50,6 +54,7 @@ add_library( axl.math ${AXLMATH_TYPE}
 	"${AXLMATH_INCLUDE_DIR}/axl.math/vec/Vec3d.hpp"
 	"${AXLMATH_INCLUDE_DIR}/axl.math/vec/Vec4f.hpp"
 	"${AXLMATH_INCLUDE_DIR}/axl.math/vec/Vec4d.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/mat.hpp"
 	"${AXLMATH_INCLUDE_DIR}/axl.math/mat/Mat2f.hpp"
 	"${AXLMATH_INCLUDE_DIR}/axl.math/mat/Mat2d.hpp"
 	"${AXLMATH_INCLUDE_DIR}/axl.math/mat/Mat3f.hpp"
@@ -59,6 +64,10 @@ add_library( axl.math ${AXLMATH_TYPE}
 	"${AXLMATH_INCLUDE_DIR}/axl.math/mat/transform2.hpp"
 	"${AXLMATH_INCLUDE_DIR}/axl.math/mat/transform3.hpp"
 	"${AXLMATH_INCLUDE_DIR}/axl.math/mat/transform4.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/rectangle.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/rectangle/Rectanglei.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/rectangle/Rectanglef.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/rectangle/Rectangled.hpp"
 )
 target_include_directories( axl.math PUBLIC "${AXLMATH_INCLUDE_DIR}" )
 target_compile_definitions( axl.math
@@ -119,6 +128,7 @@ if( AXLMATH_INSTALL_HEADERS )
 		"${AXLMATH_INCLUDE_DIR}/axl.math/util.hpp"
 		"${AXLMATH_INCLUDE_DIR}/axl.math/vec.hpp"
 		"${AXLMATH_INCLUDE_DIR}/axl.math/mat.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/rectangle.hpp"
 		DESTINATION "${HEADERS_INSTALL_DIR}/axl.math"
 	)
 	install( FILES
@@ -148,6 +158,12 @@ if( AXLMATH_INSTALL_HEADERS )
 		"${AXLMATH_INCLUDE_DIR}/axl.math/mat/transform3.hpp"
 		"${AXLMATH_INCLUDE_DIR}/axl.math/mat/transform4.hpp"
 		DESTINATION "${HEADERS_INSTALL_DIR}/axl.math/mat"
+	)
+	install( FILES
+		"${AXLMATH_INCLUDE_DIR}/axl.math/rectangle/Rectanglei.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/rectangle/Rectanglef.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/rectangle/Rectangled.hpp"
+		DESTINATION "${HEADERS_INSTALL_DIR}/axl.math/rectangle"
 	)
 endif()
 
