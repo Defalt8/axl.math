@@ -19,6 +19,7 @@ A simple C++ math library primarily designed for game engines.
 - [`axl.math/util.hpp`](/include/axl.math/util.hpp) - *Utility functions.*
 - [`axl.math/vec.hpp`](/include/axl.math/vec.hpp) - *Includes all header files under **vec**.*
 - [`axl.math/mat.hpp`](/include/axl.math/mat.hpp) - *Includes all header files under **mat**.*
+- [`axl.math/rectangle.hpp`](/include/axl.math/rectangle.hpp) - *Includes all header files under **rectangle**.*
 - **Vectors**
   - [`axl.math/vec/Vec2i.hpp`](/include/axl.math/vec/Vec2i.hpp) - *A 2D integer vector.*
   - [`axl.math/vec/Vec2f.hpp`](/include/axl.math/vec/Vec2f.hpp) - *A 2D single precision floating point vector.*
@@ -40,6 +41,10 @@ A simple C++ math library primarily designed for game engines.
   - [`axl.math/mat/transform2.hpp`](/include/axl.math/mat/transform2.hpp) - *Transforming functions that return a 2x2 transform matrix.*
   - [`axl.math/mat/transform3.hpp`](/include/axl.math/mat/transform3.hpp) - *Transforming functions that return a 3x3 transform matrix.*
   - [`axl.math/mat/transform4.hpp`](/include/axl.math/mat/transform4.hpp) - *Transforming functions that return a 4x4 transform matrix.*
+- **Rectangles**
+  - [`axl.math/rectangle/Rectanglei.hpp`](/include/axl.math/rectangle/Rectanglei.hpp) - *Integer Rectangle class.*
+  - [`axl.math/rectangle/Rectangled.hpp`](/include/axl.math/rectangle/Rectangled.hpp) - *A double precision floating point Rectangle class.*
+  - [`axl.math/rectangle/Rectanglef.hpp`](/include/axl.math/rectangle/Rectanglef.hpp) - *A single precision floating point Rectangle class.*
 
 ## Requirements
 
