@@ -56,6 +56,8 @@ class AXLMATHCXXAPI Mat4d
 		Mat4d& set(const double pv[16]);
 		void setValue(int column_index, int row_index, double v);
 		Mat4d transpose() const;
+		Mat4d inverse() const;
+		Vec3d affineInvert(const Vec3d& vec3) const;
 	public:
 		static Mat4d filled(double v);
 		const static Mat4d Identity;

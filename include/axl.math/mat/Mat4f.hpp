@@ -1,5 +1,6 @@
 #pragma once
 #include "../lib.hpp"
+#include "../vec/Vec3f.hpp"
 #include "../vec/Vec4f.hpp"
 #include "../vec/Vec4d.hpp"
 
@@ -56,6 +57,8 @@ class AXLMATHCXXAPI Mat4f
 		Mat4f& set(const float pv[16]);
 		void setValue(int column_index, int row_index, float v);
 		Mat4f transpose() const;
+		Mat4f inverse() const;
+		Vec3f affineInvert(const Vec3f& vec3) const;
 	public:
 		static Mat4f filled(float v);
 		const static Mat4f Identity;

@@ -4,6 +4,7 @@
 #include <axl.math/vec/Vec4f.hpp>
 #include <axl.math/mat/Mat4f.hpp>
 #include <axl.math/mat/Mat4d.hpp>
+#include <axl.math/mat/Mat3d.hpp>
 
 namespace axl {
 namespace math {
@@ -348,6 +349,52 @@ Mat4d Mat4d::transpose() const
 		values[2], values[6], values[10], values[14],
 		values[3], values[7], values[11], values[15]
 	);
+}
+Mat4d Mat4d::inverse() const
+{
+	Mat4d inv(Mat4d::Zero);
+	double s0 = values[0] * values[5] - values[4] * values[1];
+    double s1 = values[0] * values[6] - values[4] * values[2];
+    double s2 = values[0] * values[7] - values[4] * values[3];
+    double s3 = values[1] * values[6] - values[5] * values[2];
+    double s4 = values[1] * values[7] - values[5] * values[3];
+    double s5 = values[2] * values[7] - values[6] * values[3];
+
+    double c5 = values[10] * values[15] - values[14] * values[11];
+    double c4 = values[9] * values[15] - values[13] * values[11];
+    double c3 = values[9] * values[14] - values[13] * values[10];
+    double c2 = values[8] * values[15] - values[12] * values[11];
+    double c1 = values[8] * values[14] - values[12] * values[10];
+    double c0 = values[8] * values[13] - values[12] * values[9];
+
+    double invdet = 1.0 / (s0 * c5 - s1 * c4 + s2 * c3 + s3 * c2 - s4 * c1 + s5 * c0);
+	if(invdet == 0) return inv;
+
+    inv.values[0] = (values[5] * c5 - values[6] * c4 + values[7] * c3) * invdet;
+    inv.values[1] = (-values[1] * c5 + values[2] * c4 - values[3] * c3) * invdet;
+    inv.values[2] = (values[13] * s5 - values[14] * s4 + values[15] * s3) * invdet;
+    inv.values[3] = (-values[9] * s5 + values[10] * s4 - values[11] * s3) * invdet;
+
+    inv.values[4] = (-values[4] * c5 + values[6] * c2 - values[7] * c1) * invdet;
+    inv.values[5] = (values[0] * c5 - values[2] * c2 + values[3] * c1) * invdet;
+    inv.values[6] = (-values[12] * s5 + values[14] * s2 - values[15] * s1) * invdet;
+    inv.values[7] = (values[8] * s5 - values[10] * s2 + values[11] * s1) * invdet;
+	
+    inv.values[8] = (values[4] * c4 - values[5] * c2 + values[7] * c0) * invdet;
+    inv.values[9] = (-values[0] * c4 + values[1] * c2 - values[3] * c0) * invdet;
+    inv.values[10] = (values[12] * s4 - values[13] * s2 + values[15] * s0) * invdet;
+    inv.values[11] = (-values[8] * s4 + values[9] * s2 - values[11] * s0) * invdet;
+
+    inv.values[12] = (-values[4] * c3 + values[5] * c1 - values[6] * c0) * invdet;
+    inv.values[13] = (values[0] * c3 - values[1] * c1 + values[2] * c0) * invdet;
+    inv.values[14] = (-values[12] * s3 + values[13] * s1 - values[14] * s0) * invdet;
+    inv.values[15] = (values[8] * s3 - values[9] * s1 + values[10] * s0) * invdet;
+	return inv;
+}
+Vec3d Mat4d::affineInvert(const Vec3d& vec3) const
+{
+	Mat3d mat3inv = Mat3d(values[0],values[1],values[2],values[4],values[5],values[6],values[8],values[9],values[10]).inverse();
+	return mat3inv * (vec3 -  Vec3d(values[12],values[13],values[14]));
 }
 
 Mat4d Mat4d::filled(double v)
