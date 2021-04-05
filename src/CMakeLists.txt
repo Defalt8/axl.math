@@ -13,6 +13,7 @@ endif()
 add_library( axl.math ${AXLMATH_TYPE}
 	"lib.cpp"
 	"rules.cpp"
+	"orders.cpp"
 	"basic.cpp"
 	"double.cpp"
 	"float.cpp"
@@ -37,10 +38,12 @@ add_library( axl.math ${AXLMATH_TYPE}
 	"rectangle/Rectanglei.cpp"
 	"rectangle/Rectanglef.cpp"
 	"rectangle/Rectangled.cpp"
+	"transform/Transform4f.cpp"
 
 	"${AXLMATH_INCLUDE_DIR}/axl.math/everything.hpp"
 	"${AXLMATH_INCLUDE_DIR}/axl.math/lib.hpp"
 	"${AXLMATH_INCLUDE_DIR}/axl.math/rules.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/orders.hpp"
 	"${AXLMATH_INCLUDE_DIR}/axl.math/basic.hpp"
 	"${AXLMATH_INCLUDE_DIR}/axl.math/double.hpp"
 	"${AXLMATH_INCLUDE_DIR}/axl.math/float.hpp"
@@ -68,6 +71,7 @@ add_library( axl.math ${AXLMATH_TYPE}
 	"${AXLMATH_INCLUDE_DIR}/axl.math/rectangle/Rectanglei.hpp"
 	"${AXLMATH_INCLUDE_DIR}/axl.math/rectangle/Rectanglef.hpp"
 	"${AXLMATH_INCLUDE_DIR}/axl.math/rectangle/Rectangled.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/transform/Transform4f.hpp"
 )
 target_include_directories( axl.math PUBLIC "${AXLMATH_INCLUDE_DIR}" )
 target_compile_definitions( axl.math
@@ -121,6 +125,7 @@ if( AXLMATH_INSTALL_HEADERS )
 		"${AXLMATH_INCLUDE_DIR}/axl.math/lib.hpp"
 		"${AXLMATH_INCLUDE_DIR}/axl.math/constants.hpp"
 		"${AXLMATH_INCLUDE_DIR}/axl.math/rules.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/orders.hpp"
 		"${AXLMATH_INCLUDE_DIR}/axl.math/basic.hpp"
 		"${AXLMATH_INCLUDE_DIR}/axl.math/double.hpp"
 		"${AXLMATH_INCLUDE_DIR}/axl.math/float.hpp"
@@ -164,6 +169,10 @@ if( AXLMATH_INSTALL_HEADERS )
 		"${AXLMATH_INCLUDE_DIR}/axl.math/rectangle/Rectanglef.hpp"
 		"${AXLMATH_INCLUDE_DIR}/axl.math/rectangle/Rectangled.hpp"
 		DESTINATION "${HEADERS_INSTALL_DIR}/axl.math/rectangle"
+	)
+	install( FILES
+		"${AXLMATH_INCLUDE_DIR}/axl.math/transform/Transform4f.hpp"
+		DESTINATION "${HEADERS_INSTALL_DIR}/axl.math/transform"
 	)
 endif()
 

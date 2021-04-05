@@ -10,7 +10,9 @@ namespace Transform4 {
 	
 Mat4f AXLMATHAPI scale(const axl::math::Vec3f& scale);
 Mat4f AXLMATHAPI translate(const axl::math::Vec3f& translate);
+// Scale then translate
 Mat4f AXLMATHAPI scaleTranslate(const axl::math::Vec3f& scale, const axl::math::Vec3f& translate);
+// Translate then scale
 Mat4f AXLMATHAPI translateScale(const axl::math::Vec3f& translate, const axl::math::Vec3f& scale);
 Mat4f AXLMATHAPI rotateX(float rotation_x, Rules::Axis axis_rule = Rules::DefaultAxisRule);
 Mat4f AXLMATHAPI rotateY(float rotation_y, Rules::Axis axis_rule = Rules::DefaultAxisRule);
@@ -31,7 +33,9 @@ Mat4f AXLMATHAPI rotateZYX(const axl::math::Vec3f& rotation, Rules::Axis axis_ru
 
 Mat4d AXLMATHAPI scale(const axl::math::Vec3d& scale);
 Mat4d AXLMATHAPI translate(const axl::math::Vec3d& translate);
+// Scale then translate
 Mat4d AXLMATHAPI scaleTranslate(const axl::math::Vec3d& scale, const axl::math::Vec3d& translate);
+// Translate then scale
 Mat4d AXLMATHAPI translateScale(const axl::math::Vec3d& translate, const axl::math::Vec3d& scale);
 Mat4d AXLMATHAPI rotateX(double rotation_x, Rules::Axis axis_rule = Rules::DefaultAxisRule);
 Mat4d AXLMATHAPI rotateY(double rotation_y, Rules::Axis axis_rule = Rules::DefaultAxisRule);

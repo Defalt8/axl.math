@@ -4,7 +4,7 @@ A simple C++ math library primarily designed for game engines.
 
 ## Versions
 
-- Latest: 0.27.28 beta
+- Latest: 0.28.32 beta
 
 ## library headers
 
@@ -14,6 +14,7 @@ A simple C++ math library primarily designed for game engines.
 - [`axl.math/basic.hpp`](/include/axl.math/basic.hpp) - *Basic mathematical functions.*
 - [`axl.math/constants.hpp`](/include/axl.math/constants.hpp) - *Mathematical constants like Pi, e, ...*
 - [`axl.math/rules.hpp`](/include/axl.math/rules.hpp) - *Mathematical rules such as axis orientation, ...*
+- [`axl.math/orders.hpp`](/include/axl.math/orders.hpp) - *Orders such as transformation order, rotation order ...*
 - [`axl.math/double.hpp`](/include/axl.math/double.hpp) - *Double floating point number comparison and checking functions.*
 - [`axl.math/float.hpp`](/include/axl.math/float.hpp) - *Single floating point number comparison and checking functions.*
 - [`axl.math/util.hpp`](/include/axl.math/util.hpp) - *Utility functions.*
@@ -45,6 +46,8 @@ A simple C++ math library primarily designed for game engines.
   - [`axl.math/rectangle/Rectanglei.hpp`](/include/axl.math/rectangle/Rectanglei.hpp) - *Integer Rectangle class.*
   - [`axl.math/rectangle/Rectangled.hpp`](/include/axl.math/rectangle/Rectangled.hpp) - *A double precision floating point Rectangle class.*
   - [`axl.math/rectangle/Rectanglef.hpp`](/include/axl.math/rectangle/Rectanglef.hpp) - *A single precision floating point Rectangle class.*
+- **Transforms**
+  - [`axl.math/transform/Transform4f.hpp`](/include/axl.math/transform/Transform4f.hpp) - *A 3D transform class containing 4x4 matrix and all 3D transform attributes and methods.*
 
 ## Requirements
 

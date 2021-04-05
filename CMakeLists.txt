@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.4 )
 
-project( axl.math VERSION 0.27.28 DESCRIPTION "A simple C++ math library primarily designed for game engines." LANGUAGES CXX )
+project( axl.math VERSION 0.28.32 DESCRIPTION "A simple C++ math library primarily designed for game engines." LANGUAGES CXX )
 
 if( "${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_SOURCE_DIR}" )
 	set( AXLMATH_STANDALONE TRUE )
