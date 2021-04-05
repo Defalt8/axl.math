@@ -5,7 +5,7 @@
 namespace axl {
 namespace math {
 
-Transform4f::Transform4f(const axl::math::Vec3f& scale, const axl::math::Vec3f& position, const axl::math::Vec3f& rotation, Orders::Transform transform_order, Orders::Rotation rotation_order, axl::math::Rules::Axis axis_rule) :
+Transform4f::Transform4f(const Vec3f& scale, const Vec3f& position, const Vec3f& rotation, Orders::Transform transform_order, Orders::Rotation rotation_order, Rules::Axis axis_rule) :
 	m_is_updated(false),
 	m_scale(scale),
 	m_position(position),
@@ -16,28 +16,28 @@ Transform4f::Transform4f(const axl::math::Vec3f& scale, const axl::math::Vec3f& 
 {
 	this->updateMatrix();
 }
-void Transform4f::setScale(const axl::math::Vec3f& scale, bool update_matrix)
+void Transform4f::setScale(const Vec3f& scale, bool update_matrix)
 {
 	this->m_is_updated = false;
 	this->m_scale = scale;
 	if(update_matrix)
 		this->updateMatrix();
 }
-void Transform4f::setPosition(const axl::math::Vec3f& position, bool update_matrix)
+void Transform4f::setPosition(const Vec3f& position, bool update_matrix)
 {
 	this->m_is_updated = false;
 	this->m_position = position;
 	if(update_matrix)
 		this->updateMatrix();
 }
-void Transform4f::setRotation(const axl::math::Vec3f& rotation, bool update_matrix)
+void Transform4f::setRotation(const Vec3f& rotation, bool update_matrix)
 {
 	this->m_is_updated = false;
 	this->m_rotation = rotation;
 	if(update_matrix)
 		this->updateMatrix();
 }
-void Transform4f::setRotation(const axl::math::Vec3f& rotation, Orders::Rotation rotation_order, axl::math::Rules::Axis axis_rule, bool update_matrix)
+void Transform4f::setRotation(const Vec3f& rotation, Orders::Rotation rotation_order, Rules::Axis axis_rule, bool update_matrix)
 {
 	this->m_is_updated = false;
 	this->m_rotation = rotation;
@@ -60,7 +60,7 @@ void Transform4f::setRotationOrder(Orders::Rotation rotation_order, bool update_
 	if(update_matrix)
 		this->updateMatrix();
 }
-void Transform4f::setAxisRule(axl::math::Rules::Axis axis_rule, bool update_matrix)
+void Transform4f::setAxisRule(Rules::Axis axis_rule, bool update_matrix)
 {
 	this->m_is_updated = false;
 	this->m_axis_rule = axis_rule;
@@ -71,19 +71,19 @@ bool Transform4f::isUpdated() const
 {
 	return this->m_is_updated;
 }
-const axl::math::Mat4f& Transform4f::getMatrix() const
+const Mat4f& Transform4f::getMatrix() const
 {
 	return this->m_matrix;
 }
-const axl::math::Vec3f& Transform4f::getScale() const
+const Vec3f& Transform4f::getScale() const
 {
 	return this->m_scale;
 }
-const axl::math::Vec3f& Transform4f::getPosition() const
+const Vec3f& Transform4f::getPosition() const
 {
 	return this->m_position;
 }
-const axl::math::Vec3f& Transform4f::getRotation() const
+const Vec3f& Transform4f::getRotation() const
 {
 	return this->m_rotation;
 }
@@ -95,7 +95,7 @@ Orders::Rotation Transform4f::getRotationOrder() const
 {
 	return this->m_rotation_order;
 }
-axl::math::Rules::Axis Transform4f::getAxisRule() const
+Rules::Axis Transform4f::getAxisRule() const
 {
 	return this->m_axis_rule;
 }
@@ -111,22 +111,22 @@ void Transform4f::updateMatrix()
 			{
 				default:
 				case Orders::Rotation::XYZ:
-					this->m_matrix = axl::math::Transform4::rotateZYX(this->m_rotation, this->m_axis_rule) * axl::math::Transform4::scaleTranslate(this->m_scale, this->m_position);
+					this->m_matrix = Transform4::rotateZYX(this->m_rotation, this->m_axis_rule) * Transform4::scaleTranslate(this->m_scale, this->m_position);
 					return;
 				case Orders::Rotation::XZY:
-					this->m_matrix = axl::math::Transform4::rotateYZX(this->m_rotation, this->m_axis_rule) * axl::math::Transform4::scaleTranslate(this->m_scale, this->m_position);
+					this->m_matrix = Transform4::rotateYZX(this->m_rotation, this->m_axis_rule) * Transform4::scaleTranslate(this->m_scale, this->m_position);
 					return;
 				case Orders::Rotation::YXZ:
-					this->m_matrix = axl::math::Transform4::rotateZXY(this->m_rotation, this->m_axis_rule) * axl::math::Transform4::scaleTranslate(this->m_scale, this->m_position);
+					this->m_matrix = Transform4::rotateZXY(this->m_rotation, this->m_axis_rule) * Transform4::scaleTranslate(this->m_scale, this->m_position);
 					return;
 				case Orders::Rotation::YZX:
-					this->m_matrix = axl::math::Transform4::rotateXZY(this->m_rotation, this->m_axis_rule) * axl::math::Transform4::scaleTranslate(this->m_scale, this->m_position);
+					this->m_matrix = Transform4::rotateXZY(this->m_rotation, this->m_axis_rule) * Transform4::scaleTranslate(this->m_scale, this->m_position);
 					return;
 				case Orders::Rotation::ZXY:
-					this->m_matrix = axl::math::Transform4::rotateYXZ(this->m_rotation, this->m_axis_rule) * axl::math::Transform4::scaleTranslate(this->m_scale, this->m_position);
+					this->m_matrix = Transform4::rotateYXZ(this->m_rotation, this->m_axis_rule) * Transform4::scaleTranslate(this->m_scale, this->m_position);
 					return;
 				case Orders::Rotation::ZYX:
-					this->m_matrix = axl::math::Transform4::rotateXYZ(this->m_rotation, this->m_axis_rule) * axl::math::Transform4::scaleTranslate(this->m_scale, this->m_position);
+					this->m_matrix = Transform4::rotateXYZ(this->m_rotation, this->m_axis_rule) * Transform4::scaleTranslate(this->m_scale, this->m_position);
 					return;
 			}
 			return;
@@ -135,22 +135,22 @@ void Transform4f::updateMatrix()
 			{
 				default:
 				case Orders::Rotation::XYZ:
-					this->m_matrix = axl::math::Transform4::translate(this->m_position) * axl::math::Transform4::rotateZYX(this->m_rotation, this->m_axis_rule) * axl::math::Transform4::scale(this->m_scale);
+					this->m_matrix = Transform4::translate(this->m_position) * Transform4::rotateZYX(this->m_rotation, this->m_axis_rule) * Transform4::scale(this->m_scale);
 					return;
 				case Orders::Rotation::XZY:
-					this->m_matrix = axl::math::Transform4::translate(this->m_position) * axl::math::Transform4::rotateYZX(this->m_rotation, this->m_axis_rule) * axl::math::Transform4::scale(this->m_scale);
+					this->m_matrix = Transform4::translate(this->m_position) * Transform4::rotateYZX(this->m_rotation, this->m_axis_rule) * Transform4::scale(this->m_scale);
 					return;
 				case Orders::Rotation::YXZ:
-					this->m_matrix = axl::math::Transform4::translate(this->m_position) * axl::math::Transform4::rotateZXY(this->m_rotation, this->m_axis_rule) * axl::math::Transform4::scale(this->m_scale);
+					this->m_matrix = Transform4::translate(this->m_position) * Transform4::rotateZXY(this->m_rotation, this->m_axis_rule) * Transform4::scale(this->m_scale);
 					return;
 				case Orders::Rotation::YZX:
-					this->m_matrix = axl::math::Transform4::translate(this->m_position) * axl::math::Transform4::rotateXZY(this->m_rotation, this->m_axis_rule) * axl::math::Transform4::scale(this->m_scale);
+					this->m_matrix = Transform4::translate(this->m_position) * Transform4::rotateXZY(this->m_rotation, this->m_axis_rule) * Transform4::scale(this->m_scale);
 					return;
 				case Orders::Rotation::ZXY:
-					this->m_matrix = axl::math::Transform4::translate(this->m_position) * axl::math::Transform4::rotateYXZ(this->m_rotation, this->m_axis_rule) * axl::math::Transform4::scale(this->m_scale);
+					this->m_matrix = Transform4::translate(this->m_position) * Transform4::rotateYXZ(this->m_rotation, this->m_axis_rule) * Transform4::scale(this->m_scale);
 					return;
 				case Orders::Rotation::ZYX:
-					this->m_matrix = axl::math::Transform4::translate(this->m_position) * axl::math::Transform4::rotateXYZ(this->m_rotation, this->m_axis_rule) * axl::math::Transform4::scale(this->m_scale);
+					this->m_matrix = Transform4::translate(this->m_position) * Transform4::rotateXYZ(this->m_rotation, this->m_axis_rule) * Transform4::scale(this->m_scale);
 					return;
 			}
 			return;
@@ -159,22 +159,22 @@ void Transform4f::updateMatrix()
 			{
 				default:
 				case Orders::Rotation::XYZ:
-					this->m_matrix = axl::math::Transform4::rotateZYX(this->m_rotation, this->m_axis_rule) * axl::math::Transform4::translateScale(this->m_position, this->m_scale);
+					this->m_matrix = Transform4::rotateZYX(this->m_rotation, this->m_axis_rule) * Transform4::translateScale(this->m_position, this->m_scale);
 					return;
 				case Orders::Rotation::XZY:
-					this->m_matrix = axl::math::Transform4::rotateYZX(this->m_rotation, this->m_axis_rule) * axl::math::Transform4::translateScale(this->m_position, this->m_scale);
+					this->m_matrix = Transform4::rotateYZX(this->m_rotation, this->m_axis_rule) * Transform4::translateScale(this->m_position, this->m_scale);
 					return;
 				case Orders::Rotation::YXZ:
-					this->m_matrix = axl::math::Transform4::rotateZXY(this->m_rotation, this->m_axis_rule) * axl::math::Transform4::translateScale(this->m_position, this->m_scale);
+					this->m_matrix = Transform4::rotateZXY(this->m_rotation, this->m_axis_rule) * Transform4::translateScale(this->m_position, this->m_scale);
 					return;
 				case Orders::Rotation::YZX:
-					this->m_matrix = axl::math::Transform4::rotateXZY(this->m_rotation, this->m_axis_rule) * axl::math::Transform4::translateScale(this->m_position, this->m_scale);
+					this->m_matrix = Transform4::rotateXZY(this->m_rotation, this->m_axis_rule) * Transform4::translateScale(this->m_position, this->m_scale);
 					return;
 				case Orders::Rotation::ZXY:
-					this->m_matrix = axl::math::Transform4::rotateYXZ(this->m_rotation, this->m_axis_rule) * axl::math::Transform4::translateScale(this->m_position, this->m_scale);
+					this->m_matrix = Transform4::rotateYXZ(this->m_rotation, this->m_axis_rule) * Transform4::translateScale(this->m_position, this->m_scale);
 					return;
 				case Orders::Rotation::ZYX:
-					this->m_matrix = axl::math::Transform4::rotateXYZ(this->m_rotation, this->m_axis_rule) * axl::math::Transform4::translateScale(this->m_position, this->m_scale);
+					this->m_matrix = Transform4::rotateXYZ(this->m_rotation, this->m_axis_rule) * Transform4::translateScale(this->m_position, this->m_scale);
 					return;
 			}
 			return;
@@ -183,22 +183,22 @@ void Transform4f::updateMatrix()
 			{
 				default:
 				case Orders::Rotation::XYZ:
-					this->m_matrix = axl::math::Transform4::scale(this->m_scale) * axl::math::Transform4::rotateZYX(this->m_rotation, this->m_axis_rule) * axl::math::Transform4::translate(this->m_position);
+					this->m_matrix = Transform4::scale(this->m_scale) * Transform4::rotateZYX(this->m_rotation, this->m_axis_rule) * Transform4::translate(this->m_position);
 					return;
 				case Orders::Rotation::XZY:
-					this->m_matrix = axl::math::Transform4::scale(this->m_scale) * axl::math::Transform4::rotateYZX(this->m_rotation, this->m_axis_rule) * axl::math::Transform4::translate(this->m_position);
+					this->m_matrix = Transform4::scale(this->m_scale) * Transform4::rotateYZX(this->m_rotation, this->m_axis_rule) * Transform4::translate(this->m_position);
 					return;
 				case Orders::Rotation::YXZ:
-					this->m_matrix = axl::math::Transform4::scale(this->m_scale) * axl::math::Transform4::rotateZXY(this->m_rotation, this->m_axis_rule) * axl::math::Transform4::translate(this->m_position);
+					this->m_matrix = Transform4::scale(this->m_scale) * Transform4::rotateZXY(this->m_rotation, this->m_axis_rule) * Transform4::translate(this->m_position);
 					return;
 				case Orders::Rotation::YZX:
-					this->m_matrix = axl::math::Transform4::scale(this->m_scale) * axl::math::Transform4::rotateXZY(this->m_rotation, this->m_axis_rule) * axl::math::Transform4::translate(this->m_position);
+					this->m_matrix = Transform4::scale(this->m_scale) * Transform4::rotateXZY(this->m_rotation, this->m_axis_rule) * Transform4::translate(this->m_position);
 					return;
 				case Orders::Rotation::ZXY:
-					this->m_matrix = axl::math::Transform4::scale(this->m_scale) * axl::math::Transform4::rotateYXZ(this->m_rotation, this->m_axis_rule) * axl::math::Transform4::translate(this->m_position);
+					this->m_matrix = Transform4::scale(this->m_scale) * Transform4::rotateYXZ(this->m_rotation, this->m_axis_rule) * Transform4::translate(this->m_position);
 					return;
 				case Orders::Rotation::ZYX:
-					this->m_matrix = axl::math::Transform4::scale(this->m_scale) * axl::math::Transform4::rotateXYZ(this->m_rotation, this->m_axis_rule) * axl::math::Transform4::translate(this->m_position);
+					this->m_matrix = Transform4::scale(this->m_scale) * Transform4::rotateXYZ(this->m_rotation, this->m_axis_rule) * Transform4::translate(this->m_position);
 					return;
 			}
 			return;
@@ -207,22 +207,22 @@ void Transform4f::updateMatrix()
 			{
 				default:
 				case Orders::Rotation::XYZ:
-					this->m_matrix = axl::math::Transform4::scaleTranslate(this->m_scale, this->m_position) * axl::math::Transform4::rotateZYX(this->m_rotation, this->m_axis_rule);
+					this->m_matrix = Transform4::scaleTranslate(this->m_scale, this->m_position) * Transform4::rotateZYX(this->m_rotation, this->m_axis_rule);
 					return;
 				case Orders::Rotation::XZY:
-					this->m_matrix = axl::math::Transform4::scaleTranslate(this->m_scale, this->m_position) * axl::math::Transform4::rotateYZX(this->m_rotation, this->m_axis_rule);
+					this->m_matrix = Transform4::scaleTranslate(this->m_scale, this->m_position) * Transform4::rotateYZX(this->m_rotation, this->m_axis_rule);
 					return;
 				case Orders::Rotation::YXZ:
-					this->m_matrix = axl::math::Transform4::scaleTranslate(this->m_scale, this->m_position) * axl::math::Transform4::rotateZXY(this->m_rotation, this->m_axis_rule);
+					this->m_matrix = Transform4::scaleTranslate(this->m_scale, this->m_position) * Transform4::rotateZXY(this->m_rotation, this->m_axis_rule);
 					return;
 				case Orders::Rotation::YZX:
-					this->m_matrix = axl::math::Transform4::scaleTranslate(this->m_scale, this->m_position) * axl::math::Transform4::rotateXZY(this->m_rotation, this->m_axis_rule);
+					this->m_matrix = Transform4::scaleTranslate(this->m_scale, this->m_position) * Transform4::rotateXZY(this->m_rotation, this->m_axis_rule);
 					return;
 				case Orders::Rotation::ZXY:
-					this->m_matrix = axl::math::Transform4::scaleTranslate(this->m_scale, this->m_position) * axl::math::Transform4::rotateYXZ(this->m_rotation, this->m_axis_rule);
+					this->m_matrix = Transform4::scaleTranslate(this->m_scale, this->m_position) * Transform4::rotateYXZ(this->m_rotation, this->m_axis_rule);
 					return;
 				case Orders::Rotation::ZYX:
-					this->m_matrix = axl::math::Transform4::scaleTranslate(this->m_scale, this->m_position) * axl::math::Transform4::rotateXYZ(this->m_rotation, this->m_axis_rule);
+					this->m_matrix = Transform4::scaleTranslate(this->m_scale, this->m_position) * Transform4::rotateXYZ(this->m_rotation, this->m_axis_rule);
 					return;
 			}
 			return;
@@ -231,26 +231,35 @@ void Transform4f::updateMatrix()
 			{
 				default:
 				case Orders::Rotation::XYZ:
-					this->m_matrix = axl::math::Transform4::translateScale(this->m_position, this->m_scale) * axl::math::Transform4::rotateZYX(this->m_rotation, this->m_axis_rule);
+					this->m_matrix = Transform4::translateScale(this->m_position, this->m_scale) * Transform4::rotateZYX(this->m_rotation, this->m_axis_rule);
 					return;
 				case Orders::Rotation::XZY:
-					this->m_matrix = axl::math::Transform4::translateScale(this->m_position, this->m_scale) * axl::math::Transform4::rotateYZX(this->m_rotation, this->m_axis_rule);
+					this->m_matrix = Transform4::translateScale(this->m_position, this->m_scale) * Transform4::rotateYZX(this->m_rotation, this->m_axis_rule);
 					return;
 				case Orders::Rotation::YXZ:
-					this->m_matrix = axl::math::Transform4::translateScale(this->m_position, this->m_scale) * axl::math::Transform4::rotateZXY(this->m_rotation, this->m_axis_rule);
+					this->m_matrix = Transform4::translateScale(this->m_position, this->m_scale) * Transform4::rotateZXY(this->m_rotation, this->m_axis_rule);
 					return;
 				case Orders::Rotation::YZX:
-					this->m_matrix = axl::math::Transform4::translateScale(this->m_position, this->m_scale) * axl::math::Transform4::rotateXZY(this->m_rotation, this->m_axis_rule);
+					this->m_matrix = Transform4::translateScale(this->m_position, this->m_scale) * Transform4::rotateXZY(this->m_rotation, this->m_axis_rule);
 					return;
 				case Orders::Rotation::ZXY:
-					this->m_matrix = axl::math::Transform4::translateScale(this->m_position, this->m_scale) * axl::math::Transform4::rotateYXZ(this->m_rotation, this->m_axis_rule);
+					this->m_matrix = Transform4::translateScale(this->m_position, this->m_scale) * Transform4::rotateYXZ(this->m_rotation, this->m_axis_rule);
 					return;
 				case Orders::Rotation::ZYX:
-					this->m_matrix = axl::math::Transform4::translateScale(this->m_position, this->m_scale) * axl::math::Transform4::rotateXYZ(this->m_rotation, this->m_axis_rule);
+					this->m_matrix = Transform4::translateScale(this->m_position, this->m_scale) * Transform4::rotateXYZ(this->m_rotation, this->m_axis_rule);
 					return;
 			}
 			return;
 	}
+}
+Vec3f Transform4f::transform(const Vec3f& vec) const
+{
+	Vec4f rvec = this->m_matrix * Vec4f(vec.x, vec.y, vec.z, 1.0f);
+	return Vec3f(rvec.x, rvec.y, rvec.z);
+}
+Vec4f Transform4f::transform(const Vec4f& vec) const
+{
+	return this->m_matrix * vec;
 }
 
 } // axl.math
