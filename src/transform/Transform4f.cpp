@@ -146,7 +146,7 @@ void Transform4f::updateMatrix()
 		switch(this->m_transform_order)
 		{
 			default:
-			case Orders::Transform::STR: r_matrix * Transform4::scaleTranslate(this->m_scale, this->m_position); return;
+			case Orders::Transform::STR: this->m_matrix = r_matrix * Transform4::scaleTranslate(this->m_scale, this->m_position); return;
 			case Orders::Transform::SRT: this->m_matrix = Transform4::translate(this->m_position) * r_matrix * Transform4::scale(this->m_scale); return;
 			case Orders::Transform::TSR: this->m_matrix = r_matrix * Transform4::translateScale(this->m_position, this->m_scale); return;
 			case Orders::Transform::TRS: this->m_matrix = Transform4::scale(this->m_scale) * r_matrix * Transform4::translate(this->m_position); return;
