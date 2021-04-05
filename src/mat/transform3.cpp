@@ -29,8 +29,8 @@ Mat3f rotate(float theta, Rules::Axis axis_rule)
 	switch(axis_rule)
 	{
 		default:
-		case Rules::Axis::AXIS_RHS: break;
-		case Rules::Axis::AXIS_LHS: theta = -theta; break;
+		case Rules::Axis::RHS: break;
+		case Rules::Axis::LHS: theta = -theta; break;
 	}
 	return Mat3f(
 		std::cos(theta), std::sin(theta), 0,
@@ -59,8 +59,8 @@ Mat3f scaleRotate(const axl::math::Vec2f& scale, float theta, Rules::Axis axis_r
 	switch (axis_rule)
 	{
 		default:
-		case Rules::Axis::AXIS_RHS: break;
-		case Rules::Axis::AXIS_LHS: theta = -theta; break;
+		case Rules::Axis::RHS: break;
+		case Rules::Axis::LHS: theta = -theta; break;
 	}
 	const float c = std::cos(theta);
 	const float s = std::sin(theta);
@@ -75,8 +75,8 @@ Mat3f rotateScale(float theta, const axl::math::Vec2f& scale, Rules::Axis axis_r
 	switch (axis_rule)
 	{
 		default:
-		case Rules::Axis::AXIS_RHS: break;
-		case Rules::Axis::AXIS_LHS: theta = -theta; break;
+		case Rules::Axis::RHS: break;
+		case Rules::Axis::LHS: theta = -theta; break;
 	}
 	const float c = std::cos(theta);
 	const float s = std::sin(theta);
@@ -91,8 +91,8 @@ Mat3f translateRotate(const axl::math::Vec2f& translation, float theta, Rules::A
 	switch (axis_rule)
 	{
 		default:
-		case Rules::Axis::AXIS_RHS: break;
-		case Rules::Axis::AXIS_LHS: theta = -theta; break;
+		case Rules::Axis::RHS: break;
+		case Rules::Axis::LHS: theta = -theta; break;
 	}
 	const float c = std::cos(theta);
 	const float s = std::sin(theta);
@@ -107,8 +107,8 @@ Mat3f rotateTranslate(float theta, const axl::math::Vec2f& translation, Rules::A
 	switch (axis_rule)
 	{
 		default:
-		case Rules::Axis::AXIS_RHS: break;
-		case Rules::Axis::AXIS_LHS: theta = -theta; break;
+		case Rules::Axis::RHS: break;
+		case Rules::Axis::LHS: theta = -theta; break;
 	}
 	const float c = std::cos(theta);
 	const float s = std::sin(theta);
@@ -123,8 +123,8 @@ Mat3f scaleTranslateRotate(const axl::math::Vec2f& scale, const axl::math::Vec2f
 	switch (axis_rule)
 	{
 		default:
-		case Rules::Axis::AXIS_RHS: break;
-		case Rules::Axis::AXIS_LHS: theta = -theta; break;
+		case Rules::Axis::RHS: break;
+		case Rules::Axis::LHS: theta = -theta; break;
 	}
 	const float c = std::cos(theta);
 	const float s = std::sin(theta);
@@ -139,8 +139,8 @@ Mat3f scaleRotateTranslate(const axl::math::Vec2f& scale, float theta, const axl
 	switch (axis_rule)
 	{
 		default:
-		case Rules::Axis::AXIS_RHS: break;
-		case Rules::Axis::AXIS_LHS: theta = -theta; break;
+		case Rules::Axis::RHS: break;
+		case Rules::Axis::LHS: theta = -theta; break;
 	}
 	const float c = std::cos(theta);
 	const float s = std::sin(theta);
@@ -155,8 +155,8 @@ Mat3f translateScaleRotate(const axl::math::Vec2f& translation, const axl::math:
 	switch (axis_rule)
 	{
 		default:
-		case Rules::Axis::AXIS_RHS: break;
-		case Rules::Axis::AXIS_LHS: theta = -theta; break;
+		case Rules::Axis::RHS: break;
+		case Rules::Axis::LHS: theta = -theta; break;
 	}
 	const float c = std::cos(theta);
 	const float s = std::sin(theta);
@@ -171,8 +171,8 @@ Mat3f translateRotateScale(const axl::math::Vec2f& translation, float theta, con
 	switch (axis_rule)
 	{
 		default:
-		case Rules::Axis::AXIS_RHS: break;
-		case Rules::Axis::AXIS_LHS: theta = -theta; break;
+		case Rules::Axis::RHS: break;
+		case Rules::Axis::LHS: theta = -theta; break;
 	}
 	const float c = std::cos(theta);
 	const float s = std::sin(theta);
@@ -187,8 +187,8 @@ Mat3f rotateScaleTranslate(float theta, const axl::math::Vec2f& scale, const axl
 	switch (axis_rule)
 	{
 		default:
-		case Rules::Axis::AXIS_RHS: break;
-		case Rules::Axis::AXIS_LHS: theta = -theta; break;
+		case Rules::Axis::RHS: break;
+		case Rules::Axis::LHS: theta = -theta; break;
 	}
 	const float c = std::cos(theta);
 	const float s = std::sin(theta);
@@ -203,8 +203,8 @@ Mat3f rotateTranslateScale(float theta, const axl::math::Vec2f& translation, con
 	switch (axis_rule)
 	{
 		default:
-		case Rules::Axis::AXIS_RHS: break;
-		case Rules::Axis::AXIS_LHS: theta = -theta; break;
+		case Rules::Axis::RHS: break;
+		case Rules::Axis::LHS: theta = -theta; break;
 	}
 	const float c = std::cos(theta);
 	const float s = std::sin(theta);
@@ -237,8 +237,8 @@ Mat3d rotate(double theta, Rules::Axis axis_rule)
 	switch (axis_rule)
 	{
 		default:
-		case Rules::Axis::AXIS_RHS: break;
-		case Rules::Axis::AXIS_LHS: theta = -theta; break;
+		case Rules::Axis::RHS: break;
+		case Rules::Axis::LHS: theta = -theta; break;
 	}
 	return Mat3d(
 		std::cos(theta), std::sin(theta), 0,
@@ -267,8 +267,8 @@ Mat3d scaleRotate(const axl::math::Vec2d& scale, double theta, Rules::Axis axis_
 	switch (axis_rule)
 	{
 		default:
-		case Rules::Axis::AXIS_RHS: break;
-		case Rules::Axis::AXIS_LHS: theta = -theta; break;
+		case Rules::Axis::RHS: break;
+		case Rules::Axis::LHS: theta = -theta; break;
 	}
 	const double c = std::cos(theta);
 	const double s = std::sin(theta);
@@ -283,8 +283,8 @@ Mat3d rotateScale(double theta, const axl::math::Vec2d& scale, Rules::Axis axis_
 	switch (axis_rule)
 	{
 		default:
-		case Rules::Axis::AXIS_RHS: break;
-		case Rules::Axis::AXIS_LHS: theta = -theta; break;
+		case Rules::Axis::RHS: break;
+		case Rules::Axis::LHS: theta = -theta; break;
 	}
 	const double c = std::cos(theta);
 	const double s = std::sin(theta);
@@ -299,8 +299,8 @@ Mat3d translateRotate(const axl::math::Vec2d& translation, double theta, Rules::
 	switch (axis_rule)
 	{
 		default:
-		case Rules::Axis::AXIS_RHS: break;
-		case Rules::Axis::AXIS_LHS: theta = -theta; break;
+		case Rules::Axis::RHS: break;
+		case Rules::Axis::LHS: theta = -theta; break;
 	}
 	const double c = std::cos(theta);
 	const double s = std::sin(theta);
@@ -315,8 +315,8 @@ Mat3d rotateTranslate(double theta, const axl::math::Vec2d& translation, Rules::
 	switch (axis_rule)
 	{
 		default:
-		case Rules::Axis::AXIS_RHS: break;
-		case Rules::Axis::AXIS_LHS: theta = -theta; break;
+		case Rules::Axis::RHS: break;
+		case Rules::Axis::LHS: theta = -theta; break;
 	}
 	const double c = std::cos(theta);
 	const double s = std::sin(theta);
@@ -331,8 +331,8 @@ Mat3d scaleTranslateRotate(const axl::math::Vec2d& scale, const axl::math::Vec2d
 	switch (axis_rule)
 	{
 		default:
-		case Rules::Axis::AXIS_RHS: break;
-		case Rules::Axis::AXIS_LHS: theta = -theta; break;
+		case Rules::Axis::RHS: break;
+		case Rules::Axis::LHS: theta = -theta; break;
 	}
 	const double c = std::cos(theta);
 	const double s = std::sin(theta);
@@ -347,8 +347,8 @@ Mat3d scaleRotateTranslate(const axl::math::Vec2d& scale, double theta, const ax
 	switch (axis_rule)
 	{
 		default:
-		case Rules::Axis::AXIS_RHS: break;
-		case Rules::Axis::AXIS_LHS: theta = -theta; break;
+		case Rules::Axis::RHS: break;
+		case Rules::Axis::LHS: theta = -theta; break;
 	}
 	const double c = std::cos(theta);
 	const double s = std::sin(theta);
@@ -363,8 +363,8 @@ Mat3d translateScaleRotate(const axl::math::Vec2d& translation, const axl::math:
 	switch (axis_rule)
 	{
 		default:
-		case Rules::Axis::AXIS_RHS: break;
-		case Rules::Axis::AXIS_LHS: theta = -theta; break;
+		case Rules::Axis::RHS: break;
+		case Rules::Axis::LHS: theta = -theta; break;
 	}
 	const double c = std::cos(theta);
 	const double s = std::sin(theta);
@@ -379,8 +379,8 @@ Mat3d translateRotateScale(const axl::math::Vec2d& translation, double theta, co
 	switch (axis_rule)
 	{
 		default:
-		case Rules::Axis::AXIS_RHS: break;
-		case Rules::Axis::AXIS_LHS: theta = -theta; break;
+		case Rules::Axis::RHS: break;
+		case Rules::Axis::LHS: theta = -theta; break;
 	}
 	const double c = std::cos(theta);
 	const double s = std::sin(theta);
@@ -395,8 +395,8 @@ Mat3d rotateScaleTranslate(double theta, const axl::math::Vec2d& scale, const ax
 	switch (axis_rule)
 	{
 		default:
-		case Rules::Axis::AXIS_RHS: break;
-		case Rules::Axis::AXIS_LHS: theta = -theta; break;
+		case Rules::Axis::RHS: break;
+		case Rules::Axis::LHS: theta = -theta; break;
 	}
 	const double c = std::cos(theta);
 	const double s = std::sin(theta);
@@ -411,8 +411,8 @@ Mat3d rotateTranslateScale(double theta, const axl::math::Vec2d& translation, co
 	switch (axis_rule)
 	{
 		default:
-		case Rules::Axis::AXIS_RHS: break;
-		case Rules::Axis::AXIS_LHS: theta = -theta; break;
+		case Rules::Axis::RHS: break;
+		case Rules::Axis::LHS: theta = -theta; break;
 	}
 	const double c = std::cos(theta);
 	const double s = std::sin(theta);

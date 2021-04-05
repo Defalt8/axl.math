@@ -5,7 +5,7 @@ namespace axl {
 namespace math {
 namespace Rules {
 
-Axis DefaultAxisRule = Axis::AXIS_RHS;
+Axis DefaultAxisRule = Axis::RHS;
 
 } // namespace axl.math.Rules
 } // namespace axl.math

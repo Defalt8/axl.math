@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
 		}
 		// rotate*
 		{ // RHS
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_RHS;
+			Rules::DefaultAxisRule = Rules::Axis::RHS;
 			Assertv((Transform4::rotateX(DEG_90) * Vec4d(1, 0, 0, 1)).equals(1.0f, 0.0f, 0.0f, 1.0f, 0.0001f), verbose);
 			Assertv((Transform4::rotateX(DEG_90) * Vec4d(0, 1, 0, 1)).equals(0.0f, 0.0f, 1.0f, 1.0f, 0.0001f), verbose);
 			Assertv((Transform4::rotateX(DEG_90) * Vec4d(0, 0, 1, 1)).equals(0.0f, -1.0f, 0.0f, 1.0f, 0.0001f), verbose);
@@ -69,7 +69,7 @@ int main(int argc, char *argv[])
 			Assertv((Transform4::rotateZ(0.0f) * Vec4d(19, 72, 56, 1)).equals(19.0f, 72.0f, 56.0f, 1.0f, 0.0001f), verbose);
 		}
 		{ // LHS
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_LHS;
+			Rules::DefaultAxisRule = Rules::Axis::LHS;
 			Assertv((Transform4::rotateX(DEG_90) * Vec4d(1, 0, 0, 1)).equals(1.0f, 0.0f, 0.0f, 1.0f, 0.0001f), verbose);
 			Assertv((Transform4::rotateX(DEG_90) * Vec4d(0, 1, 0, 1)).equals(0.0f, 0.0f, -1.0f, 1.0f, 0.0001f), verbose);
 			Assertv((Transform4::rotateX(DEG_90) * Vec4d(0, 0, 1, 1)).equals(0.0f, 1.0f, 0.0f, 1.0f, 0.0001f), verbose);
@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
 		}
 		// rotate**
 		{ // RHS
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_RHS;
+			Rules::DefaultAxisRule = Rules::Axis::RHS;
 			Assertv((Transform4::rotateXY(Vec3d(DEG_90, DEG_90, 0.0f)) * Vec4d(1, 0, 0, 1)).equals(0.0f, 1.0f, 0.0f, 1.0f, 0.0001f), verbose);
 			Assertv((Transform4::rotateXY(Vec3d(DEG_90, DEG_90, 0.0f)) * Vec4d(0, 1, 0, 1)).equals(0.0f, 0.0f, 1.0f, 1.0f, 0.0001f), verbose);
 			Assertv((Transform4::rotateXY(Vec3d(DEG_90, DEG_90, 0.0f)) * Vec4d(0, 0, 1, 1)).equals(1.0f, 0.0f, 0.0f, 1.0f, 0.0001f), verbose);
@@ -128,7 +128,7 @@ int main(int argc, char *argv[])
 			Assertv((Transform4::rotateZX(Vec3d(0.0f, 0.0f, 0.0f)) * Vec4d(5, 16, 35, 1)).equals(5.0f, 16.0f, 35.0f, 1.0f, 0.0001f), verbose);
 		}
 		{ // LHS
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_LHS;
+			Rules::DefaultAxisRule = Rules::Axis::LHS;
 			Assertv((Transform4::rotateXY(Vec3d(DEG_90, DEG_90, 0.0f)) * Vec4d(1, 0, 0, 1)).equals(0.0f, 1.0f, 0.0f, 1.0f, 0.0001f), verbose);
 			Assertv((Transform4::rotateXY(Vec3d(DEG_90, DEG_90, 0.0f)) * Vec4d(0, 1, 0, 1)).equals(0.0f, 0.0f, -1.0f, 1.0f, 0.0001f), verbose);
 			Assertv((Transform4::rotateXY(Vec3d(DEG_90, DEG_90, 0.0f)) * Vec4d(0, 0, 1, 1)).equals(-1.0f, 0.0f, 0.0f, 1.0f, 0.0001f), verbose);
@@ -167,7 +167,7 @@ int main(int argc, char *argv[])
 		}
 		// rotate***
 		{ // RHS
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_RHS;
+			Rules::DefaultAxisRule = Rules::Axis::RHS;
 			Assertv((Transform4::rotateXYZ(Vec3d(DEG_90, DEG_90, DEG_90)) * Vec4d(1, 0, 0, 1)).equals(0.0f, 0.0f, 1.0f, 1.0f, 0.0001f), verbose);
 			Assertv((Transform4::rotateXYZ(Vec3d(DEG_90, DEG_90, DEG_90)) * Vec4d(0, 1, 0, 1)).equals(0.0f, -1.0f, 0.0f, 1.0f, 0.0001f), verbose);
 			Assertv((Transform4::rotateXYZ(Vec3d(DEG_90, DEG_90, DEG_90)) * Vec4d(0, 0, 1, 1)).equals(1.0f, 0.0f, 0.0f, 1.0f, 0.0001f), verbose);
@@ -205,7 +205,7 @@ int main(int argc, char *argv[])
 			Assertv((Transform4::rotateZYX(Vec3d(0.0f, 0.0f, 0.0f)) * Vec4d(5, 16, 35, 1)).equals(5.0f, 16.0f, 35.0f, 1.0f, 0.0001f), verbose);
 		}
 		{ // LHS
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_LHS;
+			Rules::DefaultAxisRule = Rules::Axis::LHS;
 			Assertv((Transform4::rotateXYZ(Vec3d(DEG_90, DEG_90, DEG_90))* Vec4d(1, 0, 0, 1)).equals(0.0f, 0.0f, 1.0f, 1.0f, 0.0001f), verbose);
 			Assertv((Transform4::rotateXYZ(Vec3d(DEG_90, DEG_90, DEG_90))* Vec4d(0, 1, 0, 1)).equals(0.0f, 1.0f, 0.0f, 1.0f, 0.0001f), verbose);
 			Assertv((Transform4::rotateXYZ(Vec3d(DEG_90, DEG_90, DEG_90))* Vec4d(0, 0, 1, 1)).equals(-1.0f, 0.0f, 0.0f, 1.0f, 0.0001f), verbose);
@@ -275,7 +275,7 @@ int main(int argc, char *argv[])
 		}
 		// rotate*
 		{ // RHS
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_RHS;
+			Rules::DefaultAxisRule = Rules::Axis::RHS;
 			Assertv((Transform4::rotateX(DEG_90) * Vec4d(1, 0, 0, 1)).equals(1.0, 0.0, 0.0, 1.0, 0.000001), verbose);
 			Assertv((Transform4::rotateX(DEG_90) * Vec4d(0, 1, 0, 1)).equals(0.0, 0.0, 1.0, 1.0, 0.000001), verbose);
 			Assertv((Transform4::rotateX(DEG_90) * Vec4d(0, 0, 1, 1)).equals(0.0, -1.0, 0.0, 1.0, 0.000001), verbose);
@@ -295,7 +295,7 @@ int main(int argc, char *argv[])
 			Assertv((Transform4::rotateZ(0.0) * Vec4d(19, 72, 56, 1)).equals(19.0, 72.0, 56.0, 1.0, 0.000001), verbose);
 		}
 		{ // LHS
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_LHS;
+			Rules::DefaultAxisRule = Rules::Axis::LHS;
 			Assertv((Transform4::rotateX(DEG_90) * Vec4d(1, 0, 0, 1)).equals(1.0, 0.0, 0.0, 1.0, 0.000001), verbose);
 			Assertv((Transform4::rotateX(DEG_90) * Vec4d(0, 1, 0, 1)).equals(0.0, 0.0, -1.0, 1.0, 0.000001), verbose);
 			Assertv((Transform4::rotateX(DEG_90) * Vec4d(0, 0, 1, 1)).equals(0.0, 1.0, 0.0, 1.0, 0.000001), verbose);
@@ -316,7 +316,7 @@ int main(int argc, char *argv[])
 		}
 		// rotate**
 		{ // RHS
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_RHS;
+			Rules::DefaultAxisRule = Rules::Axis::RHS;
 			Assertv((Transform4::rotateXY(Vec3d(DEG_90, DEG_90, 0.0)) * Vec4d(1, 0, 0, 1)).equals(0.0, 1.0, 0.0, 1.0, 0.000001), verbose);
 			Assertv((Transform4::rotateXY(Vec3d(DEG_90, DEG_90, 0.0)) * Vec4d(0, 1, 0, 1)).equals(0.0, 0.0, 1.0, 1.0, 0.000001), verbose);
 			Assertv((Transform4::rotateXY(Vec3d(DEG_90, DEG_90, 0.0)) * Vec4d(0, 0, 1, 1)).equals(1.0, 0.0, 0.0, 1.0, 0.000001), verbose);
@@ -354,7 +354,7 @@ int main(int argc, char *argv[])
 			Assertv((Transform4::rotateZX(Vec3d(0.0, 0.0, 0.0)) * Vec4d(5, 16, 35, 1)).equals(5.0, 16.0, 35.0, 1.0, 0.000001), verbose);
 		}
 		{ // LHS
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_LHS;
+			Rules::DefaultAxisRule = Rules::Axis::LHS;
 			Assertv((Transform4::rotateXY(Vec3d(DEG_90, DEG_90, 0.0)) * Vec4d(1, 0, 0, 1)).equals(0.0, 1.0, 0.0, 1.0, 0.000001), verbose);
 			Assertv((Transform4::rotateXY(Vec3d(DEG_90, DEG_90, 0.0)) * Vec4d(0, 1, 0, 1)).equals(0.0, 0.0, -1.0, 1.0, 0.000001), verbose);
 			Assertv((Transform4::rotateXY(Vec3d(DEG_90, DEG_90, 0.0)) * Vec4d(0, 0, 1, 1)).equals(-1.0, 0.0, 0.0, 1.0, 0.000001), verbose);
@@ -393,7 +393,7 @@ int main(int argc, char *argv[])
 		}
 		// rotate***
 		{ // RHS
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_RHS;
+			Rules::DefaultAxisRule = Rules::Axis::RHS;
 			Assertv((Transform4::rotateXYZ(Vec3d(DEG_90, DEG_90, DEG_90)) * Vec4d(1, 0, 0, 1)).equals(0.0, 0.0, 1.0, 1.0, 0.000001), verbose);
 			Assertv((Transform4::rotateXYZ(Vec3d(DEG_90, DEG_90, DEG_90)) * Vec4d(0, 1, 0, 1)).equals(0.0, -1.0, 0.0, 1.0, 0.000001), verbose);
 			Assertv((Transform4::rotateXYZ(Vec3d(DEG_90, DEG_90, DEG_90)) * Vec4d(0, 0, 1, 1)).equals(1.0, 0.0, 0.0, 1.0, 0.000001), verbose);
@@ -431,7 +431,7 @@ int main(int argc, char *argv[])
 			Assertv((Transform4::rotateZYX(Vec3d(0.0, 0.0, 0.0)) * Vec4d(5, 16, 35, 1)).equals(5.0, 16.0, 35.0, 1.0, 0.000001), verbose);
 		}
 		{ // LHS
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_LHS;
+			Rules::DefaultAxisRule = Rules::Axis::LHS;
 			Assertv((Transform4::rotateXYZ(Vec3d(DEG_90, DEG_90, DEG_90)) * Vec4d(1, 0, 0, 1)).equals(0.0, 0.0, 1.0, 1.0, 0.000001), verbose);
 			Assertv((Transform4::rotateXYZ(Vec3d(DEG_90, DEG_90, DEG_90)) * Vec4d(0, 1, 0, 1)).equals(0.0, 1.0, 0.0, 1.0, 0.000001), verbose);
 			Assertv((Transform4::rotateXYZ(Vec3d(DEG_90, DEG_90, DEG_90)) * Vec4d(0, 0, 1, 1)).equals(-1.0, 0.0, 0.0, 1.0, 0.000001), verbose);

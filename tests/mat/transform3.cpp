@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
 		// rotate
 		// RHS
 		{
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_RHS;
+			Rules::DefaultAxisRule = Rules::Axis::RHS;
 			Assertv((Transform3::rotate(0.0f) * Vec3f(1.0f, 0.0f, 1.0f)).equals(1.0f, 0.0f, 1.0f, 0.0001f), verbose);
 			Assertv((Transform3::rotate(DEG_90) * Vec3f(1.0f, 0.0f, 1.0f)).equals(0.0f, 1.0f, 1.0f, 0.0001f), verbose);
 			Assertv((Transform3::rotate(-DEG_90) * Vec3f(1.0f, 0.0f, 1.0f)).equals(0.0f, -1.0f, 1.0f, 0.0001f), verbose);
@@ -53,7 +53,7 @@ int main(int argc, char* argv[])
 		}
 		// LHS
 		{
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_LHS;
+			Rules::DefaultAxisRule = Rules::Axis::LHS;
 			Assertv((Transform3::rotate(0.0f) * Vec3f(1.0f, 0.0f, 1.0f)).equals(1.0f, 0.0f, 1.0f, 0.0001f), verbose);
 			Assertv((Transform3::rotate(DEG_90) * Vec3f(1.0f, 0.0f, 1.0f)).equals(0.0f, -1.0f, 1.0f, 0.0001f), verbose);
 			Assertv((Transform3::rotate(-DEG_90) * Vec3f(1.0f, 0.0f, 1.0f)).equals(0.0f, 1.0f, 1.0f, 0.0001f), verbose);
@@ -87,7 +87,7 @@ int main(int argc, char* argv[])
 		// scaleRotate
 		// RHS
 		{
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_RHS;
+			Rules::DefaultAxisRule = Rules::Axis::RHS;
 			Assertv((Transform3::scaleRotate(Vec2f(-20.0f, 50.5f), DEG_90) * Vec3f(2.3f, 5.8f, 1.0f)).equals(Transform3::rotate(DEG_90) * Transform3::scale(Vec2f(-20.0f, 50.5f)) * Vec3f(2.3f, 5.8f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::scaleRotate(Vec2f(-20.0f, 50.5f), -DEG_90) * Vec3f(2.3f, 5.8f, 1.0f)).equals(Transform3::rotate(-DEG_90) * Transform3::scale(Vec2f(-20.0f, 50.5f)) * Vec3f(2.3f, 5.8f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::scaleRotate(Vec2f(-20.0f, 50.5f), DEG_180) * Vec3f(2.3f, 5.8f, 1.0f)).equals(Transform3::rotate(DEG_180) * Transform3::scale(Vec2f(-20.0f, 50.5f)) * Vec3f(2.3f, 5.8f, 1.0f), 0.0001f), verbose);
@@ -96,7 +96,7 @@ int main(int argc, char* argv[])
 		}
 		// LHS
 		{
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_LHS;
+			Rules::DefaultAxisRule = Rules::Axis::LHS;
 			Assertv((Transform3::scaleRotate(Vec2f(-20.0f, 50.5f), DEG_90) * Vec3f(2.3f, 5.8f, 1.0f)).equals(Transform3::rotate(DEG_90) * Transform3::scale(Vec2f(-20.0f, 50.5f)) * Vec3f(2.3f, 5.8f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::scaleRotate(Vec2f(-20.0f, 50.5f), -DEG_90) * Vec3f(2.3f, 5.8f, 1.0f)).equals(Transform3::rotate(-DEG_90) * Transform3::scale(Vec2f(-20.0f, 50.5f)) * Vec3f(2.3f, 5.8f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::scaleRotate(Vec2f(-20.0f, 50.5f), DEG_180) * Vec3f(2.3f, 5.8f, 1.0f)).equals(Transform3::rotate(DEG_180) * Transform3::scale(Vec2f(-20.0f, 50.5f)) * Vec3f(2.3f, 5.8f, 1.0f), 0.0001f), verbose);
@@ -106,7 +106,7 @@ int main(int argc, char* argv[])
 		// rotateScale
 		// RHS
 		{
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_RHS;
+			Rules::DefaultAxisRule = Rules::Axis::RHS;
 			Assertv((Transform3::rotateScale(DEG_90, Vec2f(-20.0f, 50.5f)) * Vec3f(2.3f, 5.8f, 1.0f)).equals(Transform3::scale(Vec2f(-20.0f, 50.5f)) * Transform3::rotate(DEG_90) * Vec3f(2.3f, 5.8f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::rotateScale(-DEG_90, Vec2f(-20.0f, 50.5f)) * Vec3f(2.3f, 5.8f, 1.0f)).equals(Transform3::scale(Vec2f(-20.0f, 50.5f)) * Transform3::rotate(-DEG_90) * Vec3f(2.3f, 5.8f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::rotateScale(DEG_180, Vec2f(-20.0f, 50.5f)) * Vec3f(2.3f, 5.8f, 1.0f)).equals(Transform3::scale(Vec2f(-20.0f, 50.5f)) * Transform3::rotate(DEG_180) * Vec3f(2.3f, 5.8f, 1.0f), 0.0001f), verbose);
@@ -115,7 +115,7 @@ int main(int argc, char* argv[])
 		}
 		// LHS
 		{
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_RHS;
+			Rules::DefaultAxisRule = Rules::Axis::RHS;
 			Assertv((Transform3::rotateScale(DEG_90, Vec2f(-20.0f, 50.5f)) * Vec3f(2.3f, 5.8f, 1.0f)).equals(Transform3::scale(Vec2f(-20.0f, 50.5f)) * Transform3::rotate(DEG_90) * Vec3f(2.3f, 5.8f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::rotateScale(-DEG_90, Vec2f(-20.0f, 50.5f)) * Vec3f(2.3f, 5.8f, 1.0f)).equals(Transform3::scale(Vec2f(-20.0f, 50.5f)) * Transform3::rotate(-DEG_90) * Vec3f(2.3f, 5.8f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::rotateScale(DEG_180, Vec2f(-20.0f, 50.5f)) * Vec3f(2.3f, 5.8f, 1.0f)).equals(Transform3::scale(Vec2f(-20.0f, 50.5f)) * Transform3::rotate(DEG_180) * Vec3f(2.3f, 5.8f, 1.0f), 0.0001f), verbose);
@@ -125,7 +125,7 @@ int main(int argc, char* argv[])
 		// translateRotate
 		// RHS
 		{
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_RHS;
+			Rules::DefaultAxisRule = Rules::Axis::RHS;
 			Assertv((Transform3::translateRotate(Vec2f(-20.0f, 50.5f), DEG_90) * Vec3f(2.3f, 5.8f, 1.0f)).equals(Transform3::rotate(DEG_90) * Transform3::translate(Vec2f(-20.0f, 50.5f)) * Vec3f(2.3f, 5.8f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::translateRotate(Vec2f(-20.0f, 50.5f), -DEG_90) * Vec3f(2.3f, 5.8f, 1.0f)).equals(Transform3::rotate(-DEG_90) * Transform3::translate(Vec2f(-20.0f, 50.5f)) * Vec3f(2.3f, 5.8f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::translateRotate(Vec2f(-20.0f, 50.5f), DEG_180) * Vec3f(2.3f, 5.8f, 1.0f)).equals(Transform3::rotate(DEG_180) * Transform3::translate(Vec2f(-20.0f, 50.5f)) * Vec3f(2.3f, 5.8f, 1.0f), 0.0001f), verbose);
@@ -134,7 +134,7 @@ int main(int argc, char* argv[])
 		}
 		// LHS
 		{
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_LHS;
+			Rules::DefaultAxisRule = Rules::Axis::LHS;
 			Assertv((Transform3::translateRotate(Vec2f(-20.0f, 50.5f), DEG_90) * Vec3f(2.3f, 5.8f, 1.0f)).equals(Transform3::rotate(DEG_90) * Transform3::translate(Vec2f(-20.0f, 50.5f)) * Vec3f(2.3f, 5.8f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::translateRotate(Vec2f(-20.0f, 50.5f), -DEG_90) * Vec3f(2.3f, 5.8f, 1.0f)).equals(Transform3::rotate(-DEG_90) * Transform3::translate(Vec2f(-20.0f, 50.5f)) * Vec3f(2.3f, 5.8f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::translateRotate(Vec2f(-20.0f, 50.5f), DEG_180) * Vec3f(2.3f, 5.8f, 1.0f)).equals(Transform3::rotate(DEG_180) * Transform3::translate(Vec2f(-20.0f, 50.5f)) * Vec3f(2.3f, 5.8f, 1.0f), 0.0001f), verbose);
@@ -144,7 +144,7 @@ int main(int argc, char* argv[])
 		// rotateTranslate
 		// RHS
 		{
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_RHS;
+			Rules::DefaultAxisRule = Rules::Axis::RHS;
 			Assertv((Transform3::rotateTranslate(DEG_90, Vec2f(-20.0f, 50.5f)) * Vec3f(2.3f, 5.8f, 1.0f)).equals(Transform3::translate(Vec2f(-20.0f, 50.5f)) * Transform3::rotate(DEG_90)* Vec3f(2.3f, 5.8f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::rotateTranslate(-DEG_90, Vec2f(-20.0f, 50.5f)) * Vec3f(2.3f, 5.8f, 1.0f)).equals(Transform3::translate(Vec2f(-20.0f, 50.5f)) * Transform3::rotate(-DEG_90) * Vec3f(2.3f, 5.8f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::rotateTranslate(DEG_180, Vec2f(-20.0f, 50.5f)) * Vec3f(2.3f, 5.8f, 1.0f)).equals(Transform3::translate(Vec2f(-20.0f, 50.5f)) * Transform3::rotate(DEG_180)* Vec3f(2.3f, 5.8f, 1.0f), 0.0001f), verbose);
@@ -153,7 +153,7 @@ int main(int argc, char* argv[])
 		}
 		// LHS
 		{
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_LHS;
+			Rules::DefaultAxisRule = Rules::Axis::LHS;
 			Assertv((Transform3::rotateTranslate(DEG_90, Vec2f(-20.0f, 50.5f))* Vec3f(2.3f, 5.8f, 1.0f)).equals(Transform3::translate(Vec2f(-20.0f, 50.5f))* Transform3::rotate(DEG_90)* Vec3f(2.3f, 5.8f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::rotateTranslate(-DEG_90, Vec2f(-20.0f, 50.5f))* Vec3f(2.3f, 5.8f, 1.0f)).equals(Transform3::translate(Vec2f(-20.0f, 50.5f))* Transform3::rotate(-DEG_90)* Vec3f(2.3f, 5.8f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::rotateTranslate(DEG_180, Vec2f(-20.0f, 50.5f))* Vec3f(2.3f, 5.8f, 1.0f)).equals(Transform3::translate(Vec2f(-20.0f, 50.5f))* Transform3::rotate(DEG_180)* Vec3f(2.3f, 5.8f, 1.0f), 0.0001f), verbose);
@@ -163,14 +163,14 @@ int main(int argc, char* argv[])
 		// scaleTranslateRotate
 		// RHS
 		{
-			Rules::DefaultAxisRule = Rules::AXIS_RHS;
+			Rules::DefaultAxisRule = Rules::Axis::RHS;
 			Assertv((Transform3::scaleTranslateRotate(Vec2f(2.5f, -0.4f), Vec2f(-10.5f, -5.5f), DEG_90) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::rotate(DEG_90) * Transform3::translate(Vec2f(-10.5f, -5.5f)) * Transform3::scale(Vec2f(2.5f, -0.4f)) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::scaleTranslateRotate(Vec2f(0.0f, 0.0f), Vec2f(-10.5f, -5.5f), DEG_90) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::rotate(DEG_90) * Transform3::translate(Vec2f(-10.5f, -5.5f)) * Transform3::scale(Vec2f(0.0f, 0.0f)) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::scaleTranslateRotate(Vec2f(0.0f, 0.0f), Vec2f(0.0f, 0.0f), 0.0f) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::rotate(0.0f) * Transform3::translate(Vec2f(0.0f, 0.0f)) * Transform3::scale(Vec2f(0.0f, 0.0f)) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
 		}
 		// LHS
 		{
-			Rules::DefaultAxisRule = Rules::AXIS_LHS;
+			Rules::DefaultAxisRule = Rules::Axis::LHS;
 			Assertv((Transform3::scaleTranslateRotate(Vec2f(2.5f, -0.4f), Vec2f(-10.5f, -5.5f), DEG_90) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::rotate(DEG_90) * Transform3::translate(Vec2f(-10.5f, -5.5f)) * Transform3::scale(Vec2f(2.5f, -0.4f)) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::scaleTranslateRotate(Vec2f(0.0f, 0.0f), Vec2f(-10.5f, -5.5f), DEG_90) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::rotate(DEG_90) * Transform3::translate(Vec2f(-10.5f, -5.5f)) * Transform3::scale(Vec2f(0.0f, 0.0f)) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::scaleTranslateRotate(Vec2f(0.0f, 0.0f), Vec2f(0.0f, 0.0f), 0.0f) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::rotate(0.0f) * Transform3::translate(Vec2f(0.0f, 0.0f)) * Transform3::scale(Vec2f(0.0f, 0.0f)) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
@@ -178,14 +178,14 @@ int main(int argc, char* argv[])
 		// scaleRotateTranslate
 		// RHS
 		{
-			Rules::DefaultAxisRule = Rules::AXIS_RHS;
+			Rules::DefaultAxisRule = Rules::Axis::RHS;
 			Assertv((Transform3::scaleRotateTranslate(Vec2f(2.5f, -0.4f), DEG_90, Vec2f(-10.5f, -5.5f)) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::translate(Vec2f(-10.5f, -5.5f)) * Transform3::rotate(DEG_90)* Transform3::scale(Vec2f(2.5f, -0.4f)) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::scaleRotateTranslate(Vec2f(0.0f, 0.0f), DEG_90, Vec2f(-10.5f, -5.5f)) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::translate(Vec2f(-10.5f, -5.5f)) * Transform3::rotate(DEG_90)* Transform3::scale(Vec2f(0.0f, 0.0f)) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::scaleRotateTranslate(Vec2f(0.0f, 0.0f), 0.0f, Vec2f(0.0f, 0.0f)) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::translate(Vec2f(0.0f, 0.0f)) * Transform3::rotate(0.0f)* Transform3::scale(Vec2f(0.0f, 0.0f)) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
 		}
 		// LHS
 		{
-			Rules::DefaultAxisRule = Rules::AXIS_LHS;
+			Rules::DefaultAxisRule = Rules::Axis::LHS;
 			Assertv((Transform3::scaleRotateTranslate(Vec2f(2.5f, -0.4f), DEG_90, Vec2f(-10.5f, -5.5f)) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::translate(Vec2f(-10.5f, -5.5f)) * Transform3::rotate(DEG_90) * Transform3::scale(Vec2f(2.5f, -0.4f)) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::scaleRotateTranslate(Vec2f(0.0f, 0.0f), DEG_90, Vec2f(-10.5f, -5.5f)) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::translate(Vec2f(-10.5f, -5.5f)) * Transform3::rotate(DEG_90) * Transform3::scale(Vec2f(0.0f, 0.0f)) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::scaleRotateTranslate(Vec2f(0.0f, 0.0f), 0.0f, Vec2f(0.0f, 0.0f)) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::translate(Vec2f(0.0f, 0.0f)) * Transform3::rotate(0.0f) * Transform3::scale(Vec2f(0.0f, 0.0f)) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
@@ -193,14 +193,14 @@ int main(int argc, char* argv[])
 		// translateScaleRotate
 		// RHS
 		{
-			Rules::DefaultAxisRule = Rules::AXIS_RHS;
+			Rules::DefaultAxisRule = Rules::Axis::RHS;
 			Assertv((Transform3::translateScaleRotate(Vec2f(-10.5f, -5.5f), Vec2f(2.5f, -0.4f), DEG_90) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::rotate(DEG_90) * Transform3::scale(Vec2f(2.5f, -0.4f)) * Transform3::translate(Vec2f(-10.5f, -5.5f)) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::translateScaleRotate(Vec2f(-10.5f, -5.5f), Vec2f(0.0f, 0.0f), DEG_90) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::rotate(DEG_90) * Transform3::scale(Vec2f(0.0f, 0.0f)) * Transform3::translate(Vec2f(-10.5f, -5.5f)) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::translateScaleRotate(Vec2f(0.0f, 0.0f), Vec2f(0.0f, 0.0f), 0.0f) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::rotate(0.0f) * Transform3::scale(Vec2f(0.0f, 0.0f)) * Transform3::translate(Vec2f(0.0f, 0.0f)) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
 		}
 		// LHS
 		{
-			Rules::DefaultAxisRule = Rules::AXIS_LHS;
+			Rules::DefaultAxisRule = Rules::Axis::LHS;
 			Assertv((Transform3::translateScaleRotate(Vec2f(-10.5f, -5.5f), Vec2f(2.5f, -0.4f), DEG_90)* Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::rotate(DEG_90) * Transform3::scale(Vec2f(2.5f, -0.4f)) * Transform3::translate(Vec2f(-10.5f, -5.5f)) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::translateScaleRotate(Vec2f(-10.5f, -5.5f), Vec2f(0.0f, 0.0f), DEG_90) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::rotate(DEG_90) * Transform3::scale(Vec2f(0.0f, 0.0f)) * Transform3::translate(Vec2f(-10.5f, -5.5f)) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::translateScaleRotate(Vec2f(0.0f, 0.0f), Vec2f(0.0f, 0.0f), 0.0f) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::rotate(0.0f) * Transform3::scale(Vec2f(0.0f, 0.0f)) * Transform3::translate(Vec2f(0.0f, 0.0f)) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
@@ -208,14 +208,14 @@ int main(int argc, char* argv[])
 		// translateRotateScale
 		// RHS
 		{
-			Rules::DefaultAxisRule = Rules::AXIS_RHS;
+			Rules::DefaultAxisRule = Rules::Axis::RHS;
 			Assertv((Transform3::translateRotateScale(Vec2f(-10.5f, -5.5f), DEG_90, Vec2f(2.5f, -0.4f))* Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::scale(Vec2f(2.5f, -0.4f)) * Transform3::rotate(DEG_90) * Transform3::translate(Vec2f(-10.5f, -5.5f))* Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::translateRotateScale(Vec2f(-10.5f, -5.5f), DEG_90, Vec2f(0.0f, 0.0f )) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::scale(Vec2f(0.0f, 0.0f)) * Transform3::rotate(DEG_90) * Transform3::translate(Vec2f(-10.5f, -5.5f)) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::translateRotateScale(Vec2f(0.0f, 0.0f), 0.0f, Vec2f(0.0f, 0.0f)) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::scale(Vec2f(0.0f, 0.0f)) * Transform3::rotate(0.0f) * Transform3::translate(Vec2f(0.0f, 0.0f)) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
 		}
 		// LHS
 		{
-			Rules::DefaultAxisRule = Rules::AXIS_LHS;
+			Rules::DefaultAxisRule = Rules::Axis::LHS;
 			Assertv((Transform3::translateRotateScale(Vec2f(-10.5f, -5.5f), DEG_90, Vec2f(2.5f, -0.4f)) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::scale(Vec2f(2.5f, -0.4f)) * Transform3::rotate(DEG_90) * Transform3::translate(Vec2f(-10.5f, -5.5f)) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::translateRotateScale(Vec2f(-10.5f, -5.5f), DEG_90, Vec2f(0.0f, 0.0f)) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::scale(Vec2f(0.0f, 0.0f)) * Transform3::rotate(DEG_90) * Transform3::translate(Vec2f(-10.5f, -5.5f)) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::translateRotateScale(Vec2f(0.0f, 0.0f), 0.0f, Vec2f(0.0f, 0.0f)) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::scale(Vec2f(0.0f, 0.0f)) * Transform3::rotate(0.0f) * Transform3::translate(Vec2f(0.0f, 0.0f)) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
@@ -223,14 +223,14 @@ int main(int argc, char* argv[])
 		// rotateScaleTranslate
 		// RHS
 		{
-			Rules::DefaultAxisRule = Rules::AXIS_RHS;
+			Rules::DefaultAxisRule = Rules::Axis::RHS;
 			Assertv((Transform3::rotateScaleTranslate(DEG_90, Vec2f(2.5f, -0.4f), Vec2f(-10.5f, -5.5f)) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::rotate(DEG_90) * Transform3::scale(Vec2f(2.5f, -0.4f)) * Transform3::translate(Vec2f(-10.5f, -5.5f)) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::rotateScaleTranslate(DEG_90, Vec2f(0.0f, 0.0f), Vec2f(-10.5f, -5.5f)) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::rotate(DEG_90) * Transform3::scale(Vec2f(0.0f, 0.0f)) * Transform3::translate(Vec2f(-10.5f, -5.5f)) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::rotateScaleTranslate(0.0f, Vec2f(0.0f, 0.0f), Vec2f(0.0f, 0.0f)) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::rotate(0.0f) * Transform3::scale(Vec2f(0.0f, 0.0f)) * Transform3::translate(Vec2f(0.0f, 0.0f)) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
 		}
 		// LHS
 		{
-			Rules::DefaultAxisRule = Rules::AXIS_LHS;
+			Rules::DefaultAxisRule = Rules::Axis::LHS;
 			Assertv((Transform3::rotateScaleTranslate(DEG_90, Vec2f(2.5f, -0.4f), Vec2f(-10.5f, -5.5f)) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::rotate(DEG_90) * Transform3::scale(Vec2f(2.5f, -0.4f)) * Transform3::translate(Vec2f(-10.5f, -5.5f)) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::rotateScaleTranslate(DEG_90, Vec2f(0.0f, 0.0f), Vec2f(-10.5f, -5.5f)) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::rotate(DEG_90) * Transform3::scale(Vec2f(0.0f, 0.0f)) * Transform3::translate(Vec2f(-10.5f, -5.5f)) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::rotateScaleTranslate(0.0f, Vec2f(0.0f, 0.0f), Vec2f(0.0f, 0.0f)) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::rotate(0.0f) * Transform3::scale(Vec2f(0.0f, 0.0f)) * Transform3::translate(Vec2f(0.0f, 0.0f)) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
@@ -238,14 +238,14 @@ int main(int argc, char* argv[])
 		// rotateTranslateScale
 		// RHS
 		{
-			Rules::DefaultAxisRule = Rules::AXIS_RHS;
+			Rules::DefaultAxisRule = Rules::Axis::RHS;
 			Assertv((Transform3::rotateTranslateScale(DEG_90, Vec2f(-10.5f, -5.5f), Vec2f(2.5f, -0.4f)) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::scale(Vec2f(2.5f, -0.4f)) * Transform3::translate(Vec2f(-10.5f, -5.5f)) * Transform3::rotate(DEG_90) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::rotateTranslateScale(DEG_90, Vec2f(-10.5f, -5.5f), Vec2f(0.0f, 0.0f)) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::scale(Vec2f(0.0f, 0.0f)) * Transform3::translate(Vec2f(-10.5f, -5.5f)) * Transform3::rotate(DEG_90) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::rotateTranslateScale(0.0f, Vec2f(0.0f, 0.0f), Vec2f(0.0f, 0.0f)) * Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::scale(Vec2f(0.0f, 0.0f)) * Transform3::translate(Vec2f(0.0f, 0.0f)) * Transform3::rotate(0.0f) * Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
 		}
 		// LHS
 		{
-			Rules::DefaultAxisRule = Rules::AXIS_LHS;
+			Rules::DefaultAxisRule = Rules::Axis::LHS;
 			Assertv((Transform3::rotateTranslateScale(DEG_90, Vec2f(-10.5f, -5.5f), Vec2f(2.5f, -0.4f))* Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::scale(Vec2f(2.5f, -0.4f))* Transform3::translate(Vec2f(-10.5f, -5.5f))* Transform3::rotate(DEG_90)* Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::rotateTranslateScale(DEG_90, Vec2f(-10.5f, -5.5f), Vec2f(0.0f, 0.0f))* Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::scale(Vec2f(0.0f, 0.0f))* Transform3::translate(Vec2f(-10.5f, -5.5f))* Transform3::rotate(DEG_90)* Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
 			Assertv((Transform3::rotateTranslateScale(0.0f, Vec2f(0.0f, 0.0f), Vec2f(0.0f, 0.0f))* Vec3f(45.6f, -23.0f, 1.0f)).equals(Transform3::scale(Vec2f(0.0f, 0.0f))* Transform3::translate(Vec2f(0.0f, 0.0f))* Transform3::rotate(0.0f)* Vec3f(45.6f, -23.0f, 1.0f), 0.0001f), verbose);
@@ -270,7 +270,7 @@ int main(int argc, char* argv[])
 		// rotate
 		// RHS
 		{
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_RHS;
+			Rules::DefaultAxisRule = Rules::Axis::RHS;
 			Assertv((Transform3::rotate(0.0) * Vec3d(1.0, 0.0, 1.0)).equals(1.0, 0.0, 1.0, 0.000001), verbose);
 			Assertv((Transform3::rotate(DEG_90) * Vec3d(1.0, 0.0, 1.0)).equals(0.0, 1.0, 1.0, 0.000001), verbose);
 			Assertv((Transform3::rotate(-DEG_90) * Vec3d(1.0, 0.0, 1.0)).equals(0.0, -1.0, 1.0, 0.000001), verbose);
@@ -287,7 +287,7 @@ int main(int argc, char* argv[])
 		}
 		// LHS
 		{
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_LHS;
+			Rules::DefaultAxisRule = Rules::Axis::LHS;
 			Assertv((Transform3::rotate(0.0) * Vec3d(1.0, 0.0, 1.0)).equals(1.0, 0.0, 1.0, 0.000001), verbose);
 			Assertv((Transform3::rotate(DEG_90) * Vec3d(1.0, 0.0, 1.0)).equals(0.0, -1.0, 1.0, 0.000001), verbose);
 			Assertv((Transform3::rotate(-DEG_90) * Vec3d(1.0, 0.0, 1.0)).equals(0.0, 1.0, 1.0, 0.000001), verbose);
@@ -321,7 +321,7 @@ int main(int argc, char* argv[])
 		// scaleRotate
 		// RHS
 		{
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_RHS;
+			Rules::DefaultAxisRule = Rules::Axis::RHS;
 			Assertv((Transform3::scaleRotate(Vec2d(-20.0, 50.5), DEG_90) * Vec3d(2.3, 5.8, 1.0)).equals(Transform3::rotate(DEG_90) * Transform3::scale(Vec2d(-20.0, 50.5)) * Vec3d(2.3, 5.8, 1.0), 0.000001), verbose);
 			Assertv((Transform3::scaleRotate(Vec2d(-20.0, 50.5), -DEG_90) * Vec3d(2.3, 5.8, 1.0)).equals(Transform3::rotate(-DEG_90) * Transform3::scale(Vec2d(-20.0, 50.5)) * Vec3d(2.3, 5.8, 1.0), 0.000001), verbose);
 			Assertv((Transform3::scaleRotate(Vec2d(-20.0, 50.5), DEG_180) * Vec3d(2.3, 5.8, 1.0)).equals(Transform3::rotate(DEG_180) * Transform3::scale(Vec2d(-20.0, 50.5)) * Vec3d(2.3, 5.8, 1.0), 0.000001), verbose);
@@ -330,7 +330,7 @@ int main(int argc, char* argv[])
 		}
 		// LHS
 		{
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_LHS;
+			Rules::DefaultAxisRule = Rules::Axis::LHS;
 			Assertv((Transform3::scaleRotate(Vec2d(-20.0, 50.5), DEG_90) * Vec3d(2.3, 5.8, 1.0)).equals(Transform3::rotate(DEG_90) * Transform3::scale(Vec2d(-20.0, 50.5)) * Vec3d(2.3, 5.8, 1.0), 0.000001), verbose);
 			Assertv((Transform3::scaleRotate(Vec2d(-20.0, 50.5), -DEG_90) * Vec3d(2.3, 5.8, 1.0)).equals(Transform3::rotate(-DEG_90) * Transform3::scale(Vec2d(-20.0, 50.5)) * Vec3d(2.3, 5.8, 1.0), 0.000001), verbose);
 			Assertv((Transform3::scaleRotate(Vec2d(-20.0, 50.5), DEG_180) * Vec3d(2.3, 5.8, 1.0)).equals(Transform3::rotate(DEG_180) * Transform3::scale(Vec2d(-20.0, 50.5)) * Vec3d(2.3, 5.8, 1.0), 0.000001), verbose);
@@ -340,7 +340,7 @@ int main(int argc, char* argv[])
 		// rotateScale
 		// RHS
 		{
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_RHS;
+			Rules::DefaultAxisRule = Rules::Axis::RHS;
 			Assertv((Transform3::rotateScale(DEG_90, Vec2d(-20.0, 50.5)) * Vec3d(2.3, 5.8, 1.0)).equals(Transform3::scale(Vec2d(-20.0, 50.5)) * Transform3::rotate(DEG_90) * Vec3d(2.3, 5.8, 1.0), 0.000001), verbose);
 			Assertv((Transform3::rotateScale(-DEG_90, Vec2d(-20.0, 50.5)) * Vec3d(2.3, 5.8, 1.0)).equals(Transform3::scale(Vec2d(-20.0, 50.5)) * Transform3::rotate(-DEG_90) * Vec3d(2.3, 5.8, 1.0), 0.000001), verbose);
 			Assertv((Transform3::rotateScale(DEG_180, Vec2d(-20.0, 50.5)) * Vec3d(2.3, 5.8, 1.0)).equals(Transform3::scale(Vec2d(-20.0, 50.5)) * Transform3::rotate(DEG_180) * Vec3d(2.3, 5.8, 1.0), 0.000001), verbose);
@@ -349,7 +349,7 @@ int main(int argc, char* argv[])
 		}
 		// LHS
 		{
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_RHS;
+			Rules::DefaultAxisRule = Rules::Axis::RHS;
 			Assertv((Transform3::rotateScale(DEG_90, Vec2d(-20.0, 50.5)) * Vec3d(2.3, 5.8, 1.0)).equals(Transform3::scale(Vec2d(-20.0, 50.5)) * Transform3::rotate(DEG_90) * Vec3d(2.3, 5.8, 1.0), 0.000001), verbose);
 			Assertv((Transform3::rotateScale(-DEG_90, Vec2d(-20.0, 50.5)) * Vec3d(2.3, 5.8, 1.0)).equals(Transform3::scale(Vec2d(-20.0, 50.5)) * Transform3::rotate(-DEG_90) * Vec3d(2.3, 5.8, 1.0), 0.000001), verbose);
 			Assertv((Transform3::rotateScale(DEG_180, Vec2d(-20.0, 50.5)) * Vec3d(2.3, 5.8, 1.0)).equals(Transform3::scale(Vec2d(-20.0, 50.5)) * Transform3::rotate(DEG_180) * Vec3d(2.3, 5.8, 1.0), 0.000001), verbose);
@@ -359,7 +359,7 @@ int main(int argc, char* argv[])
 		// translateRotate
 		// RHS
 		{
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_RHS;
+			Rules::DefaultAxisRule = Rules::Axis::RHS;
 			Assertv((Transform3::translateRotate(Vec2d(-20.0, 50.5), DEG_90) * Vec3d(2.3, 5.8, 1.0)).equals(Transform3::rotate(DEG_90) * Transform3::translate(Vec2d(-20.0, 50.5)) * Vec3d(2.3, 5.8, 1.0), 0.000001), verbose);
 			Assertv((Transform3::translateRotate(Vec2d(-20.0, 50.5), -DEG_90) * Vec3d(2.3, 5.8, 1.0)).equals(Transform3::rotate(-DEG_90) * Transform3::translate(Vec2d(-20.0, 50.5)) * Vec3d(2.3, 5.8, 1.0), 0.000001), verbose);
 			Assertv((Transform3::translateRotate(Vec2d(-20.0, 50.5), DEG_180) * Vec3d(2.3, 5.8, 1.0)).equals(Transform3::rotate(DEG_180) * Transform3::translate(Vec2d(-20.0, 50.5)) * Vec3d(2.3, 5.8, 1.0), 0.000001), verbose);
@@ -368,7 +368,7 @@ int main(int argc, char* argv[])
 		}
 		// LHS
 		{
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_LHS;
+			Rules::DefaultAxisRule = Rules::Axis::LHS;
 			Assertv((Transform3::translateRotate(Vec2d(-20.0, 50.5), DEG_90) * Vec3d(2.3, 5.8, 1.0)).equals(Transform3::rotate(DEG_90) * Transform3::translate(Vec2d(-20.0, 50.5)) * Vec3d(2.3, 5.8, 1.0), 0.000001), verbose);
 			Assertv((Transform3::translateRotate(Vec2d(-20.0, 50.5), -DEG_90) * Vec3d(2.3, 5.8, 1.0)).equals(Transform3::rotate(-DEG_90) * Transform3::translate(Vec2d(-20.0, 50.5)) * Vec3d(2.3, 5.8, 1.0), 0.000001), verbose);
 			Assertv((Transform3::translateRotate(Vec2d(-20.0, 50.5), DEG_180) * Vec3d(2.3, 5.8, 1.0)).equals(Transform3::rotate(DEG_180) * Transform3::translate(Vec2d(-20.0, 50.5)) * Vec3d(2.3, 5.8, 1.0), 0.000001), verbose);
@@ -378,7 +378,7 @@ int main(int argc, char* argv[])
 		// rotateTranslate
 		// RHS
 		{
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_RHS;
+			Rules::DefaultAxisRule = Rules::Axis::RHS;
 			Assertv((Transform3::rotateTranslate(DEG_90, Vec2d(-20.0, 50.5)) * Vec3d(2.3, 5.8, 1.0)).equals(Transform3::translate(Vec2d(-20.0, 50.5)) * Transform3::rotate(DEG_90) * Vec3d(2.3, 5.8, 1.0), 0.000001), verbose);
 			Assertv((Transform3::rotateTranslate(-DEG_90, Vec2d(-20.0, 50.5)) * Vec3d(2.3, 5.8, 1.0)).equals(Transform3::translate(Vec2d(-20.0, 50.5)) * Transform3::rotate(-DEG_90) * Vec3d(2.3, 5.8, 1.0), 0.000001), verbose);
 			Assertv((Transform3::rotateTranslate(DEG_180, Vec2d(-20.0, 50.5)) * Vec3d(2.3, 5.8, 1.0)).equals(Transform3::translate(Vec2d(-20.0, 50.5)) * Transform3::rotate(DEG_180) * Vec3d(2.3, 5.8, 1.0), 0.000001), verbose);
@@ -387,7 +387,7 @@ int main(int argc, char* argv[])
 		}
 		// LHS
 		{
-			Rules::DefaultAxisRule = Rules::Axis::AXIS_LHS;
+			Rules::DefaultAxisRule = Rules::Axis::LHS;
 			Assertv((Transform3::rotateTranslate(DEG_90, Vec2d(-20.0, 50.5)) * Vec3d(2.3, 5.8, 1.0)).equals(Transform3::translate(Vec2d(-20.0, 50.5)) * Transform3::rotate(DEG_90) * Vec3d(2.3, 5.8, 1.0), 0.000001), verbose);
 			Assertv((Transform3::rotateTranslate(-DEG_90, Vec2d(-20.0, 50.5)) * Vec3d(2.3, 5.8, 1.0)).equals(Transform3::translate(Vec2d(-20.0, 50.5)) * Transform3::rotate(-DEG_90) * Vec3d(2.3, 5.8, 1.0), 0.000001), verbose);
 			Assertv((Transform3::rotateTranslate(DEG_180, Vec2d(-20.0, 50.5)) * Vec3d(2.3, 5.8, 1.0)).equals(Transform3::translate(Vec2d(-20.0, 50.5)) * Transform3::rotate(DEG_180) * Vec3d(2.3, 5.8, 1.0), 0.000001), verbose);
@@ -397,14 +397,14 @@ int main(int argc, char* argv[])
 		// scaleTranslateRotate
 		// RHS
 		{
-			Rules::DefaultAxisRule = Rules::AXIS_RHS;
+			Rules::DefaultAxisRule = Rules::Axis::RHS;
 			Assertv((Transform3::scaleTranslateRotate(Vec2d(2.5, -0.4), Vec2d(-10.5, -5.5), DEG_90) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::rotate(DEG_90) * Transform3::translate(Vec2d(-10.5, -5.5)) * Transform3::scale(Vec2d(2.5, -0.4)) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 			Assertv((Transform3::scaleTranslateRotate(Vec2d(0.0, 0.0), Vec2d(-10.5, -5.5), DEG_90) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::rotate(DEG_90) * Transform3::translate(Vec2d(-10.5, -5.5)) * Transform3::scale(Vec2d(0.0, 0.0)) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 			Assertv((Transform3::scaleTranslateRotate(Vec2d(0.0, 0.0), Vec2d(0.0, 0.0), 0.0) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::rotate(0.0) * Transform3::translate(Vec2d(0.0, 0.0)) * Transform3::scale(Vec2d(0.0, 0.0)) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 		}
 		// LHS
 		{
-			Rules::DefaultAxisRule = Rules::AXIS_LHS;
+			Rules::DefaultAxisRule = Rules::Axis::LHS;
 			Assertv((Transform3::scaleTranslateRotate(Vec2d(2.5, -0.4), Vec2d(-10.5, -5.5), DEG_90) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::rotate(DEG_90) * Transform3::translate(Vec2d(-10.5, -5.5)) * Transform3::scale(Vec2d(2.5, -0.4)) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 			Assertv((Transform3::scaleTranslateRotate(Vec2d(0.0, 0.0), Vec2d(-10.5, -5.5), DEG_90) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::rotate(DEG_90) * Transform3::translate(Vec2d(-10.5, -5.5)) * Transform3::scale(Vec2d(0.0, 0.0)) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 			Assertv((Transform3::scaleTranslateRotate(Vec2d(0.0, 0.0), Vec2d(0.0, 0.0), 0.0) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::rotate(0.0) * Transform3::translate(Vec2d(0.0, 0.0)) * Transform3::scale(Vec2d(0.0, 0.0)) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
@@ -412,14 +412,14 @@ int main(int argc, char* argv[])
 		// scaleRotateTranslate
 		// RHS
 		{
-			Rules::DefaultAxisRule = Rules::AXIS_RHS;
+			Rules::DefaultAxisRule = Rules::Axis::RHS;
 			Assertv((Transform3::scaleRotateTranslate(Vec2d(2.5, -0.4), DEG_90, Vec2d(-10.5, -5.5)) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::translate(Vec2d(-10.5, -5.5)) * Transform3::rotate(DEG_90) * Transform3::scale(Vec2d(2.5, -0.4)) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 			Assertv((Transform3::scaleRotateTranslate(Vec2d(0.0, 0.0), DEG_90, Vec2d(-10.5, -5.5)) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::translate(Vec2d(-10.5, -5.5)) * Transform3::rotate(DEG_90) * Transform3::scale(Vec2d(0.0, 0.0)) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 			Assertv((Transform3::scaleRotateTranslate(Vec2d(0.0, 0.0), 0.0, Vec2d(0.0, 0.0)) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::translate(Vec2d(0.0, 0.0)) * Transform3::rotate(0.0) * Transform3::scale(Vec2d(0.0, 0.0)) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 		}
 		// LHS
 		{
-			Rules::DefaultAxisRule = Rules::AXIS_LHS;
+			Rules::DefaultAxisRule = Rules::Axis::LHS;
 			Assertv((Transform3::scaleRotateTranslate(Vec2d(2.5, -0.4), DEG_90, Vec2d(-10.5, -5.5)) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::translate(Vec2d(-10.5, -5.5)) * Transform3::rotate(DEG_90) * Transform3::scale(Vec2d(2.5, -0.4)) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 			Assertv((Transform3::scaleRotateTranslate(Vec2d(0.0, 0.0), DEG_90, Vec2d(-10.5, -5.5)) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::translate(Vec2d(-10.5, -5.5)) * Transform3::rotate(DEG_90) * Transform3::scale(Vec2d(0.0, 0.0)) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 			Assertv((Transform3::scaleRotateTranslate(Vec2d(0.0, 0.0), 0.0, Vec2d(0.0, 0.0)) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::translate(Vec2d(0.0, 0.0)) * Transform3::rotate(0.0) * Transform3::scale(Vec2d(0.0, 0.0)) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
@@ -427,14 +427,14 @@ int main(int argc, char* argv[])
 		// translateScaleRotate
 		// RHS
 		{
-			Rules::DefaultAxisRule = Rules::AXIS_RHS;
+			Rules::DefaultAxisRule = Rules::Axis::RHS;
 			Assertv((Transform3::translateScaleRotate(Vec2d(-10.5, -5.5), Vec2d(2.5, -0.4), DEG_90) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::rotate(DEG_90) * Transform3::scale(Vec2d(2.5, -0.4)) * Transform3::translate(Vec2d(-10.5, -5.5)) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 			Assertv((Transform3::translateScaleRotate(Vec2d(-10.5, -5.5), Vec2d(0.0, 0.0), DEG_90) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::rotate(DEG_90) * Transform3::scale(Vec2d(0.0, 0.0)) * Transform3::translate(Vec2d(-10.5, -5.5)) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 			Assertv((Transform3::translateScaleRotate(Vec2d(0.0, 0.0), Vec2d(0.0, 0.0), 0.0) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::rotate(0.0) * Transform3::scale(Vec2d(0.0, 0.0)) * Transform3::translate(Vec2d(0.0, 0.0)) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 		}
 		// LHS
 		{
-			Rules::DefaultAxisRule = Rules::AXIS_LHS;
+			Rules::DefaultAxisRule = Rules::Axis::LHS;
 			Assertv((Transform3::translateScaleRotate(Vec2d(-10.5, -5.5), Vec2d(2.5, -0.4), DEG_90) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::rotate(DEG_90) * Transform3::scale(Vec2d(2.5, -0.4)) * Transform3::translate(Vec2d(-10.5, -5.5)) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 			Assertv((Transform3::translateScaleRotate(Vec2d(-10.5, -5.5), Vec2d(0.0, 0.0), DEG_90) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::rotate(DEG_90) * Transform3::scale(Vec2d(0.0, 0.0)) * Transform3::translate(Vec2d(-10.5, -5.5)) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 			Assertv((Transform3::translateScaleRotate(Vec2d(0.0, 0.0), Vec2d(0.0, 0.0), 0.0) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::rotate(0.0) * Transform3::scale(Vec2d(0.0, 0.0)) * Transform3::translate(Vec2d(0.0, 0.0)) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
@@ -442,14 +442,14 @@ int main(int argc, char* argv[])
 		// translateRotateScale
 		// RHS
 		{
-			Rules::DefaultAxisRule = Rules::AXIS_RHS;
+			Rules::DefaultAxisRule = Rules::Axis::RHS;
 			Assertv((Transform3::translateRotateScale(Vec2d(-10.5, -5.5), DEG_90, Vec2d(2.5, -0.4)) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::scale(Vec2d(2.5, -0.4)) * Transform3::rotate(DEG_90) * Transform3::translate(Vec2d(-10.5, -5.5)) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 			Assertv((Transform3::translateRotateScale(Vec2d(-10.5, -5.5), DEG_90, Vec2d(0.0, 0.0)) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::scale(Vec2d(0.0, 0.0)) * Transform3::rotate(DEG_90) * Transform3::translate(Vec2d(-10.5, -5.5)) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 			Assertv((Transform3::translateRotateScale(Vec2d(0.0, 0.0), 0.0, Vec2d(0.0, 0.0)) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::scale(Vec2d(0.0, 0.0)) * Transform3::rotate(0.0) * Transform3::translate(Vec2d(0.0, 0.0)) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 		}
 		// LHS
 		{
-			Rules::DefaultAxisRule = Rules::AXIS_LHS;
+			Rules::DefaultAxisRule = Rules::Axis::LHS;
 			Assertv((Transform3::translateRotateScale(Vec2d(-10.5, -5.5), DEG_90, Vec2d(2.5, -0.4)) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::scale(Vec2d(2.5, -0.4)) * Transform3::rotate(DEG_90) * Transform3::translate(Vec2d(-10.5, -5.5)) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 			Assertv((Transform3::translateRotateScale(Vec2d(-10.5, -5.5), DEG_90, Vec2d(0.0, 0.0)) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::scale(Vec2d(0.0, 0.0)) * Transform3::rotate(DEG_90) * Transform3::translate(Vec2d(-10.5, -5.5)) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 			Assertv((Transform3::translateRotateScale(Vec2d(0.0, 0.0), 0.0, Vec2d(0.0, 0.0)) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::scale(Vec2d(0.0, 0.0)) * Transform3::rotate(0.0) * Transform3::translate(Vec2d(0.0, 0.0)) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
@@ -457,14 +457,14 @@ int main(int argc, char* argv[])
 		// rotateScaleTranslate
 		// RHS
 		{
-			Rules::DefaultAxisRule = Rules::AXIS_RHS;
+			Rules::DefaultAxisRule = Rules::Axis::RHS;
 			Assertv((Transform3::rotateScaleTranslate(DEG_90, Vec2d(2.5, -0.4), Vec2d(-10.5, -5.5)) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::rotate(DEG_90) * Transform3::scale(Vec2d(2.5, -0.4)) * Transform3::translate(Vec2d(-10.5, -5.5)) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 			Assertv((Transform3::rotateScaleTranslate(DEG_90, Vec2d(0.0, 0.0), Vec2d(-10.5, -5.5)) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::rotate(DEG_90) * Transform3::scale(Vec2d(0.0, 0.0)) * Transform3::translate(Vec2d(-10.5, -5.5)) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 			Assertv((Transform3::rotateScaleTranslate(0.0, Vec2d(0.0, 0.0), Vec2d(0.0, 0.0)) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::rotate(0.0) * Transform3::scale(Vec2d(0.0, 0.0)) * Transform3::translate(Vec2d(0.0, 0.0)) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 		}
 		// LHS
 		{
-			Rules::DefaultAxisRule = Rules::AXIS_LHS;
+			Rules::DefaultAxisRule = Rules::Axis::LHS;
 			Assertv((Transform3::rotateScaleTranslate(DEG_90, Vec2d(2.5, -0.4), Vec2d(-10.5, -5.5)) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::rotate(DEG_90) * Transform3::scale(Vec2d(2.5, -0.4)) * Transform3::translate(Vec2d(-10.5, -5.5)) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 			Assertv((Transform3::rotateScaleTranslate(DEG_90, Vec2d(0.0, 0.0), Vec2d(-10.5, -5.5)) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::rotate(DEG_90) * Transform3::scale(Vec2d(0.0, 0.0)) * Transform3::translate(Vec2d(-10.5, -5.5)) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 			Assertv((Transform3::rotateScaleTranslate(0.0, Vec2d(0.0, 0.0), Vec2d(0.0, 0.0)) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::rotate(0.0) * Transform3::scale(Vec2d(0.0, 0.0)) * Transform3::translate(Vec2d(0.0, 0.0)) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
@@ -472,14 +472,14 @@ int main(int argc, char* argv[])
 		// rotateTranslateScale
 		// RHS
 		{
-			Rules::DefaultAxisRule = Rules::AXIS_RHS;
+			Rules::DefaultAxisRule = Rules::Axis::RHS;
 			Assertv((Transform3::rotateTranslateScale(DEG_90, Vec2d(-10.5, -5.5), Vec2d(2.5, -0.4)) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::scale(Vec2d(2.5, -0.4)) * Transform3::translate(Vec2d(-10.5, -5.5)) * Transform3::rotate(DEG_90) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 			Assertv((Transform3::rotateTranslateScale(DEG_90, Vec2d(-10.5, -5.5), Vec2d(0.0, 0.0)) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::scale(Vec2d(0.0, 0.0)) * Transform3::translate(Vec2d(-10.5, -5.5)) * Transform3::rotate(DEG_90) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 			Assertv((Transform3::rotateTranslateScale(0.0, Vec2d(0.0, 0.0), Vec2d(0.0, 0.0)) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::scale(Vec2d(0.0, 0.0)) * Transform3::translate(Vec2d(0.0, 0.0)) * Transform3::rotate(0.0) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 		}
 		// LHS
 		{
-			Rules::DefaultAxisRule = Rules::AXIS_LHS;
+			Rules::DefaultAxisRule = Rules::Axis::LHS;
 			Assertv((Transform3::rotateTranslateScale(DEG_90, Vec2d(-10.5, -5.5), Vec2d(2.5, -0.4)) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::scale(Vec2d(2.5, -0.4)) * Transform3::translate(Vec2d(-10.5, -5.5)) * Transform3::rotate(DEG_90) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 			Assertv((Transform3::rotateTranslateScale(DEG_90, Vec2d(-10.5, -5.5), Vec2d(0.0, 0.0)) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::scale(Vec2d(0.0, 0.0)) * Transform3::translate(Vec2d(-10.5, -5.5)) * Transform3::rotate(DEG_90) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 			Assertv((Transform3::rotateTranslateScale(0.0, Vec2d(0.0, 0.0), Vec2d(0.0, 0.0)) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::scale(Vec2d(0.0, 0.0)) * Transform3::translate(Vec2d(0.0, 0.0)) * Transform3::rotate(0.0) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);

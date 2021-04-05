@@ -5,13 +5,11 @@ namespace axl {
 namespace math {
 namespace Rules {
 
-typedef ENUM_CLASS _Axis
+enum class Axis
 {
-	// left hand side rule
-	AXIS_LHS,
-	// right hand side rule
-	AXIS_RHS
-} Axis;
+	LHS,	// left hand side rule
+	RHS		// right hand side rule
+};
 
 AXLMATHAPI Axis DefaultAxisRule;
 
