@@ -17,24 +17,24 @@ int main(int argc, char *argv[])
 	puts("----------------------------------------");
 	{ // clamp
 		{ // float
-			Assertv(clamp(0.0f, 0.0f, 1.0f) == 0.0f, verbose);
-			Assertv(Float::equals(clamp(0.0001f, 0.0f, 1.0f), 0.0001f, 0.0001f), verbose);
-			Assertv(Float::equals(clamp(0.9999f, 0.0f, 1.0f), 0.9999f, 0.0001f), verbose);
-			Assertv(clamp(0.5f, 0.0f, 1.0f) == 0.5f, verbose);
-			Assertv(clamp(1.0f, 0.0f, 1.0f) == 1.0f, verbose);
-			Assertv(clamp(0.0f, 1.0f, 1.0f) == 1.0f, verbose);
-			Assertv(clamp(1.0f, 1.0f, 1.0f) == 1.0f, verbose);
-			Assertv(clamp(2.0f, 1.0f, 1.0f) == 1.0f, verbose);
+			Assertv(axl::math::clamp(0.0f, 0.0f, 1.0f) == 0.0f, verbose);
+			Assertv(Float::equals(axl::math::clamp(0.0001f, 0.0f, 1.0f), 0.0001f, 0.0001f), verbose);
+			Assertv(Float::equals(axl::math::clamp(0.9999f, 0.0f, 1.0f), 0.9999f, 0.0001f), verbose);
+			Assertv(axl::math::clamp(0.5f, 0.0f, 1.0f) == 0.5f, verbose);
+			Assertv(axl::math::clamp(1.0f, 0.0f, 1.0f) == 1.0f, verbose);
+			Assertv(axl::math::clamp(0.0f, 1.0f, 1.0f) == 1.0f, verbose);
+			Assertv(axl::math::clamp(1.0f, 1.0f, 1.0f) == 1.0f, verbose);
+			Assertv(axl::math::clamp(2.0f, 1.0f, 1.0f) == 1.0f, verbose);
 		}
 		{ // double
-			Assertv(clamp(0.0, 0.0, 1.0) == 0.0, verbose);
-			Assertv(Double::equals(clamp(0.0001, 0.0, 1.0), 0.0001, 0.000001), verbose);
-			Assertv(Double::equals(clamp(0.9999, 0.0, 1.0), 0.9999, 0.000001), verbose);
-			Assertv(clamp(0.5, 0.0, 1.0) == 0.5, verbose);
-			Assertv(clamp(1.0, 0.0, 1.0) == 1.0, verbose);
-			Assertv(clamp(0.0, 1.0, 1.0) == 1.0, verbose);
-			Assertv(clamp(1.0, 1.0, 1.0) == 1.0, verbose);
-			Assertv(clamp(2.0, 1.0, 1.0) == 1.0, verbose);
+			Assertv(axl::math::clamp(0.0, 0.0, 1.0) == 0.0, verbose);
+			Assertv(Double::equals(axl::math::clamp(0.0001, 0.0, 1.0), 0.0001, 0.000001), verbose);
+			Assertv(Double::equals(axl::math::clamp(0.9999, 0.0, 1.0), 0.9999, 0.000001), verbose);
+			Assertv(axl::math::clamp(0.5, 0.0, 1.0) == 0.5, verbose);
+			Assertv(axl::math::clamp(1.0, 0.0, 1.0) == 1.0, verbose);
+			Assertv(axl::math::clamp(0.0, 1.0, 1.0) == 1.0, verbose);
+			Assertv(axl::math::clamp(1.0, 1.0, 1.0) == 1.0, verbose);
+			Assertv(axl::math::clamp(2.0, 1.0, 1.0) == 1.0, verbose);
 		}
 	}
 	{ // map
@@ -46,65 +46,65 @@ int main(int argc, char *argv[])
 			Assertv(Float::equals(map(50, 0, 100, 1.0f, 3.0f), 2.0f, 0.0001f), verbose);
 		}
 		{ // double
-			Assertv(map(0, 0, 255, -1.0, 1.0) == -1.0, verbose);
-			Assertv(Double::equals(map(32, 0, 255, -1.0, 1.0), -0.749019, 0.000001), verbose);
-			Assertv(Double::equals(map(127, 0, 255, -1.0, 1.0), -0.003922, 0.000001), verbose);
-			Assertv(map(255, 0, 255, -1.0, 1.0) == 1.0, verbose);
-			Assertv(Double::equals(map(50, 0, 100, 1.0, 3.0), 2.0, 0.000001), verbose);
+			Assertv(axl::math::map(0, 0, 255, -1.0, 1.0) == -1.0, verbose);
+			Assertv(Double::equals(axl::math::map(32, 0, 255, -1.0, 1.0), -0.749019, 0.000001), verbose);
+			Assertv(Double::equals(axl::math::map(127, 0, 255, -1.0, 1.0), -0.003922, 0.000001), verbose);
+			Assertv(axl::math::map(255, 0, 255, -1.0, 1.0) == 1.0, verbose);
+			Assertv(Double::equals(axl::math::map(50, 0, 100, 1.0, 3.0), 2.0, 0.000001), verbose);
 		}
 	}
 	{ // round
 		{ // float
-			Assertv(Float::equals(round(56.0f), 56.0f, 0.0001f), verbose);
-			Assertv(Float::equals(round(56.15f), 56.0f, 0.0001f), verbose);
-			Assertv(Float::equals(round(56.5f), 57.0f, 0.0001f), verbose);
-			Assertv(Float::equals(round(12.50f), 13.0f, 0.0001f), verbose);
-			Assertv(Float::equals(round(12.49f), 12.0f, 0.0001f), verbose);
-			Assertv(Float::equals(round(12.99f), 13.0f, 0.0001f), verbose);
+			Assertv(Float::equals(axl::math::round(56.0f), 56.0f, 0.0001f), verbose);
+			Assertv(Float::equals(axl::math::round(56.15f), 56.0f, 0.0001f), verbose);
+			Assertv(Float::equals(axl::math::round(56.5f), 57.0f, 0.0001f), verbose);
+			Assertv(Float::equals(axl::math::round(12.50f), 13.0f, 0.0001f), verbose);
+			Assertv(Float::equals(axl::math::round(12.49f), 12.0f, 0.0001f), verbose);
+			Assertv(Float::equals(axl::math::round(12.99f), 13.0f, 0.0001f), verbose);
 		}
 		{ // double
-			Assertv(Double::equals(round(56.0), 56.0, 0.000001), verbose);
-			Assertv(Double::equals(round(56.15), 56.0, 0.000001), verbose);
-			Assertv(Double::equals(round(56.5), 57.0, 0.000001), verbose);
-			Assertv(Double::equals(round(12.50), 13.0, 0.000001), verbose);
-			Assertv(Double::equals(round(12.49), 12.0, 0.000001), verbose);
-			Assertv(Double::equals(round(12.99), 13.0, 0.000001), verbose);
+			Assertv(Double::equals(axl::math::round(56.0), 56.0, 0.000001), verbose);
+			Assertv(Double::equals(axl::math::round(56.15), 56.0, 0.000001), verbose);
+			Assertv(Double::equals(axl::math::round(56.5), 57.0, 0.000001), verbose);
+			Assertv(Double::equals(axl::math::round(12.50), 13.0, 0.000001), verbose);
+			Assertv(Double::equals(axl::math::round(12.49), 12.0, 0.000001), verbose);
+			Assertv(Double::equals(axl::math::round(12.99), 13.0, 0.000001), verbose);
 		}
 	}
 	{ // floor
 		{ // float
-			Assertv(Float::equals(floor(56.0f), 56.0f, 0.0001f), verbose);
-			Assertv(Float::equals(floor(56.15f), 56.0f, 0.0001f), verbose);
-			Assertv(Float::equals(floor(56.5f), 56.0f, 0.0001f), verbose);
-			Assertv(Float::equals(floor(12.50f), 12.0f, 0.0001f), verbose);
-			Assertv(Float::equals(floor(12.49f), 12.0f, 0.0001f), verbose);
-			Assertv(Float::equals(floor(12.99f), 12.0f, 0.0001f), verbose);
+			Assertv(Float::equals(axl::math::floor(56.0f), 56.0f, 0.0001f), verbose);
+			Assertv(Float::equals(axl::math::floor(56.15f), 56.0f, 0.0001f), verbose);
+			Assertv(Float::equals(axl::math::floor(56.5f), 56.0f, 0.0001f), verbose);
+			Assertv(Float::equals(axl::math::floor(12.50f), 12.0f, 0.0001f), verbose);
+			Assertv(Float::equals(axl::math::floor(12.49f), 12.0f, 0.0001f), verbose);
+			Assertv(Float::equals(axl::math::floor(12.99f), 12.0f, 0.0001f), verbose);
 		}
 		{ // double
-			Assertv(Double::equals(floor(56.0), 56.0, 0.000001), verbose);
-			Assertv(Double::equals(floor(56.15), 56.0, 0.000001), verbose);
-			Assertv(Double::equals(floor(56.5), 56.0, 0.000001), verbose);
-			Assertv(Double::equals(floor(12.50), 12.0, 0.000001), verbose);
-			Assertv(Double::equals(floor(12.49), 12.0, 0.000001), verbose);
-			Assertv(Double::equals(floor(12.99), 12.0, 0.000001), verbose);
+			Assertv(Double::equals(axl::math::floor(56.0), 56.0, 0.000001), verbose);
+			Assertv(Double::equals(axl::math::floor(56.15), 56.0, 0.000001), verbose);
+			Assertv(Double::equals(axl::math::floor(56.5), 56.0, 0.000001), verbose);
+			Assertv(Double::equals(axl::math::floor(12.50), 12.0, 0.000001), verbose);
+			Assertv(Double::equals(axl::math::floor(12.49), 12.0, 0.000001), verbose);
+			Assertv(Double::equals(axl::math::floor(12.99), 12.0, 0.000001), verbose);
 		}
 	}
 	{ // ceil
 		{ // float
-			Assertv(Float::equals(ceil(56.0f), 56.0f, 0.0001f), verbose);
-			Assertv(Float::equals(ceil(56.15f), 57.0f, 0.0001f), verbose);
-			Assertv(Float::equals(ceil(56.5f), 57.0f, 0.0001f), verbose);
-			Assertv(Float::equals(ceil(12.50f), 13.0f, 0.0001f), verbose);
-			Assertv(Float::equals(ceil(12.49f), 13.0f, 0.0001f), verbose);
-			Assertv(Float::equals(ceil(12.99f), 13.0f, 0.0001f), verbose);
+			Assertv(Float::equals(axl::math::ceil(56.0f), 56.0f, 0.0001f), verbose);
+			Assertv(Float::equals(axl::math::ceil(56.15f), 57.0f, 0.0001f), verbose);
+			Assertv(Float::equals(axl::math::ceil(56.5f), 57.0f, 0.0001f), verbose);
+			Assertv(Float::equals(axl::math::ceil(12.50f), 13.0f, 0.0001f), verbose);
+			Assertv(Float::equals(axl::math::ceil(12.49f), 13.0f, 0.0001f), verbose);
+			Assertv(Float::equals(axl::math::ceil(12.99f), 13.0f, 0.0001f), verbose);
 		}
 		{ // double
-			Assertv(Double::equals(ceil(56.0), 56.0, 0.000001), verbose);
-			Assertv(Double::equals(ceil(56.15), 57.0, 0.000001), verbose);
-			Assertv(Double::equals(ceil(56.5), 57.0, 0.000001), verbose);
-			Assertv(Double::equals(ceil(12.50), 13.0, 0.000001), verbose);
-			Assertv(Double::equals(ceil(12.49), 13.0, 0.000001), verbose);
-			Assertv(Double::equals(ceil(12.99), 13.0, 0.000001), verbose);
+			Assertv(Double::equals(axl::math::ceil(56.0), 56.0, 0.000001), verbose);
+			Assertv(Double::equals(axl::math::ceil(56.15), 57.0, 0.000001), verbose);
+			Assertv(Double::equals(axl::math::ceil(56.5), 57.0, 0.000001), verbose);
+			Assertv(Double::equals(axl::math::ceil(12.50), 13.0, 0.000001), verbose);
+			Assertv(Double::equals(axl::math::ceil(12.49), 13.0, 0.000001), verbose);
+			Assertv(Double::equals(axl::math::ceil(12.99), 13.0, 0.000001), verbose);
 		}
 	}
 
