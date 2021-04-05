@@ -39,6 +39,7 @@ add_library( axl.math ${AXLMATH_TYPE}
 	"rectangle/Rectanglef.cpp"
 	"rectangle/Rectangled.cpp"
 	"transform/Transform4f.cpp"
+	"transform/Transform4d.cpp"
 
 	"${AXLMATH_INCLUDE_DIR}/axl.math/everything.hpp"
 	"${AXLMATH_INCLUDE_DIR}/axl.math/lib.hpp"
@@ -72,6 +73,7 @@ add_library( axl.math ${AXLMATH_TYPE}
 	"${AXLMATH_INCLUDE_DIR}/axl.math/rectangle/Rectanglef.hpp"
 	"${AXLMATH_INCLUDE_DIR}/axl.math/rectangle/Rectangled.hpp"
 	"${AXLMATH_INCLUDE_DIR}/axl.math/transform/Transform4f.hpp"
+	"${AXLMATH_INCLUDE_DIR}/axl.math/transform/Transform4d.hpp"
 )
 target_include_directories( axl.math PUBLIC "${AXLMATH_INCLUDE_DIR}" )
 target_compile_definitions( axl.math
@@ -172,6 +174,7 @@ if( AXLMATH_INSTALL_HEADERS )
 	)
 	install( FILES
 		"${AXLMATH_INCLUDE_DIR}/axl.math/transform/Transform4f.hpp"
+		"${AXLMATH_INCLUDE_DIR}/axl.math/transform/Transform4d.hpp"
 		DESTINATION "${HEADERS_INSTALL_DIR}/axl.math/transform"
 	)
 endif()
