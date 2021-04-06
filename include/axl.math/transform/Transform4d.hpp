@@ -21,8 +21,7 @@ class AXLMATHCXXAPI Transform4d
 		void setScale(const Vec3d& scale, bool update_matrix = true);
 		void setPosition(const Vec3d& position, bool update_matrix = true);
 		void setRotation(const Vec3d& rotation, bool update_matrix = true);
-		void setRotation(const Vec3d& rotation,
-			Orders::Rotation rotation_order = Orders::Rotation::XYZ,
+		void setRotation(const Vec3d& rotation, Orders::Rotation rotation_order,
 			Rules::Axis axis_rule = Rules::DefaultAxisRule,
 			bool update_matrix = true);
 		void setTransformOrder(Orders::Transform transform_order = Orders::Transform::STR, bool update_matrix = true);
