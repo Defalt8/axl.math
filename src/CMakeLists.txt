@@ -1,8 +1,10 @@
 # library
 set( CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE )
-set( MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>" )
 
-if( "${AXLMATH_TYPE}" MATCHES "^[Ss][Hh][Aa][Rr][Ee][Dd]$" )
+set( AXLMATH_TYPE STATIC )
+set( DEBUG_SUFFIX "" )
+
+if( "${AXLMATH_TYPE}" MATCHES "^[Ss][Hh][Aa][Rr][Ee][Dd]$" OR BUILD_SHARED_LIBS)
 	set( AXLMATH_TYPE SHARED )
 	set( TYPE_SUFFIX "" )
 else()
@@ -106,20 +108,14 @@ elseif( "${CMAKE_BUILD_TYPE}" MATCHES "[Rr][Ee][Ll]" )
 	target_compile_definitions( axl.math PRIVATE NDEBUG )
 endif()
 
-if( AXLMATH_INSTALL_ARCHIVES AND AXLMATH_INSTALL_RUNTIME )
+if( ${AXLMATH_INSTALL_LIBRARY} )
 	install( TARGETS axl.math
-		ARCHIVE DESTINATION "lib"
-		RUNTIME DESTINATION "bin"
-	)
-elseif( AXLMATH_INSTALL_ARCHIVES )
-	install( TARGETS axl.math
-		ARCHIVE DESTINATION "lib"
-	)
-elseif( AXLMATH_INSTALL_RUNTIME )
-	install( TARGETS axl.math
-		RUNTIME DESTINATION "bin"
+		CONFIGURATIONS "" "Debug" "Release" "MinSizeRel" "RelWithDebugInfo"
+		RUNTIME DESTINATION "${AXLMATH_RUNTIME_DIR}"
+		ARCHIVE DESTINATION "${AXLMATH_ARCHIVE_DIR}"
 	)
 endif()
+
 # install headers
 if( AXLMATH_INSTALL_HEADERS )
 	install( FILES
