@@ -59,7 +59,7 @@ float atanh(float angle)
 }
 float mod(float dividend, float divisor)
 {
-	return std::fmodf(dividend, divisor);
+	return fmodf(dividend, divisor);
 }
 float sqrt(float value)
 {
@@ -80,7 +80,7 @@ float log10(float value)
 }
 float pow(float base, float power)
 {
-	return std::powf(base, power);
+	return powf(base, power);
 }
 
 // double
@@ -138,7 +138,7 @@ double atanh(double angle)
 }
 double mod(double dividend, double divisor)
 {
-	return std::fmod(dividend, divisor);
+	return fmod(dividend, divisor);
 }
 double sqrt(double value)
 {
@@ -158,7 +158,7 @@ double log10(double value)
 }
 double pow(double base, double power)
 {
-	return std::pow(base, power);
+	return pow(base, power);
 }
 
 } // namespace axl.math
