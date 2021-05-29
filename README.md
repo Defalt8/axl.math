@@ -6,6 +6,31 @@ A simple C++ math library primarily designed for game engines.
 
 - Latest: 0.28.34 beta
 
+## Requirements
+
+- CMake 3.4 or above.
+- Any C and C++ SDK that can be accessed through a command line. (MSVC, MinGW) If you have Visual Studio or CodeBlocks then you are set.
+
+## How to get started
+
+- Clone this repo into a directory and execute these commands to build the library.
+  - git clone https://github.com/defalt8/axl.math.git
+  - cd axl.math
+  - mkdir out\\build
+  - cd out\\build
+  - cmake -B . -S ../../ (or with a generator of your choosing.) cmake -G \<generator\> -B . -S ../../
+  - cmake --build .
+
+## CMake Options
+
+Default values are marked **bold**.
+
+- Library specific options
+  - AXLMATH_TYPE=[**STATIC**|SHARED]
+  - AXLMATH_BUILD_TESTS=[**TRUE**|FALSE]
+  - AXLMATH_INSTALL_HEADERS=[**TRUE**|FALSE] -- By default this is `FALSE` if the project is included from another cmake project, otherwise `TRUE`.
+  - AXLMATH_INSTALL_LIBRARY=[**TRUE**|FALSE]
+
 ## library headers
 
 - [`axl.math/everything.hpp`](/include/axl.math/everything.hpp) - Includes every header in the library.
@@ -48,36 +73,3 @@ A simple C++ math library primarily designed for game engines.
   - [`axl.math/rectangle/Rectanglef.hpp`](/include/axl.math/rectangle/Rectanglef.hpp) - *A single precision floating point Rectangle class.*
 - **Transforms**
   - [`axl.math/transform/Transform4f.hpp`](/include/axl.math/transform/Transform4f.hpp) - *A 3D transform class containing 4x4 matrix and all 3D transform attributes and methods.*
-
-## Requirements
-
-- CMake 3.4 or above.
-- Any C and C++ SDK that can be accessed through a command line. (MSVC, MinGW) If you have Visual Studio or CodeBlocks then you are set.
-
-## How to get started
-
-- Clone this repo into a directory and execute these commands to build the library.
-  - git clone https://github.com/defalt8/axl.math.git
-  - cd axl.math
-  - mkdir out\\build
-  - cd out\\build
-  - cmake -B . -S ../../ (or with a generator of your choosing.) cmake -G \<generator\> -B . -S ../../
-  - cmake --build .
-
-## CMake Options
-
-Default values are marked **bold**.
-
-- Library specific options
-  - AXLMATH_TYPE=[**STATIC**|SHARED]
-  - AXLMATH_BUILD_TESTS=[**ON**|OFF]
-  - AXLMATH_BUILD_TOOLS=[**ON**|OFF]
-  - AXLMATH_INSTALL_HEADERS=[**ON**|OFF]
-  - AXLMATH_INSTALL_ARCHIVES=[**ON**|OFF]
-  - AXLMATH_INSTALL_BINARIES=[**ON**|OFF]
-- General options
-  - BUILD_TESTS=[ON|**OFF**]
-  - BUILD_TOOLS=[ON|**OFF**]
-  - INSTALL_HEADERS=[**ON**|OFF]
-  - INSTALL_ARCHIVES=[**ON**|OFF]
-  - INSTALL_BINARIES=[**ON**|OFF]
