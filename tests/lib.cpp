@@ -11,12 +11,12 @@ int main(int argc, char *argv[])
 	using namespace axl::math;
 	printf("axl.math - version %hu.%hu.%hu  %s %s\n", lib::VERSION.major, lib::VERSION.minor, lib::VERSION.patch, libType(lib::LIBRARY_TYPE), buildType(lib::BUILD_TYPE));
 	puts("----------------------------------------");
-	if(Assert::_num_failed_tests <= 0)
+	if(assert::_num_failed_tests <= 0)
 		printf("ALL GOOD!\n");
 	else
 	{
 		puts("----------------------------------------");
-		printf("# %d Failed!\n", Assert::_num_failed_tests);
+		printf("# %d Failed!\n", assert::_num_failed_tests);
 	}
-	return Assert::_num_failed_tests;
+	return assert::_num_failed_tests;
 }

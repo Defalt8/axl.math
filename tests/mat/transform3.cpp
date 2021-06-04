@@ -485,12 +485,12 @@ int main(int argc, char* argv[])
 			Assertv((Transform3::rotateTranslateScale(0.0, Vec2d(0.0, 0.0), Vec2d(0.0, 0.0)) * Vec3d(45.6, -23.0, 1.0)).equals(Transform3::scale(Vec2d(0.0, 0.0)) * Transform3::translate(Vec2d(0.0, 0.0)) * Transform3::rotate(0.0) * Vec3d(45.6, -23.0, 1.0), 0.000001), verbose);
 		}
 	}
-	if (Assert::_num_failed_tests <= 0)
+	if (assert::_num_failed_tests <= 0)
 		printf("ALL GOOD!\n");
 	else
 	{
 		puts("----------------------------------------");
-		printf("# %d Failed!\n", Assert::_num_failed_tests);
+		printf("# %d Failed!\n", assert::_num_failed_tests);
 	}
-	return Assert::_num_failed_tests;
+	return assert::_num_failed_tests;
 }

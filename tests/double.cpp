@@ -54,12 +54,12 @@ int main(int argc, char *argv[])
 	Assertv(!Double::isNegInfinity(0.0), verbose);
 	Assertv(!Double::isNegInfinity(2434.0543545), verbose);
 
-	if(Assert::_num_failed_tests <= 0)
+	if(assert::_num_failed_tests <= 0)
 		printf("ALL GOOD!\n");
 	else
 	{
 		puts("----------------------------------------");
-		printf("# %d Failed!\n", Assert::_num_failed_tests);
+		printf("# %d Failed!\n", assert::_num_failed_tests);
 	}
-	return Assert::_num_failed_tests;
+	return assert::_num_failed_tests;
 }

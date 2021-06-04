@@ -469,12 +469,12 @@ int main(int argc, char *argv[])
 			Assertv((Transform4::rotateZYX(Vec3d(0.0, 0.0, 0.0)) * Vec4d(5, 16, 35, 1)).equals(5.0, 16.0, 35.0, 1.0, 0.000001), verbose);
 		}
 	}
-	if(Assert::_num_failed_tests <= 0)
+	if(assert::_num_failed_tests <= 0)
 		printf("ALL GOOD!\n");
 	else
 	{
 		puts("----------------------------------------");
-		printf("# %d Failed!\n", Assert::_num_failed_tests);
+		printf("# %d Failed!\n", assert::_num_failed_tests);
 	}
-	return Assert::_num_failed_tests;
+	return assert::_num_failed_tests;
 }

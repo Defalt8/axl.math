@@ -451,12 +451,12 @@ int main(int argc, char *argv[])
 		Assertv(Mat4f(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16).transpose().equals(1,5,9,13,2,6,10,14,3,7,11,15,4,8,12,16, 0.0001f), verbose);
 		Assertv(Mat4f(1,0,0,0,0,-2,0,0,0,0,3,0,0,0,0,-4).transpose().equals(1,0,0,0,0,-2,0,0,0,0,3,0,0,0,0,-4, 0.0001f), verbose);
 	}
-	if(Assert::_num_failed_tests <= 0)
+	if(assert::_num_failed_tests <= 0)
 		printf("ALL GOOD!\n");
 	else
 	{
 		puts("----------------------------------------");
-		printf("# %d Failed!\n", Assert::_num_failed_tests);
+		printf("# %d Failed!\n", assert::_num_failed_tests);
 	}
-	return Assert::_num_failed_tests;
+	return assert::_num_failed_tests;
 }
