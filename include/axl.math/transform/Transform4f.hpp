@@ -2,8 +2,8 @@
 #include "../lib.hpp"
 #include "../rules.hpp"
 #include "../orders.hpp"
-#include "../vec/vec3f.hpp"
-#include "../vec/vec4f.hpp"
+#include "../vec/Vec3f.hpp"
+#include "../vec/Vec4f.hpp"
 #include "../mat/Mat4f.hpp"
 
 namespace axl {

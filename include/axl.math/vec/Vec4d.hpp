@@ -1,6 +1,6 @@
 #pragma once
 #include "../lib.hpp"
-#include "../Rules.hpp"
+#include "../rules.hpp"
 #include "Vec2d.hpp"
 #include "Vec3d.hpp"
 

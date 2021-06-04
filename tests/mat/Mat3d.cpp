@@ -4,7 +4,7 @@
 #include <cmath>
 #include "../Assert.hpp"
 #include "../lib.hpp"
-#include <axl.math/Double.hpp>
+#include <axl.math/double.hpp>
 #include <axl.math/mat/Mat3d.hpp>
 #include <axl.math/mat/Mat3f.hpp>
 

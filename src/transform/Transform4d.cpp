@@ -1,5 +1,5 @@
 #include <axl.math/lib.hpp>
-#include <axl.math/mat/Transform4.hpp>
+#include <axl.math/mat/transform4.hpp>
 #include <axl.math/transform/Transform4d.hpp>
 
 namespace axl {
