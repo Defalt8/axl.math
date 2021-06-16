@@ -5,8 +5,10 @@
 #include "../Assert.hpp"
 #include "../lib.hpp"
 #include <axl.math/double.hpp>
+#include <axl.math/angle.hpp>
 #include <axl.math/mat/Mat4f.hpp>
 #include <axl.math/mat/Mat4d.hpp>
+#include <axl.math/mat/transform4.hpp>
 
 int main(int argc, char *argv[])
 {
@@ -450,6 +452,13 @@ int main(int argc, char *argv[])
 	{ // transpose
 		Assertv(Mat4d(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16).transpose().equals(1,5,9,13,2,6,10,14,3,7,11,15,4,8,12,16, 0.000001), verbose);
 		Assertv(Mat4d(1,0,0,0,0,-2,0,0,0,0,3,0,0,0,0,-4).transpose().equals(1,0,0,0,0,-2,0,0,0,0,3,0,0,0,0,-4, 0.000001), verbose);
+	}
+	{ // affine inverse
+		Mat4d transform_mat = Transform4::translate(Vec3d(50.0, -25.0, 1000.0)) * Transform4::rotateZ(Angle::degToRad(90.)) * Transform4::scale(Vec3f(0.5, 2.5, -10.));
+		Vec4d vec4(52354.2, 34.4, -200., 1.0);
+		Vec4d tvec4 = transform_mat * vec4;
+		Assertv(Mat4d(Mat4d::Identity).affineInvert(Vec3d(1.2,-1.5,2.)).equals(1.2,-1.5,2.), verbose);
+		Assertv(transform_mat.affineInvert(Vec3d(tvec4.x, tvec4.y, tvec4.z)).equals(vec4.x, vec4.y, vec4.z), verbose);
 	}
 	if(assert::_num_failed_tests <= 0)
 		printf("ALL GOOD!\n");
