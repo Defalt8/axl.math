@@ -144,10 +144,7 @@ Mat3d Mat3d::operator*(const Mat3d& mat) const
 
 Mat3d Mat3d::operator/(const Mat3d& mat) const
 {
-	Mat3d imat = mat.inverse();
-	if(imat.hasNan())
-		return Mat3d::Nan;
-	return (*this) * imat;
+	return (*this) * mat.inverse();
 }
 
 Mat3d Mat3d::operator+(double v) const
@@ -232,10 +229,7 @@ Mat3d& Mat3d::operator*=(const Mat3d& mat)
 
 Mat3d& Mat3d::operator/=(const Mat3d& mat)
 {
-	Mat3d imat = mat.inverse();
-	if(imat.hasNan())
-		return ((*this) = Mat3d::Nan);
-	return (*this) *= imat;
+	return (*this) *= mat.inverse();
 }
 
 Mat3d& Mat3d::operator+=(double v)
@@ -485,10 +479,8 @@ void Mat3d::setValue(int column_index, int row_index, double v)
 
 bool Mat3d::isInvertible() const
 {
-	const double ae_bd = (values[0] * values[4] - values[1] * values[3]);
-	const double ae_bdei_fh_ce_bfeg_dh = (ae_bd * (values[4] * values[8] - values[5] * values[7]) - (values[2] * values[4] - values[1] * values[5]) * (values[4] * values[6] - values[3] * values[7]));
-	const double ei_fh = (values[4] * values[8] - values[5] * values[7]);
-	return !this->hasNan() && (ae_bd != 0.0 && ei_fh != 0.0 && ae_bdei_fh_ce_bfeg_dh != 0.0);
+	double det = this->determinant();
+	return det != 0.0 && !Double::isNan(det);
 }
 
 double Mat3d::determinant() const
@@ -502,16 +494,17 @@ double Mat3d::determinant() const
 
 Mat3d Mat3d::minorDet() const
 {
-	double r0 = (values[4]*values[8]-values[7]*values[5]);
-	double r1 = (values[3]*values[8]-values[6]*values[5]);
-	double r2 = (values[3]*values[7]-values[6]*values[4]);
-	double r3 = (values[1]*values[8]-values[7]*values[2]);
-	double r4 = (values[0]*values[8]-values[6]*values[2]);
-	double r5 = (values[0]*values[7]-values[6]*values[1]);
-	double r6 = (values[1]*values[5]-values[4]*values[2]);
-	double r7 = (values[0]*values[5]-values[3]*values[2]);
-	double r8 = (values[0]*values[4]-values[3]*values[1]);
-	return Mat3d(r0, r1, r2, r3, r4, r5, r6, r7, r8);
+	return Mat3d(
+		(values[4]*values[8]-values[7]*values[5]),
+		(values[3]*values[8]-values[6]*values[5]),
+		(values[3]*values[7]-values[6]*values[4]),
+		(values[1]*values[8]-values[7]*values[2]),
+		(values[0]*values[8]-values[6]*values[2]),
+		(values[0]*values[7]-values[6]*values[1]),
+		(values[1]*values[5]-values[4]*values[2]),
+		(values[0]*values[5]-values[3]*values[2]),
+		(values[0]*values[4]-values[3]*values[1])
+	);
 }
 
 Mat3d Mat3d::transpose() const
@@ -525,21 +518,20 @@ Mat3d Mat3d::transpose() const
 
 Mat3d Mat3d::inverse() const
 {
-	if(this->hasNan())
+	double det = this->determinant();
+	if(det == 0.0 || Double::isNan(det))
 		return Mat3d::Nan;
-	const double det = this->determinant();
-	if(det == 0.0)
-		return Mat3d::Nan;
-	double r0 =  (values[4]*values[8]-values[7]*values[5]) / det;
-	double r1 = -(values[3]*values[8]-values[6]*values[5]) / det;
-	double r2 =  (values[3]*values[7]-values[6]*values[4]) / det;
-	double r3 = -(values[1]*values[8]-values[7]*values[2]) / det;
-	double r4 =  (values[0]*values[8]-values[6]*values[2]) / det;
-	double r5 = -(values[0]*values[7]-values[6]*values[1]) / det;
-	double r6 =  (values[1]*values[5]-values[4]*values[2]) / det;
-	double r7 = -(values[0]*values[5]-values[3]*values[2]) / det;
-	double r8 =  (values[0]*values[4]-values[3]*values[1]) / det;
-	return Mat3d(r0, r3, r6, r1, r4, r7, r2, r5, r8);
+	return Mat3d(
+		(values[4]*values[8]-values[7]*values[5]) / det,
+		(values[7]*values[2]-values[1]*values[8]) / det,
+		(values[1]*values[5]-values[4]*values[2]) / det,
+		(values[6]*values[5]-values[3]*values[8]) / det,
+		(values[0]*values[8]-values[6]*values[2]) / det,
+		(values[3]*values[2]-values[0]*values[5]) / det,
+		(values[3]*values[7]-values[6]*values[4]) / det,
+		(values[6]*values[1]-values[0]*values[7]) / det,
+		(values[0]*values[4]-values[3]*values[1]) / det
+	);
 }
 
 Mat3d Mat3d::filled(double v)

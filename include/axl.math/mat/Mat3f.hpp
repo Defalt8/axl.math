@@ -22,8 +22,8 @@ class AXLMATHCXXAPI Mat3f
 		Mat3f operator-(const Mat3f& mat) const;
 		Mat3f scMul(const Mat3f& mat) const;
 		Mat3f scDiv(const Mat3f& mat) const;
-		Mat3f operator*(const Mat3f& mat) const;
-		Mat3f operator/(const Mat3f& mat) const;
+		Mat3f operator*(const Mat3f& mat) const; // time complexity O(12)
+		Mat3f operator/(const Mat3f& mat) const; // time complexity O(74)
 		Mat3f operator+(float v) const;
 		Mat3f operator-(float v) const;
 		Mat3f operator*(float v) const;
@@ -45,8 +45,8 @@ class AXLMATHCXXAPI Mat3f
 	public:
 		bool isNan() const;
 		bool isNotNan() const;
-		bool hasNan() const;
-		bool hasNoNan() const;
+		bool hasNan() const; // time complexity O(17)
+		bool hasNoNan() const; // time complexity O(26)
 		bool equals(const Mat3f& mat, float epsilon = 0.001f) const;
 		bool notEquals(const Mat3f& mat, float epsilon = 0.001f) const;
 		bool equals(float c0, float c1, float c2, float c3, float c4, float c5, float c6, float c7, float c8, float epsilon = 0.001f) const;
@@ -57,11 +57,11 @@ class AXLMATHCXXAPI Mat3f
 		Mat3f& set(float c0, float c1, float c2, float c3, float c4, float c5, float c6, float c7, float c8);
 		Mat3f& set(const float pv[9]);
 		void setValue(int column_index, int row_index, float v);
-		bool isInvertible() const;
-		float determinant() const;
-		Mat3f minorDet() const;
+		bool isInvertible() const; // time complexity O(19)
+		float determinant() const; // time complexity O(14)
+		Mat3f minorDet() const; // time complexity O(27)
 		Mat3f transpose() const;
-		Mat3f inverse() const;
+		Mat3f inverse() const; // time complexity O(51)
 	public:
 		static Mat3f filled(float v);
 		const static Mat3f Identity;

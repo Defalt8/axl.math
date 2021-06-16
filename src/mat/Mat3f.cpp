@@ -144,10 +144,7 @@ Mat3f Mat3f::operator*(const Mat3f& mat) const
 
 Mat3f Mat3f::operator/(const Mat3f& mat) const
 {
-	Mat3f imat = mat.inverse();
-	if(imat.hasNan())
-		return Mat3f::Nan;
-	return (*this) * imat;
+	return (*this) * mat.inverse();
 }
 
 Mat3f Mat3f::operator+(float v) const
@@ -232,10 +229,7 @@ Mat3f& Mat3f::operator*=(const Mat3f& mat)
 
 Mat3f& Mat3f::operator/=(const Mat3f& mat)
 {
-	Mat3f imat = mat.inverse();
-	if(imat.hasNan())
-		return ((*this) = Mat3f::Nan);
-	return (*this) *= imat;
+	return (*this) *= mat.inverse();
 }
 
 Mat3f& Mat3f::operator+=(float v)
@@ -485,10 +479,8 @@ void Mat3f::setValue(int column_index, int row_index, float v)
 
 bool Mat3f::isInvertible() const
 {
-	const float ae_bd = (values[0] * values[4] - values[1] * values[3]);
-	const float ae_bdei_fh_ce_bfeg_dh = (ae_bd * (values[4] * values[8] - values[5] * values[7]) - (values[2] * values[4] - values[1] * values[5]) * (values[4] * values[6] - values[3] * values[7]));
-	const float ei_fh = (values[4] * values[8] - values[5] * values[7]);
-	return !this->hasNan() && (ae_bd != 0.0f && ei_fh != 0.0f && ae_bdei_fh_ce_bfeg_dh != 0.0f);
+	float det = this->determinant();
+	return det != 0.0f && !Float::isNan(det);
 }
 
 float Mat3f::determinant() const
@@ -502,16 +494,17 @@ float Mat3f::determinant() const
 
 Mat3f Mat3f::minorDet() const
 {
-	float r0 = (values[4]*values[8]-values[7]*values[5]);
-	float r1 = (values[3]*values[8]-values[6]*values[5]);
-	float r2 = (values[3]*values[7]-values[6]*values[4]);
-	float r3 = (values[1]*values[8]-values[7]*values[2]);
-	float r4 = (values[0]*values[8]-values[6]*values[2]);
-	float r5 = (values[0]*values[7]-values[6]*values[1]);
-	float r6 = (values[1]*values[5]-values[4]*values[2]);
-	float r7 = (values[0]*values[5]-values[3]*values[2]);
-	float r8 = (values[0]*values[4]-values[3]*values[1]);
-	return Mat3f(r0, r1, r2, r3, r4, r5, r6, r7, r8);
+	return Mat3f(
+		(values[4]*values[8]-values[7]*values[5]),
+		(values[3]*values[8]-values[6]*values[5]),
+		(values[3]*values[7]-values[6]*values[4]),
+		(values[1]*values[8]-values[7]*values[2]),
+		(values[0]*values[8]-values[6]*values[2]),
+		(values[0]*values[7]-values[6]*values[1]),
+		(values[1]*values[5]-values[4]*values[2]),
+		(values[0]*values[5]-values[3]*values[2]),
+		(values[0]*values[4]-values[3]*values[1])
+	);
 }
 
 Mat3f Mat3f::transpose() const
@@ -525,21 +518,20 @@ Mat3f Mat3f::transpose() const
 
 Mat3f Mat3f::inverse() const
 {
-	if(this->hasNan())
+	float det = this->determinant();
+	if (det == 0.0f || Float::isNan(det))
 		return Mat3f::Nan;
-	const float det = this->determinant();
-	if (det == 0.0f)
-		return Mat3f::Nan;
-	float r0 =  (values[4]*values[8]-values[7]*values[5]) / det;
-	float r1 = -(values[3]*values[8]-values[6]*values[5]) / det;
-	float r2 =  (values[3]*values[7]-values[6]*values[4]) / det;
-	float r3 = -(values[1]*values[8]-values[7]*values[2]) / det;
-	float r4 =  (values[0]*values[8]-values[6]*values[2]) / det;
-	float r5 = -(values[0]*values[7]-values[6]*values[1]) / det;
-	float r6 =  (values[1]*values[5]-values[4]*values[2]) / det;
-	float r7 = -(values[0]*values[5]-values[3]*values[2]) / det;
-	float r8 =  (values[0]*values[4]-values[3]*values[1]) / det;
-	return Mat3f(r0, r3, r6, r1, r4, r7, r2, r5, r8);
+	return Mat3f(
+		(values[4]*values[8]-values[7]*values[5]) / det, 
+		(values[7]*values[2]-values[1]*values[8]) / det, 
+		(values[1]*values[5]-values[4]*values[2]) / det, 
+		(values[6]*values[5]-values[3]*values[8]) / det, 
+		(values[0]*values[8]-values[6]*values[2]) / det, 
+		(values[3]*values[2]-values[0]*values[5]) / det, 
+		(values[3]*values[7]-values[6]*values[4]) / det, 
+		(values[6]*values[1]-values[0]*values[7]) / det, 
+		(values[0]*values[4]-values[3]*values[1]) / det
+	);
 }
 
 Mat3f Mat3f::filled(float v)
