@@ -10,6 +10,8 @@ template <typename T>
 class Vec4
 {
 	public:
+		enum Vec3Order { XYZ, XZY, YXZ, YZX, ZXY, ZYX };
+	public:
 		Vec4(T x = Default.x, T y = Default.y, T z = Default.z, T w = Default.w);
 		template <typename U>
 		Vec4(U x, U y, U z, U w);
@@ -56,6 +58,9 @@ class Vec4
 		Vec4<T>& set(T x, T y);
 		Vec4<T>& set(T x, T y, T z);
 		Vec4<T>& set(T x, T y, T z, T w);
+	public:
+		template <typename U = T>
+		Vec3<U> toVec3(Vec3Order order = XYZ) const;
 	public:
 		static Vec4<T> filled(T v);
 		const static Vec4<T> Zero;

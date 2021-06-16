@@ -185,6 +185,21 @@ inline Vec4<T>& Vec4<T>::set(T _x, T _y, T _z, T _w)
 {
 	this->x = (_x); this->y = (_y); this->z = (_z); this->w = (_w); return *this;
 }
+template <typename T>
+template <typename U>
+Vec3<U> Vec4<T>::toVec3(Vec4<T>::Vec3Order order) const
+{
+	switch(order)
+	{
+		default:
+		case XYZ: return Vec3<U>(x, y, z);
+		case XZY: return Vec3<U>(x, z, y);
+		case YXZ: return Vec3<U>(y, x, z);
+		case YZX: return Vec3<U>(y, z, x);
+		case ZXY: return Vec3<U>(z, x, y);
+		case ZYX: return Vec3<U>(z, y, x);
+	}
+}
 
 template <typename T>
 inline Vec4<T> operator+(T v, const Vec4<T>& vec)

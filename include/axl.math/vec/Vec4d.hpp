@@ -10,6 +10,8 @@ namespace math {
 class AXLMATHCXXAPI Vec4d
 {
 	public:
+		enum Vec3Order { XYZ, XZY, YXZ, YZX, ZXY, ZYX };
+	public:
 		Vec4d(double x = Default.x, double y = Default.y, double z = Default.z, double w = Default.w);
 		Vec4d(const Vec4d& vec);
 		Vec4d(const Vec2d& vec, double z = Default.z, double w = Default.w);
@@ -64,6 +66,8 @@ class AXLMATHCXXAPI Vec4d
 		Vec4d& translate(const Vec4d& delta);
 		Vec4d translated(double delta_x, double delta_y, double delta_z, double delta_w) const;
 		Vec4d translated(const Vec4d& delta) const;
+	public:
+		Vec3d toVec3(Vec3Order order = XYZ) const;
 	public:
 		static Vec4d filled(double v);
 		const static Vec4d Zero;

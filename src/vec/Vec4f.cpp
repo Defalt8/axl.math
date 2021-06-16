@@ -268,6 +268,20 @@ Vec4f Vec4f::translated(const Vec4f& delta) const
 	return Vec4f(x + delta.x, y + delta.y, z + delta.z, w + delta.w);
 }
 
+Vec3f Vec4f::toVec3(Vec4f::Vec3Order order) const
+{
+	switch(order)
+	{
+		default:
+		case XYZ: return Vec3f(x, y, z);
+		case XZY: return Vec3f(x, z, y);
+		case YXZ: return Vec3f(y, x, z);
+		case YZX: return Vec3f(y, z, x);
+		case ZXY: return Vec3f(z, x, y);
+		case ZYX: return Vec3f(z, y, x);
+	}
+}
+
 Vec4f operator+(float v, const Vec4f& vec)
 {
 	return Vec4f(v + vec.x, v + vec.y, v + vec.z, v + vec.w);
