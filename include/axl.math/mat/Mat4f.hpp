@@ -23,7 +23,7 @@ class AXLMATHCXXAPI Mat4f
 		Mat4f operator-(const Mat4f& mat) const;
 		Mat4f scMul(const Mat4f& mat) const;
 		Mat4f scDiv(const Mat4f& mat) const;
-		Mat4f operator*(const Mat4f& mat) const; // time complexity O(112)
+		Mat4f operator*(const Mat4f& mat) const;
 		Mat4f operator+(float v) const;
 		Mat4f operator-(float v) const;
 		Mat4f operator*(float v) const;
@@ -36,7 +36,7 @@ class AXLMATHCXXAPI Mat4f
 		Mat4f& operator*=(float v);
 		Mat4f& operator/=(float v);
 		Vec4d operator*(const Vec4d& vec) const;
-		Vec4f operator*(const Vec4f& vec) const; // time complexity O(28)
+		Vec4f operator*(const Vec4f& vec) const;
 		bool operator==(const Mat4f& mat) const;
 		bool operator!=(const Mat4f& mat) const;
 		bool operator==(float v) const;
@@ -57,8 +57,8 @@ class AXLMATHCXXAPI Mat4f
 		Mat4f& set(const float pv[16]);
 		void setValue(int column_index, int row_index, float v);
 		Mat4f transpose() const;
-		Mat4f inverse() const; // time complexity O(128)
-		Vec3f affineInvert(const Vec3f& vec3) const; // time complexity O(71)
+		Mat4f inverse() const;
+		Vec3f affineInvert(const Vec3f& vec3) const;
 	public:
 		static Mat4f filled(float v);
 		const static Mat4f Identity;
