@@ -153,12 +153,12 @@ double Vec3d::magn() const
 }
 Vec3d Vec3d::norm() const
 {
-	const register double magnitude = std::sqrt(x * x + y * y + z * z);
+	const double magnitude = std::sqrt(x * x + y * y + z * z);
 	return Vec3d(x / magnitude, y / magnitude, z / magnitude);
 }
 Vec3d& Vec3d::normalize()
 {
-	const register double magnitude = std::sqrt(x * x + y * y + z * z);
+	const double magnitude = std::sqrt(x * x + y * y + z * z);
 	x = (x / magnitude);
 	y = (y / magnitude);
 	z = (z / magnitude);

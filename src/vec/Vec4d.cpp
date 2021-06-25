@@ -193,13 +193,13 @@ double Vec4d::magn() const
 
 Vec4d Vec4d::norm() const
 {
-	const register double magnitude = std::sqrt(x * x + y * y + z * z + w * w);
+	const double magnitude = std::sqrt(x * x + y * y + z * z + w * w);
 	return Vec4d(x / magnitude, y / magnitude, z / magnitude, w / magnitude);
 }
 
 Vec4d& Vec4d::normalize()
 {
-	const register double magnitude = std::sqrt(x * x + y * y + z * z + w * w);
+	const double magnitude = std::sqrt(x * x + y * y + z * z + w * w);
 	x = (x / magnitude);
 	y = (y / magnitude);
 	z = (z / magnitude);

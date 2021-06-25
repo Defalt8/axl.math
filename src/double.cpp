@@ -13,30 +13,10 @@ const double NegInf = -PosInf;
 
 bool equals(double a, double b, double epsilon)
 {
-	switch (sizeof(double))
-	{
-		case 2U:
-			if(*((short*)&a) == *((short*)&b)) return true;
-			break;
-		case 4U:
-			if(*((long*)&a) == *((long*)&b)) return true;
-			break;
-		case 8U:
-			if(*((long long*)&a) == *((long long*)&b)) return true;
-			break;
-		default:
-			{
-				const register bool is_a_nan = isNan(a);
-				const register bool is_b_nan = isNan(b);
-				if(is_a_nan && is_b_nan) return true;
-				else if(is_a_nan || is_b_nan) return false;
-				const register bool is_a_inf = isInfinite(a);
-				const register bool is_b_inf = isInfinite(b);
-				if(is_a_inf && is_b_inf && (isPosInfinity(a) && isPosInfinity(b))) return true;
-				else if(is_a_inf || is_b_inf) return false;
-			}
-			break;
-	}
+	const bool is_a_nan = isNan(a);
+	const bool is_b_nan = isNan(b);
+	if(is_a_nan && is_b_nan) return true;
+	else if(is_a_nan || is_b_nan) return false;
 	return std::fabs(a - b) <= epsilon;
 }
 bool isNan(double n)

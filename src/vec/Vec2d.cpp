@@ -149,12 +149,12 @@ double Vec2d::magn() const
 }
 Vec2d Vec2d::norm() const
 {
-	const register double magnitude = std::sqrt(x*x + y*y);
+	const double magnitude = std::sqrt(x*x + y*y);
 	return Vec2d(x / magnitude, y / magnitude);
 }
 Vec2d& Vec2d::normalize()
 {
-	const register double magnitude = std::sqrt(x*x + y*y);
+	const double magnitude = std::sqrt(x*x + y*y);
 	x = (x / magnitude);
 	y = (y / magnitude);
 	return *this;
@@ -256,16 +256,16 @@ Vec2d& Vec2d::rotate(double theta_z, Rules::Axis axis_rule)
 		default:
 		case Rules::Axis::RHS:
 			{
-				const register double _x = (x * std::cos(theta_z) - y * std::sin(theta_z));
-				const register double _y = (x * std::sin(theta_z) + y * std::cos(theta_z));
+				const double _x = (x * std::cos(theta_z) - y * std::sin(theta_z));
+				const double _y = (x * std::sin(theta_z) + y * std::cos(theta_z));
 				this->x = _x;
 				this->y = _y;
 			}
 			return *this;
 		case Rules::Axis::LHS:
 			{
-				const register double _x = (x * std::cos(theta_z) + y * std::sin(theta_z));
-				const register double _y = (y * std::cos(theta_z) - x * std::sin(theta_z));
+				const double _x = (x * std::cos(theta_z) + y * std::sin(theta_z));
+				const double _y = (y * std::cos(theta_z) - x * std::sin(theta_z));
 				this->x = _x;
 				this->y = _y;
 			}

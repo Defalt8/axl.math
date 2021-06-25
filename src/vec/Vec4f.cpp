@@ -193,13 +193,13 @@ float Vec4f::magn() const
 
 Vec4f Vec4f::norm() const
 {
-	const register float magnitude = std::sqrt(x * x + y * y + z * z + w * w);
+	const float magnitude = std::sqrt(x * x + y * y + z * z + w * w);
 	return Vec4f(x / magnitude, y / magnitude, z / magnitude, w / magnitude);
 }
 
 Vec4f& Vec4f::normalize()
 {
-	const register float magnitude = std::sqrt(x * x + y * y + z * z + w * w);
+	const float magnitude = std::sqrt(x * x + y * y + z * z + w * w);
 	x = (x / magnitude);
 	y = (y / magnitude);
 	z = (z / magnitude);

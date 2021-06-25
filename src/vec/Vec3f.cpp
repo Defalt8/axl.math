@@ -153,12 +153,12 @@ float Vec3f::magn() const
 }
 Vec3f Vec3f::norm() const
 {
-	const register float magnitude = std::sqrt(x * x + y * y + z * z);
+	const float magnitude = std::sqrt(x * x + y * y + z * z);
 	return Vec3f(x / magnitude, y / magnitude, z / magnitude);
 }
 Vec3f& Vec3f::normalize()
 {
-	const register float magnitude = std::sqrt(x * x + y * y + z * z);
+	const float magnitude = std::sqrt(x * x + y * y + z * z);
 	x = (x / magnitude);
 	y = (y / magnitude);
 	z = (z / magnitude);
